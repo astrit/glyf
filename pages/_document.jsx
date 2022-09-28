@@ -26,6 +26,11 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,1000&display=swap"
             rel="stylesheet"
           /> */}
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Caveat&display=swap"
+            rel="stylesheet"
+          />
           <link
             href="assets/fonts/roboto.woff2"
             as="font"

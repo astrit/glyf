@@ -44,6 +44,10 @@ const Search = styled("input", {
   },
 });
 
+const Link = styled("a", {
+  textDecoration: "underline",
+});
+
 export default function Home() {
   return (
     <>
@@ -62,7 +66,7 @@ export default function Home() {
           <section>
             <h1>Glyphs</h1>
             <p>
-              From — <a href="//css.gg">CSS.GG</a>
+              From — <Link href="//css.gg">CSS.GG</Link>
             </p>
           </section>
           <Search placeholder="test" />
