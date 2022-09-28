@@ -61,7 +61,9 @@ export default function Home() {
           <Noise />
           <section>
             <h1>Glyphs</h1>
-            <p>A list of glyphs from the makers of CSS.GG</p>
+            <p>
+              From — <a href="//css.gg">CSS.GG</a>
+            </p>
           </section>
           <Search placeholder="test" />
           <Glyphs />

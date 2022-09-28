@@ -2,6 +2,8 @@
 import Box from "@/box";
 import { styled } from "@/theme";
 
+// https://mtxn84-3000.preview.csb.app/
+
 export default function Footer() {
-  return <Box>https://mtxn84-3000.preview.csb.app/</Box>;
+  return <Box>Footer</Box>;
 }
