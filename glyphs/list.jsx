@@ -1,5 +1,9 @@
 import { styled } from "@/theme";
-
+// https://graphemica.com/%5E
+// https://graphemica.com/%5E
+// https://graphemica.com/%5E
+// https://graphemica.com/%5E
+// https://graphemica.com/%5E
 const Card = styled("li", {
   display: "flex",
   alignItems: "center",
@@ -299,19 +303,39 @@ const glfs = [
 
 // const List = blla.map((bl) => <div key={bl}></div>);
 // const GlfsList = glfs.map((glyph) => <Card key={glyph}>k</Card>);
+// function entityForSymbolInContainer(selector) {
+//   var code = $(selector).text().charCodeAt(0);
+//   var codeHex = code.toString(16).toUpperCase();
+//   while (codeHex.length < 4) {
+//     codeHex = "0" + codeHex;
+//   }
+
+//   return "&#x" + codeHex + ";";
+// }
 
 function Cardz(props) {
   const glfs = props.glfs;
-  const glf = glfs.map((glf) => (
-    <Card
-      key={glf}
-      onClick={() => {
-        navigator.clipboard.writeText(glf);
-      }}
-    >
-      {glf}
-    </Card>
-  ));
+  const glf = glfs.map((glf) => {
+    // let name = glf.charCodeAt(0).toString(16).toUpperCase();
+    // while (name.length < 4) {
+    //   name = "0" + name;
+    // }
+
+    // return "&#x" + name + ";";
+
+    return (
+      <Card
+        key={glf}
+        onClick={() => {
+          navigator.clipboard.writeText(glf);
+        }}
+        // data-name={"&#x" + name + ";"}
+        data-name={String.fromCodePoint(glf)}
+      >
+        {glf}
+      </Card>
+    );
+  });
   return <Cards>{glf}</Cards>;
 }
 

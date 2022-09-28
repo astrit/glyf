@@ -37,7 +37,6 @@ export const style = globalCss({
     fontWeight: "350",
   },
   main: {
-    padding: "$5",
     gap: "$4",
     display: "flex",
     flexDirection: "column",
