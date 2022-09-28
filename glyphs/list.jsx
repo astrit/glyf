@@ -11,13 +11,13 @@ const Card = styled("li", {
   fontWeight: "600",
   fontSize: "28px",
   lineHeight: "1",
-  //   backdropFilter: "blur(100px)",
-  background: "rgba(255,255,255,1)",
+  backgroundColor: "rgba(255,255,255,1)",
   color: "#0e0c1b",
   boxShadow:
     "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
   transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
   userSelect: "none",
+
   "&:hover": {
     scale: "1.2",
     borderRadius: "32px",
@@ -30,8 +30,8 @@ const Card = styled("li", {
 
 const Cards = styled("div", {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
-  gap: "40px",
+  gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
+  gap: "24px",
   zIndex: "4",
 });
 

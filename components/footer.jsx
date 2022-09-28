@@ -1,5 +1,7 @@
-`cookie settings `;
-`wallperpa`;
-`tools:favicon generator`;
-`menu after each category and main page add generator`;
-`https://share.cleanshot.com/P9Nw4f`;
+// https://mtxn84-3000.preview.csb.app/
+import Box from "@/box";
+import { styled } from "@/theme";
+
+export default function Footer() {
+  return <Box>https://mtxn84-3000.preview.csb.app/</Box>;
+}

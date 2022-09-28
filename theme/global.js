@@ -12,7 +12,7 @@ export const style = globalCss({
     fontFamily: `"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
     backgroundColor: "#5f19dd",
     backgroundImage:
-      "radial-gradient(rgba(255,255,255,.1) 1px,transparent 0),radial-gradient(rgba(255,255,255,.1) 1px,transparent 0)",
+      "radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0)",
     backgroundSize: "40px 40px",
     backgroundPosition: "0 0,20px 20px",
     paddding: "8vw",
