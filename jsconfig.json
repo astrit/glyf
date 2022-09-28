@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "components/*"
+      ],
+      "@/theme": [
+        "theme/stitches.config"
+      ],
+      "$/*": [
+        "theme/*"
+      ],
+      "#/*": [
+        "components/tools/*"
+      ],
+      "g/*": [
+        "glyphs/*"
+      ],
+      "u/*": [
+        "utils/*"
+      ],
+    }
+  }
+}
