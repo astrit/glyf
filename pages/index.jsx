@@ -1,23 +1,21 @@
-/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
-import Image from "next/image";
 import Header from "@/header";
 import Box from "@/box";
-import Logo from "g/logo";
-import SVGMap from "u/svg";
 import { styled } from "@/theme";
+import Glyphs from "g/list";
+import SVGMap from "u/svg";
 
 const Noise = styled("div", {
   mixBlendMode: "multiply",
-  filter: "url(#noise)",
-  zIndex: "2000",
+  filter: "url(#noise) grayscale(100)",
+  zIndex: "100",
   position: "fixed",
-  width: "8000px",
-  height: "8000px",
+  width: "100%",
+  height: "100%",
   top: 0,
   left: 0,
   pointerEvents: "none",
-  opacity: 0.6,
+  opacity: 0.4,
   backgroundSize: "300px 300px",
 });
 
@@ -30,19 +28,17 @@ export default function Home() {
         }}
       >
         <Head>
-          <title>glf</title>
+          <title>⌘ glfs. — Copy & Paste</title>
         </Head>
         <Header />
+        <SVGMap />
         <main>
-          <SVGMap />
-          <Box>
-            <Noise />
-            <Logo />
-            <h1>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </h1>
-          </Box>
+          <Noise />
+          <section>
+            <h1>Glyphs</h1>
+            <p>A list of glyphs from the makers of CSS.GG</p>
+          </section>
+          <Glyphs />
         </main>
       </Box>
     </>
