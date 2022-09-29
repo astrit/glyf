@@ -13,9 +13,9 @@ export const {
   getCssText,
 } = createStitches({
   media: {
-    sm: "(min-width: 768px)",
-    md: "(min-width: 1024px)",
-    lg: "(min-width: 1440px)",
+    sm: "(max-width: 768px)",
+    md: "(max-width: 1024px)",
+    lg: "(max-width: 1440px)",
   },
   theme: {
     colors: {

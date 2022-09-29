@@ -5,6 +5,9 @@ import { styled } from "@/theme";
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
+
+// const CopyAnimation =
+
 const Card = styled("li", {
   display: "flex",
   alignItems: "center",
@@ -21,6 +24,7 @@ const Card = styled("li", {
   // border: "3px solid rgba(255,255,255,0.05)",
   // backgroundColor: "rgba(255,255,255,1)",
   color: "#0e0c1b",
+
   // boxShadow:
   //   "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
   // transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
@@ -34,7 +38,7 @@ const Card = styled("li", {
     transitionDelay: "0.1s",
   },
   "&:hover span": {
-    scale: "1.4",
+    transform: "scale3d(1.4,1.4,1.4)",
   },
 
   "&::before": {
@@ -49,14 +53,48 @@ const Card = styled("li", {
     backgroundColor: "rgba(255,255,255,1)",
     width: "100%",
     height: "100%",
+    "@sm": {
+      borderRadius: "4px",
+    },
   },
   "&:hover::before": {
-    scale: "1.1",
+    transform: "scale3d(1.1,1.1,1.1)",
     borderRadius: "24px",
     cursor: "pointer",
   },
   "&:active::before": {
-    scale: "0.9",
+    transform: "scale3d(1, 1, 1)",
+  },
+
+  // "&:after": {
+  //   content: "",
+  //   color: "hsla(176, 65%, 42%, 1.0)",
+  // },
+
+  "&::after": {
+    content: "",
+    position: "absolute",
+    top: 0,
+    borderRadius: "0.5rem",
+    padding: "2px",
+    width: "100%",
+    height: "100%",
+    backgroundSize: "400% auto",
+    backgroundPosition: "0 0",
+    opacity: "0.5",
+    background:
+      "linear-gradient(90deg, #303030 0%, #303030 25%, #00DC82 50%, #36E4DA 75%, #0047E1 100%)",
+    transition:
+      "background-position 0.3s ease-in-out, opacity 0.2s ease-in-out",
+    "-webkit-mask":
+      "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+    mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+    "-webkit-mask-composite": "xor",
+    "mask-composite": "exclude",
+  },
+  "&:active::after": {
+    backgroundPosition: "-50% 0",
+    opacity: "1",
   },
 });
 
