@@ -72,7 +72,10 @@ const Link = styled("a", {
 
 const Main = styled("main", {
   zIndex: "3",
-  padding: "clamp(1.8rem, 2.5vw, 2.8rem)",
+  // maxWidth: "1920px",
+  margin: "0 auto",
+  width: "clamp(80vw, 80vw, 1920px)",
+  padding: "1.5rem",
 });
 
 // function appSearch() {
@@ -114,7 +117,7 @@ export default function Home() {
         <Noise />
         <Main>
           <section>
-            <h1>Glyphs</h1>
+            <h1>♥ ● ◆ Glyphs</h1>
             <p>
               From — <Link href="//css.gg">CSS.GG ↗</Link>
             </p>
