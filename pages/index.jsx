@@ -63,7 +63,9 @@ const Search = styled("input", {
     backgroundPosition: "left 30px center",
     paddingLeft: "86px",
   },
-  // "&:not(:placeholder-shown)": {},
+  "&:not(:placeholder-shown)": {
+    color: "red",
+  },
 });
 
 const Link = styled("a", {
@@ -117,14 +119,14 @@ export default function Home() {
         <Noise />
         <Main>
           <section>
-            <h1>♥ ● ◆ Glyphs</h1>
+            <h1>Glyphs</h1>
             <p>
               From — <Link href="//css.gg">CSS.GG ↗</Link>
             </p>
           </section>
           <Search
             // onKeyup="appSearch()"
-            placeholder="e.g love  ♥"
+            placeholder="e.g love → ♥"
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"

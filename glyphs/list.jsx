@@ -24,9 +24,18 @@ const Card = styled("li", {
   // boxShadow:
   //   "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
   // transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+  transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+
   userSelect: "none",
   position: "relative",
   cursor: "pointer",
+  span: {
+    transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+    transitionDelay: "0.1s",
+  },
+  "&:hover span": {
+    scale: "1.4",
+  },
 
   "&::before": {
     content: " ",
@@ -42,12 +51,12 @@ const Card = styled("li", {
     height: "100%",
   },
   "&:hover::before": {
-    scale: "1.2",
-    borderRadius: "32px",
+    scale: "1.1",
+    borderRadius: "24px",
     cursor: "pointer",
   },
   "&:active::before": {
-    scale: "1",
+    scale: "0.9",
   },
 });
 
@@ -341,7 +350,7 @@ function Cardz(props) {
         }}
         data-name={glf}
       >
-        {glf}
+        <span>{glf}</span>
       </Card>
     );
   });
