@@ -30,8 +30,6 @@ const Noise = styled("div", {
 
 const Search = styled("input", {
   display: "flex",
-  position: "sticky",
-  top: "10px",
   alignItems: "center",
   justifyContent: "center",
   borderRadius: "18px",
