@@ -33,9 +33,9 @@ export const style = globalCss({
     boxSizing: "border-box",
     position: "relative",
   },
-  h1: {
-    marginBlockEnd: "0.34em",
-  },
+  // h1: {
+  //   marginBlockEnd: "0.64em",
+  // },
   p: {
     marginBlockStart: "0",
     fontWeight: "350",

@@ -6,11 +6,11 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="description" content="" />
+          <meta name="description" content="Copy & Paste glyphs from CSS.GG" />
           <link
             rel="icon"
             type="image/svg+xml"
-            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2250%22 fill=%22%23000000%22></rect><path d=%22M63.13 63.13L44.38 63.13L44.38 59.38L40.63 59.38L40.63 55.63L36.88 55.63L36.88 44.38L40.63 44.38L40.63 40.63L44.38 40.63L44.38 36.88L63.13 36.88L63.13 40.63L48.13 40.63L48.13 44.38L44.38 44.38L44.38 55.63L48.13 55.63L48.13 59.38L55.63 59.38L55.63 51.88L51.88 51.88L51.88 48.13L63.13 48.13L63.13 63.13Z%22 fill=%22%23fff%22></path></svg>"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42' fill='none'%3E%3Ccircle cx='21' cy='21' r='20' fill='%235F19DD'/%3E%3Cpath d='M27 12a3 3 0 0 0-3 3v12a3 3 0 1 0 3-3H15a3 3 0 1 0 3 3V15a3 3 0 1 0-3 3h12a3 3 0 0 0 0-6Z' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E"
           />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link

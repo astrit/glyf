@@ -1,5 +1,5 @@
 import Box from "@/box";
-import { styled } from "@/theme";
+import { styled, keyframes } from "@/theme";
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
@@ -7,6 +7,11 @@ import { styled } from "@/theme";
 // https://graphemica.com/%5E
 
 // const CopyAnimation =
+
+// const CopyAnimation = keyframes({
+//   "0%": { backgroundPosition: "-50% 0", opacity: "1" },
+//   "100%": { backgroundPosition: "0 0", opacity: "0" },
+// });
 
 const Card = styled("li", {
   display: "flex",
@@ -40,6 +45,9 @@ const Card = styled("li", {
   "&:hover span": {
     transform: "scale3d(1.4,1.4,1.4)",
   },
+  "&:active span": {
+    transform: "scale3d(1,1,1)",
+  },
 
   "&::before": {
     content: " ",
@@ -50,7 +58,7 @@ const Card = styled("li", {
     boxShadow:
       "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
     transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-    backgroundColor: "rgba(255,255,255,1)",
+    background: "hsla(360, 100%, 100%, 1)",
     width: "100%",
     height: "100%",
     "@sm": {
@@ -72,8 +80,7 @@ const Card = styled("li", {
   // },
 
   "&::after": {
-    display: "none",
-    content: "",
+    content: " ",
     position: "absolute",
     top: 0,
     borderRadius: "14px",
@@ -81,22 +88,28 @@ const Card = styled("li", {
     boxSizing: "border-box",
     width: "100%",
     height: "100%",
-    backgroundSize: "400% auto",
-    backgroundPosition: "0 0",
-    opacity: "0.5",
+    opacity: "0",
     background:
-      "linear-gradient(90deg, #303030 0%, #303030 25%, #00DC82 50%, #36E4DA 75%, #0047E1 100%)",
-    transition:
-      "background-position 0.3s ease-in-out, opacity 0.2s ease-in-out",
+      "linear-gradient(180deg, hsla(176, 65%, 42%, 1), hsla(176, 65%, 42%, 0) , hsla(176, 65%, 42%, 1))",
+    backgroundSize: "auto 300%",
+    backgroundPosition: "0 0",
+    // transition:
+    //   "background-position 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease-in-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-radius 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
     "-webkit-mask":
       "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
     mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
     "-webkit-mask-composite": "xor",
     "mask-composite": "exclude",
+    transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+  },
+  "&:hover::after": {
+    transform: "scale3d(1.1,1.1,1.1)",
+    borderRadius: "24px",
   },
   "&:active::after": {
-    backgroundPosition: "-50% 0",
+    backgroundPosition: "0 100%",
     opacity: "1",
+    transform: "scale3d(1, 1, 1)",
   },
 });
 
