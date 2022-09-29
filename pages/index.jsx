@@ -64,7 +64,7 @@ const Search = styled("input", {
     paddingLeft: "86px",
   },
   "&:not(:placeholder-shown)": {
-    color: "red",
+    // color: "red",
   },
 });
 
