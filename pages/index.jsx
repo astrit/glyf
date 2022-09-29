@@ -44,7 +44,7 @@ const Search = styled("input", {
   fontWeight: "300",
   outline: "none",
   fontFamily: `"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
-  border: "2px solid rgba(255,255,255,0.07)",
+  border: "3px solid rgba(255,255,255,0.07)",
 
   boxShadow:
     "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
@@ -52,7 +52,7 @@ const Search = styled("input", {
     "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.4s",
 
   "&::placeholder": {
-    color: "rgba(255,255,255,0.4)",
+    color: "rgba(255,255,255,0.3)",
   },
   "&:focus:placeholder": {
     color: "transparent",
@@ -61,7 +61,7 @@ const Search = styled("input", {
     backgroundColor: "rgba(255,255,255,0.09)",
     borderColor: "rgba(255,255,255,0.2)",
     backgroundPosition: "left 30px center",
-    backgroundSize: "30px 30px",
+    paddingLeft: "86px",
   },
   // "&:not(:placeholder-shown)": {},
 });
@@ -121,7 +121,7 @@ export default function Home() {
           </section>
           <Search
             // onKeyup="appSearch()"
-            placeHolder="e.g heart ♥"
+            placeholder="e.g love  ♥"
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"

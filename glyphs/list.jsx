@@ -40,6 +40,15 @@ const Cards = styled("div", {
 });
 
 const glfs = [
+  "",
+  "⌘",
+  "♥",
+  "◆",
+  "●",
+  "★",
+  "⬓",
+  "©",
+  "®",
   "⁅",
   "⁆",
   "¦",
@@ -309,6 +318,7 @@ function Cardz(props) {
         key={glf}
         onClick={() => {
           navigator.clipboard.writeText(glf);
+          splitbee.track("Copied", { name: glf });
         }}
         data-name={glf}
       >
@@ -316,7 +326,17 @@ function Cardz(props) {
       </Card>
     );
   });
-  return <Cards>{glf}</Cards>;
+  return (
+    <div>
+      <div>
+        <div>
+          {glf.length} handpicker Glyphs for easy access, copy and paste
+        </div>
+        <div>Shift + Click to copy</div>
+      </div>
+      <Cards>{glf}</Cards>
+    </div>
+  );
 }
 
 export default function Glyphs() {
