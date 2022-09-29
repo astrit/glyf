@@ -72,6 +72,7 @@ const Card = styled("li", {
   // },
 
   "&::after": {
+    display: "none",
     content: "",
     position: "absolute",
     top: 0,
@@ -403,9 +404,9 @@ function Cardz(props) {
         }}
       >
         <div>
-          {glf.length} handpicker Glyphs for easy access, copy and paste
+          <key>⇧</key> + Click to Copy — {glf.length}
         </div>
-        <div>Shift + Click to copy</div>
+        {/* <div>Shift + Click to copy</div> */}
       </Box>
       <Cards>{glf}</Cards>
     </div>
