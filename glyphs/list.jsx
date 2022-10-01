@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from "react";
 import Box from "@/box";
 import { styled, keyframes } from "@/theme";
 // https://graphemica.com/%5E
@@ -73,42 +74,36 @@ const Card = styled("li", {
     transform: "scale3d(1, 1, 1)",
   },
 
-  // "&:after": {
-  //   content: "",
-  //   color: "hsla(176, 65%, 42%, 1.0)",
-  // },
-
   "&::after": {
-    content: " ",
+    content: "attr(data-name) ' copied'",
     position: "absolute",
-    top: 0,
-    borderRadius: "14px",
-    padding: "6px",
-    boxSizing: "border-box",
-    width: "100%",
-    height: "100%",
+    bottom: "0",
+    right: "5px",
+    left: "5px",
     opacity: "0",
-    background:
-      "linear-gradient(180deg, hsla(176, 65%, 42%, 1), hsla(176, 65%, 42%, 0) , hsla(176, 65%, 42%, 1))",
-    backgroundSize: "auto 300%",
-    backgroundPosition: "0 0",
-    // transition:
-    //   "background-position 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease-in-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-radius 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-    "-webkit-mask":
-      "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-    mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-    "-webkit-mask-composite": "xor",
-    "mask-composite": "exclude",
-    transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+    transition: "all 0.2s ease-in-out",
+    transitionDelay: "0.1s",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    fontSize: "12px",
+    padding: "4px 8px",
+    color: "hsla(176, 65%, 42%, 1)",
+    background: "hsla(176, 65%, 42%, 0.1)",
+    border: "1px solid hsla(176, 65%, 42%, 0.2)",
+    borderRadius: "6px 6px 20px 20px",
   },
-  "&:hover::after": {
-    transform: "scale3d(1.1,1.1,1.1)",
-    borderRadius: "24px",
-  },
+  // "&:hover::after": {
+  // transform: "scale3d(1.1,1.1,1.1)",
+  // borderRadius: "24px",
+  // content: "👌",
+  // opacity: "1",
+  // bottom: "20px",
+  // },
   "&:active::after": {
-    backgroundPosition: "0 100%",
     opacity: "1",
-    transform: "scale3d(1, 1, 1)",
+    bottom: "6px",
   },
 });
 
@@ -119,15 +114,15 @@ const Cards = styled("div", {
 });
 
 const glfs = [
-  "",
-  "⌘",
-  "♥",
-  "◆",
-  "●",
-  "★",
-  "⬓",
-  "©",
-  "®",
+  // "",
+  // "⌘",
+  // "♥",
+  // "◆",
+  // "●",
+  // "★",
+  // "⬓",
+  // "©",
+  // "®",
   "⁅",
   "⁆",
   "¦",
@@ -391,6 +386,11 @@ const glfs = [
 
 function Cardz(props) {
   const glfs = props.glfs;
+  const [clicked, setClicked] = useState(false);
+  // useEffect(() => {
+  //   setClicked(true);
+  // }, []);
+  // const handleCopy = (event) => event.target.classList.add("copied");
   const glf = glfs.map((glf) => {
     return (
       <Card
@@ -400,6 +400,7 @@ function Cardz(props) {
           // splitbee.track("Copy", { Glyph: glf });
         }}
         data-name={glf}
+        // className={`base-state ${clicked == true ? "blla" : "click-state"}`}
       >
         <span>{glf}</span>
       </Card>
