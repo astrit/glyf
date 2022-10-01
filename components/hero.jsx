@@ -15,6 +15,11 @@ export default function Hero() {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "flex-end",
+        gap: "$4",
+        "@md": {
+          flexDirection: "column",
+          alignItems: "flex-start",
+        },
       }}
     >
       <div>

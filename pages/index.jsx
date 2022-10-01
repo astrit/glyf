@@ -30,6 +30,11 @@ const Main = styled("main", {
   width: "clamp(80vw, 80vw, 1920px)",
   padding: "1.5rem",
   paddingTop: "clamp(10vw, 24vh, 44vh)",
+  // paddingTop: "clamp(10vw, 24vh, 44vh)",
+
+  // "@md": {
+  //   paddingTop: "clamp(5vw, 14vh, 14vh)",
+  // },
 });
 
 export default function Home() {
