@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { getCssText } from "$/stitches.config";
+import Toaster from "@/toaster";
 
 class MyDocument extends Document {
   render() {
@@ -24,6 +25,7 @@ class MyDocument extends Document {
         </Head>
         <body>
           <Main />
+          <Toaster />
           <NextScript />
         </body>
       </Html>
