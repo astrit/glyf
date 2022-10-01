@@ -175,62 +175,17 @@ export default function Home() {
             </Box>
           </Box>
           <Search
-            // onKeyup="appSearch()"
-            placeholder="e.g love → ♥"
+            placeholder="e.g apple"
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck="false"
             pattern="[A-Za-z0-9\-]+"
-            // onFocusOut={() => {
-            //   console.log("Focus out");
-            //   this.placeholder("test");
-            // }}
-            // onBlur={() => {
-            //   console.log("Focus out");
-            // }}
-            // onFocus={() => {
-            //   console.log("Focus out");
-            // }}
           />
-          {/* <Box>
-            <Box
-              css={{
-                display: "flex",
-                background: "white",
-                position: "absolute",
-                right: "0",
-                color: "black",
-              }}
-            >
-              268
-            </Box>
-          </Box> */}
-
-          {/* <button type="reset"><i class="gg-close"></i></button> */}
           <Glyphs />
           <Footer />
-          {/* <Carbon /> */}
-          {1 == 2 ? (
-            <Box
-              className="spotlight"
-              css={{
-                background:
-                  "linear-gradient(45deg, hsla(228, 60%, 44%, 1) 0%, hsl(265, 76%, 55%,0.6) 50%, hsl(257, 100%, 64%, 0.6) 100%)",
-                filter: "blur(20vh)",
-                height: "50vh",
-                bottom: "-40vh",
-                position: "fixed",
-                bottom: "0",
-                width: "100%",
-                pointerEvents: "none",
-                zIndex: "0",
-                display: "none",
-              }}
-            ></Box>
-          ) : (
-            ""
-          )}
+          {!process.env.NODE_ENV ||
+            (process.env.NODE_ENV === "development" ? "" : <Carbon />)}
         </Main>
       </Box>
     </>
