@@ -3,16 +3,10 @@ import Header from "@/header";
 import Box from "@/box";
 import { styled } from "@/theme";
 import Glyphs from "g/list";
-import SVGMap from "u/svg";
+import SVGMap from "g/svg/svg";
 import Footer from "@/footer";
 import Carbon from "u/ads";
-
-// https://www.designcise.com/web/tutorial/how-to-get-the-unicode-code-points-of-a-javascript-character
-// https://www.designcise.com/web/tutorial/how-to-get-the-unicode-code-points-of-a-javascript-character
-// https://www.designcise.com/web/tutorial/how-to-get-the-unicode-code-points-of-a-javascript-character
-// https://www.designcise.com/web/tutorial/how-to-get-the-unicode-code-points-of-a-javascript-character
-// https://www.designcise.com/web/tutorial/how-to-get-the-unicode-code-points-of-a-javascript-character
-// https://www.designcise.com/web/tutorial/how-to-get-the-unicode-code-points-of-a-javascript-character
+import Button from "@/button";
 
 const Noise = styled("div", {
   mixBlendMode: "multiply",
@@ -113,12 +107,19 @@ export default function Home() {
         }}
       >
         <Head>
-          <title>glfs. — Copy & Paste</title>
+          <title>Glyphs — Copy & Paste — CSS.GG</title>
         </Head>
         <Header />
         <SVGMap />
         <Noise />
         <Main>
+          <Button
+            to="https://google.com"
+            title="test"
+            svg="raycast"
+            svgh="16"
+            svgw="16"
+          />
           <Box
             as={"section"}
             css={{
