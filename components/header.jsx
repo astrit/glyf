@@ -6,7 +6,7 @@ const Header = styled("header", {
   display: "flex",
   justifyContent: "space-between",
   width: "100%",
-  // boxSizing: "border-box",
+  padding: "$4",
 });
 
 const CTA = styled("div", {

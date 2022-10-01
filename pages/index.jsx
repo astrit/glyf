@@ -8,6 +8,7 @@ import Footer from "@/footer";
 import Carbon from "u/ads";
 import Button from "@/button";
 import Search from "@/search/search";
+import Hero from "@/hero";
 
 const Noise = styled("div", {
   mixBlendMode: "multiply",
@@ -23,49 +24,21 @@ const Noise = styled("div", {
   backgroundSize: "300px 300px",
 });
 
-const Link = styled("a", {
-  textDecoration: "underline",
-});
-
 const Main = styled("main", {
   zIndex: "3",
-  // maxWidth: "1920px",
   margin: "0 auto",
   width: "clamp(80vw, 80vw, 1920px)",
   padding: "1.5rem",
   paddingTop: "clamp(10vw, 24vh, 44vh)",
 });
 
-// function appSearch() {
-//   var appInput, inputValue, appGrid, appIcon, iconName, i, searchKey;
-//   appInput = document.getElementById("s");
-//   inputValue = appInput.value.toUpperCase();
-//   appGrid = document.getElementsByTagName("app-grid");
-//   appIcon = appGrid[0].getElementsByTagName("app-icon");
-
-//   for (i = 0; i < appIcon.length; i++) {
-//     iconName = appIcon[i].getAttribute("class");
-//     iconTag = appIcon[i].getAttribute("data-tag");
-
-//     iconKey = iconName.replace("-", " ") + iconTag;
-
-//     searchKey = iconKey;
-
-//     if (searchKey.toUpperCase().indexOf(inputValue) > -1) {
-//       appIcon[i].style.display = "";
-//     } else {
-//       appIcon[i].style.display = "none";
-//     }
-//   }
-// }
-
 export default function Home() {
   return (
     <>
       <Box
-        css={{
-          padding: "$4",
-        }}
+      // css={{
+      //   padding: "$4",
+      // }}
       >
         <Head>
           <title>Glyphs — Copy & Paste — CSS.GG</title>
@@ -74,67 +47,7 @@ export default function Home() {
         <SVGMap />
         <Noise />
         <Main>
-          <Box
-            as={"section"}
-            css={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "flex-end",
-              // marginTop: "$6",
-            }}
-          >
-            <div>
-              <Box
-                as="h1"
-                css={{
-                  marginBlockEnd: "0.64em",
-                }}
-              >
-                Glyphs
-              </Box>
-              <Box
-                as="span"
-                css={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "20px",
-                  fontSize: "16px",
-                  letterSpacing: "normal",
-                }}
-              >
-                ©
-                <Box
-                  css={{
-                    display: "flex",
-                    width: "60px",
-                    height: "2px",
-                    background: "hsla(360,100%,100%,0.2)",
-                    borderRadius: "4px",
-                  }}
-                />
-                <Link href="//css.gg">CSS.GG ↗</Link>
-              </Box>
-            </div>
-            <Box
-              css={{
-                display: "flex",
-                gap: "14px",
-                flexWrap: "wrap",
-              }}
-            >
-              <Button
-                to="https://raycast.com/astrit"
-                title="Raycast"
-                svg="raycast"
-              />
-              <Button
-                to="https://github.com/astrit/css.gg"
-                title="8.7K+ GitHub stars"
-                svg="github"
-              />
-            </Box>
-          </Box>
+          <Hero />
           <Search />
           <Glyphs />
           <Footer />

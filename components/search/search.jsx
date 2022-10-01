@@ -62,3 +62,26 @@ export default function Search() {
     </Form>
   );
 }
+
+// function appSearch() {
+//   var appInput, inputValue, appGrid, appIcon, iconName, i, searchKey;
+//   appInput = document.getElementById("s");
+//   inputValue = appInput.value.toUpperCase();
+//   appGrid = document.getElementsByTagName("app-grid");
+//   appIcon = appGrid[0].getElementsByTagName("app-icon");
+
+//   for (i = 0; i < appIcon.length; i++) {
+//     iconName = appIcon[i].getAttribute("class");
+//     iconTag = appIcon[i].getAttribute("data-tag");
+
+//     iconKey = iconName.replace("-", " ") + iconTag;
+
+//     searchKey = iconKey;
+
+//     if (searchKey.toUpperCase().indexOf(inputValue) > -1) {
+//       appIcon[i].style.display = "";
+//     } else {
+//       appIcon[i].style.display = "none";
+//     }
+//   }
+// }

@@ -22,10 +22,16 @@ const Wrapper = styled(BaseLink, {
     background: "hsla(360,100%,100%,0.06)",
     borderColor: "hsla(360,100%,100%, 0.04)",
     boxShadow: "rgb(0 0 0 / 4%) 2px 3px 8px, rgb(0 0 0 / 2%) 0px 8px 6px -3px",
+    color: "hsla(260, 100%, 100%, 1)",
+
+    svg: {
+      transform: "scale3d(1.2,1.2,1.2)",
+    },
   },
 
   svg: {
     color: "hsla(260, 100%, 100%, 1)",
+    transition: "all 260ms",
   },
 });
 
