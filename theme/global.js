@@ -1,7 +1,7 @@
 import { globalCss } from "$/stitches.config";
 import reset from "$/reset";
-
-const gradient = `radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0), linear-gradient(180deg,hsla(261deg, 80%, 48%, 1),hsla(261deg, 80%, 30%, 1))`;
+// conic-gradient(from -45deg, hsla(261deg, 80%, 30%, 1), hsla(261deg, 80%, 30%, 0))
+const gradient = `radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),linear-gradient(to left, hsla(260, 100%, 100%, 0.06) 1px,transparent 0px, transparent)`;
 const fonts = `"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`;
 const fontsv2 = `ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji`;
 
@@ -16,8 +16,9 @@ export const style = globalCss({
     fontFamily: fonts,
     backgroundColor: "#5f19dd",
     backgroundImage: gradient,
-    backgroundSize: "40px 40px, 40px 40px, cover",
-    backgroundPosition: "0 0,20px 20px, center",
+    backgroundSize: "40px 40px, 40px 40px, 400px 100%",
+    backgroundPosition: "0 0,20px 20px, center top",
+    backgroundRepeat: "repeat, repeat, repeat-x",
     paddding: "8vw",
     color: "white",
     fontWeight: "400",

@@ -51,7 +51,7 @@ export default function Hero() {
               borderRadius: "4px",
             }}
           />
-          <Link href="//css.gg">CSS.GG ↗</Link>
+          <Link href="https://css.gg">CSS.GG ↗</Link>
         </Box>
       </div>
       <Box
