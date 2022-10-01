@@ -37,6 +37,9 @@ const YT = styled("a", {
     transform: "scaleX(-1) scaleY(-1)",
     top: "10px",
     right: "60px",
+    "@md": {
+      display: "none",
+    },
   },
 
   "&:hover::before": {
@@ -62,6 +65,9 @@ const YT = styled("a", {
     top: "70px",
     lineHeight: "1",
     transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+    "@md": {
+      display: "none",
+    },
   },
 });
 

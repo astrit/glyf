@@ -27,14 +27,14 @@ const Noise = styled("div", {
 const Main = styled("main", {
   zIndex: "3",
   margin: "0 auto",
-  width: "clamp(80vw, 80vw, 1920px)",
+  width: "clamp(64vw, 80vw, 1620px)",
   padding: "1.5rem",
-  paddingTop: "clamp(10vw, 24vh, 44vh)",
+  paddingTop: "clamp(10vw, 14vh, 44vh)",
   // paddingTop: "clamp(10vw, 24vh, 44vh)",
 
-  // "@md": {
-  //   paddingTop: "clamp(5vw, 14vh, 14vh)",
-  // },
+  "@md": {
+    width: "calc(100% - 10px)",
+  },
 });
 
 export default function Home() {

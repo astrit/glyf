@@ -17,14 +17,19 @@ const Symbol = styled("div", {
 const Decorator = styled("div", {
   opacity: "0.2",
   lineHeight: "1",
+  "@md": {
+    display: "none",
+  },
 });
 
 const Name = styled("div", {
   fontFeatureSettings: '"kern" 1, "ss02" 1',
-  // fontSize: "18px",
   display: "flex",
   fontWeight: "400",
   lineHeight: "1",
+  "@md": {
+    display: "none",
+  },
   "&::after": {
     content: "™",
     display: "flex",
