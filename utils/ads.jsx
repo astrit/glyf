@@ -11,12 +11,16 @@ const Ads = styled("div", {
   fontSize: "12px",
   fontFamily: "sans-serif",
   letterSpacing: "initial",
-  zIndex: "10",
   borderRadius: "8px",
   boxShadow:
     "rgb(0 0 0 / 10%) 2px 3px 8px, rgb(0 0 0 / 40%) -4px 28px 12px -8px",
   color: "rgb(14, 12, 27)",
-
+  "@sm": {
+    bottom: 0,
+    right: 0,
+    width: "100%",
+    borderRadius: 0,
+  },
   ".carbon-wrap": {
     display: "flex",
     flexDirection: "column",

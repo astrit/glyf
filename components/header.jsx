@@ -21,7 +21,6 @@ const YT = styled("a", {
   fontSize: "20px",
   alignItems: "center",
   flexDirection: "column",
-  zIndex: 20,
   fontFamily: "'Caveat', sans-serif",
   textDecoration: "none",
 

@@ -23,6 +23,20 @@ export const style = globalCss({
     fontWeight: "400",
     fontSize: "32px",
     letterSpacing: "-0.02em",
+
+    "&:before": {
+      content: "",
+      mixBlendMode: "multiply",
+      filter: "url(#noise) grayscale(100)",
+      position: "absolute",
+      width: "100%",
+      height: "100%",
+      top: 0,
+      left: 0,
+      pointerEvents: "none",
+      opacity: 0.8,
+      backgroundSize: "300px 300px",
+    },
   },
   a: {
     color: "inherit",

@@ -6,31 +6,14 @@ import Glyphs from "g/list";
 import SVGMap from "g/svg/svg";
 import Footer from "@/footer";
 import Carbon from "u/ads";
-import Button from "@/button";
 import Search from "@/search/search";
 import Hero from "@/hero";
 
-const Noise = styled("div", {
-  mixBlendMode: "multiply",
-  filter: "url(#noise) grayscale(100)",
-  zIndex: "-1",
-  position: "absolute",
-  width: "100%",
-  height: "100%",
-  top: 0,
-  left: 0,
-  pointerEvents: "none",
-  opacity: 0.8,
-  backgroundSize: "300px 300px",
-});
-
 const Main = styled("main", {
-  zIndex: "3",
   margin: "0 auto",
   width: "clamp(64vw, 80vw, 1620px)",
   padding: "1.5rem",
-  paddingTop: "clamp(10vw, 14vh, 44vh)",
-  // paddingTop: "clamp(10vw, 24vh, 44vh)",
+  // paddingTop: "clamp(10vw, 14vh, 44vh)",
 
   "@md": {
     width: "calc(100% - 10px)",
@@ -40,24 +23,25 @@ const Main = styled("main", {
 export default function Home() {
   return (
     <>
-      <Box
-      // css={{
-      //   padding: "$4",
-      // }}
-      >
+      <Box>
         <Head>
           <title>Glyphs — Copy & Paste — CSS.GG</title>
         </Head>
         <Header />
         <SVGMap />
-        <Noise />
+        {/* <Noise /> */}
         <Main>
           <Hero />
           <Search />
           <Glyphs />
           <Footer />
-          {/* {!process.env.NODE_ENV ||
-            (process.env.NODE_ENV === "development" ? "" : <Carbon />)} */}
+
+          {/* Check for DEV ONLY LOAD */}
+          {/* Check for DEV ONLY LOAD */}
+          {/* Check for DEV ONLY LOAD */}
+          {/* Check for DEV ONLY LOAD */}
+          {/* Check for DEV ONLY LOAD */}
+          {/* <Carbon /> */}
         </Main>
       </Box>
     </>
