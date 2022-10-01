@@ -22,15 +22,15 @@ const SVG = styled("svg", {});
 const Title = styled("span", {});
 
 export const Button = forwardRef(
-  ({ svgw, width, svgh, height, svg, title, href, to, ...props }, ref) => {
+  ({ w, width, h, height, svg, title, href, to, ...props }, ref) => {
     return (
       <Wrapper href={to}>
         {svg && (
-          <SVG width={svgw} height={svgh}>
+          <SVG width={w ? w : "1em"} height={h ? h : "1em"} {...props}>
             <use href={"#symbol-" + svg}></use>
           </SVG>
         )}
-        <Title>{title}</Title>
+        {title && <Title>{title}</Title>}
       </Wrapper>
     );
   }
