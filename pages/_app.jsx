@@ -5,7 +5,6 @@ import { Toaster } from "sonner";
 
 export default function gona({ Component, pageProps }) {
   style();
-  splitbee.init();
   return (
     <>
       <Component {...pageProps} />
