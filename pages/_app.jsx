@@ -11,7 +11,7 @@ export default function gona({ Component, pageProps }) {
       <Toaster
         richColors
         position="bottom-right"
-        expand={true}
+        expand={false}
         toastOptions={{
           style: {
             width: "280px",

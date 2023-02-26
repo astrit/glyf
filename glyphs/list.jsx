@@ -34,10 +34,19 @@ const Card = styled("li", {
     "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
   boxSizing: "border-box",
 
+  gl: {
+    transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+  },
+
   "&:hover": {
     color: "$white_alpha100",
     backgroundColor: "hsla(260, 74%, 56%, 1.0)",
     borderColor: "hsla(209, 99%, 67%, 0.2)",
+    borderRadius: "24px",
+
+    gl: {
+      transform: "scale3d(1.3,1.3,1.3)",
+    },
   },
 
   "&:active": {
@@ -45,6 +54,10 @@ const Card = styled("li", {
     borderRadius: "28px",
     boxShadow:
       " 0px 1px 6px rgba(0, 0, 0, 0.06), 0px 20px 8px -4px rgba(0, 0, 0, 0.04)",
+
+    gl: {
+      transform: "scale3d(1.1,1.1,1.1)",
+    },
   },
 
   "&::after": {
@@ -403,3 +416,5 @@ function Cardz(props) {
 export default function Glyphs() {
   return <Cardz glfs={glfs} />;
 }
+
+// create a search filter form if it matches the search term from an array display the card
