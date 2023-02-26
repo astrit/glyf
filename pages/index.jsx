@@ -21,6 +21,8 @@ const Main = styled("main", {
 });
 
 export default function Home() {
+  const isDev = process.env.NODE_ENV === "development";
+
   return (
     <>
       <Box>
@@ -36,12 +38,7 @@ export default function Home() {
           <Glyphs />
           <Footer />
 
-          {/* Check for DEV ONLY LOAD */}
-          {/* Check for DEV ONLY LOAD */}
-          {/* Check for DEV ONLY LOAD */}
-          {/* Check for DEV ONLY LOAD */}
-          {/* Check for DEV ONLY LOAD */}
-          {/* <Carbon /> */}
+          {isDev && <Carbon />}
         </Main>
       </Box>
     </>
