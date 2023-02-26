@@ -1,14 +1,39 @@
 // https://mtxn84-3000.preview.csb.app/
 import Box from "@/box";
 import { styled } from "@/theme";
+import Image from "next/image";
+import Link from "@/link";
 
 // https://mtxn84-3000.preview.csb.app/
 
 const Layout = styled("footer", {
   display: "flex",
-  minHeight: "40vh",
+  padding: "4vh 20px",
+  fontSize: "14px",
+  gap: "10px",
+  alignItems: "center",
+
+  a: {
+    img: {
+      borderRadius: "200px",
+      width: "22px",
+      height: "22px",
+    },
+  },
 });
 
 export default function Footer() {
-  return <Layout> Footer </Layout>;
+  return (
+    <Layout>
+      <Link href="https://github.com/astrit">
+        <Image
+          src="https://github.com/astrit.png"
+          width="22"
+          height="22"
+          alt="Astrit"
+        />
+      </Link>
+      © {`${new Date().getFullYear()}`}
+    </Layout>
+  );
 }

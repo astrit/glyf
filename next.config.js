@@ -5,8 +5,13 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["images.unsplash.com"],
-    formats: ["image/webp"],
+    domains: [
+      "images.unsplash.com",
+      "github.com",
+      "githubusercontent.com",
+      "avatars.githubusercontent.com",
+    ],
+    formats: ["image/webp", "image/avif"],
   },
 };
 

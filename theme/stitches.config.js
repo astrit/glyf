@@ -18,21 +18,7 @@ export const {
     lg: "(max-width: 1440px)",
   },
   theme: {
-    colors: {
-      ...colors,
-      bg_spacer: "transparent",
-      primaryContrast: "$white_alpha900",
-      primary50: "$violet50",
-      primary100: "$violet100",
-      primary200: "$violet200",
-      primary300: "$violet300",
-      primary400: "$violet400",
-      primary500: "$violet500",
-      primary600: "$violet600",
-      primary700: "$violet700",
-      primary800: "$violet800",
-      primary900: "$violet900",
-    },
+    colors: {},
     space: {
       0: "0",
       1: "0.4rem",
