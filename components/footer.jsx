@@ -4,6 +4,11 @@ import { styled } from "@/theme";
 
 // https://mtxn84-3000.preview.csb.app/
 
+const Layout = styled("footer", {
+  display: "flex",
+  minHeight: "40vh",
+});
+
 export default function Footer() {
-  return <> </>;
+  return <Layout> Footer </Layout>;
 }

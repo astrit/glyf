@@ -3,10 +3,21 @@ import reset from "$/reset";
 // conic-gradient(from -45deg, hsla(261deg, 80%, 30%, 1), hsla(261deg, 80%, 30%, 0))
 const gradient = `radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),linear-gradient(to left, hsla(260, 100%, 100%, 0.03) 1px,transparent 0px, transparent),linear-gradient(to bottom, hsla(260, 100%, 100%, 0.05) 1px,transparent 0px, transparent)`;
 const fonts = `"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`;
-const fontsv2 = `ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji`;
+// const fonts = `"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`;
+// const fonts = `ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji`;
 
 export const style = globalCss({
   ...reset,
+
+  "@font-face": {
+    fontFamily: "Inter var",
+    fontWeight: "100 900",
+    fontDisplay: "swap",
+    fontStyle: "normal",
+    fontNamedInstance: "Regular",
+    src: 'url("../assets/fonts/inter.woff2") format("woff2")',
+  },
+
   "#__next": {
     height: "100%",
   },

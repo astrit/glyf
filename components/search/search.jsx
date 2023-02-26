@@ -3,6 +3,9 @@ import { styled } from "@/theme";
 const Form = styled("form", {
   display: "flex",
   flexDirection: "column",
+  position: "sticky",
+  top: "20px",
+  zIndex: "1",
 });
 
 const Input = styled("input", {
@@ -15,7 +18,7 @@ const Input = styled("input", {
   fontSize: "24px",
   lineHeight: "1",
   background: `rgba(255,255,255,0.06) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.319 14.433A8.001 8.001 0 0 0 6.343 3.868a8 8 0 0 0 10.564 11.976l.043.045 4.242 4.243a1 1 0 1 0 1.415-1.415l-4.243-4.242a1.116 1.116 0 0 0-.045-.042Zm-2.076-9.15a6 6 0 1 1-8.485 8.485 6 6 0 0 1 8.485-8.485Z' fill='white'/%3E%3C/svg%3E") no-repeat left 26px center/28px 28px`,
-  backdropFilter: "blur(200px)",
+  backdropFilter: "blur(20px)",
   color: "white",
   border: "none",
   fontWeight: "300",

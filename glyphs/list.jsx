@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Box from "@/box";
 import { styled, keyframes } from "@/theme";
+import { toast } from "sonner";
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
@@ -14,8 +15,8 @@ const Card = styled("li", {
   aspectRatio: "1/1",
   objectFit: "cover",
   objectPosition: "center",
-  fontWeight: "600",
-  fontSize: "28px",
+  // fontWeight: "600",
+  fontSize: "24px",
   lineHeight: "1",
   color: "#0e0c1b",
   position: "relative",
@@ -24,40 +25,54 @@ const Card = styled("li", {
   userSelect: "none",
   position: "relative",
   cursor: "pointer",
-  // span: {
-  //   transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-  //   transitionDelay: "0.1s",
-  // },
-  // "&:hover span": {
-  //   transform: "scale3d(1.4,1.4,1.4)",
-  // },
-  // "&:active span": {
-  //   transform: "scale3d(1,1,1)",
-  // },
+  borderRadius: "18px",
+  "--opacity": "0",
+  background: `hsla(260, 74%, 54%, 1.0) radial-gradient(hsla(209, 99%, 67%, var(--opacity)) 0%,hsla(209, 99%, 67%, 0) 100%)`,
+  border: "1px solid hsla(259, 73%, 57%, 1.0)",
+  transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+  boxShadow:
+    "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
+  boxSizing: "border-box",
 
-  "&::before": {
-    content: "none",
+  "&:hover": {
+    color: "$white_alpha100",
+    backgroundColor: "hsla(260, 74%, 56%, 1.0)",
+    borderColor: "hsla(209, 99%, 67%, 0.1)",
+  },
+
+  "&:active": {
+    borderWidth: "12px",
+    borderRadius: "28px",
+    boxShadow:
+      " 0px 1px 6px rgba(0, 0, 0, 0.06), 0px 20px 8px -4px rgba(0, 0, 0, 0.04)",
+  },
+
+  "&::after": {
+    content: " ",
     position: "absolute",
     display: "flex",
     borderRadius: "18px",
     boxShadow:
       "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
     transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-    background: "hsla(360, 100%, 100%, 1)",
+    background:
+      "linear-gradient(90deg, hsla(209, 99%, 67%, 1.0) 0%, #b447eb 95%)",
     width: "100%",
     height: "100%",
-    // zIndex: "-1",
+    zIndex: "-1",
     "@sm": {
       borderRadius: "4px",
     },
   },
-  "&:hover::before": {
-    transform: "scale3d(1.1,1.1,1.1)",
+
+  "&:hover::after": {
+    transform: "scale3d(1.12,1.12,1.12)",
     borderRadius: "24px",
     cursor: "pointer",
   },
-  "&:active::before": {
-    transform: "scale3d(1, 1, 1)",
+  "&:active::after": {
+    transform: "scale3d(1.02, 1.02, 1.02)",
+    borderRadius: "24px",
   },
 });
 
@@ -65,6 +80,28 @@ const Cards = styled("div", {
   display: "grid",
   gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
   gap: "24px",
+});
+
+const Toaster = styled("div", {
+  display: "flex",
+  gap: "10px",
+  alignItems: "center",
+  // fontSize: "18px",
+
+  span: {
+    lineHeight: "1",
+    position: "relative",
+    borderRadius: "4px",
+    background: "hsla(260, 74%, 59%, 0.2)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    // fontSize: "20px",
+    lineHeight: "1",
+    padding: "8px 16px",
+    // width: "36px",
+    // height: "32px",
+  },
 });
 
 const glfs = [
@@ -346,10 +383,15 @@ function Cardz(props) {
         key={glf}
         onClick={() => {
           navigator.clipboard.writeText(glf);
+          toast.custom(() => (
+            <Toaster>
+              Copied <span>{glf}</span> to clipboard!
+            </Toaster>
+          ));
         }}
         data-name={glf}
       >
-        {glf}
+        <gl>{glf}</gl>
       </Card>
     );
   });
