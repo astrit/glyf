@@ -27,8 +27,8 @@ const Card = styled("li", {
   cursor: "pointer",
   borderRadius: "18px",
   "--opacity": "0",
-  background: `hsla(260, 74%, 54%, 1.0) radial-gradient(hsla(209, 99%, 67%, var(--opacity)) 0%,hsla(209, 99%, 67%, 0) 100%)`,
-  border: "1px solid hsla(259, 73%, 57%, 1.0)",
+  background: `hsla(260, 74%, 53%, 1.0)`,
+  border: "2px solid hsla(259, 73%, 56%, 1.0)",
   transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
   boxShadow:
     "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
@@ -37,7 +37,7 @@ const Card = styled("li", {
   "&:hover": {
     color: "$white_alpha100",
     backgroundColor: "hsla(260, 74%, 56%, 1.0)",
-    borderColor: "hsla(209, 99%, 67%, 0.1)",
+    borderColor: "hsla(209, 99%, 67%, 0.2)",
   },
 
   "&:active": {
