@@ -38,7 +38,7 @@ export default function Home() {
           <Glyphs />
           <Footer />
 
-          {isDev && <Carbon />}
+          {!isDev && <Carbon />}
         </Main>
       </Box>
     </>

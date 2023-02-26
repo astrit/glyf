@@ -60,9 +60,7 @@ const Card = styled("li", {
     width: "100%",
     height: "100%",
     zIndex: "-1",
-    "@sm": {
-      borderRadius: "4px",
-    },
+    "@sm": {},
   },
 
   "&:hover::after": {
