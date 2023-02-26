@@ -18,24 +18,25 @@ const Card = styled("li", {
   fontSize: "28px",
   lineHeight: "1",
   color: "#0e0c1b",
-  transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-
+  position: "relative",
+  // transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+  color: "$white_alpha10",
   userSelect: "none",
   position: "relative",
   cursor: "pointer",
-  span: {
-    transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-    transitionDelay: "0.1s",
-  },
-  "&:hover span": {
-    transform: "scale3d(1.4,1.4,1.4)",
-  },
-  "&:active span": {
-    transform: "scale3d(1,1,1)",
-  },
+  // span: {
+  //   transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+  //   transitionDelay: "0.1s",
+  // },
+  // "&:hover span": {
+  //   transform: "scale3d(1.4,1.4,1.4)",
+  // },
+  // "&:active span": {
+  //   transform: "scale3d(1,1,1)",
+  // },
 
   "&::before": {
-    content: " ",
+    content: "none",
     position: "absolute",
     display: "flex",
     borderRadius: "18px",
@@ -45,6 +46,7 @@ const Card = styled("li", {
     background: "hsla(360, 100%, 100%, 1)",
     width: "100%",
     height: "100%",
+    // zIndex: "-1",
     "@sm": {
       borderRadius: "4px",
     },
