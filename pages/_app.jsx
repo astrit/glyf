@@ -10,7 +10,7 @@ export default function gona({ Component, pageProps }) {
       <Component {...pageProps} />
       <Toaster
         richColors
-        position="bottom-right"
+        position="bottom-center"
         expand={false}
         toastOptions={{
           style: {
