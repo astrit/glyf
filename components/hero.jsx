@@ -27,6 +27,11 @@ export default function Hero() {
           as="h1"
           css={{
             marginBlockEnd: "0.64em",
+
+            span: {
+              verticalAlign: "top",
+              fontSize: "10px",
+            },
           }}
         >
           Glyphs
