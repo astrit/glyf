@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from "react";
 import { styled } from "@/theme";
 
 const Form = styled("form", {
@@ -6,6 +7,14 @@ const Form = styled("form", {
   position: "sticky",
   top: "20px",
   zIndex: "1",
+
+  svg: {
+    position: "absolute",
+    right: "26px",
+    top: "0",
+    bottom: "0",
+    margin: "auto",
+  },
 });
 
 const Input = styled("input", {
@@ -48,10 +57,103 @@ const Input = styled("input", {
   },
 });
 
+function appSearch() {
+  var appInput, inputValue, appGrid, appIcon, iconName, i, searchKey;
+  appInput = document.getElementById("s");
+  inputValue = appInput.value.toUpperCase();
+  // appGrid = document.getElementsByClassName(".category");
+  appIcon = document.getElementsByClassName(".card");
+
+  for (i = 0; i < appIcon.length; i++) {
+    iconName = appIcon[i].getAttribute("class");
+    iconTag = appIcon[i].getAttribute("title");
+
+    iconKey = iconName.replace("-", " ") + iconTag;
+
+    searchKey = iconKey;
+
+    if (searchKey.toUpperCase().indexOf(inputValue) > -1) {
+      appIcon[i].style.display = "";
+    } else {
+      appIcon[i].style.display = "none";
+    }
+  }
+}
+
 export default function Search() {
+  useEffect(() => {
+    let prog = document.querySelector(".scroll"),
+      leng = prog.getTotalLength(),
+      pos = -1;
+
+    prog.style.strokeWidth = 4;
+    prog.style.stroke = "hsla(60, 0%, 100%, 1)";
+    prog.style.strokeDasharray = leng + " " + leng;
+    prog.style.strokeDashoffset = leng;
+    prog.getBoundingClientRect();
+
+    function updateProgress() {
+      const progress =
+        leng -
+        (window.pageYOffset * leng) /
+          (document.body.scrollHeight - window.innerHeight);
+      prog.style.strokeDashoffset = progress;
+    }
+
+    function scroll() {
+      if (pos == window.pageYOffset) {
+        window.requestAnimationFrame(scroll);
+        return false;
+      } else {
+        pos = window.pageYOffset;
+        updateProgress();
+      }
+      window.requestAnimationFrame(scroll);
+    }
+    scroll();
+    // appSearch();
+
+    // var appInput, inputValue, appGrid, appIcon, iconName, i, searchKey;
+    // const appInput = document.getElementById("s");
+    // const inputValue = appInput.value.toUpperCase();
+    // // appGrid = document.getElementsByClassName(".category");
+    // const appIcon = document.querySelectorAll(".card");
+
+    // for (i = 0; i < appIcon.length; i++) {
+    //   const iconName = appIcon[i].getAttribute("class");
+    //   const iconTag = appIcon[i].getAttribute("title");
+
+    //   const iconKey = iconName.replace("-", " ") + iconTag;
+
+    //   const searchKey = iconKey;
+
+    //   if (iconTag.toUpperCase().indexOf(inputValue) > -1) {
+    //     appIcon[i].style.display = "";
+    //     console.log("working");
+    //   } else {
+    //     appIcon[i].style.display = "none";
+    //     console.log("working");
+    //   }
+    // }
+  }, []);
+
+  const Scroll = () => (
+    <svg width="28" height="28" viewBox="0 0 26 26" fill="none">
+      <circle
+        className="scroll"
+        cx="13"
+        cy="13"
+        r="10"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+
   return (
     <Form>
       <Input
+        id="s"
         placeholder="e.g apple"
         autoComplete="off"
         autoCorrect="off"
@@ -59,32 +161,7 @@ export default function Search() {
         spellCheck="false"
         pattern="[A-Za-z0-9\-]+"
       />
-      {/* <label htmlFor="s">Label</label>
-      <button type="submit">Enter</button>
-      <button type="reset">Reset</button> */}
+      <Scroll />
     </Form>
   );
 }
-
-// function appSearch() {
-//   var appInput, inputValue, appGrid, appIcon, iconName, i, searchKey;
-//   appInput = document.getElementById("s");
-//   inputValue = appInput.value.toUpperCase();
-//   appGrid = document.getElementsByTagName("app-grid");
-//   appIcon = appGrid[0].getElementsByTagName("app-icon");
-
-//   for (i = 0; i < appIcon.length; i++) {
-//     iconName = appIcon[i].getAttribute("class");
-//     iconTag = appIcon[i].getAttribute("data-tag");
-
-//     iconKey = iconName.replace("-", " ") + iconTag;
-
-//     searchKey = iconKey;
-
-//     if (searchKey.toUpperCase().indexOf(inputValue) > -1) {
-//       appIcon[i].style.display = "";
-//     } else {
-//       appIcon[i].style.display = "none";
-//     }
-//   }
-// }

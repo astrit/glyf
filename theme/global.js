@@ -71,4 +71,9 @@ export const style = globalCss({
     display: "flex",
     flexDirection: "column",
   },
+  ".selection-area": {
+    border: "2px solid hsla(216deg, 86%, 63%, 0.3)",
+    borderRadius: "20px",
+    background: "hsla(216deg, 86%, 63%, 0.1)",
+  },
 });

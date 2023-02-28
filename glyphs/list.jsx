@@ -4,6 +4,8 @@ import { styled, keyframes } from "@/theme";
 import { toast } from "sonner";
 import { FixedSizeGrid as Grid } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
+import SelectionArea from "@viselect/vanilla";
+
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
@@ -36,6 +38,7 @@ const Category = styled("div", {
 });
 
 const Card = styled("gg", {
+  // willChange: "all",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -65,7 +68,7 @@ const Card = styled("gg", {
     transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
   },
 
-  "&:hover": {
+  "&:hover, &.selected": {
     color: "$white_alpha100",
     backgroundColor: "hsla(260, 74%, 56%, 1.0)",
     borderColor: "hsla(209, 99%, 67%, 0.2)",
@@ -101,9 +104,10 @@ const Card = styled("gg", {
     height: "100%",
     zIndex: "-1",
     "@sm": {},
+    willChange: "transform, opacity, border-radius, border-width, box-shadow",
   },
 
-  "&:hover::after": {
+  "&:hover::after, &.selected::after": {
     transform: "scale3d(1.12,1.12,1.12)",
     borderRadius: "24px",
     cursor: "pointer",
@@ -135,11 +139,66 @@ const Toaster = styled("div", {
 // write a function that gets the length of all children from the List array down below and then use that to count the number of symbols in each category
 
 export const Glyphs = ({ props }) => {
+  const [isView, setView] = useState();
+  const [isSelected, setSelected] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  useEffect(() => {
+    const selection = new SelectionArea({
+      selectables: [".card"],
+      boundaries: ["body"],
+    })
+      .on("start", ({ store, event }) => {
+        if (!event.ctrlKey && !event.metaKey) {
+          for (const el of store.stored) {
+            el.classList.remove("selected");
+          }
+          selection.clearSelection();
+        }
+      })
+      .on(
+        "move",
+        ({
+          store: {
+            changed: { added, removed },
+          },
+        }) => {
+          for (const el of added) {
+            el.classList.add("selected");
+          }
+          for (const el of removed) {
+            el.classList.remove("selected");
+          }
+        }
+      )
+      .on("stop", ({ store, store: { stored } }) => {
+        document.body.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            for (const el of store.stored) {
+              el.classList.remove("selected");
+            }
+            setSelected(false);
+            selection.clearSelection();
+          }
+        });
+        const selectedState = selection._selection.stored.length;
+        // const selectedState = selection.i.selected.length;
+        // document.title = `${selectedState}`;
+        setSelected(selectedState);
+        // console.log("selectedState", selectedState);
+      });
+  }, []);
+
   const List = Syms.categories.category;
   const gh = List.map((glf, index) => {
     // console.log(List.glf);
     return (
-      <Category key={index}>
+      <Category className="category" key={index}>
         <h2>
           {glf.title} — {glf.symbols.length}
         </h2>
@@ -147,6 +206,7 @@ export const Glyphs = ({ props }) => {
           return (
             <Card
               key={index}
+              className="card"
               onClick={() => {
                 navigator.clipboard.writeText(symbol.symbol);
                 toast.custom(() => (
@@ -165,8 +225,56 @@ export const Glyphs = ({ props }) => {
     );
   });
 
-  return <Cards>{gh}</Cards>;
+  return (
+    <Cards>
+      {/* <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleChange}
+      /> */}
+      {isView} {isSelected}
+      {gh}
+    </Cards>
+  );
 };
 
 Glyphs.displayName = "Glyphs";
 export default Glyphs;
+
+// write a component that searches through the list of symbols and returns the ones that match the search term
+// write a component that searches through the list of symbols and adds a class to the ones that match the search term
+
+// export const Search = ({ props }) => {
+//   const [searchTerm, setSearchTerm] = useState("");
+//   const [searchResults, setSearchResults] = useState([]);
+
+//   const handleChange = (event) => {
+//     setSearchTerm(event.target.value);
+//   };
+
+//   useEffect(() => {
+//     const results = Syms.categories.category.flatMap((category) =>
+//       category.symbols.filter((symbol) =>
+//         symbol.name.toLowerCase().includes(searchTerm.toLowerCase())
+//       )
+//     );
+//     setSearchResults(results);
+//   }, [searchTerm]);
+
+//   return (
+//     <div className="search">
+//       <input
+//         type="text"
+//         placeholder="Search"
+//         value={searchTerm}
+//         onChange={handleChange}
+//       />
+//       <ul>
+//         {searchResults.map((item, index) => (
+//           <li key={index + "searchk"}>{item.name}</li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// };
