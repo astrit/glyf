@@ -33,8 +33,4 @@ export const Search = ({ props }) => {
   );
 };
 
-// create a component that searches through the list of symbols and returns the ones that match the search term
-
-// create a component that searches through the list of symbols and adds a class to the ones that match the search term
-
-// create a component that searches through the list of symbols and adds a class to the ones that match the search term
+// create a component that searches through an array of objects and returns the ones that match the search term

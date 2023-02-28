@@ -5,6 +5,15 @@ import { toast } from "sonner";
 import { FixedSizeGrid as Grid } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
 import SelectionArea from "@viselect/vanilla";
+import { Suspense, lazy } from "react";
+
+// react lazy loading ands suspense
+// react lazy loading ands suspense
+// react lazy loading ands suspense
+// react lazy loading ands suspense
+// react lazy loading ands suspense
+// react lazy loading ands suspense
+// react lazy loading ands suspense
 
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
