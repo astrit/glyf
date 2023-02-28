@@ -8,10 +8,11 @@ import Link from "@/link";
 
 const Layout = styled("footer", {
   display: "flex",
-  padding: "4vh 20px",
+  padding: "8vh 20px",
   fontSize: "14px",
   gap: "10px",
   alignItems: "center",
+  fontWeight: "300",
 
   a: {
     img: {

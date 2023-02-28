@@ -2,13 +2,40 @@ import React, { useState, useEffect, useRef } from "react";
 import Box from "@/box";
 import { styled, keyframes } from "@/theme";
 import { toast } from "sonner";
+import { FixedSizeGrid as Grid } from "react-window";
+import InfiniteLoader from "react-window-infinite-loader";
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
 // https://graphemica.com/%5E
 
-const Card = styled("li", {
+import Syms from "g/glyphs.json";
+
+const Cards = styled("div", {
+  display: "flex",
+  gap: "24px",
+  flexDirection: "column",
+});
+
+const Category = styled("div", {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
+  gap: "24px",
+  marginTop: "48px",
+
+  h2: {
+    // content: "attr(data-category)",
+    gridColumn: "1 / -1",
+    fontSize: "12px",
+    opacity: "0.5",
+    fontWeight: "300",
+    letterSpacing: "-0.1ch",
+    paddingLeft: "20px",
+  },
+});
+
+const Card = styled("gg", {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -87,17 +114,10 @@ const Card = styled("li", {
   },
 });
 
-const Cards = styled("div", {
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
-  gap: "24px",
-});
-
 const Toaster = styled("div", {
   display: "flex",
   gap: "10px",
   alignItems: "center",
-  // fontSize: "18px",
 
   span: {
     lineHeight: "1",
@@ -107,314 +127,46 @@ const Toaster = styled("div", {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    // fontSize: "20px",
     lineHeight: "1",
     padding: "8px 16px",
-    // width: "36px",
-    // height: "32px",
   },
 });
 
-const glfs = [
-  // "",
-  // "⌘",
-  // "♥",
-  // "◆",
-  // "●",
-  // "★",
-  // "⬓",
-  // "©",
-  // "®",
-  "⁅",
-  "⁆",
-  "¦",
-  "-",
-  "–",
-  "‒",
-  "—",
-  "―",
-  "•",
-  "◦",
-  "‣",
-  "⁌",
-  "⁍",
-  "·",
-  "‥",
-  "…",
-  "‹",
-  "›",
-  "«",
-  "»",
-  "≤",
-  "≥",
-  "≠",
-  "+",
-  "−",
-  "×",
-  "÷",
-  "±",
-  "≈",
-  "~",
-  "¬",
-  "†",
-  "‡",
-  "^",
-  "®",
-  "©",
-  "℗",
-  "™",
-  "℠",
-  "℡",
-  "℻",
-  "🅫",
-  "🅪",
-  "°",
-  "¶",
-  "⁋",
-  "§",
-  "∞",
-  "∂",
-  "∑",
-  "∏",
-  "∫",
-  "√",
-  "∅",
-  "◊",
-  "½",
-  "⅓",
-  "¼",
-  "⅛",
-  "⅟",
-  "¾",
-  "⅜",
-  "⅚",
-  "⅝",
-  "⅞",
-  "%",
-  "‰",
-  "‱",
-  "⅍",
-  "℆",
-  "℅",
-  "℀",
-  "℁",
-  "¨",
-  "ˆ",
-  "˜",
-  "¯",
-  "˘",
-  "˙",
-  "˚",
-  "ˇ",
-  "΅",
-  "¸",
-  "˛",
-  "№",
-  "℃",
-  "℉",
-  "Å",
-  "ʘ",
-  "℮",
-  "←",
-  "→",
-  "⟵",
-  "⟶",
-  "⇐",
-  "⇒",
-  "⟸",
-  "⟹",
-  "↖",
-  "↗",
-  "↙",
-  "↘",
-  "↑",
-  "↓",
-  "↕",
-  "↔",
-  "⟷",
-  "⇔",
-  "⟺",
-  "↰",
-  "↱",
-  "↵",
-  "↳",
-  "↴",
-  "⏎",
-  "⇤",
-  "⇥",
-  "⇞",
-  "⇟",
-  "↺",
-  "↻",
-  "⎋",
-  "↩",
-  "↪",
-  "✓",
-  "✗",
-  "▲",
-  "▼",
-  "◄",
-  "▶",
-  "△",
-  "▽",
-  "◅",
-  "▻",
-  "⚠",
-  "●",
-  "○",
-  "■",
-  "□",
-  "▢",
-  "⬒",
-  "⬓",
-  "◆",
-  "◇",
-  "❖",
-  "☀",
-  "☼",
-  "♥",
-  "♡",
-  "❤",
-  "★",
-  "☆",
-  "⬆",
-  "⇧",
-  "⇪",
-  "⌘",
-  "⌃",
-  "⌅",
-  "⌥",
-  "⎇",
-  "⌫",
-  "⌦",
-  "⌧",
-  "⏏",
-  "◯",
-  "⬜",
-  "Ⓐ",
-  "Ⓑ",
-  "Ⓒ",
-  "Ⓓ",
-  "Ⓔ",
-  "Ⓕ",
-  "Ⓖ",
-  "Ⓗ",
-  "Ⓘ",
-  "Ⓙ",
-  "Ⓚ",
-  "Ⓛ",
-  "Ⓜ",
-  "Ⓝ",
-  "Ⓞ",
-  "Ⓟ",
-  "Ⓠ",
-  "Ⓡ",
-  "Ⓢ",
-  "Ⓣ",
-  "Ⓤ",
-  "Ⓥ",
-  "Ⓦ",
-  "Ⓧ",
-  "Ⓨ",
-  "Ⓩ",
-  "⓪",
-  "➀",
-  "➁",
-  "➂",
-  "➃",
-  "➄",
-  "➅",
-  "➆",
-  "➇",
-  "➈",
-  "🄰",
-  "🄱",
-  "🄲",
-  "🄳",
-  "🄴",
-  "🄵",
-  "🄶",
-  "🄷",
-  "🄸",
-  "🄹",
-  "🄺",
-  "🄻",
-  "🄼",
-  "🄽",
-  "🄾",
-  "🄿",
-  "🅀",
-  "🅁",
-  "🅂",
-  "🅃",
-  "🅄",
-  "🅅",
-  "🅆",
-  "🅇",
-  "🅈",
-  "🅉",
-  "¤",
-  "₣",
-  "₾",
-  "₨",
-  "₼",
-  "₪",
-  "₥",
-  "₯",
-  "₮",
-  "₢",
-  "₵",
-  "₡",
-  "₲",
-  "₦",
-  "₴",
-  "₳",
-  "₤",
-  "₩",
-  "₭",
-  "₱",
-  "₧",
-  "₸",
-  "₹",
-  "€",
-  "₽",
-  "₺",
-  "ƒ",
-  "£",
-  "¥",
-  "¢",
-  "$",
-];
+// write a function that gets the length of all children from the List array down below and then use that to count the number of symbols in each category
 
-function Cardz(props) {
-  const glfs = props.glfs;
-  const glf = glfs.map((glf) => {
+export const Glyphs = ({ props }) => {
+  const List = Syms.categories.category;
+  const gh = List.map((glf, index) => {
+    // console.log(List.glf);
     return (
-      <Card
-        key={glf}
-        onClick={() => {
-          navigator.clipboard.writeText(glf);
-          toast.custom(() => (
-            <Toaster>
-              Copied <span>{glf}</span> to clipboard!
-            </Toaster>
-          ));
-        }}
-        data-name={glf}
-      >
-        <gl>{glf}</gl>
-      </Card>
+      <Category key={index}>
+        <h2>
+          {glf.title} — {glf.symbols.length}
+        </h2>
+        {glf.symbols.map((symbol, index) => {
+          return (
+            <Card
+              key={index}
+              onClick={() => {
+                navigator.clipboard.writeText(symbol.symbol);
+                toast.custom(() => (
+                  <Toaster>
+                    Copied <span>{symbol.symbol}</span> to clipboard!
+                  </Toaster>
+                ));
+              }}
+              title={symbol.name}
+            >
+              <gl>{symbol.symbol}</gl>
+            </Card>
+          );
+        })}
+      </Category>
     );
   });
-  return (
-    <>
-      <Cards>{glf}</Cards>
-    </>
-  );
-}
 
-export default function Glyphs() {
-  return <Cardz glfs={glfs} />;
-}
+  return <Cards>{gh}</Cards>;
+};
 
-// create a search filter form if it matches the search term from an array display the card
+Glyphs.displayName = "Glyphs";
+export default Glyphs;
