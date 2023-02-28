@@ -154,7 +154,7 @@ export default function Search() {
     <Form>
       <Input
         id="s"
-        placeholder="e.g apple"
+        placeholder="Search 4300 glyphs — press / to start searching"
         autoComplete="off"
         autoCorrect="off"
         autoCapitalize="off"

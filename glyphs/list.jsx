@@ -36,6 +36,7 @@ const Category = styled("div", {
   marginTop: "48px",
 
   h2: {
+    display: "none !important",
     // content: "attr(data-category)",
     gridColumn: "1 / -1",
     fontSize: "12px",
@@ -242,7 +243,53 @@ export const Glyphs = ({ props }) => {
         value={searchTerm}
         onChange={handleChange}
       /> */}
-      {isView} {isSelected}
+      <Box
+        css={{
+          display: "flex",
+          alignItems: "center",
+          justifyItems: "center",
+          fontSize: "12px",
+          paddingInline: "$2",
+          gap: "20px",
+          "select, span": {
+            appearance: "none",
+            minWidth: "12ch",
+            padding: "14px 24px",
+            borderRadius: "28px",
+            background: "hsla(260, 74%, 53%, 1.0)",
+            border: "2px solid hsla(260, 74%, 58%, 0.8)",
+            outline: "none",
+            color: "white",
+            boxShadow: "2px 3px 8px rgba(0, 0, 0, 0.06)",
+            transition:
+              "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.4s",
+            "&:hover": {
+              borderColor: "hsla(260, 74%, 68%, 0.8)",
+            },
+            "&::placeholder": {
+              color: "rgba(255,255,255,0.3)",
+            },
+            "&:focus:placeholder": {
+              color: "transparent",
+            },
+            "&:focus": {
+              backgroundColor: "hsla(260, 74%, 53%, 1.0)",
+              borderColor: "hsla(260, 74%, 68%, 0.8)",
+            },
+          },
+        }}
+      >
+        <select>
+          {List.map((glf, index) => {
+            return (
+              <option key={index} value={glf.title}>
+                {glf.symbols.length} — {glf.title}
+              </option>
+            );
+          })}
+        </select>
+        <span>{isSelected ? isSelected : "0"} selected</span>
+      </Box>
       {gh}
     </Cards>
   );
