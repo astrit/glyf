@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { styled } from "@/theme";
+import Box from "@/box";
 
 const Form = styled("form", {
   display: "flex",
@@ -15,6 +16,8 @@ const Form = styled("form", {
     top: "0",
     bottom: "0",
     margin: "auto",
+    width: 40,
+    height: 40,
   },
 });
 
@@ -65,7 +68,7 @@ const List = styled("div", {
   marginTop: "48px",
 });
 
-const Card = styled("gg", {
+const Card = styled("div", {
   // willChange: "all",
   display: "flex",
   alignItems: "center",
@@ -169,9 +172,106 @@ export default function Search() {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [symbolsData, setSymbolsData] = useState(null);
+  const [numResults, setNumResults] = useState(0);
+  const [numSymbols, setNumSymbols] = useState(0);
+  const [copiedSymbols, setCopiedSymbols] = useState([]);
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch("./data.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setSymbolsData(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (!symbolsData) return;
+    setIsLoading(true);
+    let numResults = 0;
+    const regex = new RegExp(searchTerm, "i");
+    const results = symbolsData.categories.category.flatMap((category) => {
+      if (regex.test(category.title)) {
+        // return category.symbols;
+        numResults += category.symbols.length;
+        return category.symbols;
+      } else {
+        return category.symbols.filter(
+          (symbol) =>
+            regex.test(symbol.name.replace(/\s+/g, "")) ||
+            regex.test(symbol.symbol)
+        );
+        numResults += categoryResults.length;
+        return categoryResults;
+      }
+    });
+    const numSymbols = symbolsData.categories.category.reduce(
+      (acc, category) => acc + category.symbols.length,
+      0
+    );
+
+    setSearchResults(results);
+    setNumResults(numResults);
+    setNumSymbols(numSymbols);
+    setIsLoading(false);
+  }, [searchTerm, symbolsData]);
+
+  const handleSlashKey = (event) => {
+    if (event.key === "/") {
+      event.preventDefault();
+      const input = document.getElementById("s");
+      input.focus();
+    } else if (event.key === "Escape") {
+      const input = document.getElementById("s");
+      input.blur();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleSlashKey);
+    return () => {
+      document.removeEventListener("keydown", handleSlashKey);
+    };
+  }, []);
+
+  const handleCopySymbol = (symbol) => {
+    setCopiedSymbols((prevCopiedSymbols) => [
+      symbol,
+      ...prevCopiedSymbols.slice(0, 9),
+    ]);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("copiedSymbols", JSON.stringify(copiedSymbols));
+  }, [copiedSymbols]);
+
+  useEffect(() => {
+    const storedCopiedSymbols =
+      JSON.parse(localStorage.getItem("copiedSymbols")) || [];
+    setCopiedSymbols(storedCopiedSymbols);
+
+    const handleUnload = () => {
+      localStorage.removeItem("copiedSymbols");
+    };
+
+    window.addEventListener("beforeunload", handleUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+    };
+  }, []);
+
+  const handleClearCopiedSymbols = () => {
+    localStorage.removeItem("copiedSymbols");
+    setCopiedSymbols([]);
   };
 
   useEffect(() => {
@@ -186,6 +286,7 @@ export default function Search() {
     prog.getBoundingClientRect();
 
     function updateProgress() {
+      console.log("update");
       const progress =
         leng -
         (window.pageYOffset * leng) /
@@ -204,32 +305,7 @@ export default function Search() {
       window.requestAnimationFrame(scroll);
     }
     scroll();
-
-    setIsLoading(true);
-    fetch("./data.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setSymbolsData(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsLoading(false);
-      });
   }, []);
-
-  useEffect(() => {
-    if (!symbolsData) return;
-    setIsLoading(true);
-    const regex = new RegExp(searchTerm, "i");
-    const results = symbolsData.categories.category.flatMap((category) =>
-      category.symbols.filter((symbol) =>
-        regex.test(symbol.name.replace(/\s+/g, ""))
-      )
-    );
-    setSearchResults(results);
-    setIsLoading(false);
-  }, [searchTerm, symbolsData]);
 
   const Scroll = () => (
     <svg width="28" height="28" viewBox="0 0 26 26" fill="none">
@@ -249,7 +325,7 @@ export default function Search() {
       <Form>
         <Input
           id="s"
-          placeholder="Search 4300 glyphs — press / to start searching"
+          placeholder={`Search ${numSymbols} glyphs — press / to start searching`}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
@@ -259,10 +335,97 @@ export default function Search() {
           onChange={handleChange}
         />
         <Scroll />
+        {/* <button type="clear" />
+        <button type="clear" />
+        <button type="clear" />
+        <button type="clear" />
+        <button type="clear" />
+        <button type="clear" />
+        <button type="clear" /> */}
       </Form>
 
+      {/* Action bar */}
+      <Box
+        css={{
+          display: "flex",
+          fontSize: "0.8rem",
+          // backgroundColor: "hsla(0, 0%, 0%, 0.1)",
+          // borderRadius: "0.5rem",
+          // padding: "0.5rem",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        {copiedSymbols && copiedSymbols.length > 0 ? (
+          <Box
+            css={{
+              display: "flex",
+              gap: "10px",
+              padding: "14px 20px",
+              // paddingLeft: "20px",
+              borderRadius: "200px",
+              backgroundColor: "hsla(0, 0%, 0%, 0.1)",
+              alignItems: "center",
+              backdropFilter: "blur(10px)",
+
+              ul: {
+                display: "flex",
+                margin: 0,
+                padding: 0,
+                gap: "10px",
+                alignItems: "center",
+
+                li: {
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "20px",
+                  height: "20px",
+                },
+              },
+
+              button: {
+                display: "flex",
+                borderRadius: "20px",
+                backgroundColor: "hsla(0, 0%, 0%, 0.1)",
+                border: "none",
+                color: "white",
+                cursor: "pointer",
+                fontSize: "12px",
+                textTransform: "uppercase",
+                fontFamily: "inherit",
+                width: "26px",
+                height: "26px",
+                alignItems: "center",
+                justifyContent: "center",
+                marginLeft: "10px",
+                transition: "all 0.2s ease-in-out",
+                userSelect: "none",
+
+                "&:hover": {
+                  color: "hsla(0, 0%, 0%, 1)",
+                  backgroundColor: "white",
+                },
+              },
+            }}
+          >
+            <ul>
+              {copiedSymbols.map((symbol, index) => (
+                <li key={index}>{symbol}</li>
+              ))}
+              <button onClick={handleClearCopiedSymbols}>✗</button>
+            </ul>
+          </Box>
+        ) : null}
+
+        {searchTerm && (
+          <Box>
+            {numResults} result{numResults !== 1 ? "s" : ""}
+          </Box>
+        )}
+      </Box>
       {isLoading || !symbolsData ? (
-        <p>Loading...</p>
+        <>{/* Loading states comes here <p>...</p> */}</>
       ) : (
         <List>
           {searchResults.map((item, index) => (
@@ -270,6 +433,7 @@ export default function Search() {
               key={index + "searchk"}
               onClick={() => {
                 navigator.clipboard.writeText(item.symbol);
+                handleCopySymbol(item.symbol);
                 toast.custom(() => (
                   <Toaster>
                     Copied <span>{item.symbol}</span> to clipboard!
