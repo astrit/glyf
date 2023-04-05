@@ -57,29 +57,6 @@ const Input = styled("input", {
   },
 });
 
-function appSearch() {
-  var appInput, inputValue, appGrid, appIcon, iconName, i, searchKey;
-  appInput = document.getElementById("s");
-  inputValue = appInput.value.toUpperCase();
-  // appGrid = document.getElementsByClassName(".category");
-  appIcon = document.getElementsByClassName(".card");
-
-  for (i = 0; i < appIcon.length; i++) {
-    iconName = appIcon[i].getAttribute("class");
-    iconTag = appIcon[i].getAttribute("title");
-
-    iconKey = iconName.replace("-", " ") + iconTag;
-
-    searchKey = iconKey;
-
-    if (searchKey.toUpperCase().indexOf(inputValue) > -1) {
-      appIcon[i].style.display = "";
-    } else {
-      appIcon[i].style.display = "none";
-    }
-  }
-}
-
 export default function Search() {
   useEffect(() => {
     let prog = document.querySelector(".scroll"),
@@ -111,30 +88,6 @@ export default function Search() {
       window.requestAnimationFrame(scroll);
     }
     scroll();
-    // appSearch();
-
-    // var appInput, inputValue, appGrid, appIcon, iconName, i, searchKey;
-    // const appInput = document.getElementById("s");
-    // const inputValue = appInput.value.toUpperCase();
-    // // appGrid = document.getElementsByClassName(".category");
-    // const appIcon = document.querySelectorAll(".card");
-
-    // for (i = 0; i < appIcon.length; i++) {
-    //   const iconName = appIcon[i].getAttribute("class");
-    //   const iconTag = appIcon[i].getAttribute("title");
-
-    //   const iconKey = iconName.replace("-", " ") + iconTag;
-
-    //   const searchKey = iconKey;
-
-    //   if (iconTag.toUpperCase().indexOf(inputValue) > -1) {
-    //     appIcon[i].style.display = "";
-    //     console.log("working");
-    //   } else {
-    //     appIcon[i].style.display = "none";
-    //     console.log("working");
-    //   }
-    // }
   }, []);
 
   const Scroll = () => (

@@ -6,7 +6,8 @@ import Glyphs from "g/list";
 import SVGMap from "g/svg/svg";
 import Footer from "@/footer";
 import Carbon from "u/ads";
-import Search from "@/search/search";
+import Search from "@/search/three";
+// import Search from "@/search/search";
 import Hero from "@/hero";
 
 const Main = styled("main", {
@@ -35,7 +36,7 @@ export default function Home() {
         <Main>
           <Hero />
           <Search />
-          <Glyphs />
+          {/* <Glyphs /> */}
           <Footer />
 
           {!isDev && <Carbon />}
