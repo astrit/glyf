@@ -1,10 +1,13 @@
 import Box from "@/box";
 import Button from "@/button";
 import Link from "@/link";
+import Stars from "@/stars";
 
 // const Link = styled("a", {
 //   textDecoration: "underline",
 // });
+
+import { useState, useEffect } from "react";
 
 export default function Hero() {
   return (
@@ -67,11 +70,12 @@ export default function Hero() {
         }}
       >
         <Button to="https://raycast.com/astrit" title="Raycast" svg="raycast" />
-        <Button
+        {/* <Button
           to="https://github.com/astrit/css.gg"
-          title="8.7K+ GitHub stars"
+          title={+"GitHub stars"}
           svg="github"
-        />
+        /> */}
+        <Stars repo="astrit/css.gg" />
       </Box>
     </Box>
   );

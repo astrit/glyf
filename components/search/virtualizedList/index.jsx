@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { FixedSizeList } from "react-window";
 import { toast } from "sonner";
 import { styled } from "@/theme";
 import Box from "@/box";
@@ -47,14 +48,9 @@ const Input = styled("input", {
     backgroundPosition: "left 30px center",
     paddingLeft: "86px",
   },
-  // "&:not(::placeholder-shown)": {
-  //   " button": {
-  //     opacity: "0",
-  //     visibility: "hidden",
-  //     pointerEvents: "none",
-  //     position: "absolute",
-  //   },
-  // },
+  "&:not(:placeholder-shown)": {
+    // color: "red",
+  },
 });
 
 const List = styled("div", {
@@ -275,11 +271,7 @@ export default function Search() {
       <Form>
         <Input
           id="s"
-          placeholder={`${
-            numSymbols
-              ? "Search " + numSymbols + " glyphs — press / to start searching"
-              : "Loading..."
-          }`}
+          placeholder={`Search ${numSymbols} glyphs — press / to start searching`}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
@@ -289,11 +281,10 @@ export default function Search() {
           onChange={handleChange}
         />
         {/* <button type="button" onClick={() => setSearchTerm("")}>
-          ✗
+          Clear
         </button> */}
         <Scroll />
       </Form>
-
       <Box
         css={{
           display: "flex",
@@ -373,25 +364,71 @@ export default function Search() {
       {isLoading || !symbolsData ? (
         <>{/* Loading states comes here <p>...</p> */}</>
       ) : (
-        <List>
-          {searchResults.map((item, index) => (
-            <Card
-              key={index + "searchk"}
-              onClick={() => {
-                navigator.clipboard.writeText(item.symbol);
-                handleCopySymbol(item.symbol);
-                toast.custom(() => (
-                  <Toaster>
-                    Copied <span>{item.symbol}</span> to clipboard!
-                  </Toaster>
-                ));
-              }}
-            >
-              {item.symbol}
-            </Card>
-          ))}
-        </List>
+        <FixedSizeList
+          height={500}
+          itemCount={searchResults.length}
+          itemSize={50} // height of each item
+          width="100%"
+        >
+          {({ index, style }) => {
+            const item = searchResults[index];
+            return (
+              <div style={style}>
+                <LazyLoadSymbol symbol={item} />
+              </div>
+            );
+          }}
+        </FixedSizeList>
       )}
     </>
+  );
+}
+
+function LazyLoadSymbol({ symbol }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const symbolRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          if (entry.target) {
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (symbolRef.current) {
+      observer.observe(symbolRef.current);
+    }
+
+    return () => {
+      if (symbolRef.current) {
+        observer.unobserve(symbolRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div ref={symbolRef}>
+      {isVisible && (
+        <Card
+          onClick={() => {
+            navigator.clipboard.writeText(symbol.symbol);
+            handleCopySymbol(symbol.symbol);
+            toast.custom(() => (
+              <Toaster>
+                Copied <span>{symbol.symbol}</span> to clipboard!
+              </Toaster>
+            ));
+          }}
+        >
+          {symbol.symbol}
+        </Card>
+      )}
+    </div>
   );
 }

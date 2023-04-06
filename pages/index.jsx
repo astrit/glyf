@@ -8,7 +8,9 @@ import Footer from "@/footer";
 import Carbon from "u/ads";
 // import Search from "@/search/three";
 import Search from "@/search/search";
+import Old from "@/search/old";
 import Hero from "@/hero";
+import Scroll from "@/search/scroll/scroll";
 
 const Main = styled("main", {
   margin: "0 auto",
@@ -35,6 +37,8 @@ export default function Home() {
         {/* <Noise /> */}
         <Main>
           <Hero />
+          {/* <Scroll /> */}
+          {/* <Old /> */}
           <Search />
           {/* <Glyphs /> */}
           <Footer />
