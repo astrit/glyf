@@ -420,7 +420,13 @@ export default function Search() {
         });
         const selectedState = selection._selection.stored.length;
         setSelected(selectedState);
+        setCopiedSymbols(
+          stored.map((el) => (selectedState ? el.innerHTML : null))
+        );
       });
+    return () => {
+      selection.destroy();
+    };
   }, []);
 
   return (
