@@ -3,7 +3,7 @@ import { style } from "$/global";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
 
-export default function gona({ Component, pageProps }) {
+export default function Glyphs({ Component, pageProps }) {
   style();
   return (
     <>

@@ -30,7 +30,11 @@ export default function Home() {
     <>
       <Box>
         <Head>
-          <title>Glyphs — Copy & Paste — CSS.GG</title>
+          <title>Glyphs → CSS.GG</title>
+          <meta
+            name="description"
+            content="5000+ cool glyphs at your fingertips! Courtesy of CSS.GG, easy to find and copy to your clipboard."
+          />
         </Head>
         <Header />
         <SVGMap />

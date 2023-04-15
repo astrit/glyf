@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import SelectionArea from "@viselect/vanilla";
 import { toast } from "sonner";
 import { styled } from "@/theme";
 import Box from "@/box";
@@ -172,7 +171,6 @@ export default function Search() {
   const [numResults, setNumResults] = useState(0);
   const [numSymbols, setNumSymbols] = useState(0);
   const [copiedSymbols, setCopiedSymbols] = useState([]);
-  const [isSelected, setSelected] = useState(false);
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -261,46 +259,11 @@ export default function Search() {
   //   setNumSymbols(numSymbols);
   //   setIsLoading(false);
   // }, [searchTerm, symbolsData]);
-
-  // This new version
-  // useEffect(() => {
-  //   if (!symbolsData) return;
-  //   setIsLoading(true);
-  //   let numResults = 0;
-  //   const words = searchTerm.split(/\s+/).map(escapeRegExp);
-  //   const wordRegex = new RegExp(words.join(".*"), "i");
-  //   const results = symbolsData.categories.category.flatMap((category) => {
-  //     if (wordRegex.test(category.title)) {
-  //       numResults += category.symbols.length;
-  //       return category.symbols;
-  //     } else {
-  //       const categoryResults = category.symbols.filter((symbol) => {
-  //         const symbolName = symbol.name.replace(/[\s\\]+/g, "");
-  //         const symbolWords = symbolName.split(/(?=[A-Z])/).map(escapeRegExp);
-  //         const symbolRegex = new RegExp(symbolWords.join(".*"), "i");
-  //         return symbolRegex.test(words.join(".*"));
-  //       });
-  //       numResults += categoryResults.length;
-  //       return categoryResults;
-  //     }
-  //   });
-  //   const numSymbols = symbolsData.categories.category.reduce(
-  //     (acc, category) => acc + category.symbols.length,
-  //     0
-  //   );
-
-  //   setSearchResults(results);
-  //   setNumResults(numResults);
-  //   setNumSymbols(numSymbols);
-  //   setIsLoading(false);
-  // }, [searchTerm, symbolsData]);
-
   useEffect(() => {
     if (!symbolsData) return;
     setIsLoading(true);
     let numResults = 0;
-    const escapedSearchTerm = escapeRegExp(searchTerm);
-    const words = escapedSearchTerm.split(/\s+/).map(escapeRegExp);
+    const words = searchTerm.split(/\s+/).map(escapeRegExp);
     const wordRegex = new RegExp(words.join(".*"), "i");
     const results = symbolsData.categories.category.flatMap((category) => {
       if (wordRegex.test(category.title)) {
@@ -308,13 +271,10 @@ export default function Search() {
         return category.symbols;
       } else {
         const categoryResults = category.symbols.filter((symbol) => {
-          const symbolName = symbol.name.replace(/\s+/g, "");
+          const symbolName = symbol.name.replace(/[\s\\]+/g, "");
           const symbolWords = symbolName.split(/(?=[A-Z])/).map(escapeRegExp);
-          const symbolRegex = new RegExp(
-            words.map((word) => `(?=.*${word})`).join("") + ".*",
-            "i"
-          );
-          return symbolRegex.test(symbolWords.join(""));
+          const symbolRegex = new RegExp(symbolWords.join(".*"), "i");
+          return symbolRegex.test(words.join(".*"));
         });
         numResults += categoryResults.length;
         return categoryResults;
@@ -379,49 +339,6 @@ export default function Search() {
     localStorage.removeItem("copiedSymbols");
     setCopiedSymbols([]);
   };
-
-  useEffect(() => {
-    const selection = new SelectionArea({
-      selectables: [".glyphs > div"],
-      boundaries: ["body"],
-    })
-      .on("start", ({ store, event }) => {
-        if (!event.ctrlKey && !event.metaKey) {
-          for (const el of store.stored) {
-            el.classList.remove("selected");
-          }
-          selection.clearSelection();
-        }
-      })
-      .on(
-        "move",
-        ({
-          store: {
-            changed: { added, removed },
-          },
-        }) => {
-          for (const el of added) {
-            el.classList.add("selected");
-          }
-          for (const el of removed) {
-            el.classList.remove("selected");
-          }
-        }
-      )
-      .on("stop", ({ store, store: { stored } }) => {
-        document.body.addEventListener("keydown", (event) => {
-          if (event.key === "Escape") {
-            for (const el of store.stored) {
-              el.classList.remove("selected");
-            }
-            setSelected(false);
-            selection.clearSelection();
-          }
-        });
-        const selectedState = selection._selection.stored.length;
-        setSelected(selectedState);
-      });
-  }, []);
 
   return (
     <>
@@ -526,21 +443,19 @@ export default function Search() {
       {isLoading || !symbolsData ? (
         <>{/* Loading states comes here <p>...</p> */}</>
       ) : (
-        <List className="glyphs">
+        <List>
           {searchResults.map((item, index) => (
             <Card
               key={index + "searchk"}
               title={item.name}
-              onClick={(e) => {
-                if (e.shiftKey) {
-                  navigator.clipboard.writeText(item.symbol);
-                  handleCopySymbol(item.symbol);
-                  toast.custom(() => (
-                    <Toaster>
-                      Copied <span>{item.symbol}</span> to clipboard!
-                    </Toaster>
-                  ));
-                }
+              onClick={() => {
+                navigator.clipboard.writeText(item.symbol);
+                handleCopySymbol(item.symbol);
+                toast.custom(() => (
+                  <Toaster>
+                    Copied <span>{item.symbol}</span> to clipboard!
+                  </Toaster>
+                ));
               }}
             >
               {item.symbol}
