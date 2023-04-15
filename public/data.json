@@ -7,15 +7,21 @@
                 "symbols": [
                     {
                         "name": "Leftwards Arrow",
-                        "symbol": "←"
+                        "symbol": "←",
+                        "unicode": "U+2190",
+                        "html_entity": "&larr;"
                     },
                     {
                         "name": "Rightwards Arrow",
-                        "symbol": "→"
+                        "symbol": "→",
+                        "unicode": "U+2192",
+                        "html_entity": "&rarr;"
                     },
                     {
                         "name": "Downwards Arrow",
-                        "symbol": "↓"
+                        "symbol": "↓",
+                        "unicode": "U+2193",
+                        "html_entity": "&darr;"
                     },
                     {
                         "name": "Upwards Arrow",

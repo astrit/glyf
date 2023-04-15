@@ -4,6 +4,9 @@ import { toast } from "sonner";
 import { styled } from "@/theme";
 import Box from "@/box";
 import Scroll from "@/search/scroll/scroll";
+import CardSkeleton from "@/search/loader";
+import Slash from "@/search/slash";
+import { useRouter } from "next/router";
 
 const Form = styled("form", {
   display: "flex",
@@ -49,13 +52,21 @@ const Input = styled("input", {
     backgroundPosition: "left 30px center",
     paddingLeft: "86px",
   },
+
+  "&:not(:placeholder-shown) ~ div": {
+    display: "none",
+  },
 });
 
 const List = styled("div", {
   display: "grid",
   gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
   gap: "24px",
-  marginTop: "48px",
+  // experimental ⚠️⚠️⚠️⚠️⚠️
+  // experimental ⚠️⚠️⚠️⚠️⚠️
+  // experimental ⚠️⚠️⚠️⚠️⚠️
+  // contentVisibility: "auto",
+  // padding: "24px",
 });
 
 const Card = styled("div", {
@@ -63,18 +74,15 @@ const Card = styled("div", {
   alignItems: "center",
   justifyContent: "center",
   aspectRatio: "1/1",
-  objectFit: "cover",
-  objectPosition: "center",
+  // objectFit: "cover",
+  // objectPosition: "center",
   fontSize: "24px",
   lineHeight: "1",
-  color: "#0e0c1b",
-  position: "relative",
   color: "$white_alpha10",
   userSelect: "none",
   position: "relative",
   cursor: "pointer",
   borderRadius: "18px",
-  "--opacity": "0",
   background: `hsla(260, 74%, 53%, 1.0)`,
   border: "2px solid hsla(259, 73%, 56%, 1.0)",
   transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
@@ -161,7 +169,8 @@ const Toaster = styled("div", {
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(false);
   const [symbolsData, setSymbolsData] = useState(null);
   const [numResults, setNumResults] = useState(0);
   const [numSymbols, setNumSymbols] = useState(0);
@@ -327,16 +336,20 @@ export default function Search() {
     // };
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 20000);
+  }, []);
+
+  const router = useRouter();
+
   return (
     <>
       <Form>
         <Input
           id="s"
-          placeholder={`${
-            numSymbols
-              ? "Search " + numSymbols + " glyphs — press / to start searching"
-              : "Loading..."
-          }`}
+          placeholder={`${numSymbols ? "e.g arrow →" : "Loading..."}`}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
@@ -349,6 +362,7 @@ export default function Search() {
           ✗
         </button> */}
         <Scroll />
+        <Slash />
       </Form>
 
       <Box
@@ -357,8 +371,24 @@ export default function Search() {
           fontSize: "0.8rem",
           justifyContent: "space-between",
           alignItems: "center",
+          backgroundColor: "hsla(0, 0%, 0%, 0.1)",
+          backdropFilter: "blur(10px)",
+          borderRadius: "20px",
+          minHeight: "94px",
+          padding: "10px 20px",
+          border: "2px solid hsla(0, 0%, 0%, 0.02)",
         }}
       >
+        {isSelected && (
+          <Box>
+            {isSelected} / {numSymbols}
+          </Box>
+        )}
+        {searchTerm && (
+          <Box>
+            {numResults} result{numResults !== 1 ? "s" : ""}
+          </Box>
+        )}
         {copiedSymbols && copiedSymbols.length > 0 ? (
           <Box
             css={{
@@ -419,24 +449,24 @@ export default function Search() {
             </ul>
           </Box>
         ) : null}
-
-        {searchTerm && (
-          <Box>
-            {numResults} result{numResults !== 1 ? "s" : ""}
-          </Box>
-        )}
       </Box>
       {isLoading || !symbolsData ? (
-        <>Loading...</>
+        <CardSkeleton />
       ) : (
         <List className="glyphs">
           {searchResults.map((item, index) => (
             <Card
               key={index + "searchk"}
-              title={item.name}
-              data-symbol={item.symbol}
+              // title={item.name}
+              // data-symbol={item.symbol}
+              // href={`/${item.symbol}`}
               onClick={(e) => {
                 if (e.shiftKey) {
+                  e.preventDefault();
+                  router.push("/" + item.symbol);
+                  // navigate to the specific URL
+                } else {
+                  // e prevent defualt first to prevent the link from being clicked
                   navigator.clipboard.writeText(item.symbol);
                   handleCopySymbol(item.symbol);
                   toast.custom(() => (
