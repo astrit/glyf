@@ -6,7 +6,7 @@ const Slashed = styled("div", {
   pointerEvents: "none",
   width: "32px",
   height: "32px",
-  right: "32px",
+  right: "62px",
   top: "0",
   bottom: "0",
   margin: "auto",

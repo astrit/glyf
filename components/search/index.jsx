@@ -5,13 +5,14 @@ import Box from "@/box";
 import Scroll from "@/search/scroll/scroll";
 import CardSkeleton from "@/search/loader";
 import Slash from "@/search/slash";
-import { useRouter } from "next/router";
 import Form from "@/search/form";
 import Input from "@/search/input";
 import List from "@/search/list";
 import Card from "@/search/card";
 import Toaster from "@/search/toaster";
 import Drawer from "@/search/drawer";
+import Clear from "@/search/clear";
+import Filter from "@/search/filter";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,6 +23,7 @@ export default function Search() {
   const [numSymbols, setNumSymbols] = useState(0);
   const [copiedSymbols, setCopiedSymbols] = useState([]);
   const [isSelected, setSelected] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -53,12 +55,20 @@ export default function Search() {
     const words = escapedSearchTerm.split(/\s+/).map(escapeRegExp);
     const wordRegex = new RegExp(words.join(".*"), "i");
     const results = symbolsData.categories.category.flatMap((category) => {
-      if (wordRegex.test(category.title)) {
+      if (selectedCategory && selectedCategory !== category) {
+        return [];
+      } else if (wordRegex.test(category.title)) {
         numResults += category.symbols.length;
         return category.symbols;
       } else {
         const categoryResults = category.symbols.filter((symbol) => {
-          const symbolName = symbol.name.replace(/\s+/g, "");
+          // const symbolName = symbol.name.replace(/\s+/g, "");
+          const symbolName =
+            typeof symbol.name === "string"
+              ? symbol.name.replace(/\s+/g, "")
+              : "";
+
+          // const symbolName = symbol.name.replace(/\s+/g, "");
           const symbolWords = symbolName.split(/(?=[A-Z])/).map(escapeRegExp);
           const symbolRegex = new RegExp(
             words.map((word) => `(?=.*${word})`).join("") + ".*",
@@ -70,6 +80,7 @@ export default function Search() {
         return categoryResults;
       }
     });
+
     const numSymbols = symbolsData.categories.category.reduce(
       (acc, category) => acc + category.symbols.length,
       0
@@ -79,7 +90,59 @@ export default function Search() {
     setNumResults(numResults);
     setNumSymbols(numSymbols);
     setIsLoading(false);
-  }, [searchTerm, symbolsData]);
+    // setSearchTerm(selectedCategory);
+  }, [searchTerm, symbolsData, selectedCategory]);
+
+  // useEffect(() => {
+  //   if (!symbolsData) return;
+  //   setIsLoading(true);
+  //   let numResults = 0;
+  //   const escapedSearchTerm = escapeRegExp(searchTerm);
+  //   const words = escapedSearchTerm.split(/\s+/).map(escapeRegExp);
+  //   const wordRegex = new RegExp(words.join(".*"), "i");
+  //   const results = symbolsData.categories.category.flatMap((category) => {
+  //     if (selectedCategory && selectedCategory !== category) {
+  //       return [];
+  //     } else if (wordRegex.test(category.title)) {
+  //       numResults += category.symbols.length;
+  //       return category.symbols;
+  //     } else {
+  //       const categoryResults = category.symbols.filter((symbol) => {
+  //         // const symbolName = symbol.name.replace(/\s+/g, "");
+  //         const symbolName =
+  //           typeof symbol.name === "string"
+  //             ? symbol.name.replace(/\s+/g, "")
+  //             : "";
+
+  //         // const symbolName = symbol.name.replace(/\s+/g, "");
+  //         const symbolWords = symbolName.split(/(?=[A-Z])/).map(escapeRegExp);
+  //         const symbolRegex = new RegExp(
+  //           words.map((word) => `(?=.*${word})`).join("") + ".*",
+  //           "i"
+  //         );
+  //         return symbolRegex.test(symbolWords.join(""));
+  //       });
+  //       numResults += categoryResults.length;
+  //       return categoryResults;
+  //     }
+  //   });
+
+  //   const numSymbols = symbolsData.categories.category.reduce(
+  //     (acc, category) => acc + category.symbols.length,
+  //     0
+  //   );
+
+  //   setSearchResults(results);
+  //   setNumResults(numResults);
+  //   setNumSymbols(numSymbols);
+  //   setIsLoading(false);
+  //   // setSearchTerm(selectedCategory);
+  // }, [searchTerm, symbolsData, selectedCategory]);
+
+  // useEffect(() => {
+  // Update the input value when the selected category changes
+  // setSearchTerm(selectedCategory ? selectedCategory : "");
+  // }, [selectedCategory]);
 
   const handleSlashKey = (event) => {
     if (event.key === "/") {
@@ -134,7 +197,19 @@ export default function Search() {
     const selection = new SelectionArea({
       selectables: [".glyphs > div"],
       boundaries: ["body"],
+      behaviour: {
+        overlap: "invert",
+      },
+      features: {
+        touch: false,
+      },
+      singleTap: {
+        allow: false,
+        intersect: "native",
+      },
+      quite: true,
     })
+      // .on("beforestart", (event) => {})
       .on("start", ({ store, event }) => {
         if (!event.ctrlKey && !event.metaKey) {
           for (const el of store.stored) {
@@ -170,16 +245,20 @@ export default function Search() {
         });
         const selectedState = selection._selection.stored.length;
         setSelected(selectedState);
+        // .slice(0, 9)
+        // setCopiedSymbols(
+        //   stored.map((el) =>
+        //     selectedState ? el.getAttribute("data-symbol") : null
+        //   )
+        // );
         setCopiedSymbols(
-          // stored.map((el) => (selectedState ? el.innerHTML : null))
-          stored.map((el) =>
-            selectedState ? el.getAttribute("data-symbol") : null
-          )
+          stored
+            .map((el) =>
+              selectedState ? el.getAttribute("data-symbol") : null
+            )
+            .slice(0, 10)
         );
       });
-    // return () => {
-    //   selection.destroy();
-    // };
   }, []);
 
   useEffect(() => {
@@ -187,8 +266,6 @@ export default function Search() {
       setIsLoading(false);
     }, 20000);
   }, []);
-
-  const router = useRouter();
 
   return (
     <>
@@ -204,11 +281,29 @@ export default function Search() {
           value={searchTerm}
           onChange={handleChange}
         />
-        {/* <button type="button" onClick={() => setSearchTerm("")}>
-          ✗
-        </button> */}
+        <Clear type="reset" onClick={() => setSearchTerm("")} />
         <Scroll />
         <Slash />
+        {!isLoading && symbolsData ? (
+          <Filter
+            value={selectedCategory ? selectedCategory.title : ""}
+            onChange={(event) => {
+              const title = event.target.value;
+              setSelectedCategory(
+                symbolsData.categories.category.find(
+                  (category) => category.title === title
+                )
+              );
+            }}
+          >
+            <option value="">All categories</option>
+            {symbolsData.categories.category.map((category) => (
+              <option key={category.title} value={category.title}>
+                {`${category.symbols[0].symbol} ${category.title} (${category.symbols.length})`}
+              </option>
+            ))}
+          </Filter>
+        ) : null}
       </Form>
 
       <Box
@@ -217,21 +312,31 @@ export default function Search() {
           fontSize: "0.8rem",
           justifyContent: "space-between",
           alignItems: "center",
-          backgroundColor: "hsl(260deg 66% 30% / 19%)",
-          borderRadius: "20px",
-          minHeight: "94px",
-          padding: "10px 20px 10px 40px",
-          border: "2px solid hsla(0, 0%, 0%, 0.08)",
+          // backgroundColor: "hsl(260deg 66% 30% / 19%)",
+          minHeight: "58px",
+          paddingLeft: "28px",
+          // padding: "10px 20px 10px 20px",
+          // border: "2px solid hsla(0, 0%, 0%, 0.08)",
         }}
       >
-        <Box>
-          {isSelected && <> {isSelected} Selected /</>} {numSymbols} Glyphs
+        <Box
+          css={{
+            color: "rgba(255,255,255,0.4)",
+            fontSize: "18px",
+          }}
+        >
+          {(isSelected && (
+            <>
+              {isSelected} Selected {" / "}{" "}
+            </>
+          )) ||
+            (searchTerm && (
+              <>
+                {numResults} result{numResults !== 1 ? "s" : ""} {" / "}
+              </>
+            ))}
+          {numSymbols} Glyphs
         </Box>
-        {searchTerm && (
-          <Box>
-            {numResults} result{numResults !== 1 ? "s" : ""}
-          </Box>
-        )}
         {copiedSymbols && copiedSymbols.length > 0 ? (
           <Drawer>
             {copiedSymbols.map((symbol, index) => (
@@ -248,16 +353,12 @@ export default function Search() {
           {searchResults.map((item, index) => (
             <Card
               key={index + "searchk"}
-              // title={item.name}
-              // data-symbol={item.symbol}
+              title={item.name}
+              data-symbol={item.symbol}
               // href={`/${item.symbol}`}
               onClick={(e) => {
                 if (e.shiftKey) {
-                  e.preventDefault();
-                  router.push("/" + item.symbol);
-                  // navigate to the specific URL
-                } else {
-                  // e prevent defualt first to prevent the link from being clicked
+                  // router.push("/" + item.symbol);
                   navigator.clipboard.writeText(item.symbol);
                   handleCopySymbol(item.symbol);
                   toast.custom(() => (
@@ -276,3 +377,5 @@ export default function Search() {
     </>
   );
 }
+
+// how to make it when cateogry is selected to show results only from that category and update the input value
