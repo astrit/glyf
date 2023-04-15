@@ -32,7 +32,6 @@ export const style = globalCss({
     margin: 0,
     padding: 0,
     fontFamily: fonts,
-
     paddding: "8vw",
     color: "white",
     fontWeight: "400",
@@ -61,6 +60,7 @@ export const style = globalCss({
   "*": {
     boxSizing: "border-box",
     position: "relative",
+    fontFamily: "inherit",
   },
   p: {
     marginBlockStart: "0",
@@ -76,4 +76,7 @@ export const style = globalCss({
     borderRadius: "20px",
     background: "hsla(216deg, 86%, 63%, 0.1)",
   },
+  // "input, div": {
+  //   fontFamily: fonts,
+  // },
 });

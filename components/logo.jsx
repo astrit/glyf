@@ -42,7 +42,7 @@ const Symbol = styled("div", {
   justifyContent: "center",
   fontSize: "42px",
   lineHeight: "1",
-  transition: "transform 460ms cubic-bezier(0.23, 1, 0.32, 1)",
+  transition: "transform 1264ms cubic-bezier(0.23, 1, 0.32, 1)",
 });
 
 export default function LogoComponent() {

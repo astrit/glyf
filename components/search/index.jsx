@@ -1,176 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import SelectionArea from "@viselect/vanilla";
 import { toast } from "sonner";
-import { styled } from "@/theme";
 import Box from "@/box";
 import Scroll from "@/search/scroll/scroll";
 import CardSkeleton from "@/search/loader";
 import Slash from "@/search/slash";
 import { useRouter } from "next/router";
-
-const Form = styled("form", {
-  display: "flex",
-  flexDirection: "column",
-  position: "sticky",
-  top: "20px",
-  zIndex: "1",
-});
-
-const Input = styled("input", {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  borderRadius: "18px",
-  fontSize: "8px",
-  padding: "26px 34px 26px 80px",
-  fontSize: "24px",
-  lineHeight: "1",
-  background: `rgba(255,255,255,0.06) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.319 14.433A8.001 8.001 0 0 0 6.343 3.868a8 8 0 0 0 10.564 11.976l.043.045 4.242 4.243a1 1 0 1 0 1.415-1.415l-4.243-4.242a1.116 1.116 0 0 0-.045-.042Zm-2.076-9.15a6 6 0 1 1-8.485 8.485 6 6 0 0 1 8.485-8.485Z' fill='white'/%3E%3C/svg%3E") no-repeat left 26px center/28px 28px`,
-  backdropFilter: "blur(20px)",
-  color: "white",
-  border: "none",
-  fontWeight: "300",
-  outline: "none",
-  fontFamily: `"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
-  border: "3px solid rgba(255,255,255,0.07)",
-  userSelect: "none",
-
-  boxShadow:
-    "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
-  transition:
-    "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.4s",
-
-  "&::placeholder": {
-    color: "rgba(255,255,255,0.3)",
-  },
-  "&:focus:placeholder": {
-    color: "transparent",
-  },
-  "&:focus": {
-    backgroundColor: "rgba(255,255,255,0.09)",
-    borderColor: "rgba(255,255,255,0.2)",
-    backgroundPosition: "left 30px center",
-    paddingLeft: "86px",
-  },
-
-  "&:not(:placeholder-shown) ~ div": {
-    display: "none",
-  },
-});
-
-const List = styled("div", {
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
-  gap: "24px",
-  // experimental ⚠️⚠️⚠️⚠️⚠️
-  // experimental ⚠️⚠️⚠️⚠️⚠️
-  // experimental ⚠️⚠️⚠️⚠️⚠️
-  // contentVisibility: "auto",
-  // padding: "24px",
-});
-
-const Card = styled("div", {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  aspectRatio: "1/1",
-  // objectFit: "cover",
-  // objectPosition: "center",
-  fontSize: "24px",
-  lineHeight: "1",
-  color: "$white_alpha10",
-  userSelect: "none",
-  position: "relative",
-  cursor: "pointer",
-  borderRadius: "18px",
-  background: `hsla(260, 74%, 53%, 1.0)`,
-  border: "2px solid hsla(259, 73%, 56%, 1.0)",
-  transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-  boxShadow:
-    "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
-  boxSizing: "border-box",
-
-  span: {
-    transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-  },
-
-  "&:hover, &.selected": {
-    color: "$white_alpha100",
-    backgroundColor: "hsla(260, 74%, 56%, 1.0)",
-    borderColor: "hsla(209, 99%, 67%, 0.2)",
-    borderRadius: "24px",
-
-    span: {
-      transform: "scale3d(1.3,1.3,1.3)",
-    },
-  },
-
-  "&:active": {
-    borderWidth: "12px",
-    borderRadius: "28px",
-    boxShadow:
-      " 0px 1px 6px rgba(0, 0, 0, 0.06), 0px 20px 8px -4px rgba(0, 0, 0, 0.04)",
-
-    span: {
-      transform: "scale3d(1.1,1.1,1.1)",
-    },
-  },
-
-  "&::after": {
-    content: " ",
-    position: "absolute",
-    display: "flex",
-    borderRadius: "18px",
-    boxShadow:
-      "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
-    transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-    background:
-      "linear-gradient(90deg, hsla(209, 99%, 67%, 1.0) 0%, #b447eb 95%)",
-    width: "100%",
-    height: "100%",
-    zIndex: "-1",
-    "@sm": {},
-    willChange: "transform, opacity, border-radius, border-width, box-shadow",
-    // display: "none",
-    visibility: "hidden",
-  },
-
-  "&:hover::after, &.selected::after": {
-    // display: "flex",
-    visibility: "visible",
-    transform: "scale3d(1.12,1.12,1.12)",
-    borderRadius: "24px",
-    cursor: "pointer",
-  },
-  "&:active::after": {
-    transform: "scale3d(1.02, 1.02, 1.02)",
-    borderRadius: "24px",
-  },
-});
-
-const Toaster = styled("div", {
-  display: "flex",
-  gap: "10px",
-  alignItems: "center",
-
-  span: {
-    lineHeight: "1",
-    position: "relative",
-    borderRadius: "4px",
-    background: "hsla(260, 74%, 59%, 0.2)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    lineHeight: "1",
-    padding: "8px 16px",
-  },
-});
+import Form from "@/search/form";
+import Input from "@/search/input";
+import List from "@/search/list";
+import Card from "@/search/card";
+import Toaster from "@/search/toaster";
+import Drawer from "@/search/drawer";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [isLoading, setIsLoading] = useState(false);
   const [symbolsData, setSymbolsData] = useState(null);
   const [numResults, setNumResults] = useState(0);
   const [numSymbols, setNumSymbols] = useState(0);
@@ -371,83 +217,28 @@ export default function Search() {
           fontSize: "0.8rem",
           justifyContent: "space-between",
           alignItems: "center",
-          backgroundColor: "hsla(260, 66%, 30%, 0.6)",
-          backdropFilter: "blur(0px)",
+          backgroundColor: "hsl(260deg 66% 30% / 19%)",
           borderRadius: "20px",
           minHeight: "94px",
-          padding: "10px 20px",
+          padding: "10px 20px 10px 40px",
           border: "2px solid hsla(0, 0%, 0%, 0.08)",
         }}
       >
-        {isSelected && (
-          <Box>
-            {isSelected} / {numSymbols}
-          </Box>
-        )}
+        <Box>
+          {isSelected && <> {isSelected} Selected /</>} {numSymbols} Glyphs
+        </Box>
         {searchTerm && (
           <Box>
             {numResults} result{numResults !== 1 ? "s" : ""}
           </Box>
         )}
         {copiedSymbols && copiedSymbols.length > 0 ? (
-          <Box
-            css={{
-              display: "flex",
-              gap: "10px",
-              padding: "14px 20px",
-              borderRadius: "200px",
-              backgroundColor: "hsla(0, 0%, 0%, 0.1)",
-              alignItems: "center",
-              backdropFilter: "blur(10px)",
-
-              ul: {
-                display: "flex",
-                margin: 0,
-                padding: 0,
-                gap: "10px",
-                alignItems: "center",
-
-                li: {
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "20px",
-                  height: "20px",
-                },
-              },
-
-              button: {
-                display: "flex",
-                borderRadius: "20px",
-                backgroundColor: "hsla(0, 0%, 0%, 0.1)",
-                border: "none",
-                color: "white",
-                cursor: "pointer",
-                fontSize: "12px",
-                textTransform: "uppercase",
-                fontFamily: "inherit",
-                width: "26px",
-                height: "26px",
-                alignItems: "center",
-                justifyContent: "center",
-                marginLeft: "10px",
-                transition: "all 0.2s ease-in-out",
-                userSelect: "none",
-
-                "&:hover": {
-                  color: "hsla(0, 0%, 0%, 1)",
-                  backgroundColor: "white",
-                },
-              },
-            }}
-          >
-            <ul>
-              {copiedSymbols.map((symbol, index) => (
-                <li key={index}>{symbol}</li>
-              ))}
-              <button onClick={handleClearCopiedSymbols}>✗</button>
-            </ul>
-          </Box>
+          <Drawer>
+            {copiedSymbols.map((symbol, index) => (
+              <li key={index}>{symbol}</li>
+            ))}
+            <button onClick={handleClearCopiedSymbols}>✗</button>
+          </Drawer>
         ) : null}
       </Box>
       {isLoading || !symbolsData ? (
