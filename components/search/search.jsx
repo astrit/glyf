@@ -30,6 +30,7 @@ const Input = styled("input", {
   outline: "none",
   fontFamily: `"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
   border: "3px solid rgba(255,255,255,0.07)",
+  userSelect: "none",
 
   boxShadow:
     "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
@@ -48,14 +49,6 @@ const Input = styled("input", {
     backgroundPosition: "left 30px center",
     paddingLeft: "86px",
   },
-  // "&:not(::placeholder-shown)": {
-  //   " button": {
-  //     opacity: "0",
-  //     visibility: "hidden",
-  //     pointerEvents: "none",
-  //     position: "absolute",
-  //   },
-  // },
 });
 
 const List = styled("div", {
@@ -66,19 +59,16 @@ const List = styled("div", {
 });
 
 const Card = styled("div", {
-  // willChange: "all",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   aspectRatio: "1/1",
   objectFit: "cover",
   objectPosition: "center",
-  // fontWeight: "600",
   fontSize: "24px",
   lineHeight: "1",
   color: "#0e0c1b",
   position: "relative",
-  // transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
   color: "$white_alpha10",
   userSelect: "none",
   position: "relative",
@@ -92,7 +82,7 @@ const Card = styled("div", {
     "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
   boxSizing: "border-box",
 
-  gl: {
+  span: {
     transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
   },
 
@@ -102,7 +92,7 @@ const Card = styled("div", {
     borderColor: "hsla(209, 99%, 67%, 0.2)",
     borderRadius: "24px",
 
-    gl: {
+    span: {
       transform: "scale3d(1.3,1.3,1.3)",
     },
   },
@@ -113,7 +103,7 @@ const Card = styled("div", {
     boxShadow:
       " 0px 1px 6px rgba(0, 0, 0, 0.06), 0px 20px 8px -4px rgba(0, 0, 0, 0.04)",
 
-    gl: {
+    span: {
       transform: "scale3d(1.1,1.1,1.1)",
     },
   },
@@ -133,9 +123,13 @@ const Card = styled("div", {
     zIndex: "-1",
     "@sm": {},
     willChange: "transform, opacity, border-radius, border-width, box-shadow",
+    // display: "none",
+    visibility: "hidden",
   },
 
   "&:hover::after, &.selected::after": {
+    // display: "flex",
+    visibility: "visible",
     transform: "scale3d(1.12,1.12,1.12)",
     borderRadius: "24px",
     cursor: "pointer",
@@ -192,108 +186,9 @@ export default function Search() {
       });
   }, []);
 
-  // useEffect(() => {
-  //   if (!symbolsData) return;
-  //   setIsLoading(true);
-  //   let numResults = 0;
-  //   const regex = new RegExp(searchTerm, "i");
-  //   const results = symbolsData.categories.category.flatMap((category) => {
-  //     if (regex.test(category.title)) {
-  //       // return category.symbols;
-  //       numResults += category.symbols.length;
-  //       return category.symbols;
-  //     } else {
-  //       return category.symbols.filter(
-  //         (symbol) =>
-  //           // regex.test(symbol.name.replace(/\s+/g, "")) ||
-  //           // regex.test(symbol.name.replace(/[\s\\]+/g, "")) ||
-  //           // regex.test(symbol.symbol.replace(/[\s\\]+/g, "")) ||
-  //           regex.test(symbol.name.replace(/[\s\\]+/g, "")) ||
-  //           regex.test(symbol.symbol.replace(/[\s\\]+/g, ""))
-  //         // regex.test(symbol.symbol)
-  //         // regex.test(symbol.symbol)
-  //       );
-  //       numResults += categoryResults.length;
-  //       return categoryResults;
-  //     }
-  //   });
-  //   const numSymbols = symbolsData.categories.category.reduce(
-  //     (acc, category) => acc + category.symbols.length,
-  //     0
-  //   );
-
-  //   setSearchResults(results);
-  //   setNumResults(numResults);
-  //   setNumSymbols(numSymbols);
-  //   setIsLoading(false);
-  // }, [searchTerm, symbolsData]);
   function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
-
-  // useEffect(() => {
-  //   if (!symbolsData) return;
-  //   setIsLoading(true);
-  //   let numResults = 0;
-  //   const escapedSearchTerm = escapeRegExp(searchTerm);
-  //   const regex = new RegExp(escapedSearchTerm, "i");
-  //   const results = symbolsData.categories.category.flatMap((category) => {
-  //     if (regex.test(category.title)) {
-  //       numResults += category.symbols.length;
-  //       return category.symbols;
-  //     } else {
-  //       const categoryResults = category.symbols.filter(
-  //         (symbol) =>
-  //           regex.test(symbol.name.replace(/[\s\\]+/g, "")) ||
-  //           regex.test(symbol.symbol.replace(/[\s\\]+/g, ""))
-  //       );
-  //       numResults += categoryResults.length;
-  //       return categoryResults;
-  //     }
-  //   });
-  //   const numSymbols = symbolsData.categories.category.reduce(
-  //     (acc, category) => acc + category.symbols.length,
-  //     0
-  //   );
-
-  //   setSearchResults(results);
-  //   setNumResults(numResults);
-  //   setNumSymbols(numSymbols);
-  //   setIsLoading(false);
-  // }, [searchTerm, symbolsData]);
-
-  // This new version
-  // useEffect(() => {
-  //   if (!symbolsData) return;
-  //   setIsLoading(true);
-  //   let numResults = 0;
-  //   const words = searchTerm.split(/\s+/).map(escapeRegExp);
-  //   const wordRegex = new RegExp(words.join(".*"), "i");
-  //   const results = symbolsData.categories.category.flatMap((category) => {
-  //     if (wordRegex.test(category.title)) {
-  //       numResults += category.symbols.length;
-  //       return category.symbols;
-  //     } else {
-  //       const categoryResults = category.symbols.filter((symbol) => {
-  //         const symbolName = symbol.name.replace(/[\s\\]+/g, "");
-  //         const symbolWords = symbolName.split(/(?=[A-Z])/).map(escapeRegExp);
-  //         const symbolRegex = new RegExp(symbolWords.join(".*"), "i");
-  //         return symbolRegex.test(words.join(".*"));
-  //       });
-  //       numResults += categoryResults.length;
-  //       return categoryResults;
-  //     }
-  //   });
-  //   const numSymbols = symbolsData.categories.category.reduce(
-  //     (acc, category) => acc + category.symbols.length,
-  //     0
-  //   );
-
-  //   setSearchResults(results);
-  //   setNumResults(numResults);
-  //   setNumSymbols(numSymbols);
-  //   setIsLoading(false);
-  // }, [searchTerm, symbolsData]);
 
   useEffect(() => {
     if (!symbolsData) return;
@@ -421,12 +316,15 @@ export default function Search() {
         const selectedState = selection._selection.stored.length;
         setSelected(selectedState);
         setCopiedSymbols(
-          stored.map((el) => (selectedState ? el.innerHTML : null))
+          // stored.map((el) => (selectedState ? el.innerHTML : null))
+          stored.map((el) =>
+            selectedState ? el.getAttribute("data-symbol") : null
+          )
         );
       });
-    return () => {
-      selection.destroy();
-    };
+    // return () => {
+    //   selection.destroy();
+    // };
   }, []);
 
   return (
@@ -467,7 +365,6 @@ export default function Search() {
               display: "flex",
               gap: "10px",
               padding: "14px 20px",
-              // paddingLeft: "20px",
               borderRadius: "200px",
               backgroundColor: "hsla(0, 0%, 0%, 0.1)",
               alignItems: "center",
@@ -530,13 +427,14 @@ export default function Search() {
         )}
       </Box>
       {isLoading || !symbolsData ? (
-        <>{/* Loading states comes here <p>...</p> */}</>
+        <>Loading...</>
       ) : (
         <List className="glyphs">
           {searchResults.map((item, index) => (
             <Card
               key={index + "searchk"}
               title={item.name}
+              data-symbol={item.symbol}
               onClick={(e) => {
                 if (e.shiftKey) {
                   navigator.clipboard.writeText(item.symbol);
@@ -549,7 +447,7 @@ export default function Search() {
                 }
               }}
             >
-              {item.symbol}
+              <span>{item.symbol}</span>
             </Card>
           ))}
         </List>

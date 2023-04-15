@@ -10,12 +10,11 @@ function formatNumber(number) {
   }
   return number.toFixed(1) + suffixes[suffixNum];
 }
-
+const isDev = process.env.NODE_ENV === "development";
 const Stars = ({ repo, ...props }) => {
   const [stars, setStars] = useState(null);
-
   useEffect(() => {
-    fetch(`https://api.github.com/repos/${repo}`)
+    fetch(`https://api.github.com/repos/${isDev ? "" : repo}`)
       .then((response) => response.json())
       .then((data) => {
         setStars(formatNumber(data.stargazers_count));

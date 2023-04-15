@@ -8,7 +8,7 @@ import Footer from "@/footer";
 import Carbon from "u/ads";
 // import Search from "@/search/three";
 import Search from "@/search/search";
-import Old from "@/search/old";
+import Old from "@/search/_trash/old";
 import Hero from "@/hero";
 import Scroll from "@/search/scroll/scroll";
 
