@@ -3,6 +3,8 @@ import Symbol from "./symbol";
 import { forwardRef } from "react";
 import Raycast from "./raycast";
 import Github from "./github";
+import Apple from "./apple";
+import Windows from "./windows";
 
 const SVGMap = styled("svg", { display: "none" });
 
@@ -20,6 +22,12 @@ export const SVG = forwardRef(
         </filter>
         <Symbol name="Raycast" box="0 0 14 14">
           <Raycast />
+        </Symbol>
+        <Symbol name="Apple" box="0 0 14 14">
+          <Apple />
+        </Symbol>
+        <Symbol name="Windows" box="0 0 14 14">
+          <Windows />
         </Symbol>
         <Symbol name="Github" box="0 0 14 14">
           <Github />

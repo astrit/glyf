@@ -93,57 +93,6 @@ export default function Search() {
     // setSearchTerm(selectedCategory);
   }, [searchTerm, symbolsData, selectedCategory]);
 
-  // useEffect(() => {
-  //   if (!symbolsData) return;
-  //   setIsLoading(true);
-  //   let numResults = 0;
-  //   const escapedSearchTerm = escapeRegExp(searchTerm);
-  //   const words = escapedSearchTerm.split(/\s+/).map(escapeRegExp);
-  //   const wordRegex = new RegExp(words.join(".*"), "i");
-  //   const results = symbolsData.categories.category.flatMap((category) => {
-  //     if (selectedCategory && selectedCategory !== category) {
-  //       return [];
-  //     } else if (wordRegex.test(category.title)) {
-  //       numResults += category.symbols.length;
-  //       return category.symbols;
-  //     } else {
-  //       const categoryResults = category.symbols.filter((symbol) => {
-  //         // const symbolName = symbol.name.replace(/\s+/g, "");
-  //         const symbolName =
-  //           typeof symbol.name === "string"
-  //             ? symbol.name.replace(/\s+/g, "")
-  //             : "";
-
-  //         // const symbolName = symbol.name.replace(/\s+/g, "");
-  //         const symbolWords = symbolName.split(/(?=[A-Z])/).map(escapeRegExp);
-  //         const symbolRegex = new RegExp(
-  //           words.map((word) => `(?=.*${word})`).join("") + ".*",
-  //           "i"
-  //         );
-  //         return symbolRegex.test(symbolWords.join(""));
-  //       });
-  //       numResults += categoryResults.length;
-  //       return categoryResults;
-  //     }
-  //   });
-
-  //   const numSymbols = symbolsData.categories.category.reduce(
-  //     (acc, category) => acc + category.symbols.length,
-  //     0
-  //   );
-
-  //   setSearchResults(results);
-  //   setNumResults(numResults);
-  //   setNumSymbols(numSymbols);
-  //   setIsLoading(false);
-  //   // setSearchTerm(selectedCategory);
-  // }, [searchTerm, symbolsData, selectedCategory]);
-
-  // useEffect(() => {
-  // Update the input value when the selected category changes
-  // setSearchTerm(selectedCategory ? selectedCategory : "");
-  // }, [selectedCategory]);
-
   const handleSlashKey = (event) => {
     if (event.key === "/") {
       event.preventDefault();
@@ -195,7 +144,7 @@ export default function Search() {
 
   useEffect(() => {
     const selection = new SelectionArea({
-      selectables: [".glyphs > div"],
+      selectables: [".glyphs > a"],
       boundaries: ["body"],
       behaviour: {
         overlap: "invert",
@@ -335,7 +284,7 @@ export default function Search() {
                 {numResults} result{numResults !== 1 ? "s" : ""} {" / "}
               </>
             ))}
-          {numSymbols} Glyphs
+          {numSymbols} Glyphs — Shift click to copy
         </Box>
         {copiedSymbols && copiedSymbols.length > 0 ? (
           <Drawer>
@@ -355,10 +304,11 @@ export default function Search() {
               key={index + "searchk"}
               title={item.name}
               data-symbol={item.symbol}
-              // href={`/${item.symbol}`}
+              href={`/${item.symbol}`}
               onClick={(e) => {
                 if (e.shiftKey) {
                   // router.push("/" + item.symbol);
+                  e.preventDefault();
                   navigator.clipboard.writeText(item.symbol);
                   handleCopySymbol(item.symbol);
                   toast.custom(() => (
@@ -377,5 +327,3 @@ export default function Search() {
     </>
   );
 }
-
-// how to make it when cateogry is selected to show results only from that category and update the input value

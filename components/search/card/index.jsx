@@ -1,6 +1,6 @@
 import { styled } from "@/theme";
 
-const CardStyled = styled("div", {
+const CardStyled = styled("a", {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

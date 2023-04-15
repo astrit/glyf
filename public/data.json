@@ -9,7 +9,18 @@
                         "name": "Leftwards Arrow",
                         "symbol": "←",
                         "unicode": "U+2190",
-                        "html_entity": "&larr;"
+                        "html_entity": "&larr;",
+                        "html_entity_decimal": "&#8592;",
+                        "html_entity_hex": "&#x2190;",
+                        "c": "\\u2190",
+                        "javascript": "\\u2190",
+                        "json": "\\u2190",
+                        "java": "\\u2190",
+                        "css": "\\2190",
+                        "python": "\\u2190",
+                        "perl": "\\x{2190}",
+                        "ruby": "\\u{2190}",
+                        "url_escape_code": "%E2%86%90"
                     },
                     {
                         "name": "Rightwards Arrow",
