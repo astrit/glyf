@@ -9,6 +9,11 @@ import Footer from "@/footer";
 import Carbon from "u/ads";
 import Search from "@/search";
 import Hero from "@/hero";
+import { toast } from "sonner";
+import Card from "@/search/card";
+import Toaster from "@/search/toaster";
+import CardSkeleton from "@/search/loader";
+import List from "@/search/list";
 
 const Main = styled("main", {
   margin: "0 auto",
@@ -19,29 +24,6 @@ const Main = styled("main", {
     width: "calc(100% - 10px)",
   },
 });
-
-// function Symbol() {
-//   const router = useRouter();
-//   const { symbol } = router.query;
-//   const [isLoading, setIsLoading] = useState(true);
-//   const [symbolData, setSymbolData] = useState(null);
-//   const [isData, setData] = useState(null);
-//   const isDev = process.env.NODE_ENV === "development";
-
-//   useEffect(() => {
-//     async function fetchData() {
-//       setIsLoading(true);
-//       const response = await fetch("./data.json");
-//       const data = await response.json();
-//       setData(data);
-//       const matchingData = data.categories.category.flatMap((category) =>
-//         category.symbols.filter((symbolData) => symbolData.symbol === symbol)
-//       );
-//       setSymbolData(matchingData[0]);
-//       setIsLoading(false);
-//     }
-//     fetchData();
-//   }, [symbol]);
 
 function Symbol() {
   const router = useRouter();
@@ -123,18 +105,48 @@ function Symbol() {
               </code>
             </pre>
             <p>
-              {previousSymbol && <a href={`/${previousSymbol}`}>Previous</a>}
-              {previousSymbol && nextSymbol && " | "}
-              {nextSymbol && <a href={`/${nextSymbol}`}>Next</a>}
+              {previousSymbol && <a href={`/${previousSymbol}`}>← prev</a>}
+              {previousSymbol && nextSymbol && " • "}
+              {nextSymbol && <a href={`/${nextSymbol}`}>next →</a>}
             </p>
             <p>
-              Symbols in the same category:{" "}
-              {categorySymbols.map((symbolData, index) => (
+              {/* <small>From same category</small> */}
+              {isLoading || !categorySymbols ? (
+                <CardSkeleton />
+              ) : (
+                <List className="glyphs">
+                  {categorySymbols.map((symbolData, index) => (
+                    <Card
+                      key={index + "searchk"}
+                      title={symbolData.name}
+                      data-symbol={symbolData.symbol}
+                      href={`/${symbolData.symbol}`}
+                      onClick={(e) => {
+                        if (e.shiftKey) {
+                          // router.push("/" + item.symbol);
+                          e.preventDefault();
+                          navigator.clipboard.writeText(symbolData.symbol);
+                          handleCopySymbol(symbolData.symbol);
+                          toast.custom(() => (
+                            <Toaster>
+                              Copied <span>{symbolData.symbol}</span> to
+                              clipboard!
+                            </Toaster>
+                          ));
+                        }
+                      }}
+                    >
+                      <span>{symbolData.symbol}</span>
+                    </Card>
+                  ))}
+                </List>
+              )}
+              {/* {categorySymbols.map((symbolData, index) => (
                 <span key={index}>
                   <a href={`/${symbolData.symbol}`}>{symbolData.symbol}</a>
                   {index < categorySymbols.length - 1 && ", "}
                 </span>
-              ))}
+              ))} */}
             </p>
           </div>
           {/* <Search /> */}
