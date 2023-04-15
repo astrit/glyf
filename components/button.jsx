@@ -17,6 +17,7 @@ const Wrapper = styled(BaseLink, {
   gap: "10px",
   boxShadow: "rgb(0 0 0 / 2%) 2px 3px 8px, rgb(0 0 0 / 1%) 0px 8px 6px -3px",
   transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+  lineHeight: "1",
 
   "&:hover": {
     background: "hsla(360,100%,100%,0.06)",

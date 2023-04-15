@@ -5,6 +5,7 @@ import Raycast from "./raycast";
 import Github from "./github";
 import Apple from "./apple";
 import Windows from "./windows";
+import Figma from "./figma";
 
 const SVGMap = styled("svg", { display: "none" });
 
@@ -23,11 +24,14 @@ export const SVG = forwardRef(
         <Symbol name="Raycast" box="0 0 14 14">
           <Raycast />
         </Symbol>
-        <Symbol name="Apple" box="0 0 14 14">
+        <Symbol name="Apple" box="0 0 24 24">
           <Apple />
         </Symbol>
-        <Symbol name="Windows" box="0 0 14 14">
+        <Symbol name="Windows" box="0 0 24 24">
           <Windows />
+        </Symbol>
+        <Symbol name="Figma" box="0 0 17 24">
+          <Figma />
         </Symbol>
         <Symbol name="Github" box="0 0 14 14">
           <Github />

@@ -71,7 +71,7 @@ export default function Hero() {
       >
         <Button to="https://raycast.com/astrit" title="App Store" svg="apple" />
         <Button to="https://raycast.com/astrit" title="Windows" svg="windows" />
-        <Button to="https://raycast.com/astrit" title="Figma" svg="raycast" />
+        <Button to="https://raycast.com/astrit" title="Figma" svg="figma" />
         <Button to="https://raycast.com/astrit" title="Raycast" svg="raycast" />
         {/* <Button
           to="https://github.com/astrit/css.gg"
