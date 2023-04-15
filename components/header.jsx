@@ -1,6 +1,6 @@
 import { styled } from "@/theme";
 import Box from "@/box";
-import Logo from "g/logo";
+import Logo from "@/logo";
 
 const Header = styled("header", {
   display: "flex",

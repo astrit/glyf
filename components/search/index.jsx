@@ -371,12 +371,12 @@ export default function Search() {
           fontSize: "0.8rem",
           justifyContent: "space-between",
           alignItems: "center",
-          backgroundColor: "hsla(0, 0%, 0%, 0.1)",
-          backdropFilter: "blur(10px)",
+          backgroundColor: "hsla(260, 66%, 30%, 0.6)",
+          backdropFilter: "blur(0px)",
           borderRadius: "20px",
           minHeight: "94px",
           padding: "10px 20px",
-          border: "2px solid hsla(0, 0%, 0%, 0.02)",
+          border: "2px solid hsla(0, 0%, 0%, 0.08)",
         }}
       >
         {isSelected && (
