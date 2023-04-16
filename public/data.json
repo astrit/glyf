@@ -2,6 +2,31 @@
     "categories": {
         "category": [
             {
+                "slug": "featured",
+                "title": "Featured",
+                "description": "Featured symbols",
+                "symbols": [
+                    {
+                        "name": "Heart",
+                        "symbol": "♥",
+                        "unicode": "U+2665",
+                        "html_entity": "&hearts;"
+                    },
+                    {
+                        "name": "Apple",
+                        "symbol": ""
+                    },
+                    {
+                        "name": "CMD Command",
+                        "symbol": "⌘"
+                    },
+                    {
+                        "name": "Copyright",
+                        "symbol": "©"
+                    }
+                ]
+            },
+            {
                 "slug": "arrows",
                 "title": "Arrows",
                 "symbols": [

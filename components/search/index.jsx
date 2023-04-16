@@ -103,6 +103,7 @@ export default function Search() {
         const input = document.getElementById("s");
         searchTerm && setSearchTerm("");
         copiedSymbols && setCopiedSymbols("");
+        selectedCategory && setSelectedCategory("");
         input.blur();
       }
     };
@@ -111,7 +112,7 @@ export default function Search() {
     return () => {
       document.removeEventListener("keydown", handleSlashKey);
     };
-  }, [searchTerm, copiedSymbols]);
+  }, [searchTerm, copiedSymbols, selectedCategory]);
 
   const handleCopySymbol = (symbol) => {
     setCopiedSymbols((prevCopiedSymbols) => [
@@ -278,7 +279,7 @@ export default function Search() {
         <Box
           css={{
             color: "hsla(259, 73%, 76%, 1.0)",
-            fontSize: "18px",
+            fontSize: "14px",
             fontFeatureSettings: '"kern", "ss02"',
           }}
         >
@@ -286,6 +287,7 @@ export default function Search() {
             css={{
               display: "flex",
               gap: "24px",
+              alignItems: "center",
             }}
           >
             <Box
@@ -320,6 +322,8 @@ export default function Search() {
             <Box
               css={{
                 fontFamily: isLoading ? "Flow Circular" : "",
+                gap: "24px",
+                display: "flex",
               }}
             >
               {(isSelected && <span>{isSelected} Selected</span>) ||
