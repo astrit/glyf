@@ -224,7 +224,8 @@ export default function Search() {
             fontFamily: isLoading ? "Flow Circular" : "",
 
             "&::placeholder": {
-              color: isLoading ? "white" : "",
+              color: isLoading ? "hsla(257, 72%, 69%, 1.0)" : "",
+              paddingLeft: isLoading ? "10px" : "",
             },
           }}
         />
