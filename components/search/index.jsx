@@ -62,13 +62,10 @@ export default function Search() {
         return category.symbols;
       } else {
         const categoryResults = category.symbols.filter((symbol) => {
-          // const symbolName = symbol.name.replace(/\s+/g, "");
           const symbolName =
             typeof symbol.name === "string"
               ? symbol.name.replace(/\s+/g, "")
               : "";
-
-          // const symbolName = symbol.name.replace(/\s+/g, "");
           const symbolWords = symbolName.split(/(?=[A-Z])/).map(escapeRegExp);
           const symbolRegex = new RegExp(
             words.map((word) => `(?=.*${word})`).join("") + ".*",
@@ -261,11 +258,8 @@ export default function Search() {
           fontSize: "0.8rem",
           justifyContent: "space-between",
           alignItems: "center",
-          // backgroundColor: "hsl(260deg 66% 30% / 19%)",
           minHeight: "58px",
           paddingLeft: "28px",
-          // padding: "10px 20px 10px 20px",
-          // border: "2px solid hsla(0, 0%, 0%, 0.08)",
         }}
       >
         <Box
@@ -284,7 +278,7 @@ export default function Search() {
                 {numResults} result{numResults !== 1 ? "s" : ""} {" / "}
               </>
             ))}
-          {numSymbols} Glyphs — Shift click to copy
+          {numSymbols} Glyphs
         </Box>
         {copiedSymbols && copiedSymbols.length > 0 ? (
           <Drawer>
