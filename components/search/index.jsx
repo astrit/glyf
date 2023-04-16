@@ -276,6 +276,7 @@ export default function Search() {
           css={{
             color: "rgba(255,255,255,0.4)",
             fontSize: "18px",
+            fontFeatureSettings: '"kern", "ss02"',
           }}
         >
           {(isSelected && (
@@ -288,7 +289,7 @@ export default function Search() {
                 {numResults} result{numResults !== 1 ? "s" : ""} {" / "}
               </>
             ))}
-          {numSymbols} Glyphs
+          {numSymbols ? numSymbols : "0000"} Glyphs
         </Box>
         {copiedSymbols && copiedSymbols.length > 0 ? (
           <Drawer>
