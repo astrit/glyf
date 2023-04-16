@@ -14,7 +14,7 @@ const isDev = process.env.NODE_ENV === "development";
 const Stars = ({ repo, ...props }) => {
   const [stars, setStars] = useState(null);
   useEffect(() => {
-    fetch(`https://api.github.com/repos/${isDev ? "" : repo}`)
+    fetch(`https://api.github.com/repos/${repo}`)
       .then((response) => response.json())
       .then((data) => {
         setStars(formatNumber(data.stargazers_count));
