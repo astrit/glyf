@@ -10,7 +10,6 @@ function formatNumber(number) {
   }
   return number.toFixed(1) + suffixes[suffixNum];
 }
-const isDev = process.env.NODE_ENV === "development";
 const Stars = ({ repo, ...props }) => {
   const [stars, setStars] = useState(null);
   useEffect(() => {
