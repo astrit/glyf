@@ -36,14 +36,14 @@ export default function Hero() {
             css={{
               display: "flex",
               fontSize: "30vw",
-              position: "absolute",
+              position: "fixed",
               zIndex: "-1",
               pointerEvents: "none",
               top: "-0.5ex",
               lineHeight: "1",
               scale: "4",
               rotate: "42deg",
-              fontFeatureSettings: '"kern", "ss02"',
+              // fontFeatureSettings: '"kern", "ss02"',
               color: "hsla(300, 100%, 100%, 0.1)",
               "-webkit-mask-image":
                 "linear-gradient(to bottom, hsla(300, 90%, 52%, 1) 0%, hsla(300, 90%, 52%, 0) 90%)",

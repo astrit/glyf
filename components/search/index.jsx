@@ -233,7 +233,10 @@ export default function Search() {
           value={searchTerm}
           onChange={handleChange}
         />
-        <Clear type="reset" onClick={() => setSearchTerm("")} />
+        <Clear
+          type="reset"
+          onClick={() => setSearchTerm("") && setSelected(" ")}
+        />
         <Scroll />
         <Slash />
         {!isLoading && symbolsData ? (
@@ -291,7 +294,7 @@ export default function Search() {
             {copiedSymbols.map((symbol, index) => (
               <li key={index}>{symbol}</li>
             ))}
-            <button onClick={handleClearCopiedSymbols}>✗</button>
+            <button onClick={() => handleClearCopiedSymbols("")}>✗</button>
           </Drawer>
         ) : null}
       </Box>
