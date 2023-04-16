@@ -43,6 +43,7 @@ export default function Hero() {
               lineHeight: "1",
               scale: "4",
               rotate: "42deg",
+              userSelect: "none",
               // fontFeatureSettings: '"kern", "ss02"',
               color: "hsla(300, 100%, 100%, 0.1)",
               "-webkit-mask-image":

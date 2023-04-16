@@ -87,24 +87,22 @@ export default function Search() {
     setNumResults(numResults);
     setNumSymbols(numSymbols);
     setIsLoading(false);
-    // setSearchTerm(selectedCategory);
   }, [searchTerm, symbolsData, selectedCategory]);
 
   useEffect(() => {
     const handleSlashKey = (event) => {
-      // if (event.key === "/") {
       if (
         event.key === "/" ||
         ((event.keyCode === 191 || event.keyCode === 75) &&
           (event.metaKey || event.ctrlKey))
       ) {
-        // if (event.key === "/") {
         event.preventDefault();
         const input = document.getElementById("s");
         input.focus();
       } else if (event.key === "Escape") {
         const input = document.getElementById("s");
         searchTerm && setSearchTerm("");
+        copiedSymbols && setCopiedSymbols("");
         input.blur();
       }
     };
@@ -145,79 +143,68 @@ export default function Search() {
     localStorage.removeItem("copiedSymbols");
     setCopiedSymbols([]);
   };
-
   useEffect(() => {
-    const selection = new SelectionArea({
-      selectables: [".glyphs > a"],
-      boundaries: ["body"],
-      behaviour: {
-        overlap: "invert",
-      },
-      features: {
-        touch: false,
-      },
-      singleTap: {
-        allow: false,
-        intersect: "native",
-      },
-      quite: true,
-    })
-      // .on("beforestart", (event) => {})
-      .on("start", ({ store, event }) => {
-        if (!event.ctrlKey && !event.metaKey) {
-          for (const el of store.stored) {
-            el.classList.remove("selected");
-          }
-          selection.clearSelection();
-        }
+    if (1 == 2) {
+      // THIS IS DISABLED FOR NOW
+      const selection = new SelectionArea({
+        selectables: [".glyphs > a"],
+        boundaries: ["body"],
+        behaviour: {
+          overlap: "invert",
+        },
+        features: {
+          touch: false,
+        },
+        singleTap: {
+          allow: false,
+          intersect: "native",
+        },
+        quite: true,
       })
-      .on(
-        "move",
-        ({
-          store: {
-            changed: { added, removed },
-          },
-        }) => {
-          for (const el of added) {
-            el.classList.add("selected");
-          }
-          for (const el of removed) {
-            el.classList.remove("selected");
-          }
-        }
-      )
-      .on("stop", ({ store, store: { stored } }) => {
-        document.body.addEventListener("keydown", (event) => {
-          if (event.key === "Escape") {
+        .on("start", ({ store, event }) => {
+          if (!event.ctrlKey && !event.metaKey) {
             for (const el of store.stored) {
               el.classList.remove("selected");
             }
-            setSelected(false);
             selection.clearSelection();
           }
+        })
+        .on(
+          "move",
+          ({
+            store: {
+              changed: { added, removed },
+            },
+          }) => {
+            for (const el of added) {
+              el.classList.add("selected");
+            }
+            for (const el of removed) {
+              el.classList.remove("selected");
+            }
+          }
+        )
+        .on("stop", ({ store, store: { stored } }) => {
+          document.body.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+              for (const el of store.stored) {
+                el.classList.remove("selected");
+              }
+              setSelected(false);
+              selection.clearSelection();
+            }
+          });
+          const selectedState = selection._selection.stored.length;
+          setSelected(selectedState);
+          setCopiedSymbols(
+            stored
+              .map((el) =>
+                selectedState ? el.getAttribute("data-symbol") : null
+              )
+              .slice(0, 10)
+          );
         });
-        const selectedState = selection._selection.stored.length;
-        setSelected(selectedState);
-        // .slice(0, 9)
-        // setCopiedSymbols(
-        //   stored.map((el) =>
-        //     selectedState ? el.getAttribute("data-symbol") : null
-        //   )
-        // );
-        setCopiedSymbols(
-          stored
-            .map((el) =>
-              selectedState ? el.getAttribute("data-symbol") : null
-            )
-            .slice(0, 10)
-        );
-      });
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 20000);
+    }
   }, []);
 
   return (
@@ -279,17 +266,43 @@ export default function Search() {
             fontFeatureSettings: '"kern", "ss02"',
           }}
         >
-          {(isSelected && (
-            <>
-              {isSelected} Selected {" / "}{" "}
-            </>
-          )) ||
-            (searchTerm && (
-              <>
-                {numResults} result{numResults !== 1 ? "s" : ""} {" / "}
-              </>
-            ))}
-          {numSymbols ? numSymbols : "0000"} Glyphs
+          <Box
+            css={{
+              display: "flex",
+              gap: "24px",
+            }}
+          >
+            <Box
+              css={{
+                display: "flex",
+                fontSize: "10px",
+                alignItems: "center",
+                gap: "4px",
+
+                key: {
+                  display: "flex",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                  color: "White",
+                  fontWeight: "bold",
+                  background: "hsla(260, 73%, 53%, 1.0)",
+                  borderRadius: "8px",
+                  padding: "4px 8px",
+                  // backdropFilter: "blur(20px)",
+                  boxShadow:
+                    "1px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 12px rgba(0, 0, 0, 0.04)",
+                },
+              }}
+            >
+              <key>⇧</key> + <key>CLICK</key>
+            </Box>
+            {(isSelected && <span>{isSelected} Selected</span>) ||
+              (searchTerm && (
+                <span>
+                  {numResults} result{numResults !== 1 ? "s" : ""}
+                </span>
+              ))}
+            {numSymbols ? numSymbols : "0000"} Glyphs
+          </Box>
         </Box>
         {copiedSymbols && copiedSymbols.length > 0 ? (
           <Drawer>

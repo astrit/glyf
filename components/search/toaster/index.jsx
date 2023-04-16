@@ -4,6 +4,7 @@ const ToasterStyled = styled("div", {
   display: "flex",
   gap: "10px",
   alignItems: "center",
+  fontFamily: "inherit",
 
   span: {
     lineHeight: "1",
