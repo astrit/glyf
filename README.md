@@ -1,5 +1,17 @@
 # glf
 
+Shift 2 to copy hex
+shift 3 to copy css
+shift something to copy other options
+
+# glf
+
+# glf
+
+# glf
+
+# glf
+
 Glyphs
 
 https://graphemica.com/%5E

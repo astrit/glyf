@@ -551,6 +551,192 @@
                         "symbol": "🅪",
                         "unicode": "U+1F14A",
                         "html_entity": "&#x1F14A;"
+                    },
+                    {
+                        "name": "Latin small letter E with grave",
+                        "symbol": "è",
+                        "unicode": "U+00E8",
+                        "html_entity": "&egrave;"
+                    },
+                    {
+                        "name": "Latin small letter E with acute",
+                        "symbol": "é",
+                        "unicode": "U+00E9",
+                        "html_entity": "&eacute;"
+                    },
+                    {
+                        "name": "Latin small letter E with circumflex",
+                        "symbol": "ê",
+                        "unicode": "U+00EA",
+                        "html_entity": "&ecirc;"
+                    },
+                    {
+                        "name": "Latin small letter E with diaeresis",
+                        "symbol": "ë",
+                        "unicode": "U+00EB",
+                        "html_entity": "&euml;"
+                    },
+                    {
+                        "name": "Latin small letter E with macron",
+                        "symbol": "ē",
+                        "unicode": "U+0113",
+                        "html_entity": "&emacr;"
+                    },
+                    {
+                        "name": "Latin small letter E with dot above",
+                        "symbol": "ė",
+                        "unicode": "U+0117",
+                        "html_entity": "&edot;"
+                    },
+                    {
+                        "name": "Latin small letter O with circumflex",
+                        "symbol": "ô",
+                        "unicode": "U+00F4",
+                        "html_entity": "&ocirc;"
+                    },
+                    {
+                        "name": "Latin small letter O with diaeresis",
+                        "symbol": "ö",
+                        "unicode": "U+00F6",
+                        "html_entity": "&ouml;"
+                    },
+                    {
+                        "name": "Latin small letter O with grave",
+                        "symbol": "ò",
+                        "unicode": "U+00F2",
+                        "html_entity": "&ograve;"
+                    },
+                    {
+                        "name": "Latin small letter O with acute",
+                        "symbol": "ó",
+                        "unicode": "U+00F3",
+                        "html_entity": "&oacute;"
+                    },
+                    {
+                        "name": "Latin small ligature oe",
+                        "symbol": "œ",
+                        "unicode": "U+0153",
+                        "html_entity": "&oelig;"
+                    },
+                    {
+                        "name": "Latin small letter O with slash",
+                        "symbol": "ø",
+                        "unicode": "U+00F8",
+                        "html_entity": "&oslash;"
+                    },
+                    {
+                        "name": "Latin small letter O with macron",
+                        "symbol": "ō",
+                        "unicode": "U+014D",
+                        "html_entity": "&omacr;"
+                    },
+                    {
+                        "name": "Latin small letter O with tilde",
+                        "symbol": "õ",
+                        "unicode": "U+00F5",
+                        "html_entity": "&otilde;"
+                    },
+                    {
+                        "name": "Latin small letter A with grave",
+                        "symbol": "à",
+                        "unicode": "U+00E0",
+                        "html_entity": "&agrave;"
+                    },
+                    {
+                        "name": "Latin small letter A with acute",
+                        "symbol": "á",
+                        "unicode": "U+00E1",
+                        "html_entity": "&aacute;"
+                    },
+                    {
+                        "name": "Latin small letter A with circumflex",
+                        "symbol": "â",
+                        "unicode": "U+00E2",
+                        "html_entity": "&acirc;"
+                    },
+                    {
+                        "name": "Latin small letter A with diaeresis",
+                        "symbol": "ä",
+                        "unicode": "U+00E4",
+                        "html_entity": "&auml;"
+                    },
+                    {
+                        "name": "Latin small ligature ae",
+                        "symbol": "æ",
+                        "unicode": "U+00E6",
+                        "html_entity": "&aelig;"
+                    },
+                    {
+                        "name": "Latin small letter A with tilde",
+                        "symbol": "ã",
+                        "unicode": "U+00E3",
+                        "html_entity": "&atilde;"
+                    },
+                    {
+                        "name": "Latin small letter A with ring above",
+                        "symbol": "å",
+                        "unicode": "U+00E5",
+                        "html_entity": "&aring;"
+                    },
+                    {
+                        "name": "Latin small letter A with macron",
+                        "symbol": "ā",
+                        "unicode": "U+0101",
+                        "html_entity": "&amacr;"
+                    },
+                    {
+                        "name": "Commercial at",
+                        "symbol": "@",
+                        "unicode": "U+0040",
+                        "html_entity": "&#64;"
+                    },
+                    {
+                        "name": "Number sign",
+                        "symbol": "#",
+                        "unicode": "U+0023",
+                        "html_entity": "&#35;"
+                    },
+                    {
+                        "name": "Tilde",
+                        "symbol": "~",
+                        "unicode": "U+007E",
+                        "html_entity": "&#126;"
+                    },
+                    {
+                        "name": "Exclamation mark",
+                        "symbol": "!",
+                        "unicode": "U+0021",
+                        "html_entity": "&#33;"
+                    },
+                    {
+                        "name": "Percent sign",
+                        "symbol": "%",
+                        "unicode": "U+0025",
+                        "html_entity": "&#37;"
+                    },
+                    {
+                        "name": "Circumflex accent",
+                        "symbol": "^",
+                        "unicode": "U+005E",
+                        "html_entity": "&#94;"
+                    },
+                    {
+                        "name": "Ampersand",
+                        "symbol": "&",
+                        "unicode": "U+0026",
+                        "html_entity": "&amp;"
+                    },
+                    {
+                        "name": "Asterisk",
+                        "symbol": "*",
+                        "unicode": "U+002A",
+                        "html_entity": "&#42;"
+                    },
+                    {
+                        "name": "Colon",
+                        "symbol": ":",
+                        "unicode": "U+003A",
+                        "html_entity": "&#58;"
                     }
                 ]
             },
