@@ -111,7 +111,7 @@ export default function Search() {
     return () => {
       document.removeEventListener("keydown", handleSlashKey);
     };
-  }, [searchTerm]);
+  }, [searchTerm, copiedSymbols]);
 
   const handleCopySymbol = (symbol) => {
     setCopiedSymbols((prevCopiedSymbols) => [
@@ -212,7 +212,7 @@ export default function Search() {
       <Form>
         <Input
           id="s"
-          placeholder={`${numSymbols ? "e.g arrow →" : "Loading..."}`}
+          placeholder={`${numSymbols ? "e.g arrow →" : "loading..."}`}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
@@ -246,7 +246,15 @@ export default function Search() {
               </option>
             ))}
           </Filter>
-        ) : null}
+        ) : (
+          <Filter
+            css={{
+              fontFamily: "'Flow Circular', cursive",
+            }}
+          >
+            <option value="">Load all categories</option>
+          </Filter>
+        )}
       </Form>
 
       <Box
@@ -257,11 +265,12 @@ export default function Search() {
           alignItems: "center",
           minHeight: "58px",
           paddingLeft: "28px",
+          fontFamily: isLoading ? "Flow Circular" : "",
         }}
       >
         <Box
           css={{
-            color: "rgba(255,255,255,0.4)",
+            color: "hsla(259, 73%, 76%, 1.0)",
             fontSize: "18px",
             fontFeatureSettings: '"kern", "ss02"',
           }}
@@ -301,7 +310,7 @@ export default function Search() {
                   {numResults} result{numResults !== 1 ? "s" : ""}
                 </span>
               ))}
-            {numSymbols ? numSymbols : "0000"} Glyphs
+            <span>{numSymbols ? numSymbols : "0000"} Glyphs</span>
           </Box>
         </Box>
         {copiedSymbols && copiedSymbols.length > 0 ? (
