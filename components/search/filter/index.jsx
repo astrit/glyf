@@ -18,7 +18,7 @@ const FilterStyled = styled("select", {
   margin: "auto",
   height: "28px",
   borderRight: "2px solid rgba(255,255,255,0.2)",
-  width: "14ch",
+  width: "16ch",
   overflow: "hidden",
   textOverflow: "ellipsis",
   paddingRight: "2ch",

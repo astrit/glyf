@@ -35,7 +35,7 @@ export default function Scroll() {
 
   const SVG = styled("svg", {
     position: "absolute",
-    right: "26px",
+    right: "74px",
     top: "0",
     bottom: "0",
     margin: "auto",
@@ -45,6 +45,13 @@ export default function Scroll() {
       stroke: "hsla(60, 0%, 100%, 1)",
       strokeLinecap: "round",
       transition: "all 0.3s ease",
+      // strokeDashoffset: "80",
+      // strokeDasharray: "80",
+
+      "&:nth-child(2)": {
+        stroke: "hsla(60, 0%, 100%, 0.1)",
+        strokeWidth: "2",
+      },
     },
   });
 
@@ -55,8 +62,15 @@ export default function Scroll() {
         cx="13"
         cy="13"
         r="10"
-        strokeDasharray={strokeDasharray == 0 ? -1000 : strokeDasharray}
-        strokeDashoffset={strokeOffset == 0 ? -1000 : strokeOffset}
+        strokeDasharray={strokeDasharray == 0 ? 1000 : strokeDasharray}
+        strokeDashoffset={strokeOffset == 0 ? 1000 : strokeOffset}
+      />
+      <circle
+        cx="13"
+        cy="13"
+        r="10"
+        strokeDasharray="-1000"
+        strokeDashoffset="-1000"
       />
     </SVG>
   );

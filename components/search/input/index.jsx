@@ -44,6 +44,10 @@ const InputStyled = styled("input", {
     scale: "0.9",
     opacity: "0",
   },
+  "&:not(:placeholder-shown) ~ button": {
+    scale: "1",
+    opacity: "1",
+  },
 });
 
 export default function Input({ ...props }) {
