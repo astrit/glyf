@@ -37,7 +37,7 @@ export default function Hero() {
             },
           }}
         >
-          Glyphs
+          6000+ Glyphs
         </Box>
         <Box
           as="span"

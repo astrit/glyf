@@ -91,12 +91,18 @@ export default function Search() {
   }, [searchTerm, symbolsData, selectedCategory]);
 
   const handleSlashKey = (event) => {
-    if (event.key === "/") {
+    // if (event.key === "/") {
+    if (
+      (event.keyCode === 191 || event.keyCode === 75) &&
+      (event.metaKey || event.ctrlKey)
+    ) {
+      // if (event.key === "/") {
       event.preventDefault();
       const input = document.getElementById("s");
       input.focus();
     } else if (event.key === "Escape") {
       const input = document.getElementById("s");
+      searchTerm && setSearchTerm("");
       input.blur();
     }
   };
