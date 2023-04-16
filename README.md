@@ -3,6 +3,17 @@
 Shift 2 to copy hex
 shift 3 to copy css
 shift something to copy other options
+-> Ads finish on mobile
+-> Format on mobile differently
+-> Virtualize
+-> Virtualize
+-> Virtualize
+-> Virtualize
+-> Virtualize
+-> Virtualize
+-> Virtualize
+-> Virtualize
+-> Virtualize
 
 # glf
 
