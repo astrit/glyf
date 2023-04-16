@@ -26,7 +26,7 @@ const Stars = ({ repo, ...props }) => {
   return (
     <Button
       to="https://github.com/astrit/css.gg"
-      title={stars !== null ? `${stars} Github stars` : "Loading..."}
+      title={stars !== null ? `${stars} Github stars` : "9.1k Github stars"}
       svg="github"
       {...props}
     />
