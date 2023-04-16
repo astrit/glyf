@@ -10,6 +10,11 @@ https://graphemica.com/%5E
 
 # TODO
 
+-> Glyphs single page
+-> Glyphs Finish
+-> Store recently copied locally
+-> Featured Glyphs
+
 1. https://nextjs.org/blog/next-13#og-image-generation
 2. @next/font
 3. next js image placeholder blur
