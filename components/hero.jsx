@@ -84,15 +84,16 @@ export default function Hero() {
           flexWrap: "wrap",
         }}
       >
-        <Button to="https://raycast.com/astrit" title="App Store" svg="apple" />
-        <Button to="https://raycast.com/astrit" title="Windows" svg="windows" />
-        <Button to="https://raycast.com/astrit" title="Figma" svg="figma" />
-        <Button to="https://raycast.com/astrit" title="Raycast" svg="raycast" />
-        {/* <Button
-          to="https://github.com/astrit/css.gg"
-          title={+"GitHub stars"}
-          svg="github"
-        /> */}
+        {/* <Button to="https://raycast.com/astrit" title="App Store" svg="apple" /> */}
+        {/* <Button to="https://raycast.com/astrit" title="Windows" svg="windows" /> */}
+        {/* <Button to="https://raycast.com/astrit" title="Figma" svg="figma" /> */}
+        {/* <Button to="https://raycast.com/astrit" title="Raycast" svg="raycast" /> */}
+        <Button
+          to="https://www.youtube.com/c/astrit?sub_confirmation=1"
+          title="@astrit"
+          svg="youtube"
+        />
+
         <Stars repo="astrit/css.gg" />
       </Box>
     </Box>

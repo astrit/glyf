@@ -7,6 +7,7 @@ import Apple from "./apple";
 import Windows from "./windows";
 import Figma from "./figma";
 import Close from "./close";
+import Youtube from "./youtube";
 
 const SVGMap = styled("svg", { display: "none" });
 
@@ -39,6 +40,9 @@ export const SVG = forwardRef(
         </Symbol>
         <Symbol name="Close" box="0 0 24 24">
           <Close />
+        </Symbol>
+        <Symbol name="Youtube" box="0 0 24 24">
+          <Youtube />
         </Symbol>
       </SVGMap>
     );
