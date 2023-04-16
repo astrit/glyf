@@ -9671,8 +9671,9 @@
                         "symbol": "⎇"
                     },
                     {
-                        "name": "Place of Interest Sign",
-                        "symbol": "⌘"
+                        "name": "Place of Interest Sign CMD Command",
+                        "symbol": "⌘",
+                        "descrtiption": "CMD Command"
                     },
                     {
                         "name": "Eject Symbol",
