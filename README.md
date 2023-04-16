@@ -22,3 +22,34 @@ https://graphemica.com/%5E
 5. https://nextjs.org/docs/basic-features/layouts
 6. tauri.app
 7. https://github.com/vercel/platforms
+
+# Some old shit
+
+# Some old shit
+
+# Some old shit
+
+# Some old shit
+
+# Some old shit
+
+# Some old shit
+
+# Some old shit
+
+# Some old shit
+
+https://graphemica.com/%5E
+// https://graphemica.com/%5E
+// https://graphemica.com/%5E
+// https://graphemica.com/%5E
+// https://graphemica.com/%5E
+
+To be added
+https://github.com/studio-freight/lenis
+
+Inspo:
+https://cln.sh/Zgnri8
+
+More button
+https://cln.sh/UIWfUk
