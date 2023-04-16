@@ -1530,6 +1530,11 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
+shuffle-letters@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/shuffle-letters/-/shuffle-letters-1.0.2.tgz#07c6a6163c312d8f992c8a4c886aa6b2df02f298"
+  integrity sha512-hGVg9N2PjLMjyz3EzhxPTp7sFkMncu9x6AT2Z2Hkedgty2WGBuFQ3c8qDdgstymJn7ap5hNk9XZ9bDXRczuswg==
+
 side-channel@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/side-channel/-/side-channel-1.0.4.tgz#efce5c8fdc104ee751b25c58d4290011fa5ea2cf"

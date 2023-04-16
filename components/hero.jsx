@@ -3,12 +3,6 @@ import Button from "@/button";
 import Link from "@/link";
 import Stars from "@/stars";
 
-// const Link = styled("a", {
-//   textDecoration: "underline",
-// });
-
-import { useState, useEffect } from "react";
-
 export default function Hero() {
   return (
     <Box
@@ -37,7 +31,28 @@ export default function Hero() {
             },
           }}
         >
-          6000+ Glyphs
+          Glyphs
+          <Box
+            css={{
+              display: "flex",
+              fontSize: "30vw",
+              position: "absolute",
+              zIndex: "-1",
+              pointerEvents: "none",
+              top: "-0.5ex",
+              lineHeight: "1",
+              scale: "4",
+              rotate: "42deg",
+              fontFeatureSettings: '"kern", "ss02"',
+              color: "hsla(300, 100%, 100%, 0.1)",
+              "-webkit-mask-image":
+                "linear-gradient(to bottom, hsla(300, 90%, 52%, 1) 0%, hsla(300, 90%, 52%, 0) 90%)",
+              maskImage:
+                "linear-gradient(to bottom, hsla(300, 90%, 52%, 0.5) 0%, hsla(300, 90%, 52%, 0) 99%)",
+            }}
+          >
+            5902
+          </Box>
         </Box>
         <Box
           as="span"

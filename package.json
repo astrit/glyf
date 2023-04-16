@@ -18,6 +18,7 @@
     "react-dom": "18.1.0",
     "react-window": "^1.8.8",
     "react-window-infinite-loader": "^1.0.8",
+    "shuffle-letters": "^1.0.2",
     "sonner": "^0.1.1",
     "vanilla-cookieconsent": "^2.8.6"
   },
