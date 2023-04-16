@@ -27,6 +27,11 @@ https://graphemica.com/%5E
 
 # Some old shit
 
+https://symbl.cc/en/1F16B/
+https://symbl.cc/en/1F16B/
+https://symbl.cc/en/1F16B/
+https://symbl.cc/en/1F16B/
+
 # Some old shit
 
 # Some old shit

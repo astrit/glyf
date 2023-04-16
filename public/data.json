@@ -7,22 +7,550 @@
                 "description": "Featured symbols",
                 "symbols": [
                     {
+                        "name": "Apple",
+                        "symbol": "",
+                        "unicode": "U+F8FF",
+                        "html_entity": "&#xF8FF;"
+                    },
+                    {
+                        "name": "Command CMD",
+                        "symbol": "⌘",
+                        "unicode": "U+2318",
+                        "html_entity": "&#x2318;"
+                    },
+                    {
+                        "name": "Left arrow",
+                        "symbol": "←",
+                        "unicode": "U+2190",
+                        "html_entity": "&#x2190;"
+                    },
+                    {
+                        "name": "Right arrow",
+                        "symbol": "→",
+                        "unicode": "U+2192",
+                        "html_entity": "&#x2192;"
+                    },
+                    {
+                        "name": "Leftwards arrow to bar",
+                        "symbol": "⟵",
+                        "unicode": "U+27F5",
+                        "html_entity": "&#x27F5;"
+                    },
+                    {
+                        "name": "Rightwards arrow to bar",
+                        "symbol": "⟶",
+                        "unicode": "U+27F6",
+                        "html_entity": "&#x27F6;"
+                    },
+                    {
+                        "name": "Northwest arrow",
+                        "symbol": "↖",
+                        "unicode": "U+2196",
+                        "html_entity": "&#x2196;"
+                    },
+                    {
+                        "name": "Northeast arrow",
+                        "symbol": "↗",
+                        "unicode": "U+2197",
+                        "html_entity": "&#x2197;"
+                    },
+                    {
+                        "name": "Southwest arrow",
+                        "symbol": "↙",
+                        "unicode": "U+2199",
+                        "html_entity": "&#x2199;"
+                    },
+                    {
+                        "name": "Southeast arrow",
+                        "symbol": "↘",
+                        "unicode": "U+2198",
+                        "html_entity": "&#x2198;"
+                    },
+                    {
+                        "name": "Up arrow",
+                        "symbol": "↑",
+                        "unicode": "U+2191",
+                        "html_entity": "&#x2191;"
+                    },
+                    {
+                        "name": "Down arrow",
+                        "symbol": "↓",
+                        "unicode": "U+2193",
+                        "html_entity": "&#x2193;"
+                    },
+                    {
+                        "name": "Up-down arrow",
+                        "symbol": "↕",
+                        "unicode": "U+2195",
+                        "html_entity": "&#x2195;"
+                    },
+                    {
+                        "name": "Left-right arrow",
+                        "symbol": "↔",
+                        "unicode": "U+2194",
+                        "html_entity": "&#x2194;"
+                    },
+                    {
+                        "name": "Leftwards harpoon over rightwards harpoon",
+                        "symbol": "⟷",
+                        "unicode": "U+21F7",
+                        "html_entity": "&#x21F7;"
+                    },
+                    {
+                        "name": "Leftwards double arrow with vertical stroke",
+                        "symbol": "⇤",
+                        "unicode": "U+21E4",
+                        "html_entity": "&#x21E4;"
+                    },
+                    {
+                        "name": "Rightwards double arrow with vertical stroke",
+                        "symbol": "⇥",
+                        "unicode": "U+21E5",
+                        "html_entity": "&#x21E5;"
+                    },
+                    {
+                        "name": "Counterclockwise open circle arrow",
+                        "symbol": "↺",
+                        "unicode": "U+21BA",
+                        "html_entity": "&#x21BA;"
+                    },
+                    {
+                        "name": "Clockwise open circle arrow",
+                        "symbol": "↻",
+                        "unicode": "U+21BB",
+                        "html_entity": "&#x21BB;"
+                    },
+                    {
+                        "name": "Escape",
+                        "symbol": "⎋",
+                        "unicode": "U+238B",
+                        "html_entity": "&#x238B;"
+                    },
+                    {
+                        "name": "Leftwards arrow with hook",
+                        "symbol": "↩",
+                        "unicode": "U+21A9",
+                        "html_entity": "&#x21A9;"
+                    },
+                    {
+                        "name": "Rightwards arrow with hook",
+                        "symbol": "↪",
+                        "unicode": "U+21AA",
+                        "html_entity": "&#x21AA;"
+                    },
+                    {
+                        "name": "Check mark",
+                        "symbol": "✓",
+                        "unicode": "U+2713",
+                        "html_entity": "&#x2713;"
+                    },
+                    {
+                        "name": "Ballot X",
+                        "symbol": "✗",
+                        "unicode": "U+2717",
+                        "html_entity": "&#x2717;"
+                    },
+                    {
+                        "name": "Up-pointing triangle",
+                        "symbol": "▲",
+                        "unicode": "U+25B2",
+                        "html_entity": "&#x25B2;"
+                    },
+                    {
+                        "name": "Down-pointing triangle",
+                        "symbol": "▼",
+                        "unicode": "U+25BC",
+                        "html_entity": "&#x25BC;"
+                    },
+                    {
+                        "name": "Black left-pointing triangle",
+                        "symbol": "◄",
+                        "unicode": "U+25C0",
+                        "html_entity": "&#x25C0;"
+                    },
+                    {
+                        "name": "Black right-pointing triangle",
+                        "symbol": "▶",
+                        "unicode": "U+25B6",
+                        "html_entity": "&#x25B6;"
+                    },
+                    {
+                        "name": "Black circle",
+                        "symbol": "●",
+                        "unicode": "U+25CF",
+                        "html_entity": "&#x25CF;"
+                    },
+                    {
+                        "name": "White circle",
+                        "symbol": "○",
+                        "unicode": "U+25CB",
+                        "html_entity": "&#x25CB;"
+                    },
+                    {
+                        "name": "Black square",
+                        "symbol": "■",
+                        "unicode": "U+25A0",
+                        "html_entity": "&#x25A0;"
+                    },
+                    {
+                        "name": "Empty square",
+                        "symbol": "▢",
+                        "unicode": "U+25A2",
+                        "html_entity": "&#x25A2;"
+                    },
+                    {
+                        "name": "Black large square",
+                        "symbol": "⬓",
+                        "unicode": "U+2B53",
+                        "html_entity": "&#x2B53;"
+                    },
+                    {
+                        "name": "White large square",
+                        "symbol": "⬒",
+                        "unicode": "U+2B52",
+                        "html_entity": "&#x2B52;"
+                    },
+                    {
+                        "name": "Black diamond",
+                        "symbol": "◆",
+                        "unicode": "U+25C6",
+                        "html_entity": "&#x25C6;"
+                    },
+                    {
+                        "name": "White diamond",
+                        "symbol": "◇",
+                        "unicode": "U+25C7",
+                        "html_entity": "&#x25C7;"
+                    },
+                    {
+                        "name": "Black diamond minus white x",
+                        "symbol": "⬥",
+                        "unicode": "U+2B25",
+                        "html_entity": "&#x2B25;"
+                    },
+                    {
+                        "name": "Sun",
+                        "symbol": "☀",
+                        "unicode": "U+2600",
+                        "html_entity": "&#x2600;"
+                    },
+                    {
+                        "name": "Black sun with rays",
+                        "symbol": "☼",
+                        "unicode": "U+263C",
+                        "html_entity": "&#x263C;"
+                    },
+                    {
                         "name": "Heart",
                         "symbol": "♥",
                         "unicode": "U+2665",
-                        "html_entity": "&hearts;"
+                        "html_entity": "&#x2665;"
                     },
                     {
-                        "name": "Apple",
-                        "symbol": ""
+                        "name": "White heart suit",
+                        "symbol": "♡",
+                        "unicode": "U+2661",
+                        "html_entity": "&#x2661;"
                     },
                     {
-                        "name": "CMD Command",
-                        "symbol": "⌘"
+                        "name": "Black star",
+                        "symbol": "★",
+                        "unicode": "U+2605",
+                        "html_entity": "&#x2605;"
                     },
                     {
-                        "name": "Copyright",
-                        "symbol": "©"
+                        "name": "White star",
+                        "symbol": "☆",
+                        "unicode": "U+2606",
+                        "html_entity": "&#x2606;"
+                    },
+                    {
+                        "name": "Up arrowhead",
+                        "symbol": "⌃",
+                        "unicode": "U+2303",
+                        "html_entity": "&#x2303;"
+                    },
+                    {
+                        "name": "Down arrowhead",
+                        "symbol": "⌅",
+                        "unicode": "U+2305",
+                        "html_entity": "&#x2305;"
+                    },
+                    {
+                        "name": "Option key",
+                        "symbol": "⌥",
+                        "unicode": "U+2325",
+                        "html_entity": "&#x2325;"
+                    },
+                    {
+                        "name": "Alt key",
+                        "symbol": "⎇",
+                        "unicode": "U+2387",
+                        "html_entity": "&#x2387;"
+                    },
+                    {
+                        "name": "Horizontal bar",
+                        "symbol": "―",
+                        "unicode": "U+2015",
+                        "html_entity": "&#x2015;"
+                    },
+                    {
+                        "name": "Plus sign",
+                        "symbol": "+",
+                        "unicode": "U+002B",
+                        "html_entity": "&#x2B;"
+                    },
+                    {
+                        "name": "Minus sign",
+                        "symbol": "−",
+                        "unicode": "U+2212",
+                        "html_entity": "&#x2212;"
+                    },
+                    {
+                        "name": "Multiplication sign",
+                        "symbol": "×",
+                        "unicode": "U+00D7",
+                        "html_entity": "&times;"
+                    },
+                    {
+                        "name": "Division sign",
+                        "symbol": "÷",
+                        "unicode": "U+00F7",
+                        "html_entity": "&divide;"
+                    },
+                    {
+                        "name": "Plus-minus sign",
+                        "symbol": "±",
+                        "unicode": "U+00B1",
+                        "html_entity": "&plusmn;"
+                    },
+                    {
+                        "name": "Approximately equal to",
+                        "symbol": "≈",
+                        "unicode": "U+2248",
+                        "html_entity": "&cong;"
+                    },
+                    {
+                        "name": "Tilde",
+                        "symbol": "~",
+                        "unicode": "U+007E",
+                        "html_entity": "&#x7E;"
+                    },
+                    {
+                        "name": "Dagger",
+                        "symbol": "†",
+                        "unicode": "U+2020",
+                        "html_entity": "&dagger;"
+                    },
+                    {
+                        "name": "Middle dot",
+                        "symbol": "·",
+                        "unicode": "U+00B7",
+                        "html_entity": "&middot;"
+                    },
+                    {
+                        "name": "Double dot",
+                        "symbol": "‥",
+                        "unicode": "U+2025",
+                        "html_entity": "&#x2025;"
+                    },
+                    {
+                        "name": "Horizontal ellipsis",
+                        "symbol": "…",
+                        "unicode": "U+2026",
+                        "html_entity": "&hellip;"
+                    },
+                    {
+                        "name": "Bullet",
+                        "symbol": "•",
+                        "unicode": "U+2022",
+                        "html_entity": "&bull;"
+                    },
+                    {
+                        "name": "White bullet",
+                        "symbol": "◦",
+                        "unicode": "U+25E6",
+                        "html_entity": "&#x25E6;"
+                    },
+                    {
+                        "name": "Black right-pointing small triangle",
+                        "symbol": "▸",
+                        "unicode": "U+25B8",
+                        "html_entity": "&#x25B8;"
+                    },
+                    {
+                        "name": "Trademark symbol",
+                        "symbol": "™",
+                        "unicode": "U+2122",
+                        "html_entity": "&trade;"
+                    },
+                    {
+                        "name": "Degree sign",
+                        "symbol": "°",
+                        "unicode": "U+00B0",
+                        "html_entity": "&deg;"
+                    },
+                    {
+                        "name": "Single left-pointing angle quotation mark",
+                        "symbol": "‹",
+                        "unicode": "U+2039",
+                        "html_entity": "&lsaquo;"
+                    },
+                    {
+                        "name": "Single right-pointing angle quotation mark",
+                        "symbol": "›",
+                        "unicode": "U+203A",
+                        "html_entity": "&rsaquo;"
+                    },
+                    {
+                        "name": "Left-pointing double angle quotation mark",
+                        "symbol": "«",
+                        "unicode": "U+00AB",
+                        "html_entity": "&laquo;"
+                    },
+                    {
+                        "name": "Right-pointing double angle quotation mark",
+                        "symbol": "»",
+                        "unicode": "U+00BB",
+                        "html_entity": "&raquo;"
+                    },
+                    {
+                        "name": "Less-than or equal to",
+                        "symbol": "≤",
+                        "unicode": "U+2264",
+                        "html_entity": "&le;"
+                    },
+                    {
+                        "name": "Greater-than or equal to",
+                        "symbol": "≥",
+                        "unicode": "U+2265",
+                        "html_entity": "&ge;"
+                    },
+                    {
+                        "name": "Not equal to",
+                        "symbol": "≠",
+                        "unicode": "U+2260",
+                        "html_entity": "&ne;"
+                    },
+                    {
+                        "name": "Numero sign",
+                        "symbol": "№",
+                        "unicode": "U+2116",
+                        "html_entity": "&#x2116;"
+                    },
+                    {
+                        "name": "Degrees Celsius",
+                        "symbol": "℃",
+                        "unicode": "U+2103",
+                        "html_entity": "&#x2103;"
+                    },
+                    {
+                        "name": "Degrees Fahrenheit",
+                        "symbol": "℉",
+                        "unicode": "U+2109",
+                        "html_entity": "&#x2109;"
+                    },
+                    {
+                        "name": "Rightwards arrow with curved hook",
+                        "symbol": "↳",
+                        "unicode": "U+21B3",
+                        "html_entity": "&#x21B3;"
+                    },
+                    {
+                        "name": "Downwards arrow with tip leftwards",
+                        "symbol": "↴",
+                        "unicode": "U+2934",
+                        "html_entity": "&#x2934;"
+                    },
+                    {
+                        "name": "Return symbol",
+                        "symbol": "⏎",
+                        "unicode": "U+23CE",
+                        "html_entity": "&#x23CE;"
+                    },
+                    {
+                        "name": "Downwards arrow with corner leftwards",
+                        "symbol": "↵",
+                        "unicode": "U+21B5",
+                        "html_entity": "&#x21B5;"
+                    },
+                    {
+                        "name": "Upper right arrow",
+                        "symbol": "↱",
+                        "unicode": "U+21B1",
+                        "html_entity": "&#x21B1;"
+                    },
+                    {
+                        "name": "Upper left arrow",
+                        "symbol": "↰",
+                        "unicode": "U+21B0",
+                        "html_entity": "&#x21B0;"
+                    },
+                    {
+                        "name": "Warning sign",
+                        "symbol": "⚠",
+                        "unicode": "U+26A0",
+                        "html_entity": "&#x26A0;"
+                    },
+                    {
+                        "name": "Upwards arrow",
+                        "symbol": "⬆",
+                        "unicode": "U+2B06",
+                        "html_entity": "&#x2B06;"
+                    },
+                    {
+                        "name": "Upwards white arrow",
+                        "symbol": "⇧",
+                        "unicode": "U+21E7",
+                        "html_entity": "&#x21E7;"
+                    },
+                    {
+                        "name": "Caps lock",
+                        "symbol": "⇪",
+                        "unicode": "U+21EA",
+                        "html_entity": "&#x21EA;"
+                    },
+                    {
+                        "name": "Registered sign",
+                        "symbol": "®",
+                        "unicode": "U+00AE",
+                        "html_entity": "&reg;"
+                    },
+                    {
+                        "name": "Sound recording copyright",
+                        "symbol": "℗",
+                        "unicode": "U+2117",
+                        "html_entity": "&#x2117;"
+                    },
+                    {
+                        "name": "Service mark",
+                        "symbol": "℠",
+                        "unicode": "U+2120",
+                        "html_entity": "&#x2120;"
+                    },
+                    {
+                        "name": "Telephone sign",
+                        "symbol": "℡",
+                        "unicode": "U+2121",
+                        "html_entity": "&#x2121;"
+                    },
+                    {
+                        "name": "Facsimile Sign FAX",
+                        "symbol": "℻",
+                        "unicode": "U+213B",
+                        "html_entity": "&#x213B;"
+                    },
+                    {
+                        "name": "Raised Md Sign",
+                        "symbol": "🅫",
+                        "unicode": "U+1F14B",
+                        "html_entity": "&#x1F14B;"
+                    },
+                    {
+                        "name": "Raised Mc Sign",
+                        "symbol": "🅪",
+                        "unicode": "U+1F14A",
+                        "html_entity": "&#x1F14A;"
                     }
                 ]
             },
