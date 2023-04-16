@@ -220,6 +220,13 @@ export default function Search() {
           pattern="[A-Za-z0-9\-]+"
           value={searchTerm}
           onChange={handleChange}
+          css={{
+            fontFamily: isLoading ? "Flow Circular" : "",
+
+            "&::placeholder": {
+              color: isLoading ? "white" : "",
+            },
+          }}
         />
         <Clear
           type="reset"
@@ -265,7 +272,6 @@ export default function Search() {
           alignItems: "center",
           minHeight: "58px",
           paddingLeft: "28px",
-          fontFamily: isLoading ? "Flow Circular" : "",
         }}
       >
         <Box
@@ -302,15 +308,27 @@ export default function Search() {
                 },
               }}
             >
-              <key>⇧</key> + <key>CLICK</key>
+              <key>⇧</key> +{" "}
+              <Box
+                as="key"
+                css={{ fontFamily: isLoading ? "Flow Circular" : "" }}
+              >
+                CLICK
+              </Box>
             </Box>
-            {(isSelected && <span>{isSelected} Selected</span>) ||
-              (searchTerm && (
-                <span>
-                  {numResults} result{numResults !== 1 ? "s" : ""}
-                </span>
-              ))}
-            <span>{numSymbols ? numSymbols : "0000"} Glyphs</span>
+            <Box
+              css={{
+                fontFamily: isLoading ? "Flow Circular" : "",
+              }}
+            >
+              {(isSelected && <span>{isSelected} Selected</span>) ||
+                (searchTerm && (
+                  <span>
+                    {numResults} result{numResults !== 1 ? "s" : ""}
+                  </span>
+                ))}
+              <span>{numSymbols ? numSymbols : "0000"} Glyphs</span>
+            </Box>
           </Box>
         </Box>
         {copiedSymbols && copiedSymbols.length > 0 ? (
