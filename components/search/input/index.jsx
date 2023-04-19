@@ -35,16 +35,18 @@ const InputStyled = styled("input", {
     borderColor: "rgba(255,255,255,0.2)",
     backgroundPosition: "left 30px center",
     paddingLeft: "246px",
-    // paddingLeft: "86px",
   },
+
   "&:focus ~ select": {
     translate: "6px 0",
   },
-  "&:not(:placeholder-shown) ~ div": {
+
+  "&:not(:placeholder-shown) ~ div, &:focus ~ div": {
     scale: "0.9",
     opacity: "0",
   },
-  "&:not(:placeholder-shown) ~ button": {
+
+  "&:not(:placeholder-shown) ~ button, &:focus ~ button": {
     scale: "1",
     opacity: "1",
   },
