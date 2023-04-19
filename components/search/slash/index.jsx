@@ -16,7 +16,7 @@ const Slashed = styled("div", {
   transition: "all 462ms cubic-bezier(0.23, 1, 0.32, 1)",
 });
 
-export default function Slash() {
+const Slash = () => {
   return (
     <Slashed>
       <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,4 +32,8 @@ export default function Slash() {
       </svg>
     </Slashed>
   );
-}
+};
+
+Slash.displayName = "Slash";
+
+export default Slash;

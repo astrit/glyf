@@ -52,6 +52,10 @@ const InputStyled = styled("input", {
   },
 });
 
-export default function Input({ ...props }) {
+const Input = ({ ...props }) => {
   return <InputStyled {...props} />;
-}
+};
+
+Input.displayName = "Input";
+
+export default Input;

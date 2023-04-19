@@ -27,7 +27,7 @@ const ClearStyled = styled("button", {
   scale: "0.9",
 });
 
-export default function Clear({ children, ...props }) {
+const Clear = ({ children, ...props }) => {
   return (
     <ClearStyled {...props}>
       <svg width="1em" height="1em">
@@ -35,4 +35,8 @@ export default function Clear({ children, ...props }) {
       </svg>
     </ClearStyled>
   );
-}
+};
+
+Clear.displayName = "Clear";
+
+export default Clear;

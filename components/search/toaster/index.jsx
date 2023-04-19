@@ -5,6 +5,7 @@ const ToasterStyled = styled("div", {
   gap: "10px",
   alignItems: "center",
   fontFamily: "var(--fonts)",
+  color: "hsla(261, 80%, 48%, 1.0)",
 
   span: {
     position: "relative",
@@ -21,6 +22,10 @@ const ToasterStyled = styled("div", {
   },
 });
 
-export default function Toaster({ children, ...props }) {
+const Toaster = ({ children, ...props }) => {
   return <ToasterStyled {...props}>{children}</ToasterStyled>;
-}
+};
+
+Toaster.displayName = "Toaster";
+
+export default Toaster;

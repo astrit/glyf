@@ -8,6 +8,10 @@ const FormStyled = styled("form", {
   zIndex: "1",
 });
 
-export default function Form({ children, ...props }) {
+const Form = ({ children, ...props }) => {
   return <FormStyled {...props}>{children}</FormStyled>;
-}
+};
+
+Form.displayName = "Form";
+
+export default Form;

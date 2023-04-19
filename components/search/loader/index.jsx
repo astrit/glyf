@@ -38,4 +38,6 @@ const CardSkeleton = () => {
   );
 };
 
+CardSkeleton.displayName = "CardSkeleton";
+
 export default CardSkeleton;

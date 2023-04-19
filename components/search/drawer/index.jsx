@@ -50,10 +50,14 @@ const DrawerStyled = styled("div", {
   },
 });
 
-export default function Drawer({ children, ...props }) {
+const Drawer = ({ children, ...props }) => {
   return (
     <DrawerStyled {...props}>
       <ul>{children}</ul>
     </DrawerStyled>
   );
-}
+};
+
+Drawer.displayName = "Drawer";
+
+export default Drawer;

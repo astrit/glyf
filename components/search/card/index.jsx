@@ -5,8 +5,6 @@ const CardStyled = styled("a", {
   alignItems: "center",
   justifyContent: "center",
   aspectRatio: "1/1",
-  // objectFit: "cover",
-  // objectPosition: "center",
   fontSize: "24px",
   lineHeight: "1",
   color: "$white_alpha10",
@@ -79,6 +77,10 @@ const CardStyled = styled("a", {
   },
 });
 
-export default function Card({ children, ...props }) {
+const Card = ({ children, ...props }) => {
   return <CardStyled {...props}>{children}</CardStyled>;
-}
+};
+
+Card.displayName = "Card";
+
+export default Card;

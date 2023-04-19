@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { styled } from "@/theme";
 
-export default function Scroll() {
+const Scroll = () => {
   const [strokeOffset, setStrokeOffset] = useState(0);
   const [strokeDasharray, setStrokeDasharray] = useState(0);
   const scrollRef = useRef(null);
@@ -10,11 +10,6 @@ export default function Scroll() {
     const prog = scrollRef.current;
     const leng = prog.getTotalLength();
 
-    // prog.style.strokeWidth = 4;
-    // prog.style.stroke = "hsla(60, 0%, 100%, 1)";
-    // prog.style.strokeDasharray = leng + " " + leng;
-    // prog.style.strokeDashoffset = leng;
-
     function updateProgress() {
       const progress =
         leng -
@@ -22,7 +17,6 @@ export default function Scroll() {
           (document.body.scrollHeight - window.innerHeight);
       setStrokeOffset(progress);
       setStrokeDasharray(leng);
-      // setStrokeDasharray(leng + " " + leng);
     }
 
     function handleScroll() {
@@ -45,8 +39,6 @@ export default function Scroll() {
       stroke: "hsla(60, 0%, 100%, 1)",
       strokeLinecap: "round",
       transition: "all 0.3s ease",
-      // strokeDashoffset: "80",
-      // strokeDasharray: "80",
 
       "&:nth-child(2)": {
         stroke: "hsla(60, 0%, 100%, 0.1)",
@@ -74,4 +66,8 @@ export default function Scroll() {
       />
     </SVG>
   );
-}
+};
+
+Scroll.displayName = "Scroll";
+
+export default Scroll;

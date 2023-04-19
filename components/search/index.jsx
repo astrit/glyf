@@ -13,6 +13,7 @@ import Toaster from "@/search/toaster";
 import Drawer from "@/search/drawer";
 import Clear from "@/search/clear";
 import Filter from "@/search/filter";
+import Action from "@/search/action";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -208,8 +209,45 @@ export default function Search() {
     }
   }, []);
 
-  function UrlFriendlyText(e) {
+  function toURL(e) {
     return e.toLowerCase().replace(/ /g, "-");
+  }
+
+  function toUnicode(e) {
+    return `U+${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
+  }
+
+  function copyToClipboardSymbol(symbol) {
+    navigator.clipboard.writeText(symbol);
+    handleCopySymbol(symbol);
+    toast.custom(() => (
+      <Toaster>
+        Copied <span>{symbol}</span> to clipboard!
+      </Toaster>
+    ));
+  }
+
+  function copyToClipboardUnicode(symbol) {
+    navigator.clipboard.writeText(toUnicode(symbol));
+    handleCopySymbol(symbol);
+    toast.custom(() => (
+      <Toaster>
+        Copied <span>{toUnicode(symbol)}</span> for <span>{symbol}</span> to
+        clipboard!
+      </Toaster>
+    ));
+  }
+
+  function handleClick(e, { symbol }) {
+    if (e.altKey) {
+      e.preventDefault();
+      copyToClipboardUnicode(symbol);
+    } else if (e.shiftKey) {
+      e.preventDefault();
+      copyToClipboardSymbol(symbol);
+    } else {
+      // handle regular click behavior
+    }
   }
 
   return (
@@ -280,66 +318,14 @@ export default function Search() {
           paddingLeft: "28px",
         }}
       >
-        <Box
-          css={{
-            color: "hsla(259, 73%, 76%, 1.0)",
-            fontSize: "14px",
-            fontFeatureSettings: '"kern", "ss02"',
-          }}
-        >
-          <Box
-            css={{
-              display: "flex",
-              gap: "24px",
-              alignItems: "center",
-            }}
-          >
-            <Box
-              css={{
-                display: "flex",
-                fontSize: "10px",
-                alignItems: "center",
-                gap: "4px",
+        <Action
+          isLoading={isLoading}
+          isSelected={isSelected}
+          searchTerm={searchTerm}
+          numResults={numResults}
+          numSymbols={numSymbols}
+        />
 
-                key: {
-                  display: "flex",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                  color: "White",
-                  fontWeight: "bold",
-                  background: "hsla(260, 73%, 53%, 1.0)",
-                  borderRadius: "8px",
-                  padding: "4px 8px",
-                  // backdropFilter: "blur(20px)",
-                  boxShadow:
-                    "1px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 12px rgba(0, 0, 0, 0.04)",
-                },
-              }}
-            >
-              <key>⇧</key> || <key>⎇</key> +
-              <Box
-                as="key"
-                css={{ fontFamily: isLoading ? "Flow Circular" : "" }}
-              >
-                CLICK
-              </Box>
-            </Box>
-            <Box
-              css={{
-                fontFamily: isLoading ? "Flow Circular" : "",
-                gap: "24px",
-                display: "flex",
-              }}
-            >
-              {(isSelected && <span>{isSelected} Selected</span>) ||
-                (searchTerm && (
-                  <span>
-                    {numResults} result{numResults !== 1 ? "s" : ""}
-                  </span>
-                ))}
-              <span>{numSymbols ? numSymbols : "0000"} Glyphs</span>
-            </Box>
-          </Box>
-        </Box>
         {copiedSymbols && copiedSymbols.length > 0 ? (
           <Drawer>
             {copiedSymbols.map((symbol, index) => (
@@ -356,38 +342,13 @@ export default function Search() {
           {searchResults.map((item, index) => (
             <Card
               key={index + "searchk"}
-              title={item.name}
-              // data-symbol={item.symbol}
-              href={`/${UrlFriendlyText(item.name)}`}
-              onClick={(e) => {
-                const symbolToUnicode = item.symbol
-                  .charCodeAt(0)
-                  .toString(16)
-                  .toUpperCase();
-                const uniCodeFromSymbol = `U+${"0".repeat(
-                  4 - symbolToUnicode.length
-                )}${symbolToUnicode}`;
-
-                if (e.altKey) {
-                  e.preventDefault();
-                  navigator.clipboard.writeText(uniCodeFromSymbol);
-                  handleCopySymbol(item.symbol);
-                  toast.custom(() => (
-                    <Toaster>
-                      Copied <span>{uniCodeFromSymbol}</span> for{" "}
-                      <span>{item.symbol}</span> to clipboard!
-                    </Toaster>
-                  ));
-                } else if (e.shiftKey) {
-                  e.preventDefault();
-                  navigator.clipboard.writeText(item.symbol);
-                  handleCopySymbol(item.symbol);
-                  toast.custom(() => (
-                    <Toaster>
-                      Copied <span>{item.symbol}</span> to clipboard! !
-                    </Toaster>
-                  ));
-                }
+              href={`/${toURL(item.name)}`}
+              onClick={(e) => handleClick(e, item)}
+              onMouseEnter={(e) => {
+                e.currentTarget.setAttribute("title", item.name);
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.removeAttribute("title", item.name);
               }}
             >
               <span>{item.symbol}</span>
