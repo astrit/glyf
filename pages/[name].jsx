@@ -33,8 +33,6 @@ function Symbol() {
   const [categoryData, setCategoryData] = useState(null);
   const isDev = process.env.NODE_ENV === "development";
 
-  // console.log(name);
-
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
@@ -60,22 +58,14 @@ function Symbol() {
   }, [name]);
 
   if (!symbolData) {
-    return <div>Loading...</div>;
+    return null;
   }
 
-  // const categorySymbols = isData.categories.category[0].symbols;
   const categorySymbols = categoryData.symbols;
 
-  // console.log(categorySymbols);
-  // console.log(symbolData);
-
   const symbolIndex = categorySymbols.findIndex(
-    (symbolData) => symbolData.name.toLowerCase().replace(/ /g, "-") === name
+    (symbolData) => symbolData?.name.toLowerCase().replace(/ /g, "-") === name
   );
-
-  // console.log(symbolIndex);
-
-  // return;
 
   const previousSymbol =
     symbolIndex > 0
@@ -86,13 +76,28 @@ function Symbol() {
       ? categorySymbols[symbolIndex + 1].name.toLowerCase().replace(/ /g, "-")
       : null;
 
-  // console.log(categorySymbols);
+  function toUnicode(e) {
+    return `U+${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
+  }
+
+  function toHtml(char) {
+    return `&#${char.charCodeAt(0)};`;
+  }
+
+  function toCSS(char) {
+    const codePoint = char.codePointAt(0).toString(16);
+    return `\\${codePoint} `;
+  }
+
+  function charToUrlEscapeCode(char) {
+    return encodeURIComponent(char);
+  }
 
   return (
     <>
       <Box>
         <Head>
-          <title>{name} — Glyphs from CSS.GG</title>
+          <title>{symbolData.name} — Glyphs from CSS.GG</title>
           <meta
             name="description"
             content="5000+ cool glyphs at your fingertips! Courtesy of CSS.GG, easy to find and copy to your clipboard."
@@ -127,16 +132,15 @@ function Symbol() {
             >
               {symbolData.symbol}
             </Box>
-            {/* <pre>
+            <pre>
               <code>
                 {symbolData.symbol} <br />
-                {symbolData.html_entity} <br />
-                {symbolData.html_entity_decimal} <br />
-                {symbolData.html_entity_hex} <br />
-                {symbolData.c} <br />
-                {symbolData.javascript} <br />
+                {toUnicode(symbolData.symbol)} <br />
+                {toHtml(symbolData.symbol)} <br />
+                {toCSS(symbolData.symbol)} <br />
+                {charToUrlEscapeCode(symbolData.symbol)} <br />
               </code>
-            </pre> */}
+            </pre>
             <Box
               css={{
                 display: "flex",
@@ -172,7 +176,6 @@ function Symbol() {
                       .replace(/ /g, "-")}`}
                     onClick={(e) => {
                       if (e.shiftKey) {
-                        // router.push("/" + item.symbol);
                         e.preventDefault();
                         navigator.clipboard.writeText(symbolData.symbol);
                         handleCopySymbol(symbolData.symbol);
