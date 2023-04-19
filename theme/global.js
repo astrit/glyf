@@ -29,9 +29,10 @@ export const style = globalCss({
   },
 
   body: {
+    "--fonts": fonts,
     margin: 0,
     padding: 0,
-    fontFamily: fonts,
+    fontFamily: "var(--fonts)",
     paddding: "8vw",
     color: "white",
     fontWeight: "400",

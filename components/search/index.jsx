@@ -208,6 +208,10 @@ export default function Search() {
     }
   }, []);
 
+  function UrlFriendlyText(e) {
+    return e.toLowerCase().replace(/ /g, "-");
+  }
+
   return (
     <>
       <Form>
@@ -311,7 +315,7 @@ export default function Search() {
                 },
               }}
             >
-              <key>⇧</key> +{" "}
+              <key>⇧</key> || <key>⎇</key> +
               <Box
                 as="key"
                 css={{ fontFamily: isLoading ? "Flow Circular" : "" }}
@@ -353,17 +357,34 @@ export default function Search() {
             <Card
               key={index + "searchk"}
               title={item.name}
-              data-symbol={item.symbol}
-              href={`/${item.symbol}`}
+              // data-symbol={item.symbol}
+              href={`/${UrlFriendlyText(item.name)}`}
               onClick={(e) => {
-                if (e.shiftKey) {
-                  // router.push("/" + item.symbol);
+                const symbolToUnicode = item.symbol
+                  .charCodeAt(0)
+                  .toString(16)
+                  .toUpperCase();
+                const uniCodeFromSymbol = `U+${"0".repeat(
+                  4 - symbolToUnicode.length
+                )}${symbolToUnicode}`;
+
+                if (e.altKey) {
+                  e.preventDefault();
+                  navigator.clipboard.writeText(uniCodeFromSymbol);
+                  handleCopySymbol(item.symbol);
+                  toast.custom(() => (
+                    <Toaster>
+                      Copied <span>{uniCodeFromSymbol}</span> for{" "}
+                      <span>{item.symbol}</span> to clipboard!
+                    </Toaster>
+                  ));
+                } else if (e.shiftKey) {
                   e.preventDefault();
                   navigator.clipboard.writeText(item.symbol);
                   handleCopySymbol(item.symbol);
                   toast.custom(() => (
                     <Toaster>
-                      Copied <span>{item.symbol}</span> to clipboard!
+                      Copied <span>{item.symbol}</span> to clipboard! !
                     </Toaster>
                   ));
                 }

@@ -9,20 +9,20 @@ export default function Glyphs({ Component, pageProps }) {
     <>
       <Component {...pageProps} />
       <Toaster
+        // richColors
+        // position="bottom-center"
+        // expand={false}
+
         richColors
+        theme="light"
         position="bottom-center"
         expand={false}
+        closeButton={true}
+        offset="40px"
+        duration={10000}
         toastOptions={{
           style: {
-            width: "280px",
-            paddingLeft: "26px",
-            right: "0px",
-            display: "flex",
-            alignItems: "center",
-            fontFamily: "Inter var, sans-serif",
-            color: "hsla(260, 74%, 50%, 1.0)",
-            boxShadow:
-              "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
+            borderRadius: "10px",
           },
         }}
       />

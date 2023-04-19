@@ -27,11 +27,13 @@ const Main = styled("main", {
 
 function Symbol() {
   const router = useRouter();
-  const { symbol } = router.query;
+  const { name } = router.query;
   const [isLoading, setIsLoading] = useState(true);
   const [symbolData, setSymbolData] = useState(null);
   const [categoryData, setCategoryData] = useState(null);
   const isDev = process.env.NODE_ENV === "development";
+
+  // console.log(name);
 
   useEffect(() => {
     async function fetchData() {
@@ -39,17 +41,23 @@ function Symbol() {
       const response = await fetch("./data.json");
       const data = await response.json();
       const matchingData = data.categories.category.flatMap((category) =>
-        category.symbols.filter((symbolData) => symbolData.symbol === symbol)
+        category.symbols.filter(
+          (symbolData) =>
+            symbolData.name.toLowerCase().replace(/ /g, "-") === name
+        )
       );
       setSymbolData(matchingData[0]);
       const category = data.categories.category.find((category) =>
-        category.symbols.some((symbolData) => symbolData.symbol === symbol)
+        category.symbols.some(
+          (symbolData) =>
+            symbolData.name.toLowerCase().replace(/ /g, "-") === name
+        )
       );
       setCategoryData(category);
       setIsLoading(false);
     }
     fetchData();
-  }, [symbol]);
+  }, [name]);
 
   if (!symbolData) {
     return <div>Loading...</div>;
@@ -58,31 +66,33 @@ function Symbol() {
   // const categorySymbols = isData.categories.category[0].symbols;
   const categorySymbols = categoryData.symbols;
 
-  console.log(categorySymbols);
-  console.log(symbolData);
+  // console.log(categorySymbols);
+  // console.log(symbolData);
 
   const symbolIndex = categorySymbols.findIndex(
-    (symbolData) => symbolData.symbol === symbol
+    (symbolData) => symbolData.name.toLowerCase().replace(/ /g, "-") === name
   );
 
-  console.log(symbolIndex);
+  // console.log(symbolIndex);
 
   // return;
 
   const previousSymbol =
-    symbolIndex > 0 ? categorySymbols[symbolIndex - 1].symbol : null;
+    symbolIndex > 0
+      ? categorySymbols[symbolIndex - 1].name.toLowerCase().replace(/ /g, "-")
+      : null;
   const nextSymbol =
     symbolIndex < categorySymbols.length - 1
-      ? categorySymbols[symbolIndex + 1].symbol
+      ? categorySymbols[symbolIndex + 1].name.toLowerCase().replace(/ /g, "-")
       : null;
 
-  console.log(categorySymbols);
+  // console.log(categorySymbols);
 
   return (
     <>
       <Box>
         <Head>
-          <title>{symbol} — Glyphs from CSS.GG</title>
+          <title>{name} — Glyphs from CSS.GG</title>
           <meta
             name="description"
             content="5000+ cool glyphs at your fingertips! Courtesy of CSS.GG, easy to find and copy to your clipboard."
@@ -115,7 +125,7 @@ function Symbol() {
                 boxSizing: "border-box",
               }}
             >
-              {symbol}
+              {symbolData.symbol}
             </Box>
             {/* <pre>
               <code>
@@ -157,7 +167,9 @@ function Symbol() {
                     key={index + "searchk"}
                     title={symbolData.name}
                     data-symbol={symbolData.symbol}
-                    href={`/${symbolData.symbol}`}
+                    href={`/${symbolData.name
+                      .toLowerCase()
+                      .replace(/ /g, "-")}`}
                     onClick={(e) => {
                       if (e.shiftKey) {
                         // router.push("/" + item.symbol);
