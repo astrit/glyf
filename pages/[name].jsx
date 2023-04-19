@@ -93,6 +93,36 @@ function Symbol() {
     return encodeURIComponent(char);
   }
 
+  function createSvgPatternFromChar(char) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    svg.setAttribute("width", "64");
+    svg.setAttribute("height", "64");
+    rect.setAttribute("width", "100%");
+    rect.setAttribute("height", "100%");
+    rect.setAttribute("fill", "transparent");
+    text.setAttribute("fill", "hsla(0, 100%, 100%, 0.08)");
+    text.setAttribute("x", "50%");
+    text.setAttribute("y", "50%");
+    text.setAttribute("font-size", "48");
+    text.setAttribute("font-weight", "normal");
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute(
+      "font-family",
+      '"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI"'
+    );
+    text.setAttribute("dominant-baseline", "central");
+    text.textContent = char;
+    svg.appendChild(rect);
+    svg.appendChild(text);
+    const svgString = new XMLSerializer().serializeToString(svg);
+    const encodedSvg = encodeURIComponent(svgString);
+    return `url('data:image/svg+xml;charset=utf-8,${encodedSvg}')`;
+  }
+
+  const pattern = createSvgPatternFromChar(symbolData.symbol);
+  console.log(pattern);
   return (
     <>
       <Box>
@@ -105,7 +135,13 @@ function Symbol() {
         </Head>
         <Header />
         <SVGMap />
-        <Main>
+        <Main
+          css={{
+            "--bg": pattern,
+            backgroundImage: "var(--bg)",
+            backgroundRepeat: "repeat-x",
+          }}
+        >
           <Hero />
           <div>
             <h1>{symbolData.name}</h1>
@@ -141,6 +177,9 @@ function Symbol() {
                 {charToUrlEscapeCode(symbolData.symbol)} <br />
               </code>
             </pre>
+            <button onClick={() => navigator.clipboard.writeText(pattern)}>
+              Copy Pattern
+            </button>
             <Box
               css={{
                 display: "flex",
