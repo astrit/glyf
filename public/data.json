@@ -19,6 +19,48 @@
                         "html_entity": "&#x2318;"
                     },
                     {
+                        "name": "Command CMD",
+                        "symbol": "⚯",
+                        "unicode": "U+2318",
+                        "html_entity": "&#x2318;"
+                    },
+                    {
+                        "name": "Command CMD",
+                        "symbol": "✚",
+                        "unicode": "U+2318",
+                        "html_entity": "&#x2318;"
+                    },
+                    {
+                        "name": "Command CMD",
+                        "symbol": "☰",
+                        "unicode": "U+2318",
+                        "html_entity": "&#x2318;"
+                    },
+                    {
+                        "name": "Command CMD",
+                        "symbol": "☉",
+                        "unicode": "U+2318",
+                        "html_entity": "&#x2318;"
+                    },
+                    {
+                        "name": "Command CMD",
+                        "symbol": "†",
+                        "unicode": "U+2318",
+                        "html_entity": "&#x2318;"
+                    },
+                    {
+                        "name": "Command CMD",
+                        "symbol": "☀️",
+                        "unicode": "U+2318",
+                        "html_entity": "&#x2318;"
+                    },
+                    {
+                        "name": "Command CMD",
+                        "symbol": "☾",
+                        "unicode": "U+2318",
+                        "html_entity": "&#x2318;"
+                    },
+                    {
                         "name": "Left arrow",
                         "symbol": "←",
                         "unicode": "U+2190",
