@@ -14,6 +14,13 @@ import Drawer from "@/search/drawer";
 import Clear from "@/search/clear";
 import Filter from "@/search/filter";
 import Action from "@/search/action";
+// import Utils from "@/search/utils";
+import {
+  toURL,
+  toUnicode,
+  levenshteinDistance,
+  handleClearCopiedSymbols,
+} from "@/search/utils";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -72,7 +79,13 @@ export default function Search() {
             words.map((word) => `(?=.*${word})`).join("") + ".*",
             "i"
           );
-          return symbolRegex.test(symbolWords.join(""));
+          if (symbol.symbol === searchTerm) {
+            return true;
+          }
+          const distance = levenshteinDistance(searchTerm, symbolName);
+          return distance <= 4 || symbolRegex.test(symbolWords.join(""));
+
+          // return symbolRegex.test(symbolWords.join(""));
         });
         numResults += categoryResults.length;
         return categoryResults;
@@ -145,77 +158,6 @@ export default function Search() {
     localStorage.removeItem("copiedSymbols");
     setCopiedSymbols([]);
   };
-  useEffect(() => {
-    if (1 == 2) {
-      // THIS IS DISABLED FOR NOW
-      const selection = new SelectionArea({
-        selectables: [".glyphs > a"],
-        boundaries: ["body"],
-        behaviour: {
-          overlap: "invert",
-        },
-        features: {
-          touch: false,
-        },
-        singleTap: {
-          allow: false,
-          intersect: "native",
-        },
-        quite: true,
-      })
-        .on("start", ({ store, event }) => {
-          if (!event.ctrlKey && !event.metaKey) {
-            for (const el of store.stored) {
-              el.classList.remove("selected");
-            }
-            selection.clearSelection();
-          }
-        })
-        .on(
-          "move",
-          ({
-            store: {
-              changed: { added, removed },
-            },
-          }) => {
-            for (const el of added) {
-              el.classList.add("selected");
-            }
-            for (const el of removed) {
-              el.classList.remove("selected");
-            }
-          }
-        )
-        .on("stop", ({ store, store: { stored } }) => {
-          document.body.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-              for (const el of store.stored) {
-                el.classList.remove("selected");
-              }
-              setSelected(false);
-              selection.clearSelection();
-            }
-          });
-          const selectedState = selection._selection.stored.length;
-          setSelected(selectedState);
-          setCopiedSymbols(
-            stored
-              .map((el) =>
-                selectedState ? el.getAttribute("data-symbol") : null
-              )
-              .slice(0, 10)
-          );
-        });
-    }
-  }, []);
-
-  function toURL(e) {
-    return e.toLowerCase().replace(/ /g, "-");
-  }
-
-  function toUnicode(e) {
-    return `U+${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
-  }
 
   function copyToClipboardSymbol(symbol) {
     navigator.clipboard.writeText(symbol);
@@ -249,7 +191,6 @@ export default function Search() {
       // handle regular click behavior
     }
   }
-
   return (
     <>
       <Form>
