@@ -2,7 +2,7 @@ import Box from "@/box";
 import Button from "@/button";
 import Link from "@/link";
 import Stars from "@/stars";
-
+import Visitors from "@/visitors";
 export default function Hero() {
   return (
     <Box
@@ -83,8 +83,16 @@ export default function Hero() {
           display: "flex",
           gap: "14px",
           flexWrap: "wrap",
+          alignItems: "center",
         }}
       >
+        <Box
+          css={{
+            fontSize: "10px",
+          }}
+        >
+          <Visitors />
+        </Box>
         {/* <Button to="https://raycast.com/astrit" title="App Store" svg="apple" /> */}
         {/* <Button to="https://raycast.com/astrit" title="Windows" svg="windows" /> */}
         {/* <Button to="https://raycast.com/astrit" title="Figma" svg="figma" /> */}
