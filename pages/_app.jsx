@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 
 export default function Glyphs({ Component, pageProps }) {
   style();
+  console.log("Analytics", Analytics);
   return (
     <>
       <Component {...pageProps} />

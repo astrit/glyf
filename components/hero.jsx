@@ -86,13 +86,13 @@ export default function Hero() {
           alignItems: "center",
         }}
       >
-        <Box
+        {/* <Box
           css={{
             fontSize: "10px",
           }}
         >
           <Visitors />
-        </Box>
+        </Box> */}
         {/* <Button to="https://raycast.com/astrit" title="App Store" svg="apple" /> */}
         {/* <Button to="https://raycast.com/astrit" title="Windows" svg="windows" /> */}
         {/* <Button to="https://raycast.com/astrit" title="Figma" svg="figma" /> */}
