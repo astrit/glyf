@@ -1,41 +1,32 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-const ActiveVisitors = () => {
-  const [activeVisitors, setActiveVisitors] = useState(0);
+const OnlineUsers = () => {
+  const [onlineVisitors, setOnlineVisitors] = useState(0);
 
   useEffect(() => {
-    const socket = io("https://glyphs.css.gg");
-
+    const socket = io("https://glyphs.css.gg"); // replace with your server URL
     socket.on("connect", () => {
-      console.log("Socket connected");
+      console.log("Connected to server");
     });
 
-    socket.on("activeVisitors", (count) => {
-      console.log(`Received activeVisitors event: ${count}`);
-      setActiveVisitors(count);
-    });
+    socket.emit("getOnlineVisitors");
 
-    socket.on("disconnect", () => {
-      console.log("Socket disconnected");
-      setActiveVisitors(0);
-    });
-
-    socket.on("connect_error", (error) => {
-      console.error("Socket connection error:", error);
-    });
-
-    socket.on("connect_timeout", (timeout) => {
-      console.error("Socket connection timeout:", timeout);
+    socket.on("onlineVisitors", (visitors) => {
+      setOnlineVisitors(visitors);
     });
 
     return () => {
-      console.log("Disconnecting socket");
       socket.disconnect();
     };
   }, []);
 
-  return <div>Active Visitors: {activeVisitors}</div>;
+  return (
+    <div>
+      <h2>Online Visitors</h2>
+      <p>{onlineVisitors} visitors online</p>
+    </div>
+  );
 };
 
-export default ActiveVisitors;
+export default OnlineUsers;
