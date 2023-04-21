@@ -93,84 +93,33 @@ function Symbol() {
     return encodeURIComponent(char);
   }
 
-  function textToPath(text) {
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-
-    // Set the path's `d` attribute to a series of SVG path commands that draw the text as a path
-    let d = "";
-    const characters = text.split("");
-    let x = 0;
-    let y = 0;
-    characters.forEach((char) => {
-      const glyph = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "text"
-      );
-      glyph.setAttribute("x", x);
-      glyph.setAttribute("y", y);
-      glyph.setAttribute("font-size", "48");
-      glyph.setAttribute("font-weight", "normal");
-      glyph.setAttribute("text-anchor", "left");
-      glyph.setAttribute("dominant-baseline", "alphabetic");
-      glyph.textContent = char;
-      const bbox = glyph.getBBox();
-      const width = bbox.width;
-      const height = bbox.height;
-      const pathCommands = `M ${x},${
-        y - height
-      } v ${height} h ${width} v ${-height} h ${-width} Z `;
-      d += pathCommands;
-      x += width;
-    });
-
-    path.setAttribute("d", d);
-    return path;
-  }
-
-  function createSvgPatternFromText(text) {
+  function createSvgPatternFromChar(char) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-    const path = textToPath(text);
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
     svg.setAttribute("width", "64");
     svg.setAttribute("height", "64");
     rect.setAttribute("width", "100%");
     rect.setAttribute("height", "100%");
     rect.setAttribute("fill", "transparent");
-    path.setAttribute("fill", "hsla(0, 100%, 100%, 0.08)");
+    text.setAttribute("fill", "hsla(0, 100%, 100%, 0.08)");
+    text.setAttribute("x", "50%");
+    text.setAttribute("y", "50%");
+    text.setAttribute("font-size", "48");
+    text.setAttribute("font-weight", "normal");
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute(
+      "font-family",
+      '"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI"'
+    );
+    text.setAttribute("dominant-baseline", "central");
+    text.textContent = char;
     svg.appendChild(rect);
-    svg.appendChild(path);
+    svg.appendChild(text);
     const svgString = new XMLSerializer().serializeToString(svg);
     const encodedSvg = encodeURIComponent(svgString);
     return `url('data:image/svg+xml;charset=utf-8,${encodedSvg}')`;
   }
-
-  // function createSvgPatternFromChar(char) {
-  //   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  //   const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  //   const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-  //   svg.setAttribute("width", "64");
-  //   svg.setAttribute("height", "64");
-  //   rect.setAttribute("width", "100%");
-  //   rect.setAttribute("height", "100%");
-  //   rect.setAttribute("fill", "transparent");
-  //   text.setAttribute("fill", "hsla(0, 100%, 100%, 0.08)");
-  //   text.setAttribute("x", "50%");
-  //   text.setAttribute("y", "50%");
-  //   text.setAttribute("font-size", "48");
-  //   text.setAttribute("font-weight", "normal");
-  //   text.setAttribute("text-anchor", "middle");
-  //   text.setAttribute(
-  //     "font-family",
-  //     '"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI"'
-  //   );
-  //   text.setAttribute("dominant-baseline", "central");
-  //   text.textContent = char;
-  //   svg.appendChild(rect);
-  //   svg.appendChild(text);
-  //   const svgString = new XMLSerializer().serializeToString(svg);
-  //   const encodedSvg = encodeURIComponent(svgString);
-  //   return `url('data:image/svg+xml;charset=utf-8,${encodedSvg}')`;
-  // }
 
   const pattern = createSvgPatternFromChar(symbolData.symbol);
   console.log(pattern);
