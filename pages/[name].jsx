@@ -234,8 +234,8 @@ function Symbol() {
             )}
           </div>
           {/* <Search /> */}
+          {/* {!isDev && <Carbon />} */}
           <Footer />
-          {!isDev && <Carbon />}
         </Main>
       </Box>
     </>

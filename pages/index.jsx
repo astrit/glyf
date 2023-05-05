@@ -37,7 +37,7 @@ export default function Home() {
           <Hero />
           <Search />
           <Footer />
-          {!isDev && <Carbon />}
+          {/* {!isDev && <Carbon />} */}
         </Main>
       </Box>
     </>

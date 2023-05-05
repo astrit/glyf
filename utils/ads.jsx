@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { styled } from "@/theme";
+// import { error } from "console";
 
 const Ads = styled("div", {
   display: "flex",
@@ -45,14 +47,23 @@ const Ads = styled("div", {
 });
 
 export default function Carbon() {
+  const [isAds, setAds] = useState(null);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "//cdn.carbonads.com/carbon.js?serve=CE7DEK3M&placement=cssgg";
+    script.id = "_carbonads_js";
+    script.async = true;
+
+    const ads = document.querySelector("#ads");
+    if (ads) {
+      ads.appendChild(script);
+    }
+  }, [setAds]);
+
   return (
     <Ads>
-      <script
-        async
-        type="text/javascript"
-        src="//cdn.carbonads.com/carbon.js?serve=CE7DEK3M&placement=cssgg"
-        id="_carbonads_js"
-      ></script>
+      <div id="ads"></div>
     </Ads>
   );
 }
