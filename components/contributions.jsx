@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Contributions = ({
-  username,
-  date = new Date().toLocaleDateString("en-US", { timeZone: "UTC+01:00" }),
-}) => {
+const Contributions = ({ username, date }) => {
   const [contributions, setContributions] = useState(null);
 
   useEffect(() => {
@@ -26,13 +23,13 @@ const Contributions = ({
   }, [username, date]);
 
   return (
-    <>
+    <div>
       {contributions !== null ? (
-        <>{`- ${username} ( ${contributions} ~ ${date} )`}</>
+        <p>{`${username} made ${contributions} contributions on ${date}`}</p>
       ) : (
-        <>...</>
+        <p>Loading...</p>
       )}
-    </>
+    </div>
   );
 };
 
