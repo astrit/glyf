@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const Contributions = ({
   username,
-  date = new Date().toLocaleDateString("en-US", { timeZone: "UTC" }),
+  date = new Date().toLocaleDateString("en-US", { timeZone: "UTC+01:00" }),
 }) => {
   const [contributions, setContributions] = useState(null);
 
