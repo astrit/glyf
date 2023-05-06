@@ -46,8 +46,9 @@ const Ads = styled("div", {
     right: 0,
     width: "100%",
     borderRadius: 0,
-    background: "rgba(255,255,255,0.7)",
-    backdropFilter: "blur(10px)",
+    // background: "rgba(255,255,255,0.7)",
+    // backdropFilter: "blur(10px)",
+    paddingBottom: "env(safe-area-inset-bottom)",
 
     ".carbon-wrap": {
       flexDirection: "row",
