@@ -3,6 +3,7 @@ import Box from "@/box";
 import { styled } from "@/theme";
 import Image from "next/image";
 import Link from "@/link";
+import Contributions from "@/contributions";
 
 // https://mtxn84-3000.preview.csb.app/
 
@@ -34,7 +35,8 @@ export default function Footer() {
           alt="Astrit"
         />
       </Link>
-      © {`${new Date().getFullYear()}`}
+      © {`${new Date().getFullYear()}`} <Contributions username="astrit" />
+      {/* <Contributions username="astrit" date="2023-05-06" /> */}
     </Layout>
   );
 }
