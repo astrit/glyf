@@ -357,7 +357,7 @@
                         "html_entity": "&cong;"
                     },
                     {
-                        "name": "Tilde",
+                        "name": "Tilde 1",
                         "symbol": "~",
                         "unicode": "U+007E",
                         "html_entity": "&#x7E;"
@@ -723,7 +723,7 @@
                         "html_entity": "&#35;"
                     },
                     {
-                        "name": "Tilde",
+                        "name": "Tilde 2",
                         "symbol": "~",
                         "unicode": "U+007E",
                         "html_entity": "&#126;"
@@ -20840,7 +20840,7 @@
                         "symbol": "㋕"
                     },
                     {
-                        "name": "Circled Katakana Ki",
+                        "name": "Circled Katakana Kii",
                         "symbol": "㋖"
                     },
                     {
