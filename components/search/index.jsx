@@ -232,13 +232,11 @@ export default function Search() {
             }}
           >
             <option value="">All categories</option>
-            {symbolsData.categories.category
-              .sort((a, b) => a.title.localeCompare(b.title)) // sort alphabetically
-              .map((category) => (
-                <option key={category.title} value={category.title}>
-                  {`${category.title} (${category.symbols.length})`}
-                </option>
-              ))}
+            {symbolsData.categories.category.map((category) => (
+              <option key={category.title} value={category.title}>
+                {`${category.title} (${category.symbols.length})`}
+              </option>
+            ))}
           </Filter>
         ) : (
           <Filter
