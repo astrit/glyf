@@ -2621,8 +2621,8 @@
                 ]
             },
             {
-                "slug": "check-marks",
-                "title": "Check Marks",
+                "slug": "check",
+                "title": "Check",
                 "symbols": [
                     {
                         "name": "Ballot Box With Check",
