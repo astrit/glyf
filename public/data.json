@@ -2467,8 +2467,8 @@
                 ]
             },
             {
-                "slug": "flowers-snowflakes",
-                "title": "Flowers and Snowflakes",
+                "slug": "flowers",
+                "title": "Flowers",
                 "symbols": [
                     {
                         "name": "Black Florette",
@@ -3087,8 +3087,8 @@
                 ]
             },
             {
-                "slug": "smiley-faces",
-                "title": "Smiley Faces",
+                "slug": "emoticons",
+                "title": "Emoticons",
                 "symbols": [
                     {
                         "name": "Black Smiling Face",
@@ -3245,8 +3245,8 @@
                 ]
             },
             {
-                "slug": "people-genders",
-                "title": "People and Genders",
+                "slug": "genders",
+                "title": "Genders",
                 "symbols": [
                     {
                         "name": "Female Sign",
@@ -3469,8 +3469,8 @@
                 ]
             },
             {
-                "slug": "music-games",
-                "title": "Music and Games",
+                "slug": "media",
+                "title": "Media",
                 "symbols": [
                     {
                         "name": "Quarter Note",
@@ -4483,8 +4483,8 @@
                 ]
             },
             {
-                "slug": "astrology-religion",
-                "title": "Astrology and Religion",
+                "slug": "cosmology",
+                "title": "Cosmology",
                 "symbols": [
                     {
                         "name": "Sun",
@@ -11364,8 +11364,8 @@
                 ]
             },
             {
-                "slug": "units-measurements",
-                "title": "Units and Measurements",
+                "slug": "units",
+                "title": "Units",
                 "symbols": [
                     {
                         "name": "Degree Celsius",
@@ -18352,8 +18352,8 @@
                 ]
             },
             {
-                "slug": "phonetic-alphabet",
-                "title": "Phonetic Alphabet",
+                "slug": "phonetics",
+                "title": "Phonetics",
                 "symbols": [
                     {
                         "name": "Latin Capital Letter A",
@@ -18762,8 +18762,8 @@
                 ]
             },
             {
-                "slug": "chinese-radicals",
-                "title": "Chinese Radicals",
+                "slug": "bushou",
+                "title": "Bushou",
                 "symbols": [
                     {
                         "name": "CJK Stroke T",
@@ -20144,8 +20144,8 @@
                 ]
             },
             {
-                "slug": "pinyin-alphabet",
-                "title": "Pinyin Alphabet",
+                "slug": "pinyin",
+                "title": "Pinyin",
                 "symbols": [
                     {
                         "name": "Latin Capital Letter A",
@@ -22010,13 +22010,7 @@
                     {
                         "name": "Katakana Digraph Koto",
                         "symbol": "ヿ"
-                    }
-                ]
-            },
-            {
-                "slug": "enclosed-japanese",
-                "title": "Enclosed Japanese Characters",
-                "symbols": [
+                    },
                     {
                         "name": "Circled Ideograph Advantage",
                         "symbol": "🉐"
@@ -22580,13 +22574,7 @@
                     {
                         "name": "Tortoise Shell Bracketed CJK Unified Ideograph-4e09",
                         "symbol": "🉁"
-                    }
-                ]
-            },
-            {
-                "slug": "square-japanese",
-                "title": "Square Japanese Words",
-                "symbols": [
+                    },
                     {
                         "name": "Square Era Name Heisei",
                         "symbol": "㍻"

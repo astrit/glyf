@@ -231,10 +231,11 @@ export default function Search() {
               );
             }}
           >
+            {/* {`${category.symbols[0].symbol} ${category.title} (${category.symbols.length})`} */}
             <option value="">All categories</option>
             {symbolsData.categories.category.map((category) => (
               <option key={category.title} value={category.title}>
-                {`${category.symbols[0].symbol} ${category.title} (${category.symbols.length})`}
+                {`${category.title} (${category.symbols.length})`}
               </option>
             ))}
           </Filter>
