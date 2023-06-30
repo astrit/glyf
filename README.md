@@ -15,6 +15,8 @@ shift something to copy other options
 -> Virtualize
 -> Virtualize
 
+https://www.unicode.org/Public/UCD/latest/ucdxml/
+
 # glf
 
 # glf
