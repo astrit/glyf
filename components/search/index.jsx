@@ -205,7 +205,7 @@ export default function Search() {
           value={searchTerm}
           onChange={handleChange}
           css={{
-            fontFamily: isLoading ? "Flow Circular" : "",
+            // fontFamily: isLoading ? "Flow Circular" : "",
 
             "&::placeholder": {
               color: isLoading ? "hsla(257, 72%, 69%, 1.0)" : "",

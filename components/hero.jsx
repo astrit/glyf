@@ -34,7 +34,8 @@ export default function Hero() {
           Glyphs
           <Box
             css={{
-              display: "flex",
+              display: "none",
+              // display: "flex",
               fontSize: "30vw",
               position: "fixed",
               zIndex: "-1",
@@ -95,15 +96,24 @@ export default function Hero() {
         </Box> */}
         {/* <Button to="https://raycast.com/astrit" title="App Store" svg="apple" /> */}
         {/* <Button to="https://raycast.com/astrit" title="Windows" svg="windows" /> */}
-        {/* <Button to="https://raycast.com/astrit" title="Figma" svg="figma" /> */}
-        {/* <Button to="https://raycast.com/astrit" title="Raycast" svg="raycast" /> */}
         <Button
+          to="https://www.figma.com/community/file/834587122842084475/css.gg"
+          title="Figma 48k"
+          svg="figma"
+        />
+
+        {/* <Button
           to="https://www.youtube.com/c/astrit?sub_confirmation=1"
           title="@astrit"
           svg="youtube"
-        />
+        /> */}
 
         <Stars repo="astrit/css.gg" />
+        <Button
+          to="https://raycast.com/astrit"
+          title="Raycast 1.1k"
+          svg="raycast"
+        />
       </Box>
     </Box>
   );

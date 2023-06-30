@@ -62,6 +62,8 @@ const CardStyled = styled("a", {
     willChange: "transform, opacity, border-radius, border-width, box-shadow",
     // display: "none",
     visibility: "hidden",
+    transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+    transitionDelay: "background 0.8s",
   },
 
   "&:hover::after, &.selected::after": {
@@ -70,6 +72,8 @@ const CardStyled = styled("a", {
     transform: "scale3d(1.12,1.12,1.12)",
     borderRadius: "24px",
     cursor: "pointer",
+    background:
+      "linear-gradient(100deg, hsla(209, 99%, 67%, 1.0) 0%, #b447eb 95%)",
   },
   "&:active::after": {
     transform: "scale3d(1.02, 1.02, 1.02)",
