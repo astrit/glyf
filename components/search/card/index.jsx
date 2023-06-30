@@ -1,6 +1,7 @@
 import { styled } from "@/theme";
+import Link from "@/link";
 
-const CardStyled = styled("a", {
+const CardStyled = styled(Link, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
