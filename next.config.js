@@ -4,6 +4,12 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  experimental: {
+    images: {
+      layoutRaw: true,
+    },
+    ssr: false,
+  },
   images: {
     domains: [
       "images.unsplash.com",

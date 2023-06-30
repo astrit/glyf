@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import SelectionArea from "@viselect/vanilla";
 import { toast } from "sonner";
 import Box from "@/box";
@@ -15,6 +15,9 @@ import Clear from "@/search/clear";
 import Filter from "@/search/filter";
 import Action from "@/search/action";
 // import Utils from "@/search/utils";
+
+import { SymbolsContext } from "@/SymbolsContext";
+
 import {
   toURL,
   toUnicode,
@@ -25,8 +28,8 @@ import {
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [symbolsData, setSymbolsData] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [symbolsData, setSymbolsData] = useState(null);
   const [numResults, setNumResults] = useState(0);
   const [numSymbols, setNumSymbols] = useState(0);
   const [copiedSymbols, setCopiedSymbols] = useState([]);
@@ -37,19 +40,21 @@ export default function Search() {
     setSearchTerm(event.target.value);
   };
 
-  useEffect(() => {
-    setIsLoading(true);
-    fetch("./data.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setSymbolsData(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsLoading(false);
-      });
-  }, []);
+  const { symbolsData, isLoading, setIsLoading } = useContext(SymbolsContext);
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   fetch("./data.json")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setSymbolsData(data);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //       setIsLoading(false);
+  //     });
+  // }, []);
 
   function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -57,7 +62,7 @@ export default function Search() {
 
   useEffect(() => {
     if (!symbolsData) return;
-    setIsLoading(true);
+    // setIsLoading(true);
     let numResults = 0;
     const escapedSearchTerm = escapeRegExp(searchTerm);
     const words = escapedSearchTerm.split(/\s+/).map(escapeRegExp);
@@ -100,7 +105,7 @@ export default function Search() {
     setSearchResults(results);
     setNumResults(numResults);
     setNumSymbols(numSymbols);
-    setIsLoading(false);
+    // setIsLoading(false);
   }, [searchTerm, symbolsData, selectedCategory]);
 
   useEffect(() => {

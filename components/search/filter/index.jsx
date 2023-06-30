@@ -20,6 +20,7 @@ const FilterStyled = styled("select", {
   textOverflow: "ellipsis",
   paddingRight: "2ch",
   transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+  borderRadius: "0",
 });
 
 const Filter = ({ children, ...props }) => {
