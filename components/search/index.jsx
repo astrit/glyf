@@ -218,7 +218,8 @@ export default function Search() {
       <Form>
         <Input
           id="s"
-          placeholder={`${numSymbols ? "e.g arrow →" : "loading..."}`}
+          // placeholder={`${numSymbols ? "e.g arrow →" : "loading..."}`}
+          placeholder="e.g arrow →"
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
@@ -230,8 +231,9 @@ export default function Search() {
             // fontFamily: isLoading ? "Flow Circular" : "",
 
             "&::placeholder": {
-              color: isLoading ? "hsla(257, 72%, 69%, 1.0)" : "",
-              paddingLeft: isLoading ? "10px" : "",
+              fontDisplay: "block",
+              // color: isLoading ? "hsla(257, 72%, 69%, 1.0)" : "",
+              // paddingLeft: isLoading ? "10px" : "",
             },
           }}
         />
@@ -262,12 +264,8 @@ export default function Search() {
             ))}
           </Filter>
         ) : (
-          <Filter
-            css={{
-              fontFamily: "'Flow Circular', cursive",
-            }}
-          >
-            <option value="">Load all categories</option>
+          <Filter>
+            <option value="">All categories</option>
           </Filter>
         )}
       </Form>

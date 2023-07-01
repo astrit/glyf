@@ -24,6 +24,8 @@ export default function Hero() {
           as="h1"
           css={{
             marginBlockEnd: "0.64em",
+            display: "flex",
+            height: "58px",
 
             span: {
               verticalAlign: "top",
@@ -64,6 +66,7 @@ export default function Hero() {
             gap: "20px",
             fontSize: "16px",
             letterSpacing: "normal",
+            height: "20px",
           }}
         >
           ©

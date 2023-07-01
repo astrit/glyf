@@ -16,6 +16,8 @@ const InputStyled = styled("input", {
   outline: "none",
   border: "3px solid rgba(255,255,255,0.07)",
   userSelect: "none",
+  fontDisplay: "block",
+  height: "90px",
   // "--shine": `radial-gradient( 40% 50% at center 100%, hsl(270 0% 72% / 0.05), transparent ), radial-gradient( 80% 100% at center 120%, hsl(260 0% 70% / 0.1), transparent ), hsl(260 0% 12%);`,
 
   boxShadow:

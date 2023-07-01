@@ -8,11 +8,14 @@ const Logo = styled("a", {
   fontWeight: "500",
   gap: "1ch",
   cursor: "pointer",
+  fontFamily: `"Inter var",sans-serif`,
+  fontDisplay: "block",
 });
 
 const Decorator = styled("div", {
-  opacity: "0.2",
-  lineHeight: "1",
+  width: "42px",
+  height: "2px",
+  background: "rgba(255,255,255,0.2)",
   "@md": {
     display: "none",
   },
@@ -36,13 +39,14 @@ const Name = styled("div", {
 
 const Symbol = styled("div", {
   display: "flex",
-  width: "42px",
-  height: "42px",
+  width: "44px",
+  height: "44px",
   alignItems: "center",
   justifyContent: "center",
   fontSize: "42px",
   lineHeight: "1",
   transition: "transform 1264ms cubic-bezier(0.23, 1, 0.32, 1)",
+  fontDisplay: "block",
 });
 
 export default function LogoComponent() {
@@ -83,7 +87,7 @@ export default function LogoComponent() {
     <Link href="/">
       <Logo>
         <Symbol style={{ transform: `rotate(${rotationAngle}deg)` }}>⌘</Symbol>
-        <Decorator>—</Decorator>
+        <Decorator />
         <Name>glfs</Name>
       </Logo>
     </Link>

@@ -67,7 +67,8 @@ export const style = globalCss({
     boxSizing: "border-box",
     position: "relative",
     fontFamily: "inherit",
-    fontDisplay: "optional",
+    // fontDisplay: "optional",
+    fontDisplay: "block",
   },
   p: {
     marginBlockStart: "0",
