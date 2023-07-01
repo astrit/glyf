@@ -16,9 +16,13 @@ const InputStyled = styled("input", {
   outline: "none",
   border: "3px solid rgba(255,255,255,0.07)",
   userSelect: "none",
+  // "--shine": `radial-gradient( 40% 50% at center 100%, hsl(270 0% 72% / 0.05), transparent ), radial-gradient( 80% 100% at center 120%, hsl(260 0% 70% / 0.1), transparent ), hsl(260 0% 12%);`,
 
   boxShadow:
     "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
+  // boxShadow:
+  //   "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04), 0 0.05em 0 0 hsl(260 0% 50%) inset,  0 -0.05em 0 0 hsl(260 0% 0%) inset",
+
   transition:
     "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.4s",
 

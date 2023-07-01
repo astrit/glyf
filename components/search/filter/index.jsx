@@ -14,7 +14,7 @@ const FilterStyled = styled("select", {
   margin: "auto",
   height: "38px",
   // borderRight: "2px solid rgba(255,255,255,0.2)",
-  border: "1px solid rgba(255,255,255,0.09)",
+  border: "1px solid rgba(255,255,255,0.08)",
   backgroundColor: "rgba(255,255,255,0.08)",
   borderRadius: "12px",
   width: "140px",
@@ -25,8 +25,9 @@ const FilterStyled = styled("select", {
   transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
   boxSizing: "border-box",
   fontSize: "11px",
-  boxShadow:
-    "rgba(0, 0, 0, 0.06) 2px 3px 8px, rgba(0, 0, 0, 0.04) 0px 28px 12px -8px",
+  // boxShadow:
+  //   "rgba(0, 0, 0, 0.06) 2px 3px 8px, rgba(0, 0, 0, 0.04) 0px 28px 12px -8px",
+  background: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M8 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM18 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z' fill='rgba(255,255,255,0.4)'/%3E%3C/svg%3E") no-repeat center right 12px / 18px 18px`,
 });
 
 const Filter = ({ children, ...props }) => {

@@ -164,7 +164,7 @@ export default function Search() {
     handleCopySymbol(symbol);
     toast.custom(() => (
       <Toaster>
-        Copied <span>{symbol}</span> to clipboard!
+        <span>{symbol}</span> Copied to clipboard!
       </Toaster>
     ));
   }
@@ -219,6 +219,7 @@ export default function Search() {
         />
         <Scroll />
         <Slash />
+
         {!isLoading && symbolsData ? (
           <Filter
             value={selectedCategory ? selectedCategory.title : ""}
