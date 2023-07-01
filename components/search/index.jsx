@@ -39,11 +39,23 @@ export default function Search() {
 
   useEffect(() => {
     setIsLoading(true);
+
+    // Check if the data is available in the cache
+    const cachedData = localStorage.getItem("data");
+
+    if (cachedData) {
+      setSymbolsData(JSON.parse(cachedData));
+      setIsLoading(false);
+      return; // Exit early, no need to fetch again
+    }
+
     fetch("./data.json")
       .then((response) => response.json())
       .then((data) => {
         setSymbolsData(data);
         setIsLoading(false);
+        // Cache the data for future use
+        localStorage.setItem("data", JSON.stringify(data));
       })
       .catch((error) => {
         console.error(error);
