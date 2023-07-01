@@ -37,18 +37,29 @@ const Wrapper = styled(BaseLink, {
 });
 
 const SVG = styled("svg", {});
-const Title = styled("span", {});
+const Title = styled("div", {
+  fontWeight: "500",
+});
+
+const Count = styled("span", {
+  opacity: "0.5",
+});
 
 export const Button = forwardRef(
-  ({ w, width, h, height, svg, title, href, to, ...props }, ref) => {
+  ({ w, width, h, height, svg, title, count, href, to, ...props }, ref) => {
     return (
-      <Wrapper href={to}>
+      <Wrapper href={to} target="_blank">
         {svg && (
           <SVG width={w ? w : "1em"} height={h ? h : "1em"} {...props}>
             <use href={"#symbol-" + svg}></use>
           </SVG>
         )}
-        {title && <Title>{title}</Title>}
+        {title && (
+          <>
+            <Title>{title}</Title>
+            <Count>{count}</Count>
+          </>
+        )}
       </Wrapper>
     );
   }

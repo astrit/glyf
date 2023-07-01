@@ -98,7 +98,8 @@ export default function Hero() {
         {/* <Button to="https://raycast.com/astrit" title="Windows" svg="windows" /> */}
         <Button
           to="https://www.figma.com/community/file/834587122842084475/css.gg"
-          title="Figma 48k"
+          title="Figma"
+          count="48k"
           svg="figma"
         />
 
@@ -108,10 +109,17 @@ export default function Hero() {
           svg="youtube"
         /> */}
 
-        <Stars repo="astrit/css.gg" />
+        {/* <Stars repo="astrit/css.gg" count="9.2k" /> */}
+        <Button
+          to="https://github.com/astrit/css.gg"
+          title="GitHub"
+          count="9.2k"
+          svg="github"
+        />
         <Button
           to="https://raycast.com/astrit"
-          title="Raycast 1.1k"
+          title="Raycast"
+          count="1.1k"
           svg="raycast"
         />
       </Box>
