@@ -33,6 +33,8 @@ export default function Search() {
   const [copiedSymbols, setCopiedSymbols] = useState([]);
   const [isSelected, setSelected] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedGlyph, setSelectedGlyph] = useState(null);
+  const [isContentVisible, setIsContentVisible] = useState(false);
 
   const router = useRouter();
 
@@ -122,6 +124,7 @@ export default function Search() {
         copiedSymbols && setCopiedSymbols("");
         selectedCategory && setSelectedCategory("");
         input.blur();
+        setSelectedGlyph(null);
       }
     };
 
@@ -193,12 +196,13 @@ export default function Search() {
     } else {
       e.preventDefault();
       // handle regular click behavior
-
-      const contentDiv = document.getElementById("contentHere");
-      if (contentDiv) {
-        // Load the content inside the #contentHere div
-        contentDiv.innerHTML = `Content for ${symbol}`;
-      }
+      // const contentDiv = document.getElementById("contentHere");
+      // if (contentDiv) {
+      //   // Load the content inside the #contentHere div
+      //   contentDiv.innerHTML = `Content for ${symbol}`;
+      // }
+      setSelectedGlyph(symbol);
+      setIsContentVisible(true);
 
       // Navigate to the dynamic route for the clicked card
       // const url = `${toURL(name)}`; // Generate the URL using toURL function and the name property
@@ -297,7 +301,10 @@ export default function Search() {
           </Drawer>
         ) : null}
       </Box>
-      <Box id="contentHere"></Box>
+      {isContentVisible && (
+        <Box id="contentHere">Content for {selectedGlyph}</Box>
+      )}
+      {/* {selectedGlyph && <Box id="contentHere"></Box>} */}
       {isLoading || !symbolsData ? (
         <CardSkeleton />
       ) : (
