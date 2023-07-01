@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import SelectionArea from "@viselect/vanilla";
 import { toast } from "sonner";
 import Box from "@/box";
@@ -32,6 +33,8 @@ export default function Search() {
   const [copiedSymbols, setCopiedSymbols] = useState([]);
   const [isSelected, setSelected] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const router = useRouter();
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -180,7 +183,7 @@ export default function Search() {
     ));
   }
 
-  function handleClick(e, { symbol }) {
+  function handleClick(e, { symbol, name }) {
     if (e.altKey) {
       e.preventDefault();
       copyToClipboardUnicode(symbol);
@@ -188,9 +191,28 @@ export default function Search() {
       e.preventDefault();
       copyToClipboardSymbol(symbol);
     } else {
+      e.preventDefault();
       // handle regular click behavior
+
+      const contentDiv = document.getElementById("contentHere");
+      if (contentDiv) {
+        // Load the content inside the #contentHere div
+        contentDiv.innerHTML = `Content for ${symbol}`;
+      }
+
+      // Navigate to the dynamic route for the clicked card
+      // const url = `${toURL(name)}`; // Generate the URL using toURL function and the name property
+      // router.push(url);
+      // router.push(url);
+      // router.push(url);
+      // router.push(url);
+      // router.push(url);
+      // router.push(url);
+      // router.push(url);
+      // router.push(`/[name]`, `/${name}`);
     }
   }
+
   return (
     <>
       <Form>
@@ -277,6 +299,7 @@ export default function Search() {
           </Drawer>
         ) : null}
       </Box>
+      <Box id="contentHere"></Box>
       {isLoading || !symbolsData ? (
         <CardSkeleton />
       ) : (
@@ -285,6 +308,9 @@ export default function Search() {
             <Card
               key={index + "searchk"}
               href={`/${toURL(item.name)}`}
+              // href={`/[name]`}
+              // as={`/${toURL(item.name)}`}
+              // passHref
               onClick={(e) => handleClick(e, item)}
               onMouseEnter={(e) => {
                 e.currentTarget.setAttribute("title", item.name);
