@@ -6,10 +6,11 @@ const Logo = styled("a", {
   display: "flex",
   alignItems: "center",
   fontWeight: "500",
-  gap: "1ch",
+  gap: "20px",
   cursor: "pointer",
-  fontFamily: `"Inter var",sans-serif`,
-  fontDisplay: "block",
+  fontFamily: `sans-serif`,
+  // fontFamily: `"Inter var",sans-serif`,
+  // fontDisplay: "block",
 });
 
 const Decorator = styled("div", {
@@ -46,7 +47,7 @@ const Symbol = styled("div", {
   fontSize: "42px",
   lineHeight: "1",
   transition: "transform 1264ms cubic-bezier(0.23, 1, 0.32, 1)",
-  fontDisplay: "block",
+  // fontDisplay: "block",
 });
 
 export default function LogoComponent() {

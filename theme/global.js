@@ -1,6 +1,6 @@
 import { globalCss } from "$/stitches.config";
 import reset from "$/reset";
-const gradient = `linear-gradient(to bottom, hsla(261, 80%, 48%, 0),hsla(261, 80%, 48%)), radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),linear-gradient(to left, hsla(260, 100%, 100%, 0.03) 1px,transparent 0px, transparent),linear-gradient(to bottom, hsla(260, 100%, 100%, 0.04) 1px,transparent 0px, transparent), linear-gradient(to right, transparent 199px, hsla(261, 80%, 54%) 1px), linear-gradient(to top, transparent 199px, hsla(261, 80%, 54%) 1px)`;
+const gradient = `linear-gradient(to bottom, hsla(261, 80%, 48%, 0),hsla(261, 80%, 48%)), radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),linear-gradient(to left, hsla(260, 100%, 100%, 0.03) 1px,transparent 0px, transparent),linear-gradient(to bottom, hsla(260, 100%, 100%, 0.04) 1px,transparent 0px, transparent), linear-gradient(to right, transparent 399px, hsla(261, 80%, 54%) 1px), linear-gradient(to top, transparent 399px, hsla(261, 80%, 54%) 1px)`;
 const fonts = `"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`;
 
 export const style = globalCss({
@@ -9,7 +9,7 @@ export const style = globalCss({
   "@font-face": {
     fontFamily: "Inter var",
     fontWeight: "100 900",
-    fontDisplay: "swap",
+    fontDisplay: "blocks",
     fontStyle: "normal",
     fontNamedInstance: "Regular",
     src: 'url("../assets/fonts/inter.woff2") format("woff2")',
@@ -23,11 +23,12 @@ export const style = globalCss({
     backgroundColor: "hsl(261, 80%, 48%)",
     backgroundImage: gradient,
     backgroundSize:
-      "cover, 40px 40px, 40px 40px, 6px 100%, 100% 6px, 200px 100%, 100% 200px",
-    backgroundPosition: "top center, 0 0,20px 20px, 18px 100%, 100% 18px",
+      "cover, 40px 40px, 40px 40px, 6px 100%, 100% 6px, 400px 100%, 100% 400px",
+    backgroundPosition:
+      "top center, 0 0,20px 20px, 18px 100%, 100% 18px, center, center",
     backgroundRepeat:
       "no-repeat, repeat, repeat, repeat-x, repeat-y, repeat-x, repeat-y",
-    backgroundAttachment: "fixed, fixed, fixed, fixed, fixed",
+    backgroundAttachment: "fixed, fixed, fixed, fixed, fixed, fixed,fixed",
   },
 
   body: {

@@ -231,7 +231,7 @@ export default function Search() {
             // fontFamily: isLoading ? "Flow Circular" : "",
 
             "&::placeholder": {
-              fontDisplay: "block",
+              // fontDisplay: "block",
               // color: isLoading ? "hsla(257, 72%, 69%, 1.0)" : "",
               // paddingLeft: isLoading ? "10px" : "",
             },
