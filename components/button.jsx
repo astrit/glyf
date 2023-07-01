@@ -18,6 +18,8 @@ const Wrapper = styled(BaseLink, {
   boxShadow: "rgb(0 0 0 / 2%) 2px 3px 8px, rgb(0 0 0 / 1%) 0px 8px 6px -3px",
   transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
   lineHeight: "1",
+  alignItems: "center",
+  overflow: "hidden",
 
   "&:hover": {
     background: "hsla(360,100%,100%,0.06)",
@@ -27,12 +29,27 @@ const Wrapper = styled(BaseLink, {
 
     svg: {
       transform: "scale3d(1.2,1.2,1.2)",
+
+      "&:first-child": {
+        opacity: "1",
+        transform:
+          "scale3d(2,2,2) scaleX(2) scaleY(2) translate3d(40%, 45%, 0)",
+      },
     },
   },
 
   svg: {
     color: "hsla(260, 100%, 100%, 1)",
-    transition: "all 260ms",
+    transition: "all 820ms",
+    position: "relative",
+    zIndex: "1",
+
+    "&:first-child": {
+      filter: "blur(5px)",
+      transform: "scale3d(2,2,2) scaleX(2) scaleY(2) translate3d(40%, 85%, 0)",
+      position: "absolute",
+      opacity: "0.6",
+    },
   },
 });
 
@@ -50,9 +67,14 @@ export const Button = forwardRef(
     return (
       <Wrapper href={to} target="_blank">
         {svg && (
-          <SVG width={w ? w : "1em"} height={h ? h : "1em"} {...props}>
-            <use href={"#symbol-" + svg}></use>
-          </SVG>
+          <>
+            <SVG width={w ? w : "1em"} height={h ? h : "1em"} {...props}>
+              <use href={"#symbol-" + svg}></use>
+            </SVG>
+            <SVG width={w ? w : "1em"} height={h ? h : "1em"} {...props}>
+              <use href={"#symbol-" + svg}></use>
+            </SVG>
+          </>
         )}
         {title && (
           <>

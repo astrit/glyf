@@ -23,7 +23,7 @@ export const SVG = forwardRef(
             stitchTiles="stitch"
           />
         </filter>
-        <Symbol name="Raycast" box="0 0 14 14">
+        <Symbol name="Raycast" box="0 0 24 24">
           <Raycast />
         </Symbol>
         <Symbol name="Apple" box="0 0 24 24">
