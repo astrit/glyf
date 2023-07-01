@@ -16,7 +16,7 @@ const FilterStyled = styled("select", {
   // borderRight: "2px solid rgba(255,255,255,0.2)",
   border: "1px solid rgba(255,255,255,0.08)",
   backgroundColor: "rgba(255,255,255,0.08)",
-  borderRadius: "12px",
+  borderRadius: "102px",
   width: "140px",
   minWidth: "130px",
   overflow: "hidden",

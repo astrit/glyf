@@ -1,8 +1,8 @@
 import { styled } from "@/theme";
 import Link from "@/link";
 
-// const CardStyled = styled("a", {
-const CardStyled = styled(Link, {
+const CardStyled = styled("a", {
+  // const CardStyled = styled(Link, {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -65,7 +65,7 @@ const CardStyled = styled(Link, {
     // display: "none",
     visibility: "hidden",
     transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-    transitionDelay: "background 0.8s",
+    transitionDelay: "all 1s",
   },
 
   "&:hover::after, &.selected::after": {
