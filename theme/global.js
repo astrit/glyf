@@ -8,7 +8,7 @@ const fonts = `"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Robot
 
 const Shims = keyframes({
   to: {
-    top: "80vh",
+    top: "100vh",
     opacity: "0",
   },
 });
@@ -64,7 +64,8 @@ export const style = globalCss({
       background:
         "linear-gradient(to top,rgba(255,255,255,0.8), rgba(255,255,255, 0))",
       zIndex: "-1",
-      animation: `${Shims} 8180ms linear infinite`,
+      animation: `${Shims} 4180ms linear infinite`,
+      animationDelay: "2090ms",
     },
     "&::after": {
       content: "''",
@@ -73,12 +74,12 @@ export const style = globalCss({
       top: "0",
       left: "0",
       width: "1px",
-      height: "200px",
+      height: "140px",
       transform: "translateX(799px) translateY(-280px)",
       background:
         "linear-gradient(to top,rgba(255,255,255,0.8), rgba(255,255,255, 0))",
       zIndex: "-1",
-      animation: `${Shims} 8180ms linear infinite`,
+      animation: `${Shims} 6180ms linear infinite`,
       animationDelay: "4090ms",
     },
   },

@@ -15,6 +15,7 @@ import Drawer from "@/search/drawer";
 import Clear from "@/search/clear";
 import Filter from "@/search/filter";
 import Action from "@/search/action";
+import Sidebar from "@/search/sidebar";
 import { Shimmer } from "@/search/shimmer";
 // import Utils from "@/search/utils";
 import {
@@ -126,6 +127,7 @@ export default function Search() {
         selectedCategory && setSelectedCategory("");
         input.blur();
         setSelectedGlyph(null);
+        setIsContentVisible(false);
       }
     };
 
@@ -302,9 +304,7 @@ export default function Search() {
           </Drawer>
         ) : null}
       </Box>
-      {isContentVisible && (
-        <Box id="contentHere">Content for {selectedGlyph}</Box>
-      )}
+      {isContentVisible && <Sidebar>Content for {selectedGlyph}</Sidebar>}
       {/* {selectedGlyph && <Box id="contentHere"></Box>} */}
       {isLoading || !symbolsData ? (
         <CardSkeleton />
