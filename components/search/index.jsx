@@ -132,7 +132,14 @@ export default function Search() {
     };
 
     const handleArrowKey = (event) => {
-      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      if (
+        event.key === "ArrowLeft" ||
+        event.key === "ArrowRight" ||
+        (isContentVisible &&
+          (event.key === "spacebar" ||
+            event.key === "Enter" ||
+            event.key === "Tab"))
+      ) {
         event.preventDefault();
         const currentIndex = searchResults.findIndex(
           (item) => item.symbol === selectedGlyph
@@ -144,6 +151,24 @@ export default function Search() {
         if (nextGlyph) {
           setSelectedGlyph(nextGlyph.symbol);
           setIsContentVisible(true);
+        }
+      } else if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+        event.preventDefault();
+        const currentCategoryIndex = symbolsData.categories.category.findIndex(
+          (category) => category.title === selectedCategory?.title
+        );
+        const nextCategoryIndex =
+          event.key === "ArrowUp"
+            ? currentCategoryIndex - 1
+            : currentCategoryIndex + 1;
+        const nextCategory = symbolsData.categories.category[nextCategoryIndex];
+
+        if (nextCategory) {
+          setSelectedCategory(nextCategory);
+          // setSelectedCategory(nextCategory);
+          // setSelectedGlyph(null);
+          // setIsContentVisible(false);
+          setSelectedGlyph(nextCategory.symbols[0]?.symbol);
         }
       }
     };
@@ -223,26 +248,52 @@ export default function Search() {
       copyToClipboardSymbol(symbol);
     } else {
       e.preventDefault();
-      // handle regular click behavior
-      // const contentDiv = document.getElementById("contentHere");
-      // if (contentDiv) {
-      //   // Load the content inside the #contentHere div
-      //   contentDiv.innerHTML = `Content for ${symbol}`;
-      // }
       setSelectedGlyph(symbol);
       setIsContentVisible(true);
 
       // Navigate to the dynamic route for the clicked card
       // const url = `${toURL(name)}`; // Generate the URL using toURL function and the name property
-      // router.push(url);
-      // router.push(url);
-      // router.push(url);
-      // router.push(url);
-      // router.push(url);
-      // router.push(url);
-      // router.push(url);
       // router.push(`/[name]`, `/${name}`);
     }
+  }
+
+  function toUni(char) {
+    return `U+${char
+      .charCodeAt(0)
+      .toString(16)
+      .toUpperCase()
+      .padStart(4, "0")}`;
+  }
+
+  function toHtml(char) {
+    return `&#${char.toString().charCodeAt(0)};`;
+  }
+
+  function toCSS(char) {
+    const codePoint = char.toString().codePointAt(0).toString(16);
+    return `\\${codePoint} `;
+  }
+
+  function charToUrlEscapeCode(char) {
+    return encodeURIComponent(char.toString());
+  }
+
+  const currentGlyph = searchResults.find(
+    (item) => item.symbol === selectedGlyph
+  )?.name;
+
+  function getCategoryOfSelectedGlyph() {
+    if (symbolsData && selectedGlyph) {
+      for (const category of symbolsData.categories.category) {
+        const matchingSymbol = category.symbols.find(
+          (symbol) => symbol.symbol === selectedGlyph
+        );
+        if (matchingSymbol) {
+          return category.title;
+        }
+      }
+    }
+    return "";
   }
 
   return (
@@ -250,7 +301,6 @@ export default function Search() {
       <Form>
         <Input
           id="s"
-          // placeholder={`${numSymbols ? "e.g arrow →" : "loading..."}`}
           placeholder="e.g arrow →"
           autoComplete="off"
           autoCorrect="off"
@@ -259,15 +309,6 @@ export default function Search() {
           pattern="[A-Za-z0-9\-]+"
           value={searchTerm}
           onChange={handleChange}
-          css={{
-            // fontFamily: isLoading ? "Flow Circular" : "",
-
-            "&::placeholder": {
-              // fontDisplay: "block",
-              // color: isLoading ? "hsla(257, 72%, 69%, 1.0)" : "",
-              // paddingLeft: isLoading ? "10px" : "",
-            },
-          }}
         />
         <Clear
           type="reset"
@@ -275,7 +316,6 @@ export default function Search() {
         />
         <Scroll />
         <Slash />
-        {/* <Shimmer /> */}
         {!isLoading && symbolsData ? (
           <Filter
             value={selectedCategory ? selectedCategory.title : ""}
@@ -338,7 +378,6 @@ export default function Search() {
             height: "100vh",
             inset: "0",
             zIndex: "10",
-            // backgroundColor: "hsla(0, 0%, 100%, 0.2)",
             backdropFilter: "blur(10px)",
             opacity: isContentVisible ? "1" : "0",
             transition: "all 0.2s ease-in-out",
@@ -371,23 +410,39 @@ export default function Search() {
       >
         <Box
           css={{
-            display: "flex",
-            width: "100%",
-            height: "240px",
+            // display: "flex",
+            // flexDirection: "column",
+            // width: "100%",
+            // height: "240px",
             alignItems: "center",
             justifyContent: "center",
-            // backgroundColor: "hsla(262, 71%, 54%, 1.0)",
-            // border: "1px solid hsla(262, 71%, 58%, 1.0)",
             borderBottom: "1px solid hsla(262, 71%, 100%, 0.2)",
-            // boxShadow:
-            // "rgba(0, 0, 0, 0.06) 2px 3px 8px, rgba(0, 0, 0, 0.04) 0px 28px 12px -8px",
-            fontSize: "140px",
-            borderRadius: "18px",
             padding: "40px",
             lineHeight: "1",
+            fontSize: "18px",
+
+            span: {
+              fontSize: "140px",
+            },
           }}
         >
+          <h2>{currentGlyph}</h2>
+          {selectedGlyph && <div>{getCategoryOfSelectedGlyph()}</div>}
+          <br />
           <span>{selectedGlyph}</span>
+          <div>unicode</div>
+          <div>copy</div>
+          <div>png</div>
+          <div>svg</div>
+          <div>pattern</div>
+          {selectedGlyph && (
+            <>
+              {toUni(selectedGlyph)} <br />
+              {toHtml(selectedGlyph)} <br />
+              {toCSS(selectedGlyph)} <br />
+              {charToUrlEscapeCode(selectedGlyph)} <br />
+            </>
+          )}
         </Box>
       </Sidebar>
       {isLoading || !symbolsData ? (
@@ -398,9 +453,6 @@ export default function Search() {
             <Card
               key={index + "searchk"}
               href={`/${toURL(item.name)}`}
-              // href={`/[name]`}
-              // as={`/${toURL(item.name)}`}
-              // passHref
               onClick={(e) => handleClick(e, item)}
               onMouseEnter={(e) => {
                 e.currentTarget.setAttribute("title", item.name);
