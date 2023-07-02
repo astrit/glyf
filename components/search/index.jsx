@@ -15,6 +15,7 @@ import Drawer from "@/search/drawer";
 import Clear from "@/search/clear";
 import Filter from "@/search/filter";
 import Action from "@/search/action";
+import { Shimmer } from "@/search/shimmer";
 // import Utils from "@/search/utils";
 import {
   toURL,
@@ -247,7 +248,7 @@ export default function Search() {
         />
         <Scroll />
         <Slash />
-
+        <Shimmer />
         {!isLoading && symbolsData ? (
           <Filter
             value={selectedCategory ? selectedCategory.title : ""}

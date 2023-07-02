@@ -7,6 +7,8 @@ const FormStyled = styled("form", {
   top: "20px",
   zIndex: "1",
   height: "90px",
+  position: "relative",
+  width: "100%",
 });
 
 const Form = ({ children, ...props }) => {
