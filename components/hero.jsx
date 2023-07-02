@@ -41,7 +41,7 @@ export default function Hero() {
             css={{
               // display: "none",
               display: "flex",
-              fontSize: "30vw",
+              fontSize: "800px",
               position: "fixed",
               zIndex: "-1",
               pointerEvents: "none",
@@ -82,7 +82,7 @@ export default function Hero() {
               fontSize: "10px",
               borderRadius: "14px",
               // background: "hsla(0, 0%, 100%, 0.1)",
-              padding: "6px 16px",
+              padding: "6px 14px",
               backdropFilter: "blur(4px)",
               border: "1px solid rgba(255,255,255,0.08)",
               backgroundColor: "rgba(255,255,255,0.08)",
