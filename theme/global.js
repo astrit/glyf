@@ -1,7 +1,17 @@
 import { globalCss } from "$/stitches.config";
+import { keyframes, styled } from "@/theme";
+
 import reset from "$/reset";
+
 const gradient = `linear-gradient(to bottom, hsla(261, 80%, 48%, 0),hsla(261, 80%, 48%)), radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),radial-gradient(rgba(255,255,255,0.2) 1px,transparent 0),linear-gradient(to left, hsla(260, 100%, 100%, 0.03) 1px,transparent 0px, transparent),linear-gradient(to bottom, hsla(260, 100%, 100%, 0.04) 1px,transparent 0px, transparent), linear-gradient(to right, transparent 399px, hsla(261, 80%, 54%) 1px), linear-gradient(to top, transparent 399px, hsla(261, 80%, 54%) 1px)`;
 const fonts = `"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`;
+
+const Shims = keyframes({
+  to: {
+    top: "80vh",
+    opacity: "0",
+  },
+});
 
 export const style = globalCss({
   ...reset,
@@ -25,7 +35,7 @@ export const style = globalCss({
     backgroundSize:
       "cover, 40px 40px, 40px 40px, 6px 100%, 100% 6px, 400px 100%, 100% 400px",
     backgroundPosition:
-      "top center, 0 0,20px 20px, 18px 100%, 100% 18px, center, center",
+      "top center, 0 0,20px 20px, 18px 100%, 100% 18px, left, center",
     backgroundRepeat:
       "no-repeat, repeat, repeat, repeat-x, repeat-y, repeat-x, repeat-y",
     backgroundAttachment: "fixed, fixed, fixed, fixed, fixed, fixed,fixed",
@@ -41,23 +51,35 @@ export const style = globalCss({
     fontWeight: "400",
     fontSize: "32px",
     letterSpacing: "-0.02em",
-    "-webkit-font-smoothing": "antialiased",
-    // backgroundImage: `linear-gradient(to right, transparent 199px, hsla(256, 21%, 21%, 1.0) 1px), linear-gradient(to top, transparent 199px, hsla(256, 21%, 21%, 1.0) 1px)`,
-    // backgroundRepeat: `repeat-x, repeat-y`,
-    // backgroundSize: `200px 100%, 100% 200px`,
 
-    "&:before": {
-      // content: "none",
-      // mixBlendMode: "multiply",
-      // filter: "url(#noise) grayscale(100)",
-      // position: "absolute",
-      // width: "100%",
-      // height: "100%",
-      // top: 0,
-      // left: 0,
-      // pointerEvents: "none",
-      // opacity: 0.8,
-      // backgroundSize: "300px 300px",
+    "&::before": {
+      content: "''",
+      display: "flex",
+      position: "fixed",
+      width: "1px",
+      height: "80px",
+      top: "0",
+      left: "0",
+      transform: "translateX(399px) translateY(-460px)",
+      background:
+        "linear-gradient(to top,rgba(255,255,255,0.8), rgba(255,255,255, 0))",
+      zIndex: "-1",
+      animation: `${Shims} 8180ms linear infinite`,
+    },
+    "&::after": {
+      content: "''",
+      display: "flex",
+      position: "fixed",
+      top: "0",
+      left: "0",
+      width: "1px",
+      height: "200px",
+      transform: "translateX(799px) translateY(-280px)",
+      background:
+        "linear-gradient(to top,rgba(255,255,255,0.8), rgba(255,255,255, 0))",
+      zIndex: "-1",
+      animation: `${Shims} 8180ms linear infinite`,
+      animationDelay: "4090ms",
     },
   },
   a: {
@@ -68,7 +90,6 @@ export const style = globalCss({
     boxSizing: "border-box",
     position: "relative",
     fontFamily: "inherit",
-    // fontDisplay: "optional",
     fontDisplay: "block",
   },
   p: {
@@ -85,7 +106,4 @@ export const style = globalCss({
     borderRadius: "20px",
     background: "hsla(216deg, 86%, 63%, 0.1)",
   },
-  // "input, div": {
-  //   fontFamily: fonts,
-  // },
 });

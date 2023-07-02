@@ -248,7 +248,7 @@ export default function Search() {
         />
         <Scroll />
         <Slash />
-        <Shimmer />
+        {/* <Shimmer /> */}
         {!isLoading && symbolsData ? (
           <Filter
             value={selectedCategory ? selectedCategory.title : ""}

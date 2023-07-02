@@ -41,7 +41,7 @@ const Scroll = () => {
     margin: "auto",
 
     circle: {
-      strokeWidth: "4",
+      strokeWidth: "2",
       stroke: "hsla(60, 0%, 100%, 1)",
       strokeLinecap: "round",
       transition: "all 0.3s ease",
