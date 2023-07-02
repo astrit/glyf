@@ -13,6 +13,7 @@ const FilterStyled = styled("select", {
   left: "80px",
   margin: "auto",
   height: "38px",
+  cursor: "pointer",
   // borderRight: "2px solid rgba(255,255,255,0.2)",
   border: "1px solid rgba(255,255,255,0.08)",
   backgroundColor: "rgba(255,255,255,0.08)",

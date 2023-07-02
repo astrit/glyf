@@ -25,7 +25,9 @@ export default function Hero() {
           css={{
             marginBlockEnd: "0.64em",
             display: "flex",
-            height: "58px",
+            // height: "58px",
+            flexDirection: "column",
+            gap: "20px",
 
             span: {
               verticalAlign: "top",
@@ -33,11 +35,12 @@ export default function Hero() {
             },
           }}
         >
-          Glyphs
+          6k Free Glyphs
+          {/* Glyphs <span>6031</span> */}
           <Box
             css={{
-              display: "none",
-              // display: "flex",
+              // display: "none",
+              display: "flex",
               fontSize: "30vw",
               position: "fixed",
               zIndex: "-1",
@@ -47,7 +50,9 @@ export default function Hero() {
               scale: "4",
               rotate: "42deg",
               userSelect: "none",
-              // fontFeatureSettings: '"kern", "ss02"',
+              fontFamily: "sans-serif",
+              fontWeight: "900",
+              fontFeatureSettings: '"kern", "ss02"',
               color: "hsla(300, 100%, 100%, 0.1)",
               "-webkit-mask-image":
                 "linear-gradient(to bottom, hsla(300, 90%, 52%, 1) 0%, hsla(300, 90%, 52%, 0) 90%)",
@@ -57,6 +62,37 @@ export default function Hero() {
           >
             5902
           </Box>
+        </Box>
+        <Box
+          as="ul"
+          css={{
+            display: "flex",
+            alignContent: "center",
+            justifyItems: "center",
+            gap: "10px",
+            margin: "unset",
+            padding: "unset",
+            marginBottom: "80px",
+            fontWeight: "300",
+            fontFamily: "inherit",
+            letterSpacing: "normal",
+            lineHeight: "1",
+
+            li: {
+              fontSize: "10px",
+              borderRadius: "14px",
+              // background: "hsla(0, 0%, 100%, 0.1)",
+              padding: "6px 16px",
+              backdropFilter: "blur(4px)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              backgroundColor: "rgba(255,255,255,0.08)",
+            },
+          }}
+        >
+          <li>Figma Variable</li>
+          <li>CSS Pattern</li>
+          <li>SVG</li>
+          <li>PNG</li>
         </Box>
         <Box
           as="span"

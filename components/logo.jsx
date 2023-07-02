@@ -1,6 +1,26 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { styled } from "@/theme";
+import { keyframes, styled } from "@/theme";
+
+const flare = keyframes({
+  "0%": {
+    "-webkit-mask-image": `linear-gradient(60deg,#000 25%,rgba(0,0,0,.4) 50%,#000 75%)`,
+    "mask-image": `linear-gradient(60deg,#000 25%,rgba(0,0,0,.4) 50%,#000 75%)`,
+    "-webkit-mask-size": "400%",
+    "mask-size": "400%",
+    "-webkit-mask-position": "0",
+    "mask-position": "0",
+  },
+  "100%": {
+    "-webkit-mask-image":
+      "linear-gradient(60deg,#000 25%,rgba(0,0,0,.4) 50%,#000 75%)",
+    "mask-image": "linear-gradient(60deg,#000 25%,rgba(0,0,0,.4) 50%,#000 75%)",
+    "-webkit-mask-size": "400%",
+    "mask-size": "400%",
+    "-webkit-mask-position": "100%",
+    "mask-position": "100%",
+  },
+});
 
 const Logo = styled("a", {
   display: "flex",
@@ -9,8 +29,10 @@ const Logo = styled("a", {
   gap: "20px",
   cursor: "pointer",
   fontFamily: `sans-serif`,
-  // fontFamily: `"Inter var",sans-serif`,
-  // fontDisplay: "block",
+
+  "&:hover": {
+    animation: `${flare} 1.8s cubic-bezier(.16,1,.3,1) forwards`,
+  },
 });
 
 const Decorator = styled("div", {
@@ -25,17 +47,19 @@ const Decorator = styled("div", {
 const Name = styled("div", {
   fontFeatureSettings: '"kern" 1, "ss02" 1',
   display: "flex",
-  fontWeight: "400",
+  fontWeight: "200",
+  fontSize: "22px",
   lineHeight: "1",
+  fontFamily: "inherit",
   "@md": {
     display: "none",
   },
-  "&::after": {
-    content: "™",
-    display: "flex",
-    fontWeight: "300",
-    fontSize: "18px",
-  },
+  // "&::after": {
+  //   content: "™",
+  //   display: "flex",
+  //   fontWeight: "300",
+  //   fontSize: "18px",
+  // },
 });
 
 const Symbol = styled("div", {
@@ -47,7 +71,6 @@ const Symbol = styled("div", {
   fontSize: "42px",
   lineHeight: "1",
   transition: "transform 1264ms cubic-bezier(0.23, 1, 0.32, 1)",
-  // fontDisplay: "block",
 });
 
 export default function LogoComponent() {
@@ -88,8 +111,8 @@ export default function LogoComponent() {
     <Link href="/">
       <Logo>
         <Symbol style={{ transform: `rotate(${rotationAngle}deg)` }}>⌘</Symbol>
-        {/* <Decorator /> */}
-        {/* <Name>glfs</Name> */}
+        <Decorator />
+        <Name>Glyphs</Name>
       </Logo>
     </Link>
   );
