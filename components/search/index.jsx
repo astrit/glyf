@@ -304,8 +304,47 @@ export default function Search() {
           </Drawer>
         ) : null}
       </Box>
-      {isContentVisible && <Sidebar>Content for {selectedGlyph}</Sidebar>}
-      {/* {selectedGlyph && <Box id="contentHere"></Box>} */}
+      {isContentVisible && (
+        <Box
+          css={{
+            display: "flex",
+            position: "fixed",
+            width: "100vw",
+            height: "100vh",
+            inset: "0",
+            zIndex: "10",
+            // backgroundColor: "hsla(0, 0%, 0%, 0.2)",
+            backdropFilter: "blur(20px)",
+            opacity: isContentVisible ? "1" : "0",
+            transition: "all 0.2s ease-in-out",
+            "-webkit-mask-image": `linear-gradient(
+              to left,
+              hsla(300, 90%, 52%, 1) 40%,
+              hsla(300, 90%, 52%, 0)
+            )`,
+            "mask-image": `linear-gradient(
+              to left,
+              hsla(300, 90%, 52%, 1) 40%,
+              hsla(300, 90%, 52%, 0)
+            )`,
+          }}
+          onClick={(e) => {
+            setSelectedGlyph(null);
+            setIsContentVisible(false);
+          }}
+        ></Box>
+      )}
+      <Sidebar
+        css={{
+          opacity: isContentVisible ? "1" : "0",
+          pointerEvents: isContentVisible ? "auto" : "none",
+          transform: isContentVisible
+            ? "translate3d(0, 0, 0)"
+            : "translate3d(10px, 0, 0)",
+        }}
+      >
+        {selectedGlyph}
+      </Sidebar>
       {isLoading || !symbolsData ? (
         <CardSkeleton />
       ) : (

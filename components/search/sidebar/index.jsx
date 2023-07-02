@@ -13,13 +13,21 @@ const Aside = styled("aside", {
   background: "hsla(263, 74%, 69%, 0.1)",
   width: "460px",
   zIndex: "10000",
-  transition: "all 0.3s ease-in-out",
+  opacity: "0",
+  transition: "all 420ms",
+  transform: "translate3d(100px, 0, 0)",
   boxShadow:
     "rgba(0, 0, 0, 0.06) -2px -3px 8px, rgba(0, 0, 0, 0.04) 0px -28px 12px -8px",
+
+  button: {},
 });
 
-const Sidebar = ({ children }) => {
-  return <Aside>{children}</Aside>;
+const Sidebar = ({ children, css }, ...props) => {
+  return (
+    <Aside css={css} {...props}>
+      {children}
+    </Aside>
+  );
 };
 
 Sidebar.displayName = "Sidebar";

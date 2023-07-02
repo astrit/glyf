@@ -88,8 +88,8 @@ export default function LogoComponent() {
     <Link href="/">
       <Logo>
         <Symbol style={{ transform: `rotate(${rotationAngle}deg)` }}>⌘</Symbol>
-        <Decorator />
-        <Name>glfs</Name>
+        {/* <Decorator /> */}
+        {/* <Name>glfs</Name> */}
       </Logo>
     </Link>
   );
