@@ -317,6 +317,7 @@ export default function Search() {
             backdropFilter: "blur(20px)",
             opacity: isContentVisible ? "1" : "0",
             transition: "all 0.2s ease-in-out",
+            cursor: "zoom-out",
             "-webkit-mask-image": `linear-gradient(
               to left,
               hsla(300, 90%, 52%, 1) 40%,
