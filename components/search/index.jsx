@@ -185,6 +185,7 @@ export default function Search() {
     selectedCategory,
     selectedGlyph,
     searchResults,
+    isContentVisible,
   ]);
 
   const handleCopySymbol = (symbol) => {

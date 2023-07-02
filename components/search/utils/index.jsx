@@ -31,4 +31,68 @@ function levenshteinDistance(s1, s2) {
   return d[m][n];
 }
 
+const handleSlashKey = (event) => {
+  if (
+    event.key === "/" ||
+    ((event.keyCode === 191 || event.keyCode === 75) &&
+      (event.metaKey || event.ctrlKey))
+  ) {
+    event.preventDefault();
+    const input = document.getElementById("s");
+    input.focus();
+  } else if (event.key === "Escape") {
+    const input = document.getElementById("s");
+    searchTerm && setSearchTerm("");
+    copiedSymbols && setCopiedSymbols("");
+    selectedCategory && setSelectedCategory("");
+    input.blur();
+    setSelectedGlyph(null);
+    setIsContentVisible(false);
+  }
+};
+
+const handleArrowKey = (event) => {
+  if (
+    event.key === "ArrowLeft" ||
+    event.key === "ArrowRight" ||
+    (isContentVisible &&
+      (event.key === "spacebar" ||
+        event.key === "Enter" ||
+        event.key === "Tab"))
+  ) {
+    event.preventDefault();
+    const currentIndex = searchResults.findIndex(
+      (item) => item.symbol === selectedGlyph
+    );
+    const nextIndex =
+      event.key === "ArrowLeft" ? currentIndex - 1 : currentIndex + 1;
+    const nextGlyph = searchResults[nextIndex];
+
+    if (nextGlyph) {
+      setSelectedGlyph(nextGlyph.symbol);
+      setIsContentVisible(true);
+    }
+  } else if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+    event.preventDefault();
+    const currentCategoryIndex =
+      event.symbolsData.categories.category.findIndex(
+        (category) => category.title === selectedCategory?.title
+      );
+    const nextCategoryIndex =
+      event.key === "ArrowUp"
+        ? currentCategoryIndex - 1
+        : currentCategoryIndex + 1;
+    const nextCategory =
+      event.symbolsData.categories.category[nextCategoryIndex];
+
+    if (nextCategory) {
+      setSelectedCategory(nextCategory);
+      // setSelectedCategory(nextCategory);
+      // setSelectedGlyph(null);
+      // setIsContentVisible(false);
+      setSelectedGlyph(nextCategory.symbols[0]?.symbol);
+    }
+  }
+};
+
 export { toURL, toUnicode, levenshteinDistance };
