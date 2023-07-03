@@ -449,7 +449,7 @@ export default function Search() {
               {charToUrlEscapeCode(selectedGlyph)} <br />
             </>
           )}
-          <Carbon />
+          {/* <Carbon /> */}
         </Box>
       </Sidebar>
       {isLoading || !symbolsData ? (
