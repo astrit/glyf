@@ -1,4 +1,5 @@
 import { styled } from "@/theme";
+import Shimmer from "@/search/shimmer";
 
 const FormStyled = styled("form", {
   display: "flex",
@@ -10,7 +11,12 @@ const FormStyled = styled("form", {
 });
 
 const Form = ({ children, ...props }) => {
-  return <FormStyled {...props}>{children}</FormStyled>;
+  return (
+    <FormStyled {...props}>
+      {children}
+      <Shimmer />
+    </FormStyled>
+  );
 };
 
 Form.displayName = "Form";

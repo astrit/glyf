@@ -1,28 +1,5 @@
 import { keyframes, styled } from "@/theme";
 
-const Shim = keyframes({
-  "0%": {
-    backgroundPosition: "left 26px center, bottom left -200px",
-    "--bg-c": "rgba(255,255,255,0.4)",
-    "--bg-b": "rgba(255,255,255,0)",
-  },
-  "30%": {
-    backgroundPosition: "left 26px center, bottom right -200px",
-    "--bg-c": "rgba(255,255,255,0.4)",
-    "--bg-b": "rgba(255,255,255,0)",
-  },
-  "60%": {
-    backgroundPosition: "left 26px center, top right -200px",
-    "--bg-c": "rgba(255,255,255,0)",
-    "--bg-b": "rgba(255,255,255,0.4)",
-  },
-  "100%": {
-    backgroundPosition: "left 26px center, top left -200px",
-    "--bg-c": "rgba(255,255,255,0)",
-    "--bg-b": "rgba(255,255,255,0.4)",
-  },
-});
-
 const InputStyled = styled("input", {
   display: "flex",
   alignItems: "center",
@@ -31,14 +8,11 @@ const InputStyled = styled("input", {
   padding: "26px 34px 26px 240px",
   fontSize: "24px",
   lineHeight: "1",
-  "--bg-p": "-100px",
-  "--bg-c": "rgba(255,255,255,0.8)",
-  "--bg-b": "rgba(255,255,255,0)",
   backgroundColor: "rgba(255,255,255,0.06)",
-  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.319 14.433A8.001 8.001 0 0 0 6.343 3.868a8 8 0 0 0 10.564 11.976l.043.045 4.242 4.243a1 1 0 1 0 1.415-1.415l-4.243-4.242a1.116 1.116 0 0 0-.045-.042Zm-2.076-9.15a6 6 0 1 1-8.485 8.485 6 6 0 0 1 8.485-8.485Z' fill='white'/%3E%3C/svg%3E"), linear-gradient(to right,var(--bg-b), var(--bg-c))`,
-  backgroundRepeat: "no-repeat, no-repeat",
-  backgroundPosition: "left 26px center, bottom -2px left -100px",
-  backgroundSize: "28px 28px, 80px 1px",
+  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.319 14.433A8.001 8.001 0 0 0 6.343 3.868a8 8 0 0 0 10.564 11.976l.043.045 4.242 4.243a1 1 0 1 0 1.415-1.415l-4.243-4.242a1.116 1.116 0 0 0-.045-.042Zm-2.076-9.15a6 6 0 1 1-8.485 8.485 6 6 0 0 1 8.485-8.485Z' fill='white'/%3E%3C/svg%3E")`,
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "left 26px center",
+  backgroundSize: "28px 28px",
   backdropFilter: "blur(20px)",
   color: "white",
   border: "none",
@@ -46,7 +20,6 @@ const InputStyled = styled("input", {
   outline: "none",
   border: "3px solid rgba(255,255,255,0.07)",
   userSelect: "none",
-  animation: `${Shim} 18180ms linear infinite`,
   height: "90px",
   boxShadow:
     "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
@@ -63,7 +36,7 @@ const InputStyled = styled("input", {
   "&:focus": {
     backgroundColor: "rgba(255,255,255,0.09)",
     borderColor: "rgba(255,255,255,0.2)",
-    backgroundPosition: "left 30px center, bottom -2px left -100px",
+    backgroundPosition: "left 30px center",
     paddingLeft: "246px",
   },
 
@@ -79,6 +52,14 @@ const InputStyled = styled("input", {
   "&:not(:placeholder-shown) ~ button, &:focus ~ button": {
     scale: "1",
     opacity: "1",
+  },
+
+  "&::before": {
+    content: "''",
+    display: "block",
+    width: "20px",
+    height: "20px",
+    background: "#fff",
   },
 });
 
