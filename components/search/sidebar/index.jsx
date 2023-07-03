@@ -21,11 +21,7 @@ const Aside = styled("aside", {
 });
 
 const Sidebar = ({ children, css }, ...props) => {
-  return (
-    <Aside css={css} {...props}>
-      {children}
-    </Aside>
-  );
+  return <Aside css={css}>{children}</Aside>;
 };
 
 Sidebar.displayName = "Sidebar";

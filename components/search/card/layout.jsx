@@ -33,7 +33,7 @@ const Layout = styled("a", {
   position: "relative",
   cursor: "pointer",
   borderRadius: "18px",
-  backgroundColor: `hsla(260, 74%, 53%, 1.0)`,
+  backgroundColor: `hsla(260, 74%, 53%, 1)`,
   border: "2px solid hsla(259, 73%, 56%, 1.0)",
   transition: "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
   cursor: "pointer",
