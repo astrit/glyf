@@ -28,11 +28,11 @@ const Top = styled("div", {
   height: "1px",
   backgroundImage: "linear-gradient(to right,var(--bg-a), var(--bg-b))",
   backgroundRepeat: "no-repeat",
-  backgroundPosition: "center left",
+  backgroundPosition: "center left -200px",
   backgroundSize: "80px 1px",
   top: "1px",
-  animation: `${TopKeys} 6180ms cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite`,
-  animationDelay: "100ms",
+  animation: `${TopKeys} 7180ms cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite`,
+  // animationDelay: "100ms",
   willChange: "background-position, opacity",
 });
 
@@ -44,11 +44,11 @@ const Bottom = styled("div", {
   height: "1px",
   backgroundImage: "linear-gradient(to right,var(--bg-a), var(--bg-b))",
   backgroundRepeat: "no-repeat",
-  backgroundPosition: "center right",
+  backgroundPosition: "center right -200px",
   backgroundSize: "80px 1px",
   bottom: "1px",
-  animation: `${BottomKeys} 7180ms cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite`,
-  animationDelay: "40ms",
+  animation: `${BottomKeys} 8180ms cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite`,
+  animationDelay: "2000ms",
   willChange: "background-position, opacity",
 });
 

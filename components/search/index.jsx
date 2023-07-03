@@ -381,8 +381,9 @@ export default function Search() {
             zIndex: "10",
             backdropFilter: "blur(10px)",
             opacity: isContentVisible ? "1" : "0",
-            transition: "all 0.2s ease-in-out",
+            transition: "all 480ms",
             cursor: "zoom-out",
+            background: `radial-gradient(circle at 100% 0%, oklch(0.55 0.27 258.93 / 0.64) 0%, oklch(0.35 0.5 313) 100%)`,
             "-webkit-mask-image": `linear-gradient(
               to left,
               hsla(300, 90%, 52%, 1) 40%,
