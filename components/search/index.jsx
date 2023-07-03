@@ -16,8 +16,8 @@ import Clear from "@/search/clear";
 import Filter from "@/search/filter";
 import Action from "@/search/action";
 import Sidebar from "@/search/sidebar";
-import { Shimmer } from "@/search/shimmer";
-// import Utils from "@/search/utils";
+import Carbon from "u/ads";
+
 import {
   toURL,
   toUnicode,
@@ -342,7 +342,6 @@ export default function Search() {
           </Filter>
         )}
       </Form>
-
       <Box
         css={{
           display: "flex",
@@ -370,37 +369,42 @@ export default function Search() {
           </Drawer>
         ) : null}
       </Box>
-      {isContentVisible && (
-        <Box
-          css={{
-            display: "flex",
-            position: "fixed",
-            width: "100vw",
-            height: "100vh",
-            inset: "0",
-            zIndex: "10",
-            backdropFilter: "blur(10px)",
-            opacity: isContentVisible ? "1" : "0",
-            transition: "all 480ms",
-            cursor: "zoom-out",
-            background: `radial-gradient(circle at 100% 0%, oklch(0.55 0.27 258.93 / 0.64) 0%, oklch(0.35 0.5 313) 100%)`,
-            "-webkit-mask-image": `linear-gradient(
+      {/* 
+      {isContentVisible && ( )}*/}
+      <Box
+        css={{
+          display: "flex",
+          position: "fixed",
+          width: "100vw",
+          height: "100vh",
+          // inset: "0",
+          top: "0",
+          zIndex: "2999",
+          backdropFilter: "blur(10px)",
+          opacity: isContentVisible ? "1" : "0",
+          visibility: isContentVisible ? "visible" : "hidden",
+          // transform: isContentVisible ? "translate(100%, 0)" : "0",
+          right: isContentVisible ? "0" : "-100vw",
+          transition: "all 480ms",
+          cursor: "zoom-out",
+          // background: `radial-gradient(circle at 100% 0%, oklch(0.55 0.27 258.93 / 0.64) 0%, oklch(0.35 0.5 313) 110%)`,
+          "-webkit-mask-image": `linear-gradient(
               to left,
               hsla(300, 90%, 52%, 1) 40%,
               hsla(300, 90%, 52%, 0)
             )`,
-            "mask-image": `linear-gradient(
+          "mask-image": `linear-gradient(
               to left,
               hsla(300, 90%, 52%, 1) 40%,
               hsla(300, 90%, 52%, 0)
             )`,
-          }}
-          onClick={(e) => {
-            setSelectedGlyph(null);
-            setIsContentVisible(false);
-          }}
-        ></Box>
-      )}
+        }}
+        onClick={(e) => {
+          setSelectedGlyph(null);
+          setIsContentVisible(false);
+        }}
+      ></Box>
+
       <Sidebar
         css={{
           opacity: isContentVisible ? "1" : "0",
@@ -416,14 +420,14 @@ export default function Search() {
             // flexDirection: "column",
             // width: "100%",
             // height: "240px",
-            alignItems: "center",
-            justifyContent: "center",
+            // alignItems: "center",
+            // justifyContent: "center",
             borderBottom: "1px solid hsla(262, 71%, 100%, 0.2)",
             padding: "40px",
             lineHeight: "1",
             fontSize: "18px",
 
-            span: {
+            ".main": {
               fontSize: "140px",
             },
           }}
@@ -431,7 +435,7 @@ export default function Search() {
           <h2>{currentGlyph}</h2>
           {selectedGlyph && <div>{getCategoryOfSelectedGlyph()}</div>}
           <br />
-          <span>{selectedGlyph}</span>
+          <span className="main">{selectedGlyph}</span>
           <div>unicode</div>
           <div>copy</div>
           <div>png</div>
@@ -445,6 +449,7 @@ export default function Search() {
               {charToUrlEscapeCode(selectedGlyph)} <br />
             </>
           )}
+          <Carbon />
         </Box>
       </Sidebar>
       {isLoading || !symbolsData ? (

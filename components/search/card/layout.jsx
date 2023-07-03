@@ -101,7 +101,7 @@ const Layout = styled("a", {
     height: "var(--size)",
     borderRadius: "24px",
     cursor: "pointer",
-    animation: `${flare} 1424ms linear forwards`,
+    animation: `${flare} 824ms linear forwards`,
     // animation: `${flare} 424ms cubic-bezier(.16,1,.3,1) forwards`,
     // animationDelay: "2s",
     // backgroundImage:
