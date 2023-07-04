@@ -23,20 +23,22 @@ export default function Hero() {
         <Box
           as="h1"
           css={{
-            marginBlockEnd: "0.64em",
             display: "flex",
-            // height: "58px",
             flexDirection: "column",
-            gap: "20px",
+            // height: "58px",
+            // gap: "0px",
+            marginBlockEnd: "30px",
 
             span: {
-              verticalAlign: "top",
-              fontSize: "10px",
+              fontVariant: "slashed-zero",
+              fontWeight: "100",
+              fontSize: "60px",
+              opacity: "0.2",
+              lineHeight: "1",
             },
           }}
         >
-          6k Free Glyphs
-          {/* Glyphs <span>6031</span> */}
+          <span>6031</span>Free Glyphs
           <Box
             css={{
               // display: "none",
@@ -81,6 +83,7 @@ export default function Hero() {
             li: {
               fontSize: "10px",
               borderRadius: "14px",
+              // transform: "rotate(-2deg)",
               // background: "hsla(0, 0%, 100%, 0.1)",
               padding: "6px 14px",
               backdropFilter: "blur(4px)",
@@ -89,9 +92,10 @@ export default function Hero() {
             },
           }}
         >
-          <li>Figma Variable</li>
-          <li>CSS Pattern</li>
+          <li>Glyph</li>
           <li>SVG</li>
+          <li>Figma Variables</li>
+          <li>CSS Pattern</li>
           <li>PNG</li>
         </Box>
         <Box

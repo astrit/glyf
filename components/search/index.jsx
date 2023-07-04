@@ -258,27 +258,6 @@ export default function Search() {
     }
   }
 
-  function toUni(char) {
-    return `U+${char
-      .charCodeAt(0)
-      .toString(16)
-      .toUpperCase()
-      .padStart(4, "0")}`;
-  }
-
-  function toHtml(char) {
-    return `&#${char.toString().charCodeAt(0)};`;
-  }
-
-  function toCSS(char) {
-    const codePoint = char.toString().codePointAt(0).toString(16);
-    return `\\${codePoint} `;
-  }
-
-  function charToUrlEscapeCode(char) {
-    return encodeURIComponent(char.toString());
-  }
-
   const currentGlyph = searchResults.find(
     (item) => item.symbol === selectedGlyph
   )?.name;
@@ -400,12 +379,15 @@ export default function Search() {
             )`,
         }}
         onClick={(e) => {
-          setSelectedGlyph(null);
+          // setSelectedGlyph(null);
           setIsContentVisible(false);
         }}
       ></Box>
 
       <Sidebar
+        getCategoryOfSelectedGlyp={getCategoryOfSelectedGlyph()}
+        selectedGlyph={selectedGlyph}
+        currentGlyph={currentGlyph}
         css={{
           opacity: isContentVisible ? "1" : "0",
           pointerEvents: isContentVisible ? "auto" : "none",
@@ -413,45 +395,7 @@ export default function Search() {
             ? "translate3d(0, 0, 0)"
             : "translate3d(10px, 0, 0)",
         }}
-      >
-        <Box
-          css={{
-            // display: "flex",
-            // flexDirection: "column",
-            // width: "100%",
-            // height: "240px",
-            // alignItems: "center",
-            // justifyContent: "center",
-            borderBottom: "1px solid hsla(262, 71%, 100%, 0.2)",
-            padding: "40px",
-            lineHeight: "1",
-            fontSize: "18px",
-
-            ".main": {
-              fontSize: "140px",
-            },
-          }}
-        >
-          <h2>{currentGlyph}</h2>
-          {selectedGlyph && <div>{getCategoryOfSelectedGlyph()}</div>}
-          <br />
-          <span className="main">{selectedGlyph}</span>
-          <div>unicode</div>
-          <div>copy</div>
-          <div>png</div>
-          <div>svg</div>
-          <div>pattern</div>
-          {selectedGlyph && (
-            <>
-              {toUni(selectedGlyph)} <br />
-              {toHtml(selectedGlyph)} <br />
-              {toCSS(selectedGlyph)} <br />
-              {charToUrlEscapeCode(selectedGlyph)} <br />
-            </>
-          )}
-          {/* <Carbon /> */}
-        </Box>
-      </Sidebar>
+      ></Sidebar>
       {isLoading || !symbolsData ? (
         <CardSkeleton />
       ) : (

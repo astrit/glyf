@@ -72,6 +72,7 @@ const Layout = styled("a", {
     content: " ",
     position: "absolute",
     display: "flex",
+    display: "none",
     borderRadius: "18px",
     boxShadow:
       "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",

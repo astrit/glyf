@@ -23,7 +23,7 @@ const Action = ({
     display: "flex",
     fontSize: "10px",
     alignItems: "center",
-    gap: "4px",
+    gap: "8px",
 
     key: {},
   });
@@ -31,21 +31,25 @@ const Action = ({
   const Key = styled("kbd", {
     display: "flex",
     border: "1px solid rgba(255,255,255,0.07)",
-    color: "White",
-    fontWeight: "bold",
+    color: "rgba(255,255,255,0.9)",
+    letterSpacing: "normal",
+    fontWeight: "500",
     background: "hsla(260, 73%, 53%, 1.0)",
-    borderRadius: "8px",
-    padding: "4px 8px",
+    borderRadius: "6px",
+    padding: "6px 8px",
+    fontFamily: "sans-serif",
+    lineHeight: "1",
+    fontSize: "10px",
     boxShadow:
       "1px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 12px rgba(0, 0, 0, 0.04)",
 
-    "&:last-child": {
-      fontFamily: isLoading ? "Flow Circular" : "",
-    },
+    // "&:last-child": {
+    //   fontFamily: isLoading ? "Flow Circular" : "",
+    // },
   });
 
   const Results = styled(Box, {
-    fontFamily: isLoading ? "Flow Circular" : "",
+    // fontFamily: isLoading ? "Flow Circular" : "",
     gap: "24px",
     display: "flex",
   });
@@ -53,7 +57,7 @@ const Action = ({
   return (
     <Layout {...props}>
       <Keys>
-        <Key>⇧</Key> +<Key>CLICK</Key>
+        <Key>⇧</Key> or <Key>⌥</Key> + <Key>Click</Key>
       </Keys>
       <Results>
         {(isSelected && <span>{isSelected} Selected</span>) ||
