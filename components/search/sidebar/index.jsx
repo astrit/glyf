@@ -123,6 +123,10 @@ const Sidebar = ({
         <Button to="#" title="Unicode" svg="figma" />
         <Button to="#" title="Download" svg="raycast" />
       </Actions>
+      <Actions>
+        <kbd>⌘ + c</kbd>
+        <kbd>⌥ + c</kbd>
+      </Actions>
       {/* <div>pattern</div> */}
       {/* {!selectedGlyph && (
         <>

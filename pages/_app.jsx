@@ -22,7 +22,7 @@ export default function Glyphs({ Component, pageProps }) {
         expand={false}
         closeButton={true}
         offset="40px"
-        duration={8428}
+        duration={4428}
         toastOptions={{
           style: {
             // borderRadius: "20px",
