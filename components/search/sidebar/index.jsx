@@ -57,7 +57,7 @@ const Glyph = styled("div", {
   padding: "40px",
   minHeight: "200px",
   fontFamily: "Inter var, sans-serif",
-  background: "hsla(261, 80%, 54%, 0.4)",
+  // background: "hsla(261, 80%, 54%, 0.4)",
 });
 
 const Actions = styled("div", {
