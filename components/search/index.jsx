@@ -224,7 +224,7 @@ export default function Search() {
     handleCopySymbol(symbol);
     toast.custom(() => (
       <Toaster>
-        <span>{symbol}</span> Copied to clipboard!
+        <div>{symbol}</div> Copied to clipboard!
       </Toaster>
     ));
   }
@@ -234,8 +234,10 @@ export default function Search() {
     handleCopySymbol(symbol);
     toast.custom(() => (
       <Toaster>
-        Copied <span>{toUnicode(symbol)}</span> for <span>{symbol}</span> to
-        clipboard!
+        <div>
+          {symbol} <span>{toUnicode(symbol)}</span>
+        </div>
+        Copied to clipboard!
       </Toaster>
     ));
   }
@@ -261,20 +263,6 @@ export default function Search() {
   const currentGlyph = searchResults.find(
     (item) => item.symbol === selectedGlyph
   )?.name;
-
-  function getCategoryOfSelectedGlyph() {
-    if (symbolsData && selectedGlyph) {
-      for (const category of symbolsData.categories.category) {
-        const matchingSymbol = category.symbols.find(
-          (symbol) => symbol.symbol === selectedGlyph
-        );
-        if (matchingSymbol) {
-          return category.title;
-        }
-      }
-    }
-    return "";
-  }
 
   return (
     <>
@@ -362,20 +350,18 @@ export default function Search() {
           backdropFilter: "blur(10px)",
           opacity: isContentVisible ? "1" : "0",
           visibility: isContentVisible ? "visible" : "hidden",
-          // transform: isContentVisible ? "translate(100%, 0)" : "0",
           right: isContentVisible ? "0" : "-100vw",
           transition: "all 480ms",
           cursor: "zoom-out",
-          // background: `radial-gradient(circle at 100% 0%, oklch(0.55 0.27 258.93 / 0.64) 0%, oklch(0.35 0.5 313) 110%)`,
           "-webkit-mask-image": `linear-gradient(
               to left,
-              hsla(300, 90%, 52%, 1) 40%,
-              hsla(300, 90%, 52%, 0)
+              hsla(300, 100%, 100%, 1) 40%,
+              hsla(300, 100%, 100%, 0)
             )`,
           "mask-image": `linear-gradient(
               to left,
-              hsla(300, 90%, 52%, 1) 40%,
-              hsla(300, 90%, 52%, 0)
+              hsla(300, 100%, 100%, 1) 40%,
+              hsla(300, 100%, 100%, 0)
             )`,
         }}
         onClick={(e) => {
@@ -385,7 +371,7 @@ export default function Search() {
       ></Box>
 
       <Sidebar
-        getCategoryOfSelectedGlyp={getCategoryOfSelectedGlyph()}
+        symbolsData={symbolsData}
         selectedGlyph={selectedGlyph}
         currentGlyph={currentGlyph}
         css={{
@@ -395,7 +381,7 @@ export default function Search() {
             ? "translate3d(0, 0, 0)"
             : "translate3d(10px, 0, 0)",
         }}
-      ></Sidebar>
+      />
       {isLoading || !symbolsData ? (
         <CardSkeleton />
       ) : (

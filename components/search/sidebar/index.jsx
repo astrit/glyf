@@ -1,10 +1,11 @@
 import React from "react";
 import { styled } from "@/theme";
 import Box from "@/box";
+import Button from "@/button";
 
 const Aside = styled("aside", {
   display: "flex",
-  padding: "40px",
+  // padding: "40px",
   borderRadius: "28px",
   position: "fixed",
   top: "40px",
@@ -20,8 +21,54 @@ const Aside = styled("aside", {
   transition: "all 420ms",
   transform: "translate3d(100px, 0, 0)",
   boxSizing: "border-box",
-  boxShadow:
-    "rgba(0, 0, 0, 0.06) 2px 3px 8px, rgba(0, 0, 0, 0.04) 0px 28px 12px -8px",
+  fontSize: "14px",
+  fontWeight: "300",
+  fontFamily: "Inter var, sans-serif",
+  flexDirection: "column",
+  letterSpacing: "normal",
+  boxShadow: `
+    rgba(0, 0, 0, 0.06) 2px 3px 8px, 
+    rgba(0, 0, 0, 0.04) 0px 28px 12px -8px, 
+    0 0 0 10px rgba(255, 255, 255, 0.02)
+  `,
+});
+
+const Header = styled("header", {
+  display: "flex",
+  flexDirection: "column",
+  borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+  padding: "28px 40px",
+  gap: "4px",
+  span: {
+    opacity: "0.5",
+    fontSize: "10px",
+  },
+});
+
+const Glyph = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+  justifyItems: "center",
+  justifyContent: "center",
+  alignItems: "center",
+  fontSize: "80px",
+  lineHeight: "1",
+  padding: "40px",
+  minHeight: "200px",
+  fontFamily: "Inter var, sans-serif",
+  background: "hsla(261, 80%, 54%, 0.4)",
+});
+
+const Actions = styled("div", {
+  padding: "28px 40px",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+
+  borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+  gap: "10px",
 });
 
 function toUni(char) {
@@ -44,45 +91,47 @@ function charToUrlEscapeCode(char) {
 const Sidebar = ({
   children,
   css,
-  getCategoryOfSelectedGlyph,
+  // getCategoryOfSelectedGlyph,
   selectedGlyph,
   currentGlyph,
+  symbolsData,
   ...props
 }) => {
+  function getCategoryOfSelectedGlyph() {
+    if (symbolsData && selectedGlyph) {
+      for (const category of symbolsData.categories.category) {
+        const matchingSymbol = category.symbols.find(
+          (symbol) => symbol.symbol === selectedGlyph
+        );
+        if (matchingSymbol) {
+          return category.title;
+        }
+      }
+    }
+    return "";
+  }
+
   return (
     <Aside css={css} {...props}>
-      <Box
-        css={{
-          borderBottom: "1px solid hsla(262, 71%, 100%, 0.2)",
-          padding: "40px",
-          lineHeight: "1",
-          fontSize: "18px",
-
-          ".main": {
-            fontSize: "140px",
-          },
-        }}
-      >
-        <h2>{currentGlyph}</h2>
-        {selectedGlyph && <div>{getCategoryOfSelectedGlyph}</div>}
-        <br />
-        <span className="main">{selectedGlyph}</span>
-        <div>unicode</div>
-        <div>copy</div>
-        <div>png</div>
-        <div>svg</div>
-        <div>pattern</div>
-        {selectedGlyph && (
-          <>
-            {toUni(selectedGlyph)} <br />
-            {toHtml(selectedGlyph)} <br />
-            {toCSS(selectedGlyph)} <br />
-            {charToUrlEscapeCode(selectedGlyph)} <br />
-          </>
-        )}
-      </Box>
-
-      {children}
+      <Header>
+        {currentGlyph}
+        {selectedGlyph && <span>{getCategoryOfSelectedGlyph()}</span>}
+      </Header>
+      <Glyph>{selectedGlyph}</Glyph>
+      <Actions>
+        <Button to="#" title="Copy" svg="github" />
+        <Button to="#" title="Unicode" svg="figma" />
+        <Button to="#" title="Download" svg="raycast" />
+      </Actions>
+      {/* <div>pattern</div> */}
+      {/* {!selectedGlyph && (
+        <>
+          {toUni(selectedGlyph)} <br />
+          {toHtml(selectedGlyph)} <br />
+          {toCSS(selectedGlyph)} <br />
+          {charToUrlEscapeCode(selectedGlyph)} <br />
+        </>
+      )} */}
     </Aside>
   );
 };

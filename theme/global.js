@@ -90,8 +90,8 @@ export const style = globalCss({
   "*": {
     boxSizing: "border-box",
     position: "relative",
-    fontFamily: "inherit",
-    fontDisplay: "block",
+    // fontFamily: "inherit",
+    // fontDisplay: "block",
   },
   p: {
     marginBlockStart: "0",

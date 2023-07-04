@@ -27,6 +27,7 @@ const InputStyled = styled("input", {
     "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.4s",
   "&::placeholder": {
     color: "rgba(255,255,255,0.3)",
+    fontFamily: "Inter var, sans-serif",
   },
 
   "&:focus:placeholder": {
