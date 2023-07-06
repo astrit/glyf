@@ -46,11 +46,21 @@ const Decorator = styled("div", {
 
 const Name = styled("div", {
   fontFeatureSettings: '"kern" 1, "ss02" 1',
+  fontFamily: "Inter var, sans-serif",
   display: "flex",
   fontWeight: "200",
-  fontSize: "22px",
+  fontSize: "14px",
+  letterSpacing: "0.1ch",
   lineHeight: "1",
   fontFamily: "inherit",
+  fontStretch: "ultra-expanded",
+  // backgroundColor: "rgba(255,255,255,0.1)",
+  borderRadius: "4px",
+  lineHeight: "1",
+  color: "white",
+  // textTransform: "uppercase",
+  fontWeight: "900",
+  padding: "10px 20px",
   "@md": {
     display: "none",
   },
@@ -112,7 +122,7 @@ export default function LogoComponent() {
       <Logo>
         <Symbol style={{ transform: `rotate(${rotationAngle}deg)` }}>⌘</Symbol>
         <Decorator />
-        <Name>Glyphs</Name>
+        <Name>G L Y F</Name>
       </Logo>
     </Link>
   );
