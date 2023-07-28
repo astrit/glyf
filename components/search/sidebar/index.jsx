@@ -6,7 +6,7 @@ import Button from "@/button";
 const Aside = styled("aside", {
   display: "flex",
   // padding: "40px",
-  borderRadius: "28px",
+  borderRadius: "18px",
   position: "fixed",
   top: "40px",
   right: "40px",
