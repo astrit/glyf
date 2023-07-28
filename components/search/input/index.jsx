@@ -16,6 +16,7 @@ const InputStyled = styled("input", {
   backdropFilter: "blur(20px)",
   color: "white",
   border: "none",
+  fontFamily: "Inter var, sans-serif",
   fontWeight: "300",
   outline: "none",
   border: "3px solid rgba(255,255,255,0.07)",
@@ -25,9 +26,10 @@ const InputStyled = styled("input", {
     "2px 3px 8px rgba(0, 0, 0, 0.06), 0px 28px 12px -8px rgba(0, 0, 0, 0.04)",
   transition:
     "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.4s",
+
   "&::placeholder": {
-    color: "rgba(255,255,255,0.3)",
     fontFamily: "Inter var, sans-serif",
+    color: "rgba(255,255,255,0.3)",
   },
 
   "&:focus:placeholder": {
