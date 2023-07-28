@@ -59,7 +59,7 @@ const Name = styled("div", {
   color: "white",
   // textTransform: "uppercase",
   fontWeight: "300",
-  padding: "10px 20px",
+  // padding: "10px 20px",
   "@md": {
     display: "none",
   },
