@@ -35,7 +35,7 @@ export default function Footer() {
           alt="Astrit"
         />
       </Link>
-      © {`${new Date().getFullYear()}`}
+      © {`${new Date().getFullYear()}`} — Software made in Sweden
       {/* <Contributions username="astrit" /> */}
       {/* <Contributions username="astrit" date="2023-05-06" /> */}
     </Layout>
