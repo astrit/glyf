@@ -48,7 +48,6 @@ const Name = styled("div", {
   fontFeatureSettings: '"kern" 1, "ss02" 1',
   fontFamily: "Inter var, sans-serif",
   display: "flex",
-  fontWeight: "200",
   fontSize: "14px",
   letterSpacing: "0.1ch",
   lineHeight: "1",
@@ -59,7 +58,7 @@ const Name = styled("div", {
   lineHeight: "1",
   color: "white",
   // textTransform: "uppercase",
-  fontWeight: "900",
+  fontWeight: "300",
   padding: "10px 20px",
   "@md": {
     display: "none",
