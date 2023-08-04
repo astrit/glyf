@@ -68,7 +68,6 @@ const Actions = styled("div", {
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
-
   borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
   gap: "10px",
 });
@@ -76,8 +75,12 @@ const Actions = styled("div", {
 const Button = styled(Box, {
   display: "flex",
   borderRadius: "8px",
-  background: "rgba(255, 255, 255, 0.1)",
-  border: "1px solid rgba(255, 255, 255, 0.1)",
+  // background: "rgba(255, 255, 255, 0.1)",
+  background: "hsla(360,100%,100%,0.1)",
+  color: "hsla(260, 100%, 100%, 0.8)",
+  border: "2px solid hsla(360,100%,100%, 0.02)",
+  boxShadow: "rgb(0 0 0 / 2%) 2px 3px 8px, rgb(0 0 0 / 1%) 0px 8px 6px -3px",
+
   alignItems: "center",
   justifyContentc: "center",
   fontSize: "12px",
@@ -85,7 +88,7 @@ const Button = styled(Box, {
   cursor: "pointer",
   flexDirection: "column",
   flex: "1",
-  boxShadow: `rgba(0, 0, 0, 0.06) 2px 3px 8px, rgba(0, 0, 0, 0.04) 0px 28px 12px -8px`,
+  // boxShadow: `rgba(0, 0, 0, 0.06) 2px 3px 8px, rgba(0, 0, 0, 0.04) 0px 28px 12px -8px`,
 
   "&:after": {
     content: "attr(data-label)",
@@ -148,7 +151,7 @@ const Sidebar = ({
       <Actions>
         <Button data-label="⌘ c">Copy</Button>
         <Button data-label="⌘ ⇧ c">Unicode</Button>
-        <Button data-label="⌘ s">SVG</Button>
+        <Button data-label="⌘ s">Download</Button>
       </Actions>
 
       {/* <div>pattern</div> */}
