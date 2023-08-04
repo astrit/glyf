@@ -171,6 +171,17 @@ export default function Search() {
           setSelectedGlyph(nextCategory.symbols[0]?.symbol);
         }
       }
+      // navigator.clipboard.writeText(selectedGlyph);
+      if (event.key === "c" && event.metaKey) {
+        event.preventDefault();
+        if (isContentVisible) {
+          if (event.shiftKey) {
+            copyToClipboardUnicode(selectedGlyph);
+          } else {
+            copyToClipboardSymbol(selectedGlyph);
+          }
+        }
+      }
     };
 
     document.addEventListener("keydown", handleSlashKey);
@@ -179,6 +190,7 @@ export default function Search() {
       document.removeEventListener("keydown", handleSlashKey);
       document.removeEventListener("keydown", handleArrowKey);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     searchTerm,
     copiedSymbols,

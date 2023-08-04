@@ -31,14 +31,14 @@ export default function Hero() {
 
             span: {
               fontVariant: "slashed-zero",
-              fontWeight: "100",
+              fontWeight: "500",
               fontSize: "60px",
-              opacity: "0.2",
+              // opacity: "0.2",
               lineHeight: "1",
             },
           }}
         >
-          <span>6031</span>Free Glyphs
+          <span>6000+</span>Free Glyphs
           <Box
             css={{
               // display: "none",
@@ -93,8 +93,8 @@ export default function Hero() {
           }}
         >
           <li>Glyph</li>
-          <li>SVG</li>
           <li>Figma Variables</li>
+          <li>SVG</li>
           <li>CSS Pattern</li>
           <li>PNG</li>
         </Box>

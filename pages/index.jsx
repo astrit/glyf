@@ -28,7 +28,7 @@ export default function Home() {
           <title>Glyphs → CSS.GG</title>
           <meta
             name="description"
-            content="5000+ cool glyphs at your fingertips! Courtesy of CSS.GG, easy to find and copy to your clipboard."
+            content="6000+ cool glyphs at your fingertips! Courtesy of CSS.GG, easy to find and copy to your clipboard."
           />
         </Head>
         <Header />
