@@ -13,6 +13,10 @@
                         "html_entity": "&#xF8FF;"
                     },
                     {
+                        "name": "X Twitter",
+                        "symbol": "𝕏"
+                    },
+                    {
                         "name": "Command cmd",
                         "symbol": "⌘"
                     },
