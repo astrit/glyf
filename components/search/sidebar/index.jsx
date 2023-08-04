@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "@/theme";
 import Box from "@/box";
-import Button from "@/button";
+// import Button from "@/button";
 
 const Aside = styled("aside", {
   display: "flex",
@@ -38,6 +38,7 @@ const Header = styled("header", {
   flexDirection: "column",
   borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
   padding: "28px 40px",
+  minHeight: "90px",
   gap: "4px",
   span: {
     opacity: "0.5",
@@ -55,13 +56,14 @@ const Glyph = styled("div", {
   fontSize: "80px",
   lineHeight: "1",
   padding: "40px",
-  minHeight: "200px",
+  height: "240px",
   fontFamily: "Inter var, sans-serif",
   // background: "hsla(261, 80%, 54%, 0.4)",
 });
 
 const Actions = styled("div", {
   padding: "28px 40px",
+  paddingBlockEnd: "40px",
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
@@ -69,6 +71,31 @@ const Actions = styled("div", {
 
   borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
   gap: "10px",
+});
+
+const Button = styled(Box, {
+  display: "flex",
+  borderRadius: "8px",
+  background: "rgba(255, 255, 255, 0.1)",
+  border: "1px solid rgba(255, 255, 255, 0.1)",
+  alignItems: "center",
+  justifyContentc: "center",
+  fontSize: "12px",
+  padding: "12px 24px",
+  cursor: "pointer",
+  flexDirection: "column",
+  flex: "1",
+  boxShadow: `rgba(0, 0, 0, 0.06) 2px 3px 8px, rgba(0, 0, 0, 0.04) 0px 28px 12px -8px`,
+
+  "&:after": {
+    content: "attr(data-label)",
+    textTransform: "uppercase",
+    display: "flex",
+    fontSize: "10px",
+    opacity: "0.5",
+    position: "absolute",
+    bottom: "-20px",
+  },
 });
 
 function toUni(char) {
@@ -117,16 +144,13 @@ const Sidebar = ({
         {currentGlyph}
         {selectedGlyph && <span>{getCategoryOfSelectedGlyph()}</span>}
       </Header>
-      <Glyph>{selectedGlyph}</Glyph>
+      <Glyph>{selectedGlyph ? selectedGlyph : ""}</Glyph>
       <Actions>
-        <Button to="#" title="Copy" svg="github" />
-        <Button to="#" title="Unicode" svg="figma" />
-        <Button to="#" title="Download" svg="raycast" />
+        <Button data-label="⌘ c">Copy</Button>
+        <Button data-label="⌘ ⇧ c">Unicode</Button>
+        <Button data-label="⌘ s">SVG</Button>
       </Actions>
-      <Actions>
-        <kbd>⌘ + c</kbd>
-        <kbd>⌥ + c</kbd>
-      </Actions>
+
       {/* <div>pattern</div> */}
       {/* {!selectedGlyph && (
         <>
