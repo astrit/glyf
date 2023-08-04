@@ -9,6 +9,7 @@ const Ads = styled("div", {
   right: "10px",
   bottom: "10px",
   width: "160px",
+  height: "205px",
   padding: "10px",
   fontSize: "12px",
   fontFamily: "sans-serif",

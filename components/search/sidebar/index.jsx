@@ -1,6 +1,7 @@
 import React from "react";
 import { styled } from "@/theme";
 import Box from "@/box";
+import Carbon from "u/ads";
 // import Button from "@/button";
 
 const Aside = styled("aside", {
@@ -31,6 +32,48 @@ const Aside = styled("aside", {
     rgba(0, 0, 0, 0.04) 0px 28px 12px -8px, 
     0 0 0 10px rgba(255, 255, 255, 0.02)
   `,
+
+  "#ads": {
+    width: "100%",
+    height: "60px",
+    // backgroundColor: "rgba(255, 255, 255, 0.06)",
+    position: "relative",
+    boxShadow: "none",
+
+    inset: "unset",
+    // bottom: "10px",
+    // right: "10px",
+    // width: "100%",
+    // borderRadius: 0,
+
+    ".carbon-wrap": {
+      flexDirection: "row",
+      position: "relative",
+    },
+
+    ".carbon-img": {
+      width: "60px",
+      height: "40px",
+
+      img: {
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        objectPosition: "center",
+      },
+    },
+
+    ".carbon-text": {
+      display: "flex",
+      alignItems: "center",
+    },
+
+    ".carbon-poweredby": {
+      position: "absolute",
+      bottom: "0",
+      right: "0",
+    },
+  },
 });
 
 const Header = styled("header", {
@@ -57,6 +100,7 @@ const Glyph = styled("div", {
   lineHeight: "1",
   padding: "40px",
   height: "240px",
+  maxHeight: "240px",
   fontFamily: "Inter var, sans-serif",
   // background: "hsla(261, 80%, 54%, 0.4)",
 });
@@ -70,6 +114,7 @@ const Actions = styled("div", {
   justifyContent: "center",
   borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
   gap: "10px",
+  marginBottom: "auto",
 });
 
 const Button = styled(Box, {
@@ -128,6 +173,7 @@ const Sidebar = ({
   selectedGlyph,
   currentGlyph,
   symbolsData,
+  isContentVisible,
   ...props
 }) => {
   function getCategoryOfSelectedGlyph() {
@@ -176,6 +222,17 @@ const Sidebar = ({
           {charToUrlEscapeCode(selectedGlyph)} <br />
         </>
       )} */}
+      <Box
+        css={{
+          padding: "14px",
+          position: "relative",
+          minHeight: "60px",
+          // background: "hsla(260, 100%, 100%, 0.1)",
+          // marginTop: "100%",
+        }}
+      >
+        {isContentVisible && <Carbon />}
+      </Box>
     </Aside>
   );
 };

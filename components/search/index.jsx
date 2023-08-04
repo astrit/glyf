@@ -389,6 +389,7 @@ export default function Search() {
         currentGlyph={currentGlyph}
         copyToClipboardUnicode={copyToClipboardUnicode}
         copyToClipboardSymbol={copyToClipboardSymbol}
+        isContentVisible={isContentVisible}
         css={{
           opacity: isContentVisible ? "1" : "0",
           pointerEvents: isContentVisible ? "auto" : "none",
@@ -418,6 +419,7 @@ export default function Search() {
           ))}
         </List>
       )}
+      {!isContentVisible && <Carbon />}
     </>
   );
 }

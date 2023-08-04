@@ -30,7 +30,7 @@ export default function Glyphs({ Component, pageProps }) {
         }}
       />
       <Analytics />
-      <Carbon />
+      {/* <Carbon /> */}
     </>
   );
 }
