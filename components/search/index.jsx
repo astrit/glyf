@@ -387,6 +387,8 @@ export default function Search() {
         symbolsData={symbolsData}
         selectedGlyph={selectedGlyph}
         currentGlyph={currentGlyph}
+        copyToClipboardUnicode={copyToClipboardUnicode}
+        copyToClipboardSymbol={copyToClipboardSymbol}
         css={{
           opacity: isContentVisible ? "1" : "0",
           pointerEvents: isContentVisible ? "auto" : "none",

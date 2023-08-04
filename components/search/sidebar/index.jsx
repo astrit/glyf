@@ -121,7 +121,10 @@ function charToUrlEscapeCode(char) {
 const Sidebar = ({
   children,
   css,
+  // handleClick,
   // getCategoryOfSelectedGlyph,
+  copyToClipboardSymbol,
+  copyToClipboardUnicode,
   selectedGlyph,
   currentGlyph,
   symbolsData,
@@ -149,8 +152,18 @@ const Sidebar = ({
       </Header>
       <Glyph>{selectedGlyph ? selectedGlyph : ""}</Glyph>
       <Actions>
-        <Button data-label="⌘ c">Copy</Button>
-        <Button data-label="⌘ ⇧ c">Unicode</Button>
+        <Button
+          data-label="⌘ c"
+          onClick={(e) => copyToClipboardSymbol(selectedGlyph)}
+        >
+          Copy
+        </Button>
+        <Button
+          data-label="⌘ ⇧ c"
+          onClick={(e) => copyToClipboardUnicode(selectedGlyph)}
+        >
+          Unicode
+        </Button>
         <Button data-label="⌘ s">Download</Button>
       </Actions>
 
