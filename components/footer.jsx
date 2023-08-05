@@ -10,8 +10,9 @@ import Contributions from "@/contributions";
 const Layout = styled("footer", {
   display: "flex",
   padding: "8vh 20px",
-  fontSize: "14px",
-  gap: "20px",
+  fontSize: "10px",
+  letterSpacing: "normal",
+  gap: "10px",
   alignItems: "center",
   fontWeight: "300",
 
@@ -38,27 +39,27 @@ const Sweden = styled("div", {
   boxSizing: "border-box",
   position: "relative",
   display: "block",
-  width: "21px",
-  height: "14px",
+  width: "16px",
+  height: "10px",
 
   "&::after, &::before": {
     content: "",
     display: "block",
     boxSizing: "border-box",
     position: "absolute",
-    height: "6px",
+    height: "4px",
     background: "currentColor",
-    boxShadow: "0 8px 0",
+    boxShadow: "0 4px 0",
     top: "0",
   },
 
   "&::before": {
     left: 0,
-    width: "7px",
+    width: "4px",
   },
 
   "&::after": {
-    width: "12px",
+    width: "8px",
     right: 0,
   },
 });
@@ -75,12 +76,7 @@ export default function Footer() {
         />
       </Link>
       © {`${new Date().getFullYear()}`}
-      <MadeIn>
-        Made in Sweden
-        <Sweden />
-      </MadeIn>
-      {/* <Contributions username="astrit" /> */}
-      {/* <Contributions username="astrit" date="2023-05-06" /> */}
+      <MadeIn>Made in Sweden</MadeIn>
     </Layout>
   );
 }

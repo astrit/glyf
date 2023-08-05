@@ -87,6 +87,15 @@ const Header = styled("header", {
     opacity: "0.5",
     fontSize: "10px",
   },
+  p: {
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+    // display: "flex",
+    width: "100%",
+    height: "1lh",
+    margin: "unset",
+  },
 });
 
 const Glyph = styled("div", {
@@ -193,7 +202,7 @@ const Sidebar = ({
   return (
     <Aside css={css} {...props}>
       <Header>
-        {currentGlyph}
+        <p>{currentGlyph}</p>
         {selectedGlyph && <span>{getCategoryOfSelectedGlyph()}</span>}
       </Header>
       <Glyph>{selectedGlyph ? selectedGlyph : ""}</Glyph>
