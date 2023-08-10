@@ -277,6 +277,50 @@ export default function Search() {
     (item) => item.symbol === selectedGlyph
   )?.name;
 
+  // Patter
+
+  // useEffect(() => {
+  function createSvgPatternFromChar(char) {
+    if (typeof document === "undefined") {
+      return ""; // Return empty string if running on the server-side
+    }
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    svg.setAttribute("width", "64");
+    svg.setAttribute("height", "64");
+    rect.setAttribute("width", "100%");
+    rect.setAttribute("height", "100%");
+    rect.setAttribute("fill", "transparent");
+    text.setAttribute("fill", "hsla(0, 100%, 100%, 0.08)");
+    text.setAttribute("x", "50%");
+    text.setAttribute("y", "50%");
+    text.setAttribute("font-size", "48");
+    text.setAttribute("font-weight", "normal");
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute(
+      "font-family",
+      '"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI"'
+    );
+    text.setAttribute("dominant-baseline", "central");
+    text.textContent = char;
+    svg.appendChild(rect);
+    svg.appendChild(text);
+    const svgString = new XMLSerializer().serializeToString(svg);
+    const encodedSvg = encodeURIComponent(svgString);
+    return `url('data:image/svg+xml;charset=utf-8,${encodedSvg}')`;
+  }
+  // }, []);
+
+  // useEffect(() => {
+  // const selectedGlyph = "A"; // Replace with your desired character
+  // const pattern = createSvgPatternFromChar(selectedGlyph);
+  // console.log(pattern);
+  // }, []);
+  const pattern = createSvgPatternFromChar(selectedGlyph);
+
+  console.log(pattern);
+
   return (
     <>
       <Form>
@@ -390,6 +434,7 @@ export default function Search() {
         copyToClipboardUnicode={copyToClipboardUnicode}
         copyToClipboardSymbol={copyToClipboardSymbol}
         isContentVisible={isContentVisible}
+        pattern={pattern}
         css={{
           opacity: isContentVisible ? "1" : "0",
           pointerEvents: isContentVisible ? "auto" : "none",

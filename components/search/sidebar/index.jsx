@@ -157,6 +157,11 @@ const Button = styled(Box, {
     position: "absolute",
     bottom: "-20px",
   },
+
+  "&:active": {
+    transform: "translateY(1px)",
+    borderColor: "hsla(360,100%,100%, 0.2)",
+  },
 });
 
 function toUni(char) {
@@ -187,6 +192,7 @@ const Sidebar = ({
   currentGlyph,
   symbolsData,
   isContentVisible,
+  pattern,
   ...props
 }) => {
   function getCategoryOfSelectedGlyph() {
@@ -202,6 +208,71 @@ const Sidebar = ({
     }
     return "";
   }
+
+  // Generate the SVG
+  function generateSVGContent() {
+    const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+    <circle cx="12" cy="12" r="10" fill="red" />
+  </svg>`;
+
+    return svgString;
+  }
+
+  function downloadSVG() {
+    // Generate the SVG content as a string
+    const svgContent = generateSVGContent();
+
+    // Create a Blob from the SVG content
+    const blob = new Blob([svgContent], { type: "image/svg+xml" });
+
+    // Create a downloadable URL
+    const url = URL.createObjectURL(blob);
+
+    // Create an anchor element
+    const a = document.createElement("a");
+
+    // Set the URL as the href attribute of the anchor element
+    a.href = url;
+
+    // Set the filename for download
+    a.download = selectedGlyph + ".svg"; // Change the filename as desired
+
+    // Trigger the click event programmatically
+    a.dispatchEvent(new MouseEvent("click"));
+
+    // Clean up
+    URL.revokeObjectURL(url);
+  }
+
+  // function createSvgPatternFromChar(char) {
+  //   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  //   const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  //   const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  //   svg.setAttribute("width", "64");
+  //   svg.setAttribute("height", "64");
+  //   rect.setAttribute("width", "100%");
+  //   rect.setAttribute("height", "100%");
+  //   rect.setAttribute("fill", "transparent");
+  //   text.setAttribute("fill", "hsla(0, 100%, 100%, 0.08)");
+  //   text.setAttribute("x", "50%");
+  //   text.setAttribute("y", "50%");
+  //   text.setAttribute("font-size", "48");
+  //   text.setAttribute("font-weight", "normal");
+  //   text.setAttribute("text-anchor", "middle");
+  //   text.setAttribute(
+  //     "font-family",
+  //     '"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI"'
+  //   );
+  //   text.setAttribute("dominant-baseline", "central");
+  //   text.textContent = char;
+  //   svg.appendChild(rect);
+  //   svg.appendChild(text);
+  //   const svgString = new XMLSerializer().serializeToString(svg);
+  //   const encodedSvg = encodeURIComponent(svgString);
+  //   return `url('data:image/svg+xml;charset=utf-8,${encodedSvg}')`;
+  // }
+  // const pattern = createSvgPatternFromChar(currentGlyph);
+  // console.log(pattern);
 
   return (
     <Aside css={css} {...props}>
@@ -223,9 +294,20 @@ const Sidebar = ({
         >
           Unicode
         </Button>
-        <Button data-label="⌘ s">Download</Button>
+        <Button data-label="⌘ s" onClick={(e) => downloadSVG()}>
+          Download
+        </Button>
       </Actions>
-
+      <Box
+        css={{
+          backgroundImage: pattern,
+          width: "100%",
+          height: "200px",
+        }}
+      ></Box>
+      <textarea name="" id="" cols="30" rows="10">
+        {pattern}
+      </textarea>
       {/* <div>pattern</div> */}
       {/* {!selectedGlyph && (
         <>
