@@ -2,6 +2,7 @@ import React from "react";
 import { styled } from "@/theme";
 import Box from "@/box";
 import Carbon from "u/ads";
+import { style } from "$/global";
 // import Button from "@/button";
 
 const Aside = styled("aside", {
@@ -164,6 +165,30 @@ const Button = styled(Box, {
   },
 });
 
+const Pattern = styled("div", {
+  padding: "20px",
+  borderRadius: "12px",
+  border: "1px solid hsla(360,100%,100%, 0.1)",
+  margin: "14px",
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(24px, 1fr))",
+  fontFamily: "Inter var, sans-serif",
+  gap: "20px",
+  overflow: "hidden",
+  height: "260px",
+  pointerEvents: "none",
+  userSelect: "none",
+  maskImage: "linear-gradient(to top, black 10%, transparent 100%)",
+
+  span: {
+    display: "flex",
+    width: "28px",
+    height: "28px",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
+
 function toUni(char) {
   return `U+${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
 }
@@ -274,6 +299,13 @@ const Sidebar = ({
   // const pattern = createSvgPatternFromChar(currentGlyph);
   // console.log(pattern);
 
+  function fakePattern(selectedGlyph, repeatCount) {
+    const repeatedGlyphs = selectedGlyph.repeat(repeatCount);
+    return Array.from(repeatedGlyphs).map((glyph, index) => {
+      return <span key={index}>{glyph}</span>;
+    });
+  }
+
   return (
     <Aside css={css} {...props}>
       <Header>
@@ -298,16 +330,29 @@ const Sidebar = ({
           Download
         </Button>
       </Actions>
-      <Box
+      <Pattern>{selectedGlyph ? fakePattern(selectedGlyph, 80) : ""}</Pattern>
+      {/* <Box
         css={{
           backgroundImage: pattern,
-          width: "100%",
+          backgroundRepeat: "repeat",
+          backgroundPosition: "center",
+          backgroundSize: "34px",
+          borderRadius: "12px",
+          // width: "100%",
           height: "200px",
+          padding: "8px",
+          margin: "14px",
+          backgroundClip: "content-box",
+          boxSizing: "border-box",
+          border: "2px solid hsla(0, 100%, 100%, 0.1)",
         }}
-      ></Box>
-      <textarea name="" id="" cols="30" rows="10">
-        {pattern}
-      </textarea>
+      >
+        Pattern
+      </Box> */}
+
+      {/* <textarea name="" id="" cols="30" rows="10"> */}
+      {/* {pattern} */}
+      {/* </textarea> */}
       {/* <div>pattern</div> */}
       {/* {!selectedGlyph && (
         <>
