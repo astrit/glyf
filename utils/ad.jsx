@@ -38,7 +38,6 @@ const Ad = styled("div", {
     },
   },
 });
-
 export default function Reklama() {
   const [adData, setAdData] = useState({ ads: [] });
 
@@ -48,11 +47,13 @@ export default function Reklama() {
       .then((data) => setAdData(data));
   }, []);
 
-  const ad = adData.ads[0] || {};
+  const ad = adData.ads.length > 0 ? adData.ads[0] : null;
+
+  const shouldDisplayAd = ad && ad.image && ad.company && ad.description;
 
   return (
     <Ad>
-      {ad && (
+      {shouldDisplayAd && (
         <a href={ad.ad_via_link}>
           <img src={ad.image} alt={ad.company} />
           <div>

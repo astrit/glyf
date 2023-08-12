@@ -10,6 +10,8 @@ const nextConfig = {
       "github.com",
       "githubusercontent.com",
       "avatars.githubusercontent.com",
+      "buysellads.net",
+      "srv.buysellads.com",
     ],
     formats: ["image/webp", "image/avif"],
   },
