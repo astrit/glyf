@@ -16,7 +16,6 @@ const Ad = styled("div", {
     backdropFilter: "blur(10px)",
     fontWeight: "300",
     letterSpacing: "initial",
-    fontSize: "12px",
     gap: "8px",
     // height: "48px",
     boxShadow: "rgb(0 0 0 / 2%) 2px 3px 8px, rgb(0 0 0 / 1%) 0px 8px 6px -3px",
@@ -24,7 +23,7 @@ const Ad = styled("div", {
     lineHeight: "1.2",
     alignItems: "center",
     overflow: "hidden",
-    maxWidth: "280px",
+    maxWidth: "320px",
     opacity: "0.8",
 
     img: {
