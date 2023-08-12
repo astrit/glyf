@@ -64,7 +64,7 @@ export default function Reklama() {
 
   return (
     <>
-      {ad && ad.image && (
+      {ad && ad.statlink && (
         <Ad>
           <a
             href={ad.statlink}
