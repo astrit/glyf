@@ -132,7 +132,7 @@ export default function Hero() {
           alignItems: "center",
         }}
       >
-        <Reklama />
+        {/* <Reklama /> */}
         {/* <Ad /> */}
         {/* <Box
           css={{

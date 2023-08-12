@@ -11,6 +11,7 @@ const nextConfig = {
       "githubusercontent.com",
       "avatars.githubusercontent.com",
       "buysellads.net",
+      "cdn4.buysellads.net",
       "srv.buysellads.com",
     ],
     formats: ["image/webp", "image/avif"],

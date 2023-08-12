@@ -24,6 +24,7 @@ import {
   levenshteinDistance,
   handleClearCopiedSymbols,
 } from "@/search/utils";
+import Reklama from "u/ad";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -392,6 +393,7 @@ export default function Search() {
             <button onClick={() => handleClearCopiedSymbols("")}>✗</button>
           </Drawer>
         ) : null}
+        <Reklama />
       </Box>
       {/* 
       {isContentVisible && ( )}*/}
