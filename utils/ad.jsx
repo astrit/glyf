@@ -66,7 +66,11 @@ export default function Reklama() {
     <>
       {ad && ad.image && (
         <Ad>
-          <a href={ad.statlink}>
+          <a
+            href={ad.statlink}
+            target="_blank"
+            rel="sponsored noopener noreferrer"
+          >
             {ad.image && <img src={ad.image} alt={ad.company} />}
             {ad.company && (
               <div>
