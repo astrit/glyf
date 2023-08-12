@@ -70,7 +70,7 @@ export default function Reklama() {
             {ad.image && <img src={ad.image} alt={ad.company} />}
             {ad.company && (
               <div>
-                <span>{ad.company}</span> - {ad.description}
+                <span>{ad.company}</span> {ad.description}
               </div>
             )}
           </a>
