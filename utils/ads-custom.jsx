@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { styled } from "@/theme";
-import { useRouter } from "next/router";
 
 const Layout = styled("div", {
   display: "flex",
@@ -13,12 +12,13 @@ const Layout = styled("div", {
     flexDirection: "row",
     padding: "10px",
     height: "48px",
+    maxWidth: "430px",
 
     borderRadius: "8px",
     background: "hsla(360,100%,100%,0.04)",
     color: "hsla(260, 100%, 100%, 0.8)",
     border: "2px solid hsla(360,100%,100%, 0.02)",
-    padding: "16px 20px",
+    // padding: "16px 20px",
     display: "flex",
     backdropFilter: "blur(10px)",
     fontWeight: "300",
@@ -31,42 +31,40 @@ const Layout = styled("div", {
 });
 
 export default function Ad() {
-  const [isAds, setAds] = useState(null);
-  const router = useRouter();
-
   useEffect(() => {
     const script = document.createElement("script");
-
-    // console.log(script);
     // script.src = "//cdn.carbonads.com/carbon.js?serve=CE7DEK3M&placement=cssgg";
-    script.src = "//m.servedby-buysellads.com/monetization.custom.js";
-    // script.src = "https://m.servedby-buysellads.com/monetization.js";
-    script.id = "_carbonads_js_custom";
+    script.src = "https://m.servedby-buysellads.com/monetization.js";
+    script.id = "_carbonads_custom_js";
     script.async = true;
+    const ads = document.querySelector("#ad");
+    if (ads) {
+      ads.appendChild(script);
+    }
+    const isBadgeBannerAvailable = document.querySelectorAll(
+      "#badge-js #_custom_"
+    )[0];
 
-    // const isAdReady = document.querySelectorAll("#ad")[0];
-    if (typeof _bsa !== "undefined" && _bsa && !!!isAdReady) {
-      _bsa.init("custom", "CWYDE5QE", "placement:badgeBannerDemo", {
-        target: "#ad",
+    if (typeof _bsa !== "undefined" && _bsa && !!!isBadgeBannerAvailable) {
+      _bsa.init("custom", "CWYDC2QE", "placement:demo", {
+        target: "#badge-js",
         template: `
-            <a href="##link##" rel="sponsored noopener" target="_blank" title="##company## — ##tagline##">
-                <img src="##logo##">
-                <div class="sponsor-description">##description##</div>
-                <div class="sponsor-cta">##callToAction##</div>
-            </a>
-            `,
+          <a href="##link##" rel="sponsored noopener" target="_blank" title="##company## — ##tagline##">
+            <img src="##image##">
+            <div class="text">##company## — ##description##</div>
+          </a>
+        `,
       });
-      return;
     }
 
-    // const ads = document.querySelector("#ad");
-    // if (ads) {
-    //   ads.appendChild(script);
-    // }
-    if (typeof _bsa !== "undefined" && _bsa) {
-      _bsa.reload("#ad");
+    if (isBadgeBannerAvailable) {
+      _bsa.reload("#badge-js");
     }
-  }, [router.asPath]);
+  }, []);
 
-  return <Layout id="ad"></Layout>;
+  return (
+    <Layout id="ad">
+      <div id="badge-js"></div>
+    </Layout>
+  );
 }

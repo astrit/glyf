@@ -10,7 +10,7 @@ function Shuffle() {
         fps: 60,
         onComplete: (elm) => {
           if (index === shuffleMe.length - 1) {
-            console.log("Done shuffling");
+            // console.log("Done shuffling");
           }
         },
       });

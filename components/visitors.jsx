@@ -7,7 +7,7 @@ const OnlineUsers = () => {
   useEffect(() => {
     const socket = io("https://glyphs.css.gg"); // replace with your server URL
     socket.on("connect", () => {
-      console.log("Connected to server");
+      // console.log("Connected to server");
     });
 
     socket.emit("getOnlineVisitors");

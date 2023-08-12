@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 export default function Noise() {
-  console.log("Noise", Noise);
+  // console.log("Noise", Noise);
   useEffect(() => {
     const canvas = document.querySelector("canvas");
     const ctx = canvas.getContext("2d");

@@ -319,7 +319,7 @@ export default function Search() {
   // }, []);
   const pattern = createSvgPatternFromChar(selectedGlyph);
 
-  console.log(pattern);
+  // console.log(pattern);
 
   return (
     <>

@@ -26,11 +26,25 @@ class MyDocument extends Document {
         </Head>
         <body>
           <Main />
+          {/* <script
+            src="https://m.servedby-buysellads.com/monetization.js"
+            // strategy="beforeInteractive"
+            async
+          /> */}
+          {/* <script type="text/javascript">console.log(_bsa);</script> */}
           <Script
             src="https://m.servedby-buysellads.com/monetization.js"
             strategy="beforeInteractive"
           />
           <NextScript />
+          {/* <Script
+            onLoad={() => {
+              _bsa.init("flexbar", "CWYDE5QE", "placement:demo");
+              console.log(_bsa);
+            }}
+            src="https://m.servedby-buysellads.com/monetization.js"
+            type="text/javascript"
+          /> */}
         </body>
       </Html>
     );
