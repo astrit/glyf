@@ -3,6 +3,7 @@ import Button from "@/button";
 import Link from "@/link";
 import Stars from "@/stars";
 import Visitors from "@/visitors";
+import Ad from "u/ads-custom";
 export default function Hero() {
   return (
     <Box
@@ -130,6 +131,7 @@ export default function Hero() {
           alignItems: "center",
         }}
       >
+        <Ad />
         {/* <Box
           css={{
             fontSize: "10px",

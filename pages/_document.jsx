@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 import { getCssText } from "$/stitches.config";
 
@@ -25,6 +26,10 @@ class MyDocument extends Document {
         </Head>
         <body>
           <Main />
+          <Script
+            src="https://m.servedby-buysellads.com/monetization.js"
+            strategy="beforeInteractive"
+          />
           <NextScript />
         </body>
       </Html>

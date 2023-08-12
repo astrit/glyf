@@ -83,7 +83,9 @@ export default function Carbon() {
 
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "//cdn.carbonads.com/carbon.js?serve=CE7DEK3M&placement=cssgg";
+    // script.src = "//cdn.carbonads.com/carbon.js?serve=CE7DEK3M&placement=cssgg";
+    script.src =
+      "//cdn.carbonads.com/carbon.js?serve=CWYDE537&placement=glyfapp";
     script.id = "_carbonads_js";
     script.async = true;
 
