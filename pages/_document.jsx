@@ -32,10 +32,10 @@ class MyDocument extends Document {
             async
           /> */}
           {/* <script type="text/javascript">console.log(_bsa);</script> */}
-          <Script
+          {/* <Script
             src="https://m.servedby-buysellads.com/monetization.js"
             strategy="beforeInteractive"
-          />
+          /> */}
           <NextScript />
           {/* <Script
             onLoad={() => {
