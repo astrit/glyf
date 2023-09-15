@@ -26,7 +26,7 @@ import {
 } from "@/search/utils";
 import Reklama from "u/ad";
 
-export default function Search() {
+export default function Search({ selected }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +39,18 @@ export default function Search() {
   const [selectedGlyph, setSelectedGlyph] = useState(null);
   const [isContentVisible, setIsContentVisible] = useState(false);
 
-  const router = useRouter();
+  // const router = useRouter();
+  // const { name } = router.query;
+
+  // console.log("is selected", selected);
+  // console.log("is selected", name);
+
+  useEffect(() => {
+    if (selected) {
+      setSelectedGlyph(selected);
+      setIsContentVisible(true);
+    }
+  }, [selected]);
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -267,6 +278,7 @@ export default function Search() {
       e.preventDefault();
       setSelectedGlyph(symbol);
       setIsContentVisible(true);
+      // console.log(symbol);
 
       // Navigate to the dynamic route for the clicked card
       // const url = `${toURL(name)}`; // Generate the URL using toURL function and the name property
