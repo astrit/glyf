@@ -6,3 +6,4 @@
 6. Add tweets from people https://static-tweet.vercel.app/
 7. https://www.unicode.org/Public/UCD/latest/ucdxml/
 8. MEtas https://github.com/steven-tey/dub/blob/main/pages/api/edge/metatags.ts
+9. Figma plugin like this https://github.com/astrit/figma-feather
