@@ -146,7 +146,7 @@ export default function Hero() {
         <Button
           to="https://www.figma.com/community/file/834587122842084475/css.gg"
           title="Figma"
-          count="48k"
+          count="50k"
           svg="figma"
         />
 
@@ -160,7 +160,7 @@ export default function Hero() {
         <Button
           to="https://github.com/astrit/css.gg"
           title="GitHub"
-          count="9.2k"
+          count="10k"
           svg="github"
         />
         <Button

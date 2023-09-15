@@ -89,7 +89,7 @@ const Header = styled("header", {
   padding: "28px 40px",
   minHeight: "90px",
   position: "sticky",
-  background: "hsla(261, 71%, 55%, 0.4)",
+  background: "rgba(255, 255, 255, 0)",
   backdropFilter: "blur(20px)",
   zIndex: "1",
   top: "0",
@@ -145,7 +145,7 @@ const Button = styled(Box, {
   color: "hsla(260, 100%, 100%, 0.8)",
   border: "2px solid hsla(360,100%,100%, 0.02)",
   boxShadow: "rgb(0 0 0 / 2%) 2px 3px 8px, rgb(0 0 0 / 1%) 0px 8px 6px -3px",
-  transition: "all 220ms",
+  transition: "all 420ms",
   alignItems: "center",
   justifyContentc: "center",
   fontSize: "11px",
@@ -153,14 +153,12 @@ const Button = styled(Box, {
   padding: "12px 24px",
   cursor: "pointer",
   flexDirection: "column",
-  userSelect: "none",
   flex: "1",
-  boxShadow: `rgba(0, 0, 0, 0.06) 2px 3px 8px, rgba(0, 0, 0, 0.04) 0px 28px 12px -8px`,
+  // boxShadow: `rgba(0, 0, 0, 0.06) 2px 3px 8px, rgba(0, 0, 0, 0.04) 0px 28px 12px -8px`,
 
   "&:hover": {
-    backgroundColor: "hsla(360,100%,100%, 0.2)",
-    borderColor: "hsla(360,100%,100%, 0.1)",
-    // color: "hsla(261, 77%, 49%, 1)",
+    backgroundColor: "hsla(360,100%,100%, 1)",
+    color: "hsla(261, 77%, 49%, 1)",
   },
 
   "&:after": {
@@ -171,7 +169,7 @@ const Button = styled(Box, {
     // opacity: "0.5",
     position: "absolute",
     bottom: "-20px",
-    color: "hsla(360,100%,100%, 0.3)",
+    color: "hsla(360,100%,100%, 0.5)",
   },
 
   "&:active": {
@@ -190,7 +188,6 @@ const Pattern = styled("div", {
   fontFamily: "Inter var, sans-serif",
   gap: "20px",
   overflow: "hidden",
-  minHeight: "260px",
   height: "260px",
   pointerEvents: "none",
   userSelect: "none",
@@ -250,26 +247,70 @@ const Sidebar = ({
     return "";
   }
 
+  // Generate the SVG
   function generateSVGContent() {
-    const svgString = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-          <circle cx="12" cy="12" r="10" fill="red" />
-      </svg>
-    `;
+    const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+    <circle cx="12" cy="12" r="10" fill="red" />
+  </svg>`;
 
     return svgString;
   }
 
   function downloadSVG() {
+    // Generate the SVG content as a string
     const svgContent = generateSVGContent();
+
+    // Create a Blob from the SVG content
     const blob = new Blob([svgContent], { type: "image/svg+xml" });
+
+    // Create a downloadable URL
     const url = URL.createObjectURL(blob);
+
+    // Create an anchor element
     const a = document.createElement("a");
+
+    // Set the URL as the href attribute of the anchor element
     a.href = url;
-    a.download = currentGlyph + ".svg";
+
+    // Set the filename for download
+    a.download = selectedGlyph + ".svg"; // Change the filename as desired
+
+    // Trigger the click event programmatically
     a.dispatchEvent(new MouseEvent("click"));
+
+    // Clean up
     URL.revokeObjectURL(url);
   }
+
+  // function createSvgPatternFromChar(char) {
+  //   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  //   const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  //   const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  //   svg.setAttribute("width", "64");
+  //   svg.setAttribute("height", "64");
+  //   rect.setAttribute("width", "100%");
+  //   rect.setAttribute("height", "100%");
+  //   rect.setAttribute("fill", "transparent");
+  //   text.setAttribute("fill", "hsla(0, 100%, 100%, 0.08)");
+  //   text.setAttribute("x", "50%");
+  //   text.setAttribute("y", "50%");
+  //   text.setAttribute("font-size", "48");
+  //   text.setAttribute("font-weight", "normal");
+  //   text.setAttribute("text-anchor", "middle");
+  //   text.setAttribute(
+  //     "font-family",
+  //     '"Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI"'
+  //   );
+  //   text.setAttribute("dominant-baseline", "central");
+  //   text.textContent = char;
+  //   svg.appendChild(rect);
+  //   svg.appendChild(text);
+  //   const svgString = new XMLSerializer().serializeToString(svg);
+  //   const encodedSvg = encodeURIComponent(svgString);
+  //   return `url('data:image/svg+xml;charset=utf-8,${encodedSvg}')`;
+  // }
+  // const pattern = createSvgPatternFromChar(currentGlyph);
+  // console.log(pattern);
 
   function fakePattern(selectedGlyph, repeatCount) {
     const repeatedGlyphs = selectedGlyph.repeat(repeatCount);
@@ -284,10 +325,7 @@ const Sidebar = ({
         <p>{currentGlyph}</p>
         {selectedGlyph && <span>{getCategoryOfSelectedGlyph()}</span>}
       </Header>
-      <Glyph>
-        {" "}
-        <span>{selectedGlyph ? selectedGlyph : ""}</span>
-      </Glyph>
+      <Glyph>{selectedGlyph ? selectedGlyph : ""}</Glyph>
       <Actions>
         <Button
           data-label="⌘ c"
