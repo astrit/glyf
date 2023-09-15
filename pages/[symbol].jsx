@@ -48,7 +48,7 @@ export default function Home() {
     <>
       <Box>
         <Head>
-          <title>{matchedSymbol.symbol} → CSS.GG</title>
+          <title>{matchedSymbol && matchedSymbol.symbol} → Glyf.app</title>
           <meta
             name="description"
             content="600 + cool glyphs at your fingertips! Courtesy of CSS.GG, easy to find and copy to your clipboard."
