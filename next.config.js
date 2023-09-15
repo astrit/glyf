@@ -4,6 +4,16 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/figma",
+        destination:
+          "https://www.figma.com/community/file/1284635132283811437/GLYF.APP-%E2%80%94-6000%2B-Variable-Glyphs",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     domains: [
       "images.unsplash.com",

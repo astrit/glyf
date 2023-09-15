@@ -144,9 +144,10 @@ export default function Hero() {
         {/* <Button to="https://raycast.com/astrit" title="App Store" svg="apple" /> */}
         {/* <Button to="https://raycast.com/astrit" title="Windows" svg="windows" /> */}
         <Button
-          to="https://www.figma.com/community/file/834587122842084475/css.gg"
+          // to="https://www.figma.com/community/file/834587122842084475/css.gg"
+          to="https://www.figma.com/community/file/1284635132283811437/gylf.app-%E2%80%94-6000%2B-Variable-Glyphs"
           title="Figma"
-          count="50k"
+          count="$4.00"
           svg="figma"
         />
 
@@ -160,13 +161,13 @@ export default function Hero() {
         <Button
           to="https://github.com/astrit/css.gg"
           title="GitHub"
-          count="10k"
+          count=""
           svg="github"
         />
         <Button
           to="https://raycast.com/astrit"
           title="Raycast"
-          count="1.1k"
+          count=""
           svg="raycast"
         />
       </Box>
