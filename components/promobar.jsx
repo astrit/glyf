@@ -22,7 +22,7 @@ const flare = keyframes({
   },
 });
 
-const Bar = styled("Link", {
+const Bar = styled("a", {
   display: "flex",
   alignItems: "center",
   fontWeight: "300",
