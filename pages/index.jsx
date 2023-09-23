@@ -7,6 +7,7 @@ import Footer from "@/footer";
 import Carbon from "u/ads";
 import Search from "@/search";
 import Hero from "@/hero";
+import PromoBar from "@/promobar";
 
 const Main = styled("main", {
   margin: "0 auto",
@@ -31,6 +32,7 @@ export default function Home() {
             content="6000+ cool glyphs at your fingertips! Courtesy of CSS.GG, easy to find and copy to your clipboard."
           />
         </Head>
+        <PromoBar />
         <Header />
         <SVGMap />
         <Main>
