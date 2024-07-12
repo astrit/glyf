@@ -48,6 +48,9 @@
   --slant-color-neutral-800-80: rgba(26, 26, 26, 0.8);
   --slant-color-neutral-800-90: rgba(26, 26, 26, 0.9);
 
+  --slant-color-brand-css-600:  #5d18dc ;
+  --slant-color-brand-css-dark-600: #1e2332;
+
   /* Color - Accent */
   --slant-color-accent-100: #fcf9e9;
   --slant-color-accent-200: #fdf7d6;

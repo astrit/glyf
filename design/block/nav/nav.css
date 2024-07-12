@@ -1,8 +1,11 @@
 header nav {
   display: flex;
   flex-direction: row;
+  font-family: var(--slant-font-jet);
+  letter-spacing: normal;
   gap: 4ch;
-  font-family: var(--font-manrope);
+  font-size: var(--slant-size-24);
+  font-weight: 800;
 
   a {
     transition: var(--slant-motion-transition);

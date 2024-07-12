@@ -33,7 +33,7 @@ const IBM = IBM_Plex_Mono({
 const man = Manrope({
   subsets: ["latin"],
   display: "block",
-  variable: "--font-manrope",
+  variable: "--slant-font-manrope",
 })
 
 export default function Fonts({ children }: { children: React.ReactNode }) {

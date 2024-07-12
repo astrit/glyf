@@ -12,6 +12,8 @@ import { Provider } from "$/provider/provider"
 
 import "#/global/global.css"
 
+import Pattern from "@/pattern/pattern"
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://glyf.app"),
   title: {
@@ -68,6 +70,7 @@ export default function RootLayout({
                 <Footer />
               </Main>
             </Fonts>
+            <Pattern />
           </Provider>
         </Suspense>
         <Analytics />

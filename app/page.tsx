@@ -2,6 +2,7 @@
 
 import React, { useContext } from "react"
 import Calendar from "@/calendar/calendar"
+import Hero from "@/hero/hero"
 import Home from "&/home/home"
 import { Controller } from "$/provider/provider"
 
@@ -16,7 +17,7 @@ export default function HomePage() {
 
   return (
     <Home data-title={title} data-description={description}>
-      Shkurt e shqip.
+      <Hero />
     </Home>
   )
 }
