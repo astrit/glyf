@@ -1,0 +1,19 @@
+header nav {
+  display: flex;
+  flex-direction: row;
+  gap: 4ch;
+  font-family: var(--font-manrope);
+
+  a {
+    transition: var(--slant-motion-transition);
+    padding-inline: var(--slant-size-12);
+    padding-block: var(--slant-size-08);
+
+    @media (hover: hover) {
+      &:hover,
+      &.active {
+        color: var(--slant-color-neutral-100);
+      }
+    }
+  }
+}

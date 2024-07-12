@@ -1,31 +1,29 @@
+const { withContentlayer } = require("next-contentlayer")
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
-  compiler: {
-    styledComponents: true,
-  },
   async redirects() {
     return [
       {
-        source: "/figma",
-        destination:
-          "https://www.figma.com/community/file/1284635132283811437/GLYF.APP-%E2%80%94-6000%2B-Variable-Glyphs",
+        source: "/astrit",
+        destination: "https://astrit.co",
         permanent: true,
       },
-    ];
+    ]
   },
+  reactStrictMode: true,
+  swcMinify: true,
   images: {
-    domains: [
-      "images.unsplash.com",
-      "github.com",
-      "githubusercontent.com",
-      "avatars.githubusercontent.com",
-      "buysellads.net",
-      "cdn4.buysellads.net",
-      "srv.buysellads.com",
+    remotePatterns: [
+      { hostname: "images.unsplash.com" },
+      { hostname: "random.unsplash.com" },
+      { hostname: "source.unsplash.com" },
+      { hostname: "*.unsplash.com" },
+      { hostname: "unsplash.com" },
+      { hostname: "github.com" },
+      { hostname: "avatars.githubusercontent.com" },
     ],
-    formats: ["image/webp", "image/avif"],
+    formats: ["image/webp"],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = withContentlayer(nextConfig)

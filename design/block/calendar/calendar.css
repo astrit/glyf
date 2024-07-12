@@ -1,0 +1,72 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 1ch;
+  font-family: var(--slant-font-ibm);
+
+  section {
+    display: flex;
+    gap: 1ch;
+    pointer-events: none;
+    user-select: none;
+
+    span,
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    &:nth-child(1) {
+      .day::before {
+        content: attr(data-day);
+        position: absolute;
+        top: -1lh;
+      }
+    }
+
+    &.year {
+      span:not(.year) {
+        opacity: 0.2;
+      }
+    }
+  }
+
+  .weeks {
+    opacity: 0.2;
+  }
+
+  .month,
+  [data-day="·"] {
+    opacity: 0.4;
+  }
+
+  small {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid var(--slant-color-neutral-700-40);
+    padding-top: 2lh;
+    margin-top: 2lh;
+    gap: 4ch;
+    line-height: 1;
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 1ch;
+      color: var(--slant-color-neutral-600);
+    }
+
+    kbd {
+      display: flex;
+      padding: 0.4lh 1ch;
+      border-radius: var(--slant-border-radius-04);
+      background-color: var(--slant-color-neutral-700-40);
+      color: var(--slant-color-neutral-100);
+    }
+  }
+}
