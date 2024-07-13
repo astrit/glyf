@@ -1,0 +1,10 @@
+.categories {
+  display: flex;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--slant-size-24);
+    padding: var(--slant-size-24);
+  }
+}

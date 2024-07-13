@@ -15,6 +15,9 @@ import { Provider } from "$/provider/provider"
 
 import "#/global/global.css"
 
+import Categories from "@/categories/categories"
+import Link from "@/link/link"
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://glyf.app"),
   title: {
@@ -69,7 +72,7 @@ export default function RootLayout({
               <Hero />
               <Search />
               <Main>
-                <aside className="settings">Settings</aside>
+                <Categories />
                 <Grid />
                 <aside className="view">{children}</aside>
               </Main>

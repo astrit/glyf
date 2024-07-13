@@ -1,5 +1,17 @@
 .layout {
   &.main {
-    display: contents;
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+
+    aside {
+      min-width: 260px;
+      padding: 40px;
+
+      &.settings {
+        border-right: 1px solid var(--color-border);
+      }
+    }
   }
 }
