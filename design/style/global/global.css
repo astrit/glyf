@@ -24,4 +24,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+
+  /* Font settings */
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ordn";
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }

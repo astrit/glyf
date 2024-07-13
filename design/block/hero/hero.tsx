@@ -8,6 +8,12 @@ export default function Hero() {
         <br />
         Free Glyphs
       </h1>
+      <ul>
+        <li>String</li>
+        <li>Figma Variable</li>
+        <li>SVG</li>
+        <li>CSS Pattern</li>
+      </ul>
     </section>
   )
 }

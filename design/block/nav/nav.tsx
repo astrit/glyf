@@ -5,7 +5,12 @@ import Link from "@/link/link"
 
 import "@/nav/nav.css"
 
-const Links = [{ href: "/", label: "GLYF＊APP", title: "Glyf APP" }]
+const Links = [
+  { href: "/", label: "Icons", title: "Glyf APP" },
+  { href: "/", label: "Patterns", title: "Glyf APP" },
+  { href: "/", label: "Colors", title: "Glyf APP" },
+  { href: "/", label: "Layouts", title: "Glyf APP" },
+]
 
 export default function Nav() {
   const current = usePathname()

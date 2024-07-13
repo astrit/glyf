@@ -1,0 +1,6 @@
+.logo {
+  font-family: var(--slant-font-jet);
+  letter-spacing: normal;
+  font-size: var(--slant-size-24);
+  font-weight: 800;
+}

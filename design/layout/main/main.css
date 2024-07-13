@@ -1,9 +1,17 @@
 .layout {
   &.main {
     display: flex;
-    width: 100%;
-    background-color: #fff;
+    max-width: 100%;
+    background-color: hsla(0, 0%, 100%, 0.99);
+    border: 2px solid hsl(200, 12%, 93%);
     color: #000;
+    border-radius: 12px;
+    margin-top: 24px;
+    margin: 24px;
+    box-sizing: border-box;
+    box-shadow:
+      rgba(0, 0, 0, 0.06) 2px 3px 8px,
+      rgba(0, 0, 0, 0.04) 0px 28px 12px -8px;
 
     aside {
       min-width: 260px;

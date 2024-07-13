@@ -21,7 +21,7 @@ import Link from "@/link/link"
 export const metadata: Metadata = {
   metadataBase: new URL("https://glyf.app"),
   title: {
-    default: "GLYF＊APP",
+    default: "Glyphs → CSS.GG",
     template: "%s · GLYF＊APP",
   },
   description: "",

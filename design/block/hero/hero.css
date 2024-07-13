@@ -1,7 +1,27 @@
 .hero {
   display: flex;
-  font-size: 4vw;
   padding: var(--slant-size-48);
-  font-weight: 600;
+  gap: var(--slant-size-48);
+  flex-direction: column;
   font-family: var(--slant-font-manrope);
+
+  h1 {
+    font-size: 4vw;
+    font-weight: 600;
+  }
+
+  ul {
+    display: flex;
+    gap: 1ch;
+    font-size: 12px;
+    font-family: var(--slant-font-ibm-plex);
+
+    li {
+      border-radius: 200px;
+      padding: 6px 14px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+  }
 }

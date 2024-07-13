@@ -7,6 +7,8 @@ import Nav from "@/nav/nav"
 
 import "@/header/header.css"
 
+import Banner from "@/banner/banner"
+import Logo from "@/logo/logo"
 
 function Left({ children }: { children: ReactNode }) {
   return <div className="sides left">{children}</div>
@@ -22,11 +24,11 @@ export default function Header() {
   return (
     <header className="main-header">
       <Left>
-        <Nav />
+        <Logo />
+        <Banner />
       </Left>
       <Right>
-        <Link href="#">Contribute</Link>
-        <Link href="#">Donate</Link>
+        <Nav />
       </Right>
     </header>
   )

@@ -6,7 +6,6 @@ import { Toggle } from "@/toggle/toggle"
 
 import "@/footer/footer.css"
 
-
 function Split() {
   return <span className="split">·</span>
 }
@@ -16,7 +15,8 @@ function Left({ children }: { children?: React.ReactNode }) {
 }
 
 function Right({ children }: { children?: React.ReactNode }) {
-  const elements = [<Progress />]
+  const elements = [""]
+  // const elements = [<Progress />]
   return (
     <div className="sides right">
       {elements.map((element, index) => (

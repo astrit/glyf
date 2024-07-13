@@ -5,7 +5,7 @@ import "./categories.css"
 export default function Categories() {
   return (
     <aside className="categories">
-      <details>
+      <details open>
         <summary>Categories</summary>
         <nav>
           <Link href="/glyph">Glyph</Link>
