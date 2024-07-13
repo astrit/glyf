@@ -4,6 +4,7 @@ import React, { createContext, useEffect, useState } from "react"
 import { usePathname, useSearchParams } from "next/navigation"
 import Cursor from "@/cursor/cursor"
 import Noise from "@/noise/noise"
+import Pattern from "@/pattern/pattern"
 import Preloader from "@/preloader/preloader"
 import dev from "$/env/env"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
@@ -60,7 +61,8 @@ export function Provider({ children, ...props }: ThemeProviderProps) {
           duration={4428}
         />
         {!dev() && <Noise />}
-        <Cursor />
+        {/* <Cursor /> */}
+        <Pattern />
       </Controller.Provider>
     </NextThemesProvider>
   )

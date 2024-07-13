@@ -1,0 +1,7 @@
+.hero {
+  display: flex;
+  font-size: 4vw;
+  padding: var(--slant-size-48);
+  font-weight: 600;
+  font-family: var(--slant-font-manrope);
+}

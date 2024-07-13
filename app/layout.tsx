@@ -1,18 +1,19 @@
 import React, { Suspense } from "react"
 import type { Metadata } from "next"
+import { useRouter } from "next/navigation"
 import Favicon from "@/fav/fav"
 import Footer from "@/footer/footer"
+import Grid from "@/grid/grid"
 import Header from "@/header/header"
+import Hero from "@/hero/hero"
 import Preloader from "@/preloader/preloader"
+import Search from "@/search/search"
 import { Analytics } from "@vercel/analytics/react"
-import Article from "&/article/article"
 import Main from "&/main/main"
 import Fonts from "$/fonts/fonts"
 import { Provider } from "$/provider/provider"
 
 import "#/global/global.css"
-
-import Pattern from "@/pattern/pattern"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://glyf.app"),
@@ -64,13 +65,16 @@ export default function RootLayout({
           >
             <Favicon />
             <Fonts>
+              <Header />
+              <Hero />
+              <Search />
               <Main>
-                <Header />
-                <Article>{children}</Article>
-                <Footer />
+                <aside className="settings">Settings</aside>
+                <Grid />
+                <aside className="view">{children}</aside>
               </Main>
+              <Footer />
             </Fonts>
-            <Pattern />
           </Provider>
         </Suspense>
         <Analytics />

@@ -1,9 +1,9 @@
 header.main-header {
   display: flex;
-  position: fixed;
+  /* position: fixed; */
   justify-content: space-between;
   z-index: 2;
-  inset: 0 0 auto 0;
+  /* inset: 0 0 auto 0; */
   padding-inline: var(--slant-size-28);
   padding-block: var(--slant-size-28);
   width: 100%;

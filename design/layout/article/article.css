@@ -1,10 +1,17 @@
 .layout {
   &.article {
     display: flex;
-    flex-direction: column;
-    gap: 100px;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+
+    .grid {
+      flex: 1;
+      padding: 40px;
+    }
+
+    aside {
+      color: #000;
+      padding: 40px;
+      min-width: 240px;
+    }
   }
 }
