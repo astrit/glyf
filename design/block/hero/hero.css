@@ -4,6 +4,7 @@
   gap: var(--slant-size-48);
   flex-direction: column;
   font-family: var(--slant-font-manrope);
+  margin-top: 10vh;
 
   h1 {
     font-size: 4vw;

@@ -1,0 +1,49 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: var(--slant-size-28);
+  gap: var(--slant-size-12);
+  border-bottom: 1px solid #f1f3f4;
+
+  .tabber {
+    display: flex;
+    padding: 4px;
+    background-color: #f1f3f4;
+    gap: var(--slant-size-04);
+    border-radius: var(--slant-size-08);
+    border: 1px solid #ebeff0;
+    button {
+      cursor: pointer;
+      padding: var(--slant-size-10);
+      border-radius: var(--slant-size-06);
+
+      &:hover {
+        background-color: hsla(0, 0%, 89%, 1);
+      }
+    }
+
+    .active {
+      background-color: #fff;
+    }
+  }
+
+  h2 {
+    font-size: var(--slant-size-16);
+    color: #0b0b10;
+    font-weight: 600;
+  }
+
+  figure {
+    display: flex;
+    border-radius: var(--slant-size-06);
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: auto;
+    background-color: #f1f3f4;
+    border: 1px solid #ebeff0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+  }
+}
