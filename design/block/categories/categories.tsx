@@ -23,14 +23,14 @@ export default function Categories() {
           Category
         </Link>
       </nav>
-      <hr />
+      {/* <hr />
       <h2>Navigation</h2>
       <div>
         <kbd>⌘</kbd> + <kbd>shift</kbd> to copy
       </div>
       <div>
         <kbd>shift</kbd> + <kbd>click</kbd> to copy unicode
-      </div>
+      </div> */}
     </aside>
   )
 }

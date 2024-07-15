@@ -57,10 +57,11 @@ export default function Grid() {
             key={`${categoryIndex}-${symbolIndex}`}
             className="symbol"
           >
-            <span>{symbol.symbol}</span>
+            {symbol.symbol}
           </Link>
         ))
       )}
+      {/* <span>{symbol.symbol}</span> */}
     </div>
   )
 }

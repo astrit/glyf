@@ -41,9 +41,8 @@ export default function Slug({ params }: { params: { slug: string } }) {
       const matchingSymbol = flattenedSymbols.find(
         (s) => toURL(s.name) === slug.toLowerCase()
       )
-      if (matchingSymbol) {
+      if (matchingSymbol && matchingSymbol.symbol) {
         setSymbol(matchingSymbol.symbol)
-        // setSymbol(matchingSymbol.symbol)
       }
     }
   }, [slug, controller])

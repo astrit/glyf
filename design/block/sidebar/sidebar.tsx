@@ -7,7 +7,15 @@ interface Symbol {
   html_entity?: string
 }
 
-export default function Sidebar({ symbol }: { symbol: Symbol | null }) {
+export default function Sidebar({
+  symbol,
+}: {
+  symbol: Symbol | null | string
+}) {
+  if (typeof symbol === "string") {
+    symbol = { symbol: symbol }
+  }
+
   return (
     <section className="sidebar">
       <div className="tabber">
@@ -16,11 +24,9 @@ export default function Sidebar({ symbol }: { symbol: Symbol | null }) {
         <button>Pattern</button>
       </div>
       <figure>{symbol && symbol.symbol}</figure>
-      {/* <figure> {symbol.symbol}</figure> */}
-      {/* <figure> {symbol.symbol}</figure> */}
       <header>
-        <h2>Name of the glyp</h2>
-        <span>Category name</span>
+        <h2>{symbol && symbol.name}</h2>
+        {/* <span>Category name</span> */}
       </header>
     </section>
   )
