@@ -6,7 +6,7 @@ import { toURL } from "$/func/func"
 import { Controller } from "$/provider/provider"
 
 interface Symbol {
-  name: string
+  name?: string
   symbol?: string
 }
 
@@ -23,6 +23,11 @@ interface ControllerInt {
   }
 }
 
+interface SymbolState {
+  name?: string
+  symbol?: string
+}
+
 export default function Slug({ params }: { params: { slug: string } }) {
   const { slug } = params
 
@@ -30,7 +35,7 @@ export default function Slug({ params }: { params: { slug: string } }) {
     Controller as unknown as React.Context<ControllerInt | undefined>
   )
 
-  const [symbol, setSymbol] = useState<string | null>(null)
+  const [symbolState, setSymbolState] = useState<SymbolState | null>(null)
 
   useEffect(() => {
     if (controller && controller.data) {
@@ -41,15 +46,21 @@ export default function Slug({ params }: { params: { slug: string } }) {
       const matchingSymbol = flattenedSymbols.find(
         (s) => toURL(s.name) === slug.toLowerCase()
       )
-      if (matchingSymbol && matchingSymbol.symbol) {
-        setSymbol(matchingSymbol.symbol)
+      if (matchingSymbol) {
+        setSymbolState({
+          symbol: matchingSymbol.symbol,
+          name: matchingSymbol.name,
+        })
       }
     }
   }, [slug, controller])
 
   return (
     <section>
-      <Sidebar symbol={symbol} />
+      <Sidebar
+        symbol={symbolState?.symbol ?? null}
+        name={symbolState?.name ?? ""}
+      />
     </section>
   )
 }

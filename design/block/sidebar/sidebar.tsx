@@ -9,8 +9,10 @@ interface Symbol {
 
 export default function Sidebar({
   symbol,
+  name,
 }: {
   symbol: Symbol | null | string
+  name: string
 }) {
   if (typeof symbol === "string") {
     symbol = { symbol: symbol }
@@ -25,7 +27,7 @@ export default function Sidebar({
       </div>
       <figure>{symbol && symbol.symbol}</figure>
       <header>
-        <h2>{symbol && symbol.name}</h2>
+        <h2>{name}</h2>
         {/* <span>Category name</span> */}
       </header>
     </section>

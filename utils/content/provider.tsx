@@ -22,7 +22,7 @@ export const DataContext = createContext<DataContextValue>({
 })
 
 export function Data({ children }: { children: React.ReactNode }) {
-  const [data, setData] = useState<Data | null>(Json as Data)
+  const [data, setData] = useState<Data | null>(Json as unknown as Data)
 
   return (
     <DataContext.Provider value={{ data, setData }}>
