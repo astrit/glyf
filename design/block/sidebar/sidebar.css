@@ -4,6 +4,8 @@
   padding: var(--slant-size-28);
   gap: var(--slant-size-12);
   border-bottom: 1px solid #f1f3f4;
+  position: sticky;
+  top: 40px;
 
   .tabber {
     display: flex;
@@ -12,9 +14,10 @@
     gap: var(--slant-size-04);
     border-radius: var(--slant-size-08);
     border: 1px solid #ebeff0;
+
     button {
       cursor: pointer;
-      padding: var(--slant-size-10);
+      padding: var(--slant-size-10) var(--slant-size-14);
       border-radius: var(--slant-size-06);
 
       &:hover {

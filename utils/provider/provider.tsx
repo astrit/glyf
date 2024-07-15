@@ -12,6 +12,7 @@ import { type ThemeProviderProps } from "next-themes/dist/types"
 import { Toaster } from "sonner"
 
 interface Data {
+  categories: any
   pages: { [x: string]: any }[]
 }
 

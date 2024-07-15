@@ -10,14 +10,11 @@
   flex: 1;
   padding: var(--slant-size-48);
 
-  a {
+  .symbol {
     display: flex;
-    border-radius: 12px;
+    border-radius: var(--slant-size-12);
     will-change: box-shadow, transform;
-    box-shadow:
-      transparent 0px 0px 0px 2px,
-      rgba(25, 32, 56, 0) 0px 0px 40px 0px;
-    transition: all 464ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     width: 100%;
     height: auto;
     background: #fff;
@@ -25,5 +22,38 @@
     color: #000;
     align-items: center;
     justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+
+    span {
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    &:hover {
+      border-radius: var(--slant-size-18);
+      translate: 0 -1px;
+
+      span {
+        scale: 1.4;
+      }
+    }
   }
+
+  /* Font Important */
+
+  font-family:
+    var(--slant-font-default),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
 }

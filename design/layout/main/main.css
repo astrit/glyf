@@ -2,7 +2,7 @@
   &.main {
     display: flex;
     max-width: 100%;
-    background-color: hsla(0, 0%, 100%, 0.99);
+    background-color: hsla(0, 0%, 100%, 1);
     border: 2px solid hsl(200, 12%, 93%);
     color: #000;
     border-radius: 12px;
@@ -12,9 +12,12 @@
     box-shadow:
       rgba(0, 0, 0, 0.06) 2px 3px 8px,
       rgba(0, 0, 0, 0.04) 0px 28px 12px -8px;
+    align-items: flex-start;
 
     aside {
       min-width: 260px;
+      position: sticky;
+      top: 0;
 
       &.settings {
         border-right: 1px solid var(--color-border);
