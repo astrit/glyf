@@ -1,7 +1,7 @@
 "use client"
 
-import { useContext } from "react"
-import { Controller } from "$/provider/provider"
+import { useContext, useEffect, useState } from "react"
+import { toast } from "sonner"
 
 import "./sidebar.css"
 
@@ -19,11 +19,33 @@ export default function Sidebar({
   symbol: Symbol | null | string
   name: string
 }) {
-  const { loading } = useContext(Controller)
+  const glyph = typeof symbol === "string" ? { symbol: symbol } : symbol
 
-  if (typeof symbol === "string") {
-    symbol = { symbol: symbol }
-  }
+  // function CopySymbol(symbol: string) {
+  //   navigator.clipboard.writeText(symbol)
+  //   toast.success("Copied!")
+  // }
+
+  useEffect(() => {
+    const handleCopy = (event: {
+      key: string
+      metaKey: any
+      preventDefault: () => void
+    }) => {
+      if (glyph && glyph.symbol) {
+        if (event.key === "c" && event.metaKey) {
+          event.preventDefault()
+          navigator.clipboard.writeText(glyph.symbol)
+          toast.success("Whot")
+        }
+      }
+    }
+
+    document.addEventListener("keydown", handleCopy)
+    return () => {
+      document.removeEventListener("keydown", handleCopy)
+    }
+  }, [glyph])
 
   return (
     <section className="sidebar">
@@ -32,14 +54,10 @@ export default function Sidebar({
         <button>SVG</button>
         <button>Pattern</button>
       </div>
-      <figure>{symbol && symbol.symbol}</figure>
+      <figure>{glyph && glyph.symbol}</figure>
       <header>
         <h2>{name}</h2>
       </header>
-      <footer>
-        <button className="download">Download</button>
-        <button className="copy">Copy </button>
-      </footer>
     </section>
   )
 }

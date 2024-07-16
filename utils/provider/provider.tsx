@@ -31,29 +31,26 @@ export function Provider({ children, ...props }: ThemeProviderProps) {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState<Data | null>(null)
   const pathname = usePathname()
-  const searchParams = useSearchParams()
 
   useEffect(() => {
     setLoading(true)
     fetch("/api/data")
       .then((response) => response.json())
-      .then((data) => {
-        // setTimeout(() => {
-        setData(data as Data)
+      .then((fetchedData) => {
+        setData(fetchedData as Data)
         setLoading(false)
-        // }, 0)
-        // }, 842)
       })
-  }, [pathname, searchParams])
+  }, [pathname])
 
   const value = {
     loading,
     data,
   }
+
   return (
     <NextThemesProvider {...props}>
       <Controller.Provider value={value}>
-        <Preloader />
+        {/* <Preloader /> */}
         {children}
         <Toaster
           richColors
