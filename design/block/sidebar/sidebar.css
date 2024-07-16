@@ -7,10 +7,13 @@
   .tabber {
     display: flex;
     padding: 4px;
-    background-color: #f1f3f4;
     gap: var(--slant-size-04);
     border-radius: var(--slant-size-08);
-    border: 1px solid #ebeff0;
+    /* background-color: #f1f3f4; */
+    /* border: 1px solid #ebeff0; */
+
+    background-color: #f1f3f4;
+    border: 1px solid hsl(192, 12%, 92%);
     width: 100%;
 
     button {
@@ -75,7 +78,7 @@
       box-sizing: border-box;
       padding-block: var(--slant-size-10);
       padding-inline: var(--slant-size-16);
-      border-radius: var(--slant-size-06);
+      border-radius: var(--slant-size-08);
       /* inset: var(--slant-size-08); */
       inset-block-start: auto;
       inset-block-end: -24px;

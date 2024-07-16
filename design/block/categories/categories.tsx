@@ -29,31 +29,32 @@ interface DataContext {
 }
 
 export default function Categories() {
-  const { data } = useContext(Controller) as { data: DataContext } // Type assertion for your data
+  const { data, selectedCategory, setSelectedCategory } = useContext(
+    Controller
+  ) as unknown as {
+    data: DataContext
+    selectedCategory: string | null
+    setSelectedCategory: (category: string | null) => void
+  }
 
-  console.log(data)
+  const handleCategoryClick = (slug: string) => {
+    setSelectedCategory(slug)
+  }
   return (
     <aside className="categories">
-      <h2>Categories</h2>
+      {/* <h2>Categories</h2> */}
       <nav>
         {data?.categories.category.map((category) => (
-          <Link
+          <button
             key={category.slug + category.symbols.length + category.title}
             data-count={category.symbols.length}
-            href={`#${category.slug}`}
+            onClick={() => handleCategoryClick(category.slug)}
+            className={selectedCategory === category.slug ? "active" : ""}
           >
             {category.title}
-          </Link>
+          </button>
         ))}
       </nav>
-      <br />
-      <br />
-      <br />
-      <h2>Navigation</h2>
-      CMD + C to copy <br />
-      Shift + Click to copy symbol
-      <br />
-      Option + Click to copy unicode
     </aside>
   )
 }
