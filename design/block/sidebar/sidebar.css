@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--slant-size-12);
-  border-bottom: 1px solid #f1f3f4;
 
   .tabber {
     display: flex;
@@ -29,34 +28,60 @@
     }
   }
 
-  header.loading h2 {
-    opacity: 0;
-  }
-
-  h2 {
-    transition: all 242ms;
-  }
-
   h2 {
     font-size: var(--slant-size-12);
     line-height: 1.2;
     text-wrap: pretty;
-    color: #0b0b10;
-    font-weight: 600;
+    color: #3a3a55;
+    font-weight: 400;
   }
 
+  /* prettier-ignore */
   figure {
     display: flex;
     aspect-ratio: 1 / 1;
+    position: relative;
     width: 100%;
     height: auto;
-    border-radius: var(--slant-size-06);
+    border-radius: var(--slant-size-12);
     background-color: #f1f3f4;
-    border: 1px solid #ebeff0;
+    border: 1px solid #e1e5e6;
+    /* border: 1px solid #ebeff0; */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
+    font-size: 60px;
+    padding: var(--slant-size-24);
+    border-block-end: var(--slant-size-40) solid transparent;
+
+    --bg-1: linear-gradient(to right,transparent 19px, hsl(0deg 0% 0% / 0.08) 20px);
+    --bg-2: linear-gradient(to bottom, transparent 19px, hsl(0deg 0% 0% / 0.08) 20px);
+    --bg-3: linear-gradient(to right,transparent 99px, hsl(261 80% 48% / 0.4) 100px);
+    --bg-4: linear-gradient(to bottom, transparent 99px, hsl(261 80% 48% / 0.4) 100px);
+    --bg-5: radial-gradient(circle at 50% 50%, transparent 69px, hsl(261 80% 48% / 0.2) 69px 70px, transparent 70px);
+    --bg-fade: radial-gradient(circle at 50% 50%, transparent 0%, transparent 20%, hsla(200, 12%, 95%, 0.8) 80%);
+
+    background-image: var(--bg-fade), var(--bg-1), var(--bg-2), var(--bg-3), var(--bg-4) ;
+    /* background-size: 20px 100%, 100% 20px, 100px 100%, 100% 100px, 200px 200px ; */
+    background-size:100%,  20px 100%, 100% 20px, 100px 100%, 100% 100px;
+    background-position: center;
+
+    input {
+      display: flex;
+      position: absolute;
+      font-size: 14px;
+      background-color: #fff;
+      color: #0b0b10;
+      box-sizing: border-box;
+      padding-block: var(--slant-size-10);
+      padding-inline: var(--slant-size-16);
+      border-radius: var(--slant-size-06);
+      /* inset: var(--slant-size-08); */
+      inset-block-start: auto;
+      inset-block-end: -24px;
+      border: 1px solid hsl(192, 14%, 90%);
+      outline: none;
+    }
   }
 
   footer {

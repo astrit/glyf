@@ -1,6 +1,7 @@
 "use client"
 
 import { useContext, useEffect, useState } from "react"
+import { toUnicode } from "$/func/func"
 import { toast } from "sonner"
 
 import "./sidebar.css"
@@ -54,7 +55,15 @@ export default function Sidebar({
         <button>SVG</button>
         <button>Pattern</button>
       </div>
-      <figure>{glyph && glyph.symbol}</figure>
+      <figure>
+        {glyph && glyph.symbol}
+        {/* <input type="text" value={toUnicode(glyph && glyph.symbol)} readOnly /> */}
+        <input
+          type="text"
+          value={glyph ? toUnicode(glyph.symbol) : ""}
+          readOnly
+        />
+      </figure>
       <header>
         <h2>{name}</h2>
       </header>

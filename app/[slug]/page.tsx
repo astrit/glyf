@@ -1,6 +1,6 @@
 "use client"
 
-import { useContext, useEffect, useState } from "react"
+import { Suspense, useContext, useEffect, useState } from "react"
 import Sidebar from "@/sidebar/sidebar"
 import { toURL } from "$/func/func"
 import { Controller } from "$/provider/provider"
@@ -38,9 +38,11 @@ const findMatchingSymbol = (
 
 export default function Slug({ params }: { params: { slug: string } }) {
   const { slug } = params
+
   const controller = useContext<ControllerInt | undefined>(
     Controller as unknown as React.Context<ControllerInt | undefined>
   )
+
   const [symbolState, setSymbolState] = useState<SymbolState | null>(null)
 
   useEffect(() => {
@@ -60,5 +62,5 @@ export default function Slug({ params }: { params: { slug: string } }) {
 
   const { symbol, name } = symbolState ?? {}
 
-  return <Sidebar symbol={symbol ?? null} name={name ?? ""} />
+  return <Sidebar symbol={symbol ?? null} name={name ?? " "} />
 }
