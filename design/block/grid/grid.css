@@ -8,6 +8,7 @@
   background-color: #f1f3f4;
   border: 1px solid hsl(192, 12%, 92%);
   flex: 1;
+  min-height: 100vh;
 
   .symbol {
     display: flex;

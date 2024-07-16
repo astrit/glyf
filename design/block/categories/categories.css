@@ -1,23 +1,26 @@
 .categories {
   display: flex;
   flex-direction: column;
-  gap: var(--slant-size-08);
+  /* gap: var(--slant-size-08); */
   background-color: #f1f3f4;
   border: 1px solid hsl(192, 12%, 92%);
   border-radius: var(--slant-size-12);
   overflow-y: auto;
-  /* padding: var(--slant-size-20) var(--slant-size-16); */
   max-height: 60vh;
   scrollbar-width: none;
   overscroll-behavior: contain;
   position: relative;
+  padding-block-end: 80px;
 
   h2 {
     color: hsla(226, 37%, 11%, 0.8);
     padding-inline: var(--slant-size-14);
     padding-block: var(--slant-size-14);
-    border-bottom: 1px solid hsl(192, 12%, 92%);
+    margin: 4px;
     background-color: hsl(180, 8%, 100%);
+    box-sizing: border-box;
+    border-radius: var(--slant-size-08);
+    border: 1px solid hsl(192, 12%, 90%);
   }
 
   nav {
@@ -62,6 +65,7 @@
           opacity: 1;
           visibility: visible;
           inset: 0 -12px;
+          box-shadow: 0 -10px 0 0 hsla(200, 12%, 95%, 0.6);
         }
 
         &::after {
@@ -94,7 +98,7 @@
         display: flex;
         background-color: #121727;
         inset: 0 -10px;
-        border-radius: var(--slant-size-06);
+        border-radius: var(--slant-size-08);
         opacity: 0;
         visibility: hidden;
         z-index: -1;
@@ -106,6 +110,7 @@
 @keyframes scale {
   0% {
     opacity: 0;
+    scale: 0.9;
     translate: 0 40px;
     filter: blur(20px);
   }
