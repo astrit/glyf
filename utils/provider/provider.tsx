@@ -6,6 +6,7 @@ import Cursor from "@/cursor/cursor"
 import Noise from "@/noise/noise"
 import Pattern from "@/pattern/pattern"
 import Preloader from "@/preloader/preloader"
+import json from "~/data.json"
 import dev from "$/env/env"
 import { toURL } from "$/func/func"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
@@ -14,7 +15,7 @@ import { Toaster } from "sonner"
 
 interface Data {
   categories: any
-  pages: { [x: string]: any }[]
+  // pages: { [x: string]: any }[]
 }
 
 type Types = {
@@ -29,18 +30,19 @@ export const Controller = createContext<Types>({
 
 export function Provider({ children, ...props }: ThemeProviderProps) {
   const [loading, setLoading] = useState(true)
-  const [data, setData] = useState<Data | null>(null)
+  // const [data, setData] = useState<Data | null>(null)
+  const [data, setData] = useState<Data | null>(json)
   const pathname = usePathname()
 
-  useEffect(() => {
-    setLoading(true)
-    fetch("/api/data")
-      .then((response) => response.json())
-      .then((fetchedData) => {
-        setData(fetchedData as Data)
-        setLoading(false)
-      })
-  }, [pathname])
+  // useEffect(() => {
+  //   setLoading(true)
+  //   fetch("/api/data")
+  //     .then((response) => response.json())
+  //     .then((fetchedData) => {
+  //       setData(fetchedData as Data)
+  //       setLoading(false)
+  //     })
+  // }, [pathname])
 
   const value = {
     loading,
