@@ -13,6 +13,7 @@
   .symbol {
     display: flex;
     border-radius: var(--slant-size-12);
+    background-color: #fff;
     position: relative;
     width: 100%;
     height: auto;
@@ -56,10 +57,6 @@
       &::after {
         transform: scale3d(1.2, 1.2, 1.2);
       }
-    }
-
-    &:active {
-      outline-offset: 0px;
     }
   }
 

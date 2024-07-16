@@ -36,22 +36,13 @@ export default function Grid() {
       return []
     }
 
-    // Directly use categories without flattening or sorting symbols
     return data.categories.category
   }, [data])
-
-  // if (loading || !data) {
-  //   return (
-  //     <div className="grid">
-  //       <div>Loading...</div>
-  //     </div>
-  //   )
-  // }
 
   return (
     <div className="grid">
       {memoizedCategories
-        // .slice(0, 1)
+        .slice(0, 1)
         .map((category: Category, categoryIndex: number) =>
           category.symbols.map((symbol: Symbol, symbolIndex: number) => (
             <Link
@@ -59,10 +50,9 @@ export default function Grid() {
               key={`${categoryIndex}-${symbolIndex}` + symbol.symbol}
               className="symbol"
               data-symbol={symbol.symbol}
-            ></Link>
+            />
           ))
         )}
-      {/* <span>{symbol.symbol}</span> */}
     </div>
   )
 }

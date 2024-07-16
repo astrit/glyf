@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--slant-size-08);
+  max-height: 100px;
+  overflow: hidden;
 
   h2 {
     font-size: var(--slant-size-16);
