@@ -36,7 +36,7 @@ export default function Sidebar({
         if (event.key === "c" && event.metaKey) {
           event.preventDefault()
           navigator.clipboard.writeText(glyph.symbol)
-          toast.success("Whot")
+          toast.success(`${glyph.symbol} copied!`)
         }
       }
     }

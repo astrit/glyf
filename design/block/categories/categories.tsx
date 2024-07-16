@@ -46,6 +46,14 @@ export default function Categories() {
           </Link>
         ))}
       </nav>
+      <br />
+      <br />
+      <br />
+      <h2>Navigation</h2>
+      CMD + C to copy <br />
+      Shift + Click to copy symbol
+      <br />
+      Option + Click to copy unicode
     </aside>
   )
 }
