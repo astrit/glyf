@@ -1,16 +1,7 @@
 "use client"
 
-import React, { useContext } from "react"
-import { Controller } from "$/provider/provider"
+import Sidebar from "@/sidebar/sidebar"
 
-export default function HomePage() {
-  const { data } = useContext(Controller)
-
-  if (!data || !data.pages) {
-    return null
-  }
-
-  const { title, description } = data.pages[0]
-
-  return <div>Some</div>
+export default function Slug() {
+  return <Sidebar symbol={""} name={"Yo!"} />
 }
