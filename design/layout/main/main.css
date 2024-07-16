@@ -3,13 +3,12 @@
     display: flex;
     max-width: 100%;
     background-color: hsla(0, 0%, 100%, 1);
-    border: 2px solid hsl(200, 12%, 93%);
     color: #000;
-    border-radius: 12px;
     margin-top: 24px;
     margin: 24px;
     box-sizing: border-box;
     align-items: flex-start;
+    border-radius: var(--slant-size-12);
     padding: var(--slant-size-24);
     gap: var(--slant-size-24);
 

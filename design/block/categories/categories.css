@@ -2,16 +2,22 @@
   display: flex;
   flex-direction: column;
   gap: var(--slant-size-08);
+  background-color: #f1f3f4;
+  border: 1px solid hsl(192, 12%, 92%);
+  border-radius: var(--slant-size-12);
+  overflow-y: auto;
+  /* padding: var(--slant-size-20) var(--slant-size-16); */
+  max-height: 60vh;
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+  position: relative;
 
   h2 {
-    font-size: var(--slant-size-12);
-    color: #0b0b10;
-    font-weight: 600;
-    letter-spacing: normal;
-    text-transform: uppercase;
-    padding-left: var(--slant-size-16);
-    /* padding-bottom: var(--slant-size-12); */
-    /* border-bottom: 1px solid #f1f3f4; */
+    color: hsla(226, 37%, 11%, 0.8);
+    padding-inline: var(--slant-size-14);
+    padding-block: var(--slant-size-14);
+    border-bottom: 1px solid hsl(192, 12%, 92%);
+    background-color: hsl(180, 8%, 100%);
   }
 
   nav {
@@ -19,13 +25,9 @@
     flex-direction: column;
     font-size: var(--slant-size-12);
     gap: var(--slant-size-04);
-    max-height: 60vh;
-    overflow-y: auto;
-    padding: var(--slant-size-08) var(--slant-size-16);
-    background-color: #f1f3f4;
-    border: 1px solid hsl(192, 12%, 92%);
-    border-radius: var(--slant-size-12);
     z-index: 1;
+    position: relative;
+    padding: 0 var(--slant-size-16);
 
     button {
       position: relative;
@@ -33,14 +35,46 @@
       justify-content: space-between;
       padding: var(--slant-size-12) 0;
       cursor: pointer;
+      transition: all 624ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
 
-      &.active,
-      &:hover {
+      /* Animation on scroll */
+
+      animation: scale, scaleOut;
+      animation-fill-mode: both;
+      animation-timing-function: ease-in-out;
+      animation-direction: normal, normal;
+      animation-duration: 420ms, 40ms;
+      animation-timeline: view();
+      animation-range:
+        entry 0 entry 100px,
+        exit -40px exit 400px;
+
+      &.active {
+        position: sticky;
+        top: 4px;
+        z-index: 1;
+      }
+
+      &.active {
         color: #fff;
 
         &::before {
           opacity: 1;
           visibility: visible;
+          inset: 0 -12px;
+        }
+
+        &::after {
+          opacity: 1;
+        }
+      }
+
+      &:hover:not(.active) {
+        &::before {
+          opacity: 1;
+          visibility: visible;
+          background-color: hsla(226, 37%, 11%, 0.1);
+          inset: 0 -12px;
         }
 
         &::after {
@@ -58,9 +92,8 @@
         content: " ";
         position: absolute;
         display: flex;
-        /* transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s; */
         background-color: #121727;
-        inset: 0 -8px;
+        inset: 0 -10px;
         border-radius: var(--slant-size-06);
         opacity: 0;
         visibility: hidden;
@@ -69,3 +102,42 @@
     }
   }
 }
+
+@keyframes scale {
+  0% {
+    opacity: 0;
+    translate: 0 40px;
+    filter: blur(20px);
+  }
+}
+@keyframes scaleOut {
+  100% {
+    opacity: 0;
+    translate: 0 40px;
+    scale: 0;
+    filter: blur(80px);
+  }
+}
+/* @keyframes scale {
+  entry 0% {
+    opacity: 0;
+    translate: 0 40px;
+    filter: blur(20px);
+  }
+
+  entry 180% {
+    opacity: 1;
+    translate: 0 0;
+    filter: blur(0);
+  }
+
+  exit 0% {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  exit 100% {
+    opacity: 0;
+    translate: 0 20px;
+  }
+} */

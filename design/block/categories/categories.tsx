@@ -42,7 +42,7 @@ export default function Categories() {
   }
   return (
     <aside className="categories">
-      {/* <h2>Categories</h2> */}
+      <h2>Categories</h2>
       <nav>
         {data?.categories.category.map((category) => (
           <button
