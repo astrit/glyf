@@ -9,15 +9,14 @@
     margin-top: 24px;
     margin: 24px;
     box-sizing: border-box;
-    box-shadow:
-      rgba(0, 0, 0, 0.06) 2px 3px 8px,
-      rgba(0, 0, 0, 0.04) 0px 28px 12px -8px;
     align-items: flex-start;
+    padding: var(--slant-size-24);
+    gap: var(--slant-size-24);
 
     aside {
-      min-width: 260px;
+      width: 220px;
       position: sticky;
-      top: 0;
+      top: var(--slant-size-24);
 
       &.settings {
         border-right: 1px solid var(--color-border);

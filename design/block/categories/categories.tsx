@@ -1,36 +1,51 @@
+"use client"
+
+import React, { useContext } from "react"
 import Link from "@/link/link"
+import { Controller } from "$/provider/provider"
 
 import "./categories.css"
 
+// Updated interface to match your data structure
+interface Symbol {
+  name: string
+  symbol: string
+  unicode?: string
+  html_entity?: string
+}
+
+interface Category {
+  slug: string
+  title: string
+  description: string
+  symbols: Symbol[]
+}
+
+// Assuming the structure of your data context
+interface DataContext {
+  categories: {
+    category: Category[]
+  }
+}
+
 export default function Categories() {
+  const { data } = useContext(Controller) as { data: DataContext } // Type assertion for your data
+
+  console.log(data)
   return (
     <aside className="categories">
       <h2>Categories</h2>
       <nav>
-        <Link data-count="100" href="#">
-          All
-        </Link>
-        <Link data-count="243" href="#">
-          Category 2
-        </Link>
-        <Link data-count="43" href="#">
-          Category 3
-        </Link>
-        <Link data-count="32" href="#">
-          Category 4
-        </Link>
-        <Link data-count="89" href="#">
-          Category
-        </Link>
+        {data?.categories.category.map((category) => (
+          <Link
+            key={category.slug + category.symbols.length + category.title}
+            data-count={category.symbols.length}
+            href={`#${category.slug}`}
+          >
+            {category.title}
+          </Link>
+        ))}
       </nav>
-      {/* <hr />
-      <h2>Navigation</h2>
-      <div>
-        <kbd>⌘</kbd> + <kbd>shift</kbd> to copy
-      </div>
-      <div>
-        <kbd>shift</kbd> + <kbd>click</kbd> to copy unicode
-      </div> */}
     </aside>
   )
 }

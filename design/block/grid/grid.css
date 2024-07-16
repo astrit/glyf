@@ -5,7 +5,7 @@
   border-radius: var(--slant-size-16);
   padding: var(--slant-size-14);
   gap: var(--slant-size-12);
-  margin: var(--slant-size-12);
+  /* margin: var(--slant-size-12); */
   background-color: #f1f3f4;
   border: 1px solid hsl(192, 12%, 92%);
   flex: 1;
@@ -25,6 +25,7 @@
     font-size: 24px;
     cursor: pointer;
     line-height: 1;
+    border-color: hsl(0, 0%, 0%);
 
     /* span {
       transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);

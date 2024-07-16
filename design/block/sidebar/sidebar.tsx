@@ -1,3 +1,8 @@
+"use client"
+
+import { useContext } from "react"
+import { Controller } from "$/provider/provider"
+
 import "./sidebar.css"
 
 interface Symbol {
@@ -14,6 +19,8 @@ export default function Sidebar({
   symbol: Symbol | null | string
   name: string
 }) {
+  const { loading } = useContext(Controller)
+
   if (typeof symbol === "string") {
     symbol = { symbol: symbol }
   }
@@ -28,8 +35,11 @@ export default function Sidebar({
       <figure>{symbol && symbol.symbol}</figure>
       <header>
         <h2>{name}</h2>
-        {/* <span>Category name</span> */}
       </header>
+      <footer>
+        <button className="download">Download</button>
+        <button className="copy">Copy </button>
+      </footer>
     </section>
   )
 }

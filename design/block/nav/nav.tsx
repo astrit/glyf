@@ -6,10 +6,10 @@ import Link from "@/link/link"
 import "@/nav/nav.css"
 
 const Links = [
-  { href: "/", label: "Icons", title: "Glyf APP" },
-  { href: "/", label: "Patterns", title: "Glyf APP" },
-  { href: "/", label: "Colors", title: "Glyf APP" },
-  { href: "/", label: "Layouts", title: "Glyf APP" },
+  { href: "https://css.gg/icons", label: "Icons", title: "Glyf APP" },
+  { href: "https://css.gg/patterns", label: "Patterns", title: "Glyf APP" },
+  { href: "https://css.gg/colors", label: "Colors", title: "Glyf APP" },
+  { href: "https://css.gg/layouts", label: "Layouts", title: "Glyf APP" },
 ]
 
 export default function Nav() {

@@ -7,6 +7,7 @@ import Noise from "@/noise/noise"
 import Pattern from "@/pattern/pattern"
 import Preloader from "@/preloader/preloader"
 import dev from "$/env/env"
+import { toURL } from "$/func/func"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 import { type ThemeProviderProps } from "next-themes/dist/types"
 import { Toaster } from "sonner"
@@ -37,10 +38,11 @@ export function Provider({ children, ...props }: ThemeProviderProps) {
     fetch("/api/data")
       .then((response) => response.json())
       .then((data) => {
-        setTimeout(() => {
-          setData(data as Data)
-          setLoading(false)
-        }, 842)
+        // setTimeout(() => {
+        setData(data as Data)
+        setLoading(false)
+        // }, 0)
+        // }, 842)
       })
   }, [pathname, searchParams])
 
@@ -61,7 +63,7 @@ export function Provider({ children, ...props }: ThemeProviderProps) {
           closeButton={true}
           duration={4428}
         />
-        {!dev() && <Noise />}
+        {/* {!dev() && <Noise />} */}
         {/* <Cursor /> */}
         <Pattern />
       </Controller.Provider>

@@ -50,17 +50,19 @@ export default function Grid() {
 
   return (
     <div className="grid">
-      {memoizedCategories.map((category: Category, categoryIndex: number) =>
-        category.symbols.map((symbol: Symbol, symbolIndex: number) => (
-          <Link
-            href={`/${toURL(symbol.name)}`}
-            key={`${categoryIndex}-${symbolIndex}`}
-            className="symbol"
-          >
-            {symbol.symbol}
-          </Link>
-        ))
-      )}
+      {memoizedCategories
+        .slice(0, 1)
+        .map((category: Category, categoryIndex: number) =>
+          category.symbols.map((symbol: Symbol, symbolIndex: number) => (
+            <Link
+              href={`/${toURL(symbol.name)}`}
+              key={`${categoryIndex}-${symbolIndex}` + symbol.symbol}
+              className="symbol"
+            >
+              {symbol.symbol}
+            </Link>
+          ))
+        )}
       {/* <span>{symbol.symbol}</span> */}
     </div>
   )

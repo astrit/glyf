@@ -25,7 +25,7 @@ export default function Header() {
     <header className="main-header">
       <Left>
         <Logo />
-        <Banner />
+        {/* <Banner /> */}
       </Left>
       <Right>
         <Nav />

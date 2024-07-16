@@ -1,6 +1,6 @@
 import React, { Suspense } from "react"
 import type { Metadata } from "next"
-import { useRouter } from "next/navigation"
+import Categories from "@/categories/categories"
 import Favicon from "@/fav/fav"
 import Footer from "@/footer/footer"
 import Grid from "@/grid/grid"
@@ -14,9 +14,6 @@ import Fonts from "$/fonts/fonts"
 import { Provider } from "$/provider/provider"
 
 import "#/global/global.css"
-
-import Categories from "@/categories/categories"
-import Link from "@/link/link"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://glyf.app"),

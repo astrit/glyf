@@ -48,15 +48,7 @@ export default function Cursor() {
         "footer a",
         "header button",
         "footer button",
-        ".hero-fka button",
-        ".trail a",
-        ".trail button",
-        ".hero a",
-        ".code-copy",
-        ".email button",
-        ".resume button",
-        ".resume a",
-        ".project .link",
+        ".symbol",
       ]
 
       const anchor = (event.target as HTMLElement).closest(selectors.join(", "))

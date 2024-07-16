@@ -1,9 +1,7 @@
 .categories {
   display: flex;
   flex-direction: column;
-  gap: var(--slant-size-12);
-  padding: var(--slant-size-28) var(--slant-size-12);
-  border-bottom: 1px solid #f1f3f4;
+  gap: var(--slant-size-08);
 
   h2 {
     font-size: var(--slant-size-16);
@@ -11,7 +9,8 @@
     font-weight: 600;
     letter-spacing: normal;
     text-transform: uppercase;
-    padding-left: var(--slant-size-16);
+    padding-bottom: var(--slant-size-12);
+    border-bottom: 1px solid #f1f3f4;
   }
 
   nav {
@@ -20,24 +19,42 @@
     font-size: var(--slant-size-12);
 
     a {
-      padding: var(--slant-size-14) var(--slant-size-16);
-      border-radius: var(--slant-size-06);
-      /* margin-left: calc(var(--slant-size-16) * -1); */
-      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
       position: relative;
       display: flex;
       justify-content: space-between;
+      padding: var(--slant-size-12) 0;
 
       &.active,
       &:hover {
-        background-color: #121727;
         color: #fff;
+
+        &::before {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        &::after {
+          opacity: 1;
+        }
       }
 
       &::after {
         content: attr(data-count);
         display: flex;
         opacity: 0.4;
+      }
+
+      &::before {
+        content: " ";
+        position: absolute;
+        display: flex;
+        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
+        background-color: #121727;
+        inset: 0 -8px;
+        border-radius: var(--slant-size-06);
+        opacity: 0;
+        visibility: hidden;
+        z-index: -1;
       }
     }
   }
