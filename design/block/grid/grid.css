@@ -101,7 +101,3 @@
     translate: 0 40px;
   }
 }
-
-[data-sonner-toaster] .data-icon {
-  display: none !important;
-}

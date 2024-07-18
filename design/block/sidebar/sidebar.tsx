@@ -39,11 +39,11 @@ export default function Sidebar({
         if (event.key === "c" && event.metaKey && !event.shiftKey) {
           event.preventDefault()
           navigator.clipboard.writeText(glyph.symbol)
-          toast.success(`${glyph.symbol} copied!`)
+          toast(`${glyph.symbol} copied!`)
         } else if (event.key === "c" && event.metaKey && event.shiftKey) {
           event.preventDefault()
           navigator.clipboard.writeText(toUnicode(glyph.symbol))
-          toast.success(`${toUnicode(glyph.symbol)} copied!`)
+          toast(`${toUnicode(glyph.symbol)} copied!`)
         }
       }
     }

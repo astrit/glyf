@@ -43,6 +43,25 @@ export default function Shortcuts() {
             <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>C</kbd>
           </span>
         </li>
+        <li>
+          Focus search
+          <span>
+            <kbd>/</kbd>
+          </span>
+        </li>
+        <li>
+          Search
+          <span>
+            <kbd>⌘</kbd>
+            <kbd>K</kbd>
+          </span>
+        </li>
+        <li>
+          Clear search
+          <span>
+            <kbd>⎋</kbd>
+          </span>
+        </li>
       </ul>
     </section>
   )
