@@ -1,50 +1,69 @@
 #ads {
-  display: contents;
+  display: flex;
+  flex-direction: row;
+  background-color: #f1f3f4;
+  border: 1px solid hsl(192, 12%, 92%);
+  padding: var(--slant-size-04);
+  border-radius: var(--slant-size-12);
+  margin-top: auto;
+  position: sticky;
+  bottom: var(--slant-size-24);
+  box-shadow: 0 0 0 2px #fff;
+  min-height: 103px;
+  height: 103px;
+  max-height: 103px;
+  width: 100%;
 
   #carbonads {
-    display: flex;
-    flex-direction: row;
-    background-color: #f1f3f4;
-    border: 1px solid hsl(192, 12%, 92%);
-    padding: var(--slant-size-10);
-    border-radius: var(--slant-size-08);
-    margin-top: auto;
-    position: sticky;
-    bottom: var(--slant-size-24);
-
-    & > span {
-      display: flex;
-      flex-direction: column;
-      gap: var(--slant-size-08);
-    }
-
     .carbon-wrap {
       display: flex;
       flex-direction: row;
-      gap: var(--slant-size-08);
-      /* font-size: var(--slant-size-12); */
+      align-items: center;
+      gap: var(--slant-size-06);
+      background-color: #fff;
+      padding: var(--slant-size-06);
+      border-radius: var(--slant-size-10);
       line-height: 1.2;
       text-wrap: pretty;
+      border: 1px solid hsl(192, 12%, 90%);
+      min-height: 75px;
+      height: 75px;
+      max-height: 75px;
 
       .carbon-img {
+        display: flex;
+        width: 80px;
+        min-width: 80px;
+        max-width: 80px;
+        height: 60px;
+        min-height: 60px;
+        max-height: 60px;
+        border-radius: var(--slant-size-08);
+        overflow: hidden;
+        height: auto;
+        aspect-ratio: 1.3;
+
         img {
-          width: 100%;
-          max-width: 100% !important;
+          display: flex;
+          max-width: 100%;
           height: auto;
-          border-radius: var(--slant-size-06);
-          border: 1px solid hsl(192, 12%, 90%);
+          object-fit: cover;
+          object-position: center;
         }
+      }
+      .carbon-text {
+        text-wrap: balance;
       }
     }
 
     .carbon-poweredby {
       display: flex;
+      justify-content: flex-end;
       font-size: 8px;
-      /* margin-top: 2ex; */
-      /* padding-top: 2ex; */
       text-transform: uppercase;
-      /* border-top: 1px solid hsl(180, 5%, 83%); */
-      width: 100%;
+      min-width: 100%;
+      text-align: right;
+      padding: 1ch;
     }
   }
 }

@@ -24,6 +24,7 @@
     font-size: 24px;
     cursor: pointer;
     line-height: 1;
+    will-change: transform, box-shadow;
 
     /* animation */
     animation: GridScroll, GridScrollOut;
@@ -45,7 +46,7 @@
       position: absolute;
       background-color: #fff;
       transition: all 464ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
-      will-change: box-shadow, transform;
+      will-change: box-shadow, transform, border-radius;
     }
 
     &::after {
@@ -54,11 +55,10 @@
       z-index: 2;
       will-change: box-shadow, transform;
       transition: all 464ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+      will-change: transform;
     }
 
     &:hover {
-      outline-color: #ffffff;
-
       &::before {
         transform: scale3d(1.1, 1.1, 1.1);
         border-radius: 20px;
