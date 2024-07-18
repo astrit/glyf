@@ -1,6 +1,7 @@
 "use client"
 
 import { useContext, useEffect, useState } from "react"
+import Ads from "@/ads/ads"
 import { toUnicode } from "$/func/func"
 import { toast } from "sonner"
 
@@ -67,6 +68,7 @@ export default function Sidebar({
       <header>
         <h2>{name}</h2>
       </header>
+      <Ads />
     </section>
   )
 }
