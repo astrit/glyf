@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  inline-size: 26px;
-  block-size: 26px;
+  inline-size: 24px;
+  block-size: 24px;
+  cursor: pointer;
 
   svg {
     height: 100%;

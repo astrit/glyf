@@ -24,7 +24,7 @@ export default function Search() {
       </select>
       <button type="reset">✗</button>
       <div>/</div>
-      <Progress />
+      {/* <Progress /> */}
     </section>
   )
 }

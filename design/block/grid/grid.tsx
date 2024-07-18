@@ -2,8 +2,9 @@
 
 import React, { useContext, useEffect, useMemo } from "react"
 import Link from "@/link/link"
-import { toURL } from "$/func/func"
+import { toUnicode, toURL } from "$/func/func"
 import { Controller } from "$/provider/provider"
+import { toast } from "sonner"
 
 import "./grid.css"
 
@@ -12,6 +13,12 @@ interface Symbol {
   symbol: string
   unicode?: string
   html_entity?: string
+}
+
+interface Event {
+  altKey: boolean
+  preventDefault: () => void
+  shiftKey: boolean
 }
 
 interface Category {
@@ -56,11 +63,11 @@ export default function Grid() {
     window.addEventListener("keydown", handleKeyPress)
     return () => window.removeEventListener("keydown", handleKeyPress)
   }, [data, selectedCategory, setSelectedCategory])
+
   const memoizedCategories = useMemo(() => {
     if (!data) {
       return []
     }
-    // Filter categories based on selectedCategory
     return selectedCategory
       ? data.categories.category.filter(
           (cat: { slug: string }) => cat.slug === selectedCategory
@@ -68,20 +75,68 @@ export default function Grid() {
       : data.categories.category
   }, [data, selectedCategory])
 
+  // Copy
+  // Copy
+  // Copy
+  // Copy
+
+  // Enhanced clipboard copy functions with specific parameter types
+  function copyToClipboardSymbol(symbol: string) {
+    navigator.clipboard.writeText(symbol).then(
+      () => {
+        toast(`${symbol} — Symbol copied!`)
+      },
+      (err) => {
+        console.error("Could not copy symbol: ", err)
+      }
+    )
+  }
+
+  function copyToClipboardUnicode(symbol: string) {
+    const unicodeStr = symbol ? toUnicode(symbol) : ""
+    navigator.clipboard.writeText(unicodeStr).then(
+      () => {
+        toast(`${symbol} / ${unicodeStr} — Unicode copied!`)
+      },
+      (err) => {
+        console.error("Could not copy unicode: ", err)
+      }
+    )
+  }
+
+  // Updated handleClick function to handle events more accurately
+  function handleClick(e: Event, symbol: Symbol) {
+    if (e.altKey) {
+      e.preventDefault()
+      copyToClipboardUnicode(symbol.symbol)
+    } else if (e.shiftKey) {
+      e.preventDefault()
+      copyToClipboardSymbol(symbol.symbol)
+    }
+  }
+
+  // Streamlined symbols rendering logic
   const symbols = useMemo(
     () =>
       memoizedCategories.map(
         (category: { symbols: any[] }, categoryIndex: any) =>
-          category.symbols.map(
-            (symbol: { name: any; symbol: any }, symbolIndex: any) => (
-              <Link
-                href={`/${toURL(symbol.name)}`}
-                key={`${categoryIndex}-${symbolIndex}-${symbol.symbol}`} // Updated key for better uniqueness
-                className="symbol"
-                data-symbol={symbol.symbol}
-              />
-            )
-          )
+          category.symbols.map((symbol: Symbol, symbolIndex: any) => (
+            <Link
+              href={`/${toURL(symbol.name)}`}
+              key={`${categoryIndex}-${symbolIndex}-${symbol.symbol}`} // Ensuring key uniqueness
+              className="symbol"
+              data-symbol={symbol.symbol}
+              onClick={(e: Event) => handleClick(e, symbol)}
+              onMouseEnter={(e: {
+                currentTarget: {
+                  setAttribute: (arg0: string, arg1: any) => any
+                }
+              }) => e.currentTarget.setAttribute("title", symbol.name)}
+              onMouseLeave={(e: {
+                currentTarget: { removeAttribute: (arg0: string) => any }
+              }) => e.currentTarget.removeAttribute("title")}
+            />
+          ))
       ),
     [memoizedCategories]
   )

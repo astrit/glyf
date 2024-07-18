@@ -15,8 +15,8 @@ function Left({ children }: { children?: React.ReactNode }) {
 }
 
 function Right({ children }: { children?: React.ReactNode }) {
-  const elements = [""]
-  // const elements = [<Progress />]
+  // const elements = [""]
+  const elements = [<Progress />]
   return (
     <div className="sides right">
       {elements.map((element, index) => (

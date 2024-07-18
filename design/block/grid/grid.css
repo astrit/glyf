@@ -101,3 +101,9 @@
     translate: 0 40px;
   }
 }
+
+.toast span {
+  display: flex;
+  border-right: 1px solid currentColor;
+  font-size: 24px;
+}

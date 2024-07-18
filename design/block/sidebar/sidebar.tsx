@@ -58,7 +58,6 @@ export default function Sidebar({
       </div>
       <figure>
         {glyph && glyph.symbol}
-        {/* <input type="text" value={toUnicode(glyph && glyph.symbol)} readOnly /> */}
         <input
           type="text"
           value={glyph ? toUnicode(glyph.symbol) : ""}

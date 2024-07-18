@@ -9,6 +9,7 @@ type LinkProps = {
   children?: React.ReactNode
   className?: string
   onContextMenu?: any
+  onClick?: any
   target?: string
   style?: React.CSSProperties
   any?: any

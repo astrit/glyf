@@ -6,6 +6,8 @@ import { Controller } from "$/provider/provider"
 
 import "./categories.css"
 
+import Shortcuts from "@/shortcuts/shortcuts"
+
 // Updated interface to match your data structure
 interface Symbol {
   name: string
@@ -42,19 +44,22 @@ export default function Categories() {
   }
   return (
     <aside className="categories">
-      <h2>Categories</h2>
-      <nav>
-        {data?.categories.category.map((category) => (
-          <button
-            key={category.slug + category.symbols.length + category.title}
-            data-count={category.symbols.length}
-            onClick={() => handleCategoryClick(category.slug)}
-            className={selectedCategory === category.slug ? "active" : ""}
-          >
-            {category.title}
-          </button>
-        ))}
-      </nav>
+      <section className="list">
+        <h2>Categories</h2>
+        <nav>
+          {data?.categories.category.map((category) => (
+            <button
+              key={category.slug + category.symbols.length + category.title}
+              data-count={category.symbols.length}
+              onClick={() => handleCategoryClick(category.slug)}
+              className={selectedCategory === category.slug ? "active" : ""}
+            >
+              {category.title}
+            </button>
+          ))}
+        </nav>
+      </section>
+      <Shortcuts />
     </aside>
   )
 }

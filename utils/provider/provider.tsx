@@ -44,11 +44,12 @@ export function Provider({ children, ...props }: ThemeProviderProps) {
       <Controller.Provider value={value}>
         {children}
         <Toaster
-          richColors
-          theme="dark"
-          position="bottom-right"
+          // richColors
+          // theme="light"
+          position="bottom-center"
+          // position="bottom-right"
           expand={false}
-          closeButton={true}
+          // closeButton={true}
           duration={4428}
         />
         <Pattern />
