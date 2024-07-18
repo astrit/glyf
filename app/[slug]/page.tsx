@@ -74,12 +74,13 @@ export default function Slug({ params }: { params: { slug: string } }) {
         const currentIndex = flattenedSymbols.findIndex(
           (s) => toURL(s.name) === slug
         )
-
-        if (event.key === "ArrowRight") {
+        // (event.key === "ArrowUp" || event.key === "ArrowDown") &&
+        // event.shiftKey
+        if (event.key === "ArrowRight" && event.shiftKey) {
           const nextIndex = (currentIndex + 1) % flattenedSymbols.length
           const nextSymbol = flattenedSymbols[nextIndex]
           goTo.push(`/${toURL(nextSymbol.name)}`) // Navigate to the next symbol's page
-        } else if (event.key === "ArrowLeft") {
+        } else if (event.key === "ArrowLeft" && event.shiftKey) {
           const prevIndex =
             (currentIndex - 1 + flattenedSymbols.length) %
             flattenedSymbols.length

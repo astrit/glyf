@@ -45,7 +45,7 @@ export default function Categories() {
   return (
     <aside className="categories">
       <section className="list">
-        <h2>Categories</h2>
+        <input type="text" placeholder="Search categories" />
         <nav>
           {data?.categories.category.map((category) => (
             <button
@@ -54,7 +54,14 @@ export default function Categories() {
               onClick={() => handleCategoryClick(category.slug)}
               className={selectedCategory === category.slug ? "active" : ""}
             >
-              {category.title}
+              <div>
+                <span>
+                  {category.symbols.length > 0
+                    ? `${category.symbols[0].symbol}`
+                    : ""}
+                </span>
+                {category.title}
+              </div>
             </button>
           ))}
         </nav>

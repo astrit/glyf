@@ -102,8 +102,6 @@
   }
 }
 
-.toast span {
-  display: flex;
-  border-right: 1px solid currentColor;
-  font-size: 24px;
+[data-sonner-toaster] .data-icon {
+  display: none !important;
 }

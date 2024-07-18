@@ -31,14 +31,19 @@ export default function Sidebar({
   useEffect(() => {
     const handleCopy = (event: {
       key: string
-      metaKey: any
+      metaKey: boolean
+      shiftKey: boolean
       preventDefault: () => void
     }) => {
       if (glyph && glyph.symbol) {
-        if (event.key === "c" && event.metaKey) {
+        if (event.key === "c" && event.metaKey && !event.shiftKey) {
           event.preventDefault()
           navigator.clipboard.writeText(glyph.symbol)
           toast.success(`${glyph.symbol} copied!`)
+        } else if (event.key === "c" && event.metaKey && event.shiftKey) {
+          event.preventDefault()
+          navigator.clipboard.writeText(toUnicode(glyph.symbol))
+          toast.success(`${toUnicode(glyph.symbol)} copied!`)
         }
       }
     }

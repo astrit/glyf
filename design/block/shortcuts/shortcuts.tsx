@@ -3,10 +3,45 @@ import "./shortcuts.css"
 export default function Shortcuts() {
   return (
     <section className="shortcuts">
-      <h3>Shortcuts</h3>
       <ul>
         <li>
-          <kbd>Shift</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd>
+          Change glyph
+          <span>
+            <kbd>⇧</kbd> <kbd>←</kbd>
+            <kbd>→</kbd>
+          </span>
+        </li>
+        <li>
+          Change category
+          <span>
+            <kbd>⇧</kbd> <kbd>↑</kbd>
+            <kbd>↓</kbd>
+          </span>
+        </li>
+        <li>
+          Copy glyph
+          <span>
+            <kbd>⇧</kbd> <kbd>☉</kbd>
+          </span>
+        </li>
+        <li>
+          Copy unicode
+          <span>
+            <kbd>⌥</kbd> <kbd>☉</kbd>
+          </span>
+        </li>
+        <li>
+          Copy current glyph
+          <span>
+            <kbd>⌘</kbd>
+            <kbd>C</kbd>
+          </span>
+        </li>
+        <li>
+          Copy current unicode
+          <span>
+            <kbd>⌘</kbd> <kbd>⇧</kbd> <kbd>C</kbd>
+          </span>
         </li>
       </ul>
     </section>

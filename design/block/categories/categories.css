@@ -1,5 +1,8 @@
 .categories {
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--slant-size-24);
+
   .list {
     display: flex;
     flex-direction: column;
@@ -9,11 +12,11 @@
     overflow-y: auto;
     max-height: 60vh;
     scrollbar-width: none;
-    overscroll-behavior: contain;
+    /* overscroll-behavior: contain; */
     position: relative;
     padding-block-end: 120px;
 
-    h2 {
+    input {
       color: hsla(226, 37%, 11%, 0.8);
       padding-inline: var(--slant-size-14);
       padding-block: var(--slant-size-12);
@@ -22,13 +25,14 @@
       box-sizing: border-box;
       border-radius: var(--slant-size-08);
       border: 1px solid hsl(192, 12%, 90%);
+      outline: none;
     }
 
     nav {
       display: flex;
       flex-direction: column;
       font-size: var(--slant-size-12);
-      gap: var(--slant-size-04);
+      gap: var(--slant-size-02);
       z-index: 1;
       position: relative;
       padding: 0 var(--slant-size-16);
@@ -105,6 +109,21 @@
           opacity: 0;
           visibility: hidden;
           z-index: -1;
+        }
+
+        div {
+          display: flex;
+          align-items: center;
+          gap: 1ch;
+
+          span {
+            display: flex;
+            aspect-ratio: 1/1;
+            width: 12px;
+            height: 12px;
+            align-items: center;
+            justify-content: center;
+          }
         }
       }
     }

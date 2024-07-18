@@ -96,7 +96,7 @@ export default function Grid() {
     const unicodeStr = symbol ? toUnicode(symbol) : ""
     navigator.clipboard.writeText(unicodeStr).then(
       () => {
-        toast(`${symbol} / ${unicodeStr} — Unicode copied!`)
+        toast(`${unicodeStr} — Unicode copied!`)
       },
       (err) => {
         console.error("Could not copy unicode: ", err)
