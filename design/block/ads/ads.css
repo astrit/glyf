@@ -71,20 +71,31 @@
 .ads-one {
   display: flex;
   max-width: 320px;
-  gap: var(--slant-size-08);
-  line-height: 1.2;
-  align-items: center;
+  right: 65px;
+  top: 32px;
   overflow: hidden;
   position: absolute;
-  right: 65px;
-  text-wrap: pretty;
+
+  a {
+    display: flex;
+    line-height: 1.1;
+    align-items: center;
+    justify-content: flex-end;
+    text-wrap: balance;
+    gap: var(--slant-size-08);
+    max-width: max-content;
+
+    div {
+      max-width: 36ch;
+    }
+  }
 
   span {
     font-weight: 500;
   }
 
   img {
-    width: 24px;
+    width: 26px;
     height: auto;
   }
 }

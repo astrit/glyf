@@ -1,6 +1,6 @@
 .hero {
   display: flex;
-  padding: var(--slant-size-48);
+  padding-inline: var(--slant-size-48);
   gap: var(--slant-size-48);
   flex-direction: column;
   font-family: var(--slant-font-manrope);
@@ -23,6 +23,63 @@
       backdrop-filter: blur(4px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       background-color: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  .links {
+    display: flex;
+    gap: 1ch;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--slant-size-48);
+
+    .gg {
+      display: flex;
+      font-size: 16px;
+      font-weight: 600;
+      gap: 2ch;
+      align-items: center;
+
+      small {
+        height: 2px;
+        width: 6ch;
+        border-radius: 10px;
+        background: currentColor;
+        opacity: 0.4;
+      }
+    }
+
+    .sources {
+      display: flex;
+      gap: 2ch;
+      font-size: 12px;
+      margin-right: -24px;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 1ch;
+        padding: 10px 14px;
+        border-radius: 8px;
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background-color: rgba(255, 255, 255, 0.08);
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.12);
+        }
+
+        span {
+          opacity: 0.6;
+        }
+
+        svg {
+          width: auto;
+          height: 1.2lh;
+          stroke: none;
+        }
+      }
     }
   }
 }

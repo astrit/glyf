@@ -64,8 +64,7 @@
 
   select,
   label,
-  button[type="reset"],
-  span {
+  button[type="reset"] {
     position: absolute;
     z-index: 1;
   }
