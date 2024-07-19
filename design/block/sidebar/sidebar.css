@@ -1,18 +1,15 @@
 .sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--slant-size-12);
-  min-height: 100vh;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: flex-start; */
+  /* gap: var(--slant-size-12); */
+  /* min-height: 100vh; */
 
   .tabber {
     display: flex;
     padding: 4px;
     gap: var(--slant-size-04);
     border-radius: var(--slant-size-08);
-    /* background-color: #f1f3f4; */
-    /* border: 1px solid #ebeff0; */
-
     background-color: #f1f3f4;
     border: 1px solid hsl(192, 12%, 92%);
     width: 100%;
@@ -50,7 +47,6 @@
     border-radius: var(--slant-size-12);
     background-color: #f1f3f4;
     border: 1px solid #e1e5e6;
-    /* border: 1px solid #ebeff0; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,7 +76,6 @@
       padding-block: var(--slant-size-10);
       padding-inline: var(--slant-size-16);
       border-radius: var(--slant-size-08);
-      /* inset: var(--slant-size-08); */
       inset-block-start: auto;
       inset-block-end: -24px;
       border: 1px solid hsl(192, 14%, 90%);
@@ -99,31 +94,6 @@
     position: sticky;
     bottom: var(--slant-size-24);
   }
-
-  /* .copy {
-    display: flex;
-    gap: var(--slant-size-04);
-    font-weight: normal;
-    align-items: center;
-    color: #0b0b10;
-    border-radius: var(--slant-size-06);
-    padding: var(--slant-size-12) var(--slant-size-24);
-    background-color: #7f42df;
-    color: #ffffff;
-    cursor: pointer;
-  }
-
-  .download {
-    display: flex;
-    gap: var(--slant-size-04);
-    align-items: center;
-    color: #0b0b10;
-    border-radius: var(--slant-size-06);
-    padding: var(--slant-size-12) var(--slant-size-24);
-    background-color: #f1f3f4;
-    color: #121727;
-    cursor: pointer;
-  } */
 
   .export {
     display: flex;

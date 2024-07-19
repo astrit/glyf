@@ -45,11 +45,12 @@ export default function Reklama() {
               alt={ad.company || ""}
             />
           )}
-          {ad.company && (
+          {ad.company && <div>{ad.description}</div>}
+          {/* {ad.company && (
             <div>
               <span>{ad.company}</span> {ad.description}
             </div>
-          )}
+          )} */}
         </a>
       )}
     </div>

@@ -71,7 +71,7 @@ export default function RootLayout({
               <Main>
                 <Categories />
                 <Grid />
-                <aside>{children}</aside>
+                <aside className="sidebar">{children}</aside>
               </Main>
               <Footer />
             </Fonts>

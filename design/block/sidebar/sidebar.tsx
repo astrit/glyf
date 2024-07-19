@@ -60,7 +60,8 @@ export default function Sidebar({
   }, [glyph])
 
   return (
-    <section className="sidebar">
+    <>
+      {/* <section className="sidebar"> */}
       <div className="tabber">
         <button className="active">Unicode</button>
         <button>SVG</button>
@@ -123,6 +124,6 @@ export default function Sidebar({
         </button>
       </div> */}
       <Ads />
-    </section>
+    </>
   )
 }

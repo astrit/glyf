@@ -54,7 +54,6 @@
       display: flex;
       gap: 2ch;
       font-size: 12px;
-      margin-right: -24px;
 
       a {
         display: flex;
