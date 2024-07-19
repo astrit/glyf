@@ -100,7 +100,7 @@
     bottom: var(--slant-size-24);
   }
 
-  .copy {
+  /* .copy {
     display: flex;
     gap: var(--slant-size-04);
     font-weight: normal;
@@ -123,5 +123,39 @@
     background-color: #f1f3f4;
     color: #121727;
     cursor: pointer;
+  } */
+
+  .export {
+    display: flex;
+    gap: var(--slant-size-04);
+    align-items: center;
+    color: #0b0b10;
+    border-radius: var(--slant-size-06);
+    padding: var(--slant-size-08);
+    width: 100%;
+    background-color: #f1f3f4;
+    color: #121727;
+    cursor: pointer;
+
+    button {
+      cursor: pointer;
+      padding: var(--slant-size-10) var(--slant-size-14);
+      border-radius: var(--slant-size-06);
+      background-color: #fff;
+
+      &:hover {
+        background-color: #fff;
+      }
+    }
+
+    .download {
+      border: 1px solid hsl(195, 4%, 81%);
+      border-radius: var(--slant-size-08);
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: var(--slant-size-06);
+      justify-content: space-between;
+    }
   }
 }

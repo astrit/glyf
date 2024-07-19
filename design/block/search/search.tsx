@@ -1,3 +1,4 @@
+import Reklama from "@/ads/one"
 import Progress from "@/progress/progress"
 
 import "./search.css"
@@ -23,7 +24,8 @@ export default function Search() {
         <option value="">All categories</option>
       </select>
       <button type="reset">✗</button>
-      <div>/</div>
+      <div className="slash">/</div>
+      <Reklama />
       {/* <Progress /> */}
     </section>
   )

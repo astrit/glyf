@@ -67,3 +67,24 @@
     }
   }
 }
+
+.ads-one {
+  display: flex;
+  max-width: 320px;
+  gap: var(--slant-size-08);
+  line-height: 1.2;
+  align-items: center;
+  overflow: hidden;
+  position: absolute;
+  right: 65px;
+  text-wrap: pretty;
+
+  span {
+    font-weight: 500;
+  }
+
+  img {
+    width: 24px;
+    height: auto;
+  }
+}

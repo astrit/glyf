@@ -107,7 +107,7 @@
   }
 
   button[type="reset"],
-  div {
+  .slash {
     display: flex;
     position: absolute;
     right: 25px;
@@ -135,8 +135,8 @@
     pointer-events: none;
   }
 
-  div {
-    opacity: 0.4;
+  .slash {
+    opacity: 1;
   }
 
   .progress {

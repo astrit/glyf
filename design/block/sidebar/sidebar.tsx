@@ -1,6 +1,6 @@
 "use client"
 
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import Ads from "@/ads/ads"
 import { toUnicode } from "$/func/func"
 import { toast } from "sonner"
@@ -12,21 +12,26 @@ interface Symbol {
   symbol?: string
   unicode?: string
   html_entity?: string
+  category?: any
+}
+
+const generateHtmlEntity = (symbol: string = "") => {
+  return `&#${symbol.charCodeAt(0)};`
 }
 
 export default function Sidebar({
   symbol,
   name,
+  category,
 }: {
   symbol: Symbol | null | string
   name: string
+  category: string
 }) {
-  const glyph = typeof symbol === "string" ? { symbol: symbol } : symbol
-
-  // function CopySymbol(symbol: string) {
-  //   navigator.clipboard.writeText(symbol)
-  //   toast.success("Copied!")
-  // }
+  const glyph = useMemo(
+    () => (typeof symbol === "string" ? { symbol: symbol } : symbol),
+    [symbol]
+  )
 
   useEffect(() => {
     const handleCopy = (event: {
@@ -72,6 +77,51 @@ export default function Sidebar({
       <header>
         <h2>{name}</h2>
       </header>
+      <div className="info">
+        <p>
+          <strong>Unicode:</strong> {glyph ? toUnicode(glyph.symbol) : " "}
+        </p>
+        <p>
+          <strong>HTML Entity:</strong>{" "}
+          {glyph ? generateHtmlEntity(glyph.symbol) : ""}
+        </p>
+        <p>
+          <strong>Category:</strong> {category}
+        </p>
+      </div>
+      <div className="export">
+        <button>:: Copy</button>
+        <div className="download">
+          Downloads
+          <button>↓</button>
+        </div>
+      </div>
+
+      <ul>
+        Affiliate links:
+        <li>Coolors</li>
+        <li>Iconists</li>
+        <li>Raycast</li>
+        <li>Screen Studio</li>
+      </ul>
+      {/* <div>
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(glyph.symbol)
+            toast(`${glyph.symbol} copied!`)
+          }}
+        >
+          Copy Symbol
+        </button>
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(toUnicode(glyph.symbol))
+            toast(`${toUnicode(glyph.symbol)} copied!`)
+          }}
+        >
+          Copy Unicode
+        </button>
+      </div> */}
       <Ads />
     </section>
   )

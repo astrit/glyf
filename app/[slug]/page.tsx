@@ -12,6 +12,7 @@ interface Symbol {
 }
 
 interface Category {
+  title: string | undefined
   slug: string
   symbols: Symbol[]
 }
@@ -27,14 +28,22 @@ interface ControllerInt {
 interface SymbolState {
   name?: string
   symbol?: string
+  categoryTitle?: string // New field for category title
 }
 
 const findMatchingSymbol = (
   categories: Category[],
   slug: string
-): Symbol | undefined => {
-  const flattenedSymbols = categories?.flatMap((category) => category.symbols)
-  return flattenedSymbols?.find((s) => toURL(s.name) === slug.toLowerCase())
+): { symbol: Symbol | undefined; categoryTitle: string | undefined } => {
+  for (const category of categories) {
+    const symbol = category.symbols.find(
+      (s) => toURL(s.name) === slug.toLowerCase()
+    )
+    if (symbol) {
+      return { symbol, categoryTitle: category.title } // Return both symbol and category title
+    }
+  }
+  return { symbol: undefined, categoryTitle: undefined } // Return undefined if not found
 }
 
 const flattenSymbols = (categories: Category[]): Symbol[] => {
@@ -52,14 +61,15 @@ export default function Slug({ params }: { params: { slug: string } }) {
 
   useEffect(() => {
     if (controller) {
-      const matchingSymbol = findMatchingSymbol(
+      const { symbol, categoryTitle } = findMatchingSymbol(
         controller?.data?.categories?.category,
         slug
       )
-      if (matchingSymbol) {
+      if (symbol) {
         setSymbolState({
-          symbol: matchingSymbol.symbol,
-          name: matchingSymbol.name,
+          symbol: symbol.symbol,
+          name: symbol.name,
+          categoryTitle,
         })
       }
     }
@@ -97,7 +107,13 @@ export default function Slug({ params }: { params: { slug: string } }) {
     }
   }, [controller, slug, goTo])
 
-  const { symbol, name } = symbolState ?? {}
+  const { symbol, name, categoryTitle } = symbolState ?? {}
 
-  return <Sidebar symbol={symbol ?? null} name={name ?? " "} />
+  return (
+    <Sidebar
+      symbol={symbol ?? null}
+      name={name ?? " "}
+      category={categoryTitle ? categoryTitle : ""}
+    />
+  )
 }
