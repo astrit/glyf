@@ -1,12 +1,15 @@
 "use client"
 
 import React, { useContext, useEffect, useMemo } from "react"
+import { Links } from "@/affiliates/affiliates"
 import Link from "@/link/link"
 import { toUnicode, toURL } from "$/func/func"
 import { Controller } from "$/provider/provider"
 import { toast } from "sonner"
 
 import "./grid.css"
+
+import Icon from "@/icon/icon"
 
 interface Symbol {
   name: string
@@ -75,12 +78,6 @@ export default function Grid() {
       : data.categories.category
   }, [data, selectedCategory])
 
-  // Copy
-  // Copy
-  // Copy
-  // Copy
-
-  // Enhanced clipboard copy functions with specific parameter types
   function copyToClipboardSymbol(symbol: string) {
     navigator.clipboard.writeText(symbol).then(
       () => {
@@ -104,7 +101,6 @@ export default function Grid() {
     )
   }
 
-  // Updated handleClick function to handle events more accurately
   function handleClick(e: Event, symbol: Symbol) {
     if (e.altKey) {
       e.preventDefault()
@@ -115,28 +111,66 @@ export default function Grid() {
     }
   }
 
-  // Streamlined symbols rendering logic
   const symbols = useMemo(
     () =>
       memoizedCategories.map(
-        (category: { symbols: any[] }, categoryIndex: any) =>
-          category.symbols.map((symbol: Symbol, symbolIndex: any) => (
-            <Link
-              href={`/${toURL(symbol.name)}`}
-              key={`${categoryIndex}-${symbolIndex}-${symbol.symbol}`} // Ensuring key uniqueness
-              className="symbol"
-              data-symbol={symbol.symbol}
-              onClick={(e: Event) => handleClick(e, symbol)}
-              onMouseEnter={(e: {
-                currentTarget: {
-                  setAttribute: (arg0: string, arg1: any) => any
-                }
-              }) => e.currentTarget.setAttribute("title", symbol.name)}
-              onMouseLeave={(e: {
-                currentTarget: { removeAttribute: (arg0: string) => any }
-              }) => e.currentTarget.removeAttribute("title")}
-            />
-          ))
+        (category: { symbols: any[] }, categoryIndex: any) => {
+          // Generate random positions within the current category's symbols array
+          let randomPositions = [
+            Math.floor(Math.random() * (category.symbols.length + 1)),
+          ]
+          if (category.symbols.length > 40) {
+            // Ensure a second unique position for categories with more than 40 symbols
+            let secondRandomPosition
+            do {
+              secondRandomPosition = Math.floor(
+                Math.random() * (category.symbols.length + 1)
+              )
+            } while (randomPositions.includes(secondRandomPosition))
+            randomPositions.push(secondRandomPosition)
+          }
+
+          // Map symbols to Link components
+          const symbolLinks = category.symbols.map(
+            (symbol: Symbol, symbolIndex: any) => (
+              <Link
+                href={`/${toURL(symbol.name)}`}
+                key={`${categoryIndex}-${symbolIndex}-${symbol.symbol}`} // Ensuring key uniqueness
+                className="symbol"
+                data-symbol={symbol.symbol}
+                onClick={(e: Event) => handleClick(e, symbol)}
+                onMouseEnter={(e: {
+                  currentTarget: {
+                    setAttribute: (arg0: string, arg1: any) => any
+                  }
+                }) => e.currentTarget.setAttribute("title", symbol.name)}
+                onMouseLeave={(e: {
+                  currentTarget: { removeAttribute: (arg0: string) => any }
+                }) => e.currentTarget.removeAttribute("title")}
+              />
+            )
+          )
+
+          randomPositions.forEach((position) => {
+            const randomLinkIndex = Math.floor(Math.random() * Links.length)
+            const selectedLink = Links[randomLinkIndex]
+
+            const affiliateLink = (
+              <Link
+                href={selectedLink.href}
+                key={`affiliate-${categoryIndex}-${position}`} // Updated key to include position for uniqueness
+                className={`symbol affiliate ` + selectedLink.brand}
+              >
+                <Icon name={selectedLink.brand} />
+                <span>{selectedLink.brand}</span>
+              </Link>
+            )
+
+            symbolLinks.splice(position, 0, affiliateLink)
+          })
+
+          return symbolLinks
+        }
       ),
     [memoizedCategories]
   )

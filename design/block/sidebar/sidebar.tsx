@@ -7,6 +7,8 @@ import { toast } from "sonner"
 
 import "./sidebar.css"
 
+import Affiliates from "@/affiliates/affiliates"
+
 interface Symbol {
   name?: string
   symbol?: string
@@ -75,21 +77,26 @@ export default function Sidebar({
           readOnly
         />
       </figure>
-      <header>
-        <h2>{name}</h2>
-      </header>
-      <div className="info">
-        <p>
-          <strong>Unicode:</strong> {glyph ? toUnicode(glyph.symbol) : " "}
-        </p>
-        <p>
-          <strong>HTML Entity:</strong>{" "}
-          {glyph ? generateHtmlEntity(glyph.symbol) : ""}
-        </p>
-        <p>
-          <strong>Category:</strong> {category}
-        </p>
-      </div>
+      <details>
+        <summary>
+          <header>
+            <h2>{name}</h2>
+          </header>
+        </summary>
+
+        <div className="info">
+          <p>
+            <strong>Unicode:</strong> {glyph ? toUnicode(glyph.symbol) : " "}
+          </p>
+          <p>
+            <strong>HTML Entity:</strong>{" "}
+            {glyph ? generateHtmlEntity(glyph.symbol) : ""}
+          </p>
+          <p>
+            <strong>Category:</strong> {category}
+          </p>
+        </div>
+      </details>
       <div className="export">
         <button>:: Copy</button>
         <div className="download">
@@ -97,32 +104,7 @@ export default function Sidebar({
           <button>↓</button>
         </div>
       </div>
-
-      <ul>
-        Affiliate links:
-        <li>Coolors</li>
-        <li>Iconists</li>
-        <li>Raycast</li>
-        <li>Screen Studio</li>
-      </ul>
-      {/* <div>
-        <button
-          onClick={() => {
-            navigator.clipboard.writeText(glyph.symbol)
-            toast(`${glyph.symbol} copied!`)
-          }}
-        >
-          Copy Symbol
-        </button>
-        <button
-          onClick={() => {
-            navigator.clipboard.writeText(toUnicode(glyph.symbol))
-            toast(`${toUnicode(glyph.symbol)} copied!`)
-          }}
-        >
-          Copy Unicode
-        </button>
-      </div> */}
+      <Affiliates />
       <Ads />
     </>
   )
