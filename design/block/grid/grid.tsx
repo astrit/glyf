@@ -93,7 +93,7 @@ export default function Grid() {
   }
 
   function copyToClipboardUnicode(symbol: string) {
-    const unicodeStr = symbol ? toUnicode(symbol) : ""
+    const unicodeStr = symbol ? toUnicode(symbol) : " "
     navigator.clipboard.writeText(unicodeStr).then(
       () => {
         toast(`${unicodeStr} — Unicode copied!`)

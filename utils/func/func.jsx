@@ -8,7 +8,8 @@ function toURL(e) {
 
 function toUnicode(e) {
   if (typeof e !== "string" || e.length === 0) {
-    throw new Error("toUnicode function expects a non-empty string as argument")
+    console.log(e)
+    // throw new Error("toUnicode function expects a non-empty string as argument")
   }
   return `U+${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`
 }

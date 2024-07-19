@@ -34,7 +34,7 @@
     animation-duration: 420ms, 40ms;
     animation-timeline: view();
     animation-range:
-      entry 0 entry 100px,
+      entry 0 entry 200px,
       exit -40px exit 400px;
 
     &::before {
@@ -92,12 +92,12 @@
 @keyframes GridScroll {
   0% {
     opacity: 0;
-    translate: 0 40px;
+    translate: 0 20px;
   }
 }
 @keyframes GridScrollOut {
   100% {
     opacity: 0;
-    translate: 0 40px;
+    translate: 0 -80px;
   }
 }
