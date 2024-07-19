@@ -9,6 +9,8 @@ interface Ad {
   image?: string
   company?: string
   description?: string
+  callToAction?: string
+  companyTagline?: string
 }
 
 // Define a type for the state that includes an array of ads
@@ -29,13 +31,16 @@ export default function Reklama() {
 
   const ad = adData.ads.length > 0 ? adData.ads[0] : null
 
+  console.log(ad)
+
   return (
-    <div className="ads-one">
+    <>
       {ad && ad.statlink && (
         <a
           href={ad.statlink}
           target="_blank"
           rel="sponsored noopener noreferrer"
+          className="ads-one"
         >
           {ad.image && (
             <Image
@@ -45,14 +50,14 @@ export default function Reklama() {
               alt={ad.company || ""}
             />
           )}
-          {ad.company && <div>{ad.description}</div>}
-          {/* {ad.company && (
-            <div>
-              <span>{ad.company}</span> {ad.description}
-            </div>
-          )} */}
+          {ad.company && (
+            <p>
+              <span className="ad-company">{ad.company}</span>
+              <span>{ad.description}</span>
+            </p>
+          )}
         </a>
       )}
-    </div>
+    </>
   )
 }

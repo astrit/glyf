@@ -67,34 +67,27 @@
   }
 }
 
-.ads-one {
+a.ads-one {
   display: flex;
-  max-width: 320px;
-  right: 65px;
-  top: 28px;
-  overflow: hidden;
-  position: absolute;
-
-  a {
-    display: flex;
-    line-height: 1.1;
-    align-items: center;
-    justify-content: flex-end;
-    text-wrap: balance;
-    gap: var(--slant-size-08);
-    max-width: max-content;
-
-    div {
-      max-width: 36ch;
-    }
-  }
-
-  span {
-    font-weight: 500;
-  }
+  line-height: 1.2;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--slant-size-06);
+  width: 100%;
+  color: rgba(255, 255, 255, 0.7);
 
   img {
-    width: 32px;
+    width: 28px;
+    max-width: 28px;
+    min-width: 28px;
     height: auto;
+  }
+
+  p {
+    max-width: 36ch;
+    .ad-company {
+      color: #ffffff;
+      margin-right: 1ch;
+    }
   }
 }

@@ -9,7 +9,7 @@
     border-radius: 18px;
     background-color: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(20px);
-    padding: 26px 34px 26px 240px;
+    padding: 26px 34px 26px 224px;
     font-size: 24px;
     color: #fff;
     border: 3px solid rgba(255, 255, 255, 0.07);
@@ -32,22 +32,21 @@
     &:focus {
       background-color: rgba(255, 255, 255, 0.09);
       border-color: rgba(255, 255, 255, 0.2);
-      padding-left: 246px;
+      padding-left: 232px;
     }
 
-    &:focus ~ select,
-    &:focus ~ label {
+    &:focus ~ .left {
       translate: 6px 0;
     }
 
-    &:not(:placeholder-shown) ~ div,
-    &:focus ~ div {
+    &:not(:placeholder-shown) ~ .right .cts .slash,
+    &:focus ~ .right .cts .slash {
       scale: 0.9;
       opacity: 0;
     }
 
-    &:not(:placeholder-shown) ~ button[type="reset"],
-    &:focus ~ button[type="reset"] {
+    &:not(:placeholder-shown) ~ .right .cts button[type="reset"],
+    &:focus ~ .right .cts button[type="reset"] {
       scale: 1;
       opacity: 1;
       pointer-events: initial;
@@ -62,19 +61,51 @@
     }
   }
 
-  select,
+  /* select,
   label,
   button[type="reset"] {
     position: absolute;
     z-index: 1;
+  } */
+
+  .left,
+  .right {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
+  }
+
+  .left {
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    margin-block: auto;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .right {
+    right: 24px;
+    top: 0;
+    bottom: 0;
+    margin-block: auto;
+    gap: 12px;
+
+    .cts {
+      display: grid;
+      grid-template-areas: "center";
+
+      * {
+        grid-area: center;
+      }
+    }
   }
 
   label {
-    top: 50%;
-    left: 32px;
-    transform: translateY(-50%);
     font-size: 20px;
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s;
     pointer-events: none;
   }
 
@@ -85,15 +116,12 @@
     color: white;
     outline: none;
     appearance: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 74px;
-    margin: auto;
     height: 38px;
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background-color: rgba(255, 255, 255, 0.08);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M8 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM18 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z' fill='rgba(255,255,255,0.4)'/%3E%3C/svg%3E")
+      right 12px center / 18px 18px no-repeat rgba(255, 255, 255, 0.08);
     border-radius: 102px;
     width: 140px;
     min-width: 130px;
@@ -103,16 +131,16 @@
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-sizing: border-box;
     font-size: 11px;
+
+    &::after {
+      content: "asd";
+      display: flex;
+    }
   }
 
   button[type="reset"],
   .slash {
     display: flex;
-    position: absolute;
-    right: 25px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
     width: 32px;
     height: 32px;
     border-radius: 8px;

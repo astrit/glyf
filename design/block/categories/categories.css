@@ -20,7 +20,7 @@
       display: flex;
       color: hsla(226, 37%, 11%, 0.8);
       padding-inline: var(--slant-size-14);
-      padding-block: var(--slant-size-12);
+      padding-block: var(--slant-size-10);
       margin: 4px;
       background-color: hsl(180, 8%, 100%);
       box-sizing: border-box;

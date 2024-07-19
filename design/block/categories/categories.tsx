@@ -83,7 +83,7 @@ export default function Categories() {
       <section className="list">
         <input
           type="text"
-          placeholder="Search categories"
+          placeholder="○ Search categories"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
