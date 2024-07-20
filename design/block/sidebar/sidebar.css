@@ -1,5 +1,7 @@
 .sidebar {
   min-height: 100vh;
+  gap: var(--slant-size-40);
+
   .tabber {
     display: flex;
     padding: 4px;
@@ -97,37 +99,82 @@
     }
   }
 
-  .export {
+  .content {
     display: flex;
-    gap: var(--slant-size-04);
-    align-items: center;
-    color: #0b0b10;
-    border-radius: var(--slant-size-06);
-    padding: var(--slant-size-08);
-    width: 100%;
-    background-color: #f1f3f4;
-    color: #121727;
-    cursor: pointer;
+    flex-direction: column;
+  }
 
-    button {
+  details {
+    border-radius: var(--slant-size-08) var(--slant-size-08) 0 0;
+    border: 1px solid hsl(192, 12%, 92%);
+    border-bottom: 0;
+    width: 100%;
+    overflow: hidden;
+
+    summary {
+      padding: var(--slant-size-12);
       cursor: pointer;
-      padding: var(--slant-size-10) var(--slant-size-14);
-      border-radius: var(--slant-size-06);
-      background-color: #fff;
+      appearance: none;
+      -webkit-appearance: none;
+      list-style: none;
+      user-select: none;
+      min-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
 
       &:hover {
-        background-color: #fff;
+        background-color: hsl(0, 0%, 99%);
+      }
+
+      span {
+        display: flex;
+        font-size: 14px;
+        margin-left: auto;
+        opacity: 0.4;
       }
     }
 
+    .info {
+      padding: var(--slant-size-12);
+      border-top: 1px solid hsl(192, 12%, 92%);
+      font-size: 12px;
+      line-height: 1.2;
+    }
+  }
+
+  .export {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+
+    .export-copy {
+      background-color: #6a30df;
+      color: #f0e7ff;
+      border-radius: 0 0 0 8px;
+      padding: 12px 20px;
+      cursor: pointer;
+    }
+
     .download {
-      border: 1px solid hsl(195, 4%, 81%);
-      border-radius: var(--slant-size-08);
+      background-color: #f0e7ff;
+      color: #6a30df;
+      border-radius: 0 0 8px 0;
+      padding: 8px 12px;
+      cursor: pointer;
       flex: 1;
       display: flex;
       align-items: center;
-      padding: var(--slant-size-06);
       justify-content: space-between;
+
+      .export-download {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        padding-right: 0;
+        text-align: center;
+      }
     }
   }
 

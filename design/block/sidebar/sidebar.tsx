@@ -81,28 +81,32 @@ export default function Sidebar({
             <button>❏</button>
           </div>
         </figure>
-        <details>
-          <summary>
-            <h2>{name}</h2>
-          </summary>
-          <div className="info">
-            <p>
-              <strong>Unicode:</strong> {glyph ? toUnicode(glyph.symbol) : " "}
-            </p>
-            <p>
-              <strong>HTML Entity:</strong>{" "}
-              {glyph ? generateHtmlEntity(glyph.symbol) : ""}
-            </p>
-            <p>
-              <strong>Category:</strong> {category}
-            </p>
-          </div>
-        </details>
-        <div className="export">
-          <button>:: Copy</button>
-          <div className="download">
-            Downloads
-            <button>↓</button>
+        <div className="content">
+          <details>
+            <summary>
+              <p>{name}</p>
+              <span>+</span>
+            </summary>
+            <div className="info">
+              <p>
+                <strong>Unicode:</strong>
+                {glyph ? toUnicode(glyph.symbol) : " "}
+              </p>
+              <p>
+                <strong>HTML Entity:</strong>{" "}
+                {glyph ? generateHtmlEntity(glyph.symbol) : ""}
+              </p>
+              <p>
+                <strong>Category:</strong> {category}
+              </p>
+            </div>
+          </details>
+          <div className="export">
+            <button className="export-copy">:: Copy</button>
+            <div className="download">
+              Downloads
+              <button className="export-download">↓</button>
+            </div>
           </div>
         </div>
       </header>

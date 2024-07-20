@@ -17,6 +17,7 @@
     padding-block-end: 120px;
     position: sticky;
     top: var(--slant-size-24);
+    box-shadow: 0 0 0 2px #fff;
     /* backdrop-filter: blur(10px); */
     z-index: 2;
 
