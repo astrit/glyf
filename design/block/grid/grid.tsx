@@ -150,16 +150,23 @@ export default function Grid() {
               />
             )
           )
-
           randomPositions.forEach((position) => {
-            const randomLinkIndex = Math.floor(Math.random() * Links.length)
+            let randomLinkIndex
+            const selectedIndices = new Set() // Initialize a set to track selected link indices
+
+            do {
+              randomLinkIndex = Math.floor(Math.random() * Links.length)
+            } while (selectedIndices.has(randomLinkIndex)) // Ensure the link hasn't been selected already
+
+            selectedIndices.add(randomLinkIndex) // Add the selected index to the set
             const selectedLink = Links[randomLinkIndex]
 
             const affiliateLink = (
               <Link
                 href={selectedLink.href}
-                key={`affiliate-${categoryIndex}-${position}`} // Updated key to include position for uniqueness
+                key={`affiliate-${categoryIndex}-${position}`}
                 className={`symbol affiliate ` + selectedLink.brand}
+                target="_blank"
               >
                 <Icon name={selectedLink.brand} />
                 <span>{selectedLink.brand}</span>

@@ -1,6 +1,5 @@
 .sidebar {
   min-height: 100vh;
-
   .tabber {
     display: flex;
     padding: 4px;
@@ -62,9 +61,30 @@
     background-size:100%,  20px 100%, 100% 20px, 100px 100%, 100% 100px;
     background-position: center;
 
+    .code {
+      position: absolute;
+      inset-block-start: auto;
+      inset-block-end: -24px;
+
+      button {
+        position: absolute;
+        margin-block: auto;
+        box-sizing: border-box;
+        inset: 0 var(--slant-size-08) 0 auto;
+        background-color: #f0e7ff;
+        border: 1px solid hsl(262, 100%, 89%);
+        color: #6a30df;
+        max-height: max-content;
+        padding: var(--slant-size-06) var(--slant-size-08);
+        border-radius: var(--slant-size-06);
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+
     input {
       display: flex;
-      position: absolute;
+      position: relative;
       font-size: 14px;
       background-color: #fff;
       color: #0b0b10;
@@ -72,23 +92,9 @@
       padding-block: var(--slant-size-10);
       padding-inline: var(--slant-size-16);
       border-radius: var(--slant-size-08);
-      inset-block-start: auto;
-      inset-block-end: -24px;
       border: 1px solid hsl(192, 14%, 90%);
       outline: none;
     }
-  }
-
-  footer {
-    display: flex;
-    bottom: var(--slant-size-24);
-    gap: var(--slant-size-04);
-    font-size: var(--slant-size-14);
-    width: 100%;
-    font-weight: 400;
-    margin-top: 100%;
-    position: sticky;
-    bottom: var(--slant-size-24);
   }
 
   .export {
@@ -123,5 +129,21 @@
       padding: var(--slant-size-06);
       justify-content: space-between;
     }
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--slant-size-12);
+    position: sticky;
+    top: var(--slant-size-24);
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--slant-size-08);
+    position: sticky;
+    top: calc(100% - 200px);
   }
 }

@@ -64,48 +64,52 @@ export default function Sidebar({
   return (
     <>
       {/* <section className="sidebar"> */}
-      <div className="tabber">
-        <button className="active">Unicode</button>
-        <button>SVG</button>
-        <button>Pattern</button>
-      </div>
-      <figure>
-        {glyph && glyph.symbol}
-        <input
-          type="text"
-          value={glyph ? toUnicode(glyph.symbol) : " "}
-          readOnly
-        />
-      </figure>
-      <details>
-        <summary>
-          <header>
+      <header>
+        <div className="tabber">
+          <button className="active">Unicode</button>
+          <button>SVG</button>
+          <button>Pattern</button>
+        </div>
+        <figure>
+          {glyph && glyph.symbol}
+          <div className="code">
+            <input
+              type="text"
+              value={glyph ? toUnicode(glyph.symbol) : " "}
+              readOnly
+            />
+            <button>❏</button>
+          </div>
+        </figure>
+        <details>
+          <summary>
             <h2>{name}</h2>
-          </header>
-        </summary>
-
-        <div className="info">
-          <p>
-            <strong>Unicode:</strong> {glyph ? toUnicode(glyph.symbol) : " "}
-          </p>
-          <p>
-            <strong>HTML Entity:</strong>{" "}
-            {glyph ? generateHtmlEntity(glyph.symbol) : ""}
-          </p>
-          <p>
-            <strong>Category:</strong> {category}
-          </p>
+          </summary>
+          <div className="info">
+            <p>
+              <strong>Unicode:</strong> {glyph ? toUnicode(glyph.symbol) : " "}
+            </p>
+            <p>
+              <strong>HTML Entity:</strong>{" "}
+              {glyph ? generateHtmlEntity(glyph.symbol) : ""}
+            </p>
+            <p>
+              <strong>Category:</strong> {category}
+            </p>
+          </div>
+        </details>
+        <div className="export">
+          <button>:: Copy</button>
+          <div className="download">
+            Downloads
+            <button>↓</button>
+          </div>
         </div>
-      </details>
-      <div className="export">
-        <button>:: Copy</button>
-        <div className="download">
-          Downloads
-          <button>↓</button>
-        </div>
-      </div>
-      <Affiliates />
-      <Ads />
+      </header>
+      <footer>
+        <Affiliates />
+        <Ads />
+      </footer>
     </>
   )
 }

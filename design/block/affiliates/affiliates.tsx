@@ -19,11 +19,21 @@ export const Links = [
   },
 ]
 
+function shuffleArray(array: any[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
+}
+
 export default function Affiliates() {
+  const shuffledLinks = shuffleArray([...Links])
+
   return (
     <section className="affiliates">
-      {Links.map(({ href, brand }) => (
-        <Link key={href} href={href} target="_blank" className={brand}>
+      {shuffledLinks.map(({ href, brand }) => (
+        <Link key={href + brand} href={href} target="_blank" className={brand}>
           <Icon name={brand} />
           <span>{brand}</span>
         </Link>

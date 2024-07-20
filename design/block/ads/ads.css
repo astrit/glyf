@@ -5,13 +5,12 @@
   border: 1px solid hsl(192, 12%, 92%);
   padding: var(--slant-size-04);
   border-radius: var(--slant-size-12);
-  position: sticky;
   box-shadow: 0 0 0 2px #fff;
   min-height: 103px;
   height: 103px;
   max-height: 103px;
   width: 100%;
-  top: calc(100% - 120px);
+  /* top: calc(100% - 120px); */
 
   #carbonads {
     .carbon-wrap {

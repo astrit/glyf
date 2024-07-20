@@ -6,7 +6,7 @@
   .list {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to bottom, #f1f3f4, transparent);
+    background: #fff linear-gradient(to bottom, #f1f3f4, transparent);
     border: 1px solid hsl(192, 12%, 92%);
     border-radius: var(--slant-size-12);
     overflow-y: auto;
@@ -15,6 +15,10 @@
     scrollbar-width: none;
     position: relative;
     padding-block-end: 120px;
+    position: sticky;
+    top: var(--slant-size-24);
+    /* backdrop-filter: blur(10px); */
+    z-index: 2;
 
     input {
       display: flex;
