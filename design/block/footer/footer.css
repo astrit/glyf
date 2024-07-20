@@ -6,4 +6,8 @@ footer.main-footer {
   width: 100%;
   padding: 48px;
   /* pointer-events: none; */
+
+  .slant {
+    font-family: var(--slant-font-manrope);
+  }
 }

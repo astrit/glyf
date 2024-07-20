@@ -99,6 +99,14 @@ export default function Sidebar({
               <p>
                 <strong>Category:</strong> {category}
               </p>
+              <p>
+                <strong>CSS Marker:</strong>
+                <br />
+                <code>
+                  {`::marker{ content: "${glyph ? toUnicode(glyph.symbol) : " "}"}`}
+                </code>
+              </p>
+              <p>favicon</p>
             </div>
           </details>
           <div className="export">

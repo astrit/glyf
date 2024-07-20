@@ -6,6 +6,8 @@ import { Toggle } from "@/toggle/toggle"
 
 import "@/footer/footer.css"
 
+import Link from "@/link/link"
+
 function Split() {
   return <span className="split">·</span>
 }
@@ -34,6 +36,9 @@ export default function Footer() {
     <footer className="main-footer">
       <Left>
         <Toggle />
+        <Link href="https://slant.so" target="_blank" className="slant">
+          S L Λ \ T
+        </Link>
       </Left>
       <Right />
     </footer>
