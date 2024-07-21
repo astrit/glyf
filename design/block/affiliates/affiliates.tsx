@@ -4,18 +4,25 @@ import Link from "@/link/link"
 import "./affiliates.css"
 
 export const Links = [
-  { brand: "raycast", href: "https://raycast.com/?via=astrit" },
+  {
+    brand: "raycast",
+    href: "https://raycast.com/?via=astrit",
+    description: "Your shortcut to everything.",
+  },
   {
     brand: "coolors",
     href: "https://coolors.co/?ref=5e9c74d518a3f413571ae92f",
+    description: "The super fast color palettes generator!",
   },
   {
     brand: "studio",
     href: "#",
+    description: "Beautiful Screen Recordings in Minutes.",
   },
   {
     brand: "central",
     href: "#",
+    descrition: "Central icon system",
   },
 ]
 
@@ -32,8 +39,14 @@ export default function Affiliates() {
 
   return (
     <section className="affiliates">
-      {shuffledLinks.map(({ href, brand }) => (
-        <Link key={href + brand} href={href} target="_blank" className={brand}>
+      {shuffledLinks.map(({ href, brand, description }) => (
+        <Link
+          key={href + brand}
+          href={href}
+          target="_blank"
+          title={description}
+          className={brand}
+        >
           <Icon name={brand} />
           <span>{brand}</span>
         </Link>

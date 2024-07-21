@@ -169,7 +169,10 @@ export default function Grid() {
                 target="_blank"
               >
                 <Icon name={selectedLink.brand} />
-                <span>{selectedLink.brand}</span>
+                <footer>
+                  <span>{selectedLink.brand}</span>
+                  <div>{selectedLink.description}</div>
+                </footer>
               </Link>
             )
 
@@ -182,5 +185,23 @@ export default function Grid() {
     [memoizedCategories]
   )
 
-  return <div className="grid">{symbols}</div>
+  return (
+    <div className="grid">
+      <div className="trail">
+        <div className="left">
+          <div className="navigation">
+            {/* <button>← ‹</button> */}
+            <button>‹</button>
+            <button>◦</button>
+            {/* <button>·</button> */}
+            <button>›</button>
+          </div>
+        </div>
+        <div className="right">
+          <input type="range" />
+        </div>
+      </div>
+      <div className="symbols">{symbols}</div>
+    </div>
+  )
 }
