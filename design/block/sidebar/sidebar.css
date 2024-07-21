@@ -4,25 +4,28 @@
 
   .tabber {
     display: flex;
-    padding: 4px;
+    padding: var(--slant-size-02);
     gap: var(--slant-size-04);
-    border-radius: var(--slant-size-08);
+    border-radius: var(--slant-size-10);
     background-color: #f1f3f4;
     border: 1px solid hsl(192, 12%, 92%);
     width: 100%;
 
     button {
       cursor: pointer;
-      padding: var(--slant-size-10) var(--slant-size-14);
-      border-radius: var(--slant-size-06);
+      padding: var(--slant-size-12) var(--slant-size-14);
+      border-radius: var(--slant-size-08);
+      border: 1px solid transparent;
 
       &:hover {
         background-color: #fff;
+        border-color: hsl(192, 12%, 90%);
       }
     }
 
     .active {
       background-color: #fff;
+      border-color: hsl(192, 12%, 90%);
     }
   }
 
@@ -181,8 +184,8 @@
   header {
     display: flex;
     flex-direction: column;
-    gap: var(--slant-size-12);
     position: sticky;
+    gap: var(--slant-size-08);
     top: var(--slant-size-24);
   }
 

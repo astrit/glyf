@@ -81,13 +81,15 @@ export default function Categories() {
   return (
     <aside className="categories">
       <section className="list">
-        <input
-          type="text"
-          placeholder="○ Search categories"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
+        <div className="form">
+          <input
+            type="text"
+            placeholder="○ Search categories"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
         <nav>
           {filteredCategories.map((category) => (
             <button

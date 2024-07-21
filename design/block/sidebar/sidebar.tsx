@@ -118,8 +118,6 @@ export default function Sidebar({
           </div>
         </div>
       </header>
-      font size
-      <input type="range" />
       <footer>
         <Affiliates />
         <Ads />

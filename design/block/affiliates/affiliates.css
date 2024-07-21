@@ -36,7 +36,7 @@
 
     &.central {
       background-color: hsla(0, 0%, 0%, 0.1);
-      border-color: hsla(0, 0%, 0%, 0.2);
+      border-color: hsla(0, 0%, 0%, 0.1);
     }
   }
 }

@@ -22,7 +22,7 @@ export const Links = [
   {
     brand: "central",
     href: "#",
-    descrition: "Central icon system",
+    description: "Central icon system",
   },
 ]
 

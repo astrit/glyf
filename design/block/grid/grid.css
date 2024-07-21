@@ -9,10 +9,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     grid-auto-rows: max-content;
-    background-color: #f1f3f4;
-    border-radius: var(--slant-size-12);
     padding: var(--slant-size-24);
+    border-radius: var(--slant-size-10);
     border: 1px solid hsl(192, 12%, 92%);
+    background-color: #f1f3f4;
     gap: var(--slant-size-18);
 
     .symbol {
@@ -146,7 +146,7 @@
 
         &.central::before {
           background-color: rgb(237, 237, 237);
-          border: 2px solid rgb(205, 205, 205);
+          border: 2px solid rgb(222, 222, 222);
         }
       }
     }
@@ -174,28 +174,24 @@
     align-items: center;
     font-size: 12px;
 
-    background-color: #f1f3f4;
+    padding: var(--slant-size-02);
     border-radius: var(--slant-size-10);
-    padding: 4px;
     border: 1px solid hsl(192, 12%, 92%);
+    background-color: #f1f3f4;
 
     .navigation {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2px;
+      padding: var(--slant-size-02);
       background-color: #fff;
       border-radius: var(--slant-size-08);
       border: 1px solid hsl(192, 12%, 92%);
-      padding: 4px;
+      /* height: 34px; */
 
       button {
-        background-color: #fff;
         display: flex;
-        aspect-ratio: 1/1;
-        width: 30px;
-        height: auto;
-        padding: var(--slant-size-06);
+        padding: var(--slant-size-08) var(--slant-size-14);
         align-items: center;
         justify-content: center;
         cursor: pointer;
