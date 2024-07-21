@@ -8,6 +8,7 @@ import Fuse from "fuse.js"
 import "./categories.css"
 
 import Shortcuts from "@/shortcuts/shortcuts"
+import Trail from "@/trail/trail"
 
 interface Symbol {
   name: string
@@ -109,6 +110,7 @@ export default function Categories() {
             </button>
           ))}
         </nav>
+        <Trail />
       </section>
       <Shortcuts />
     </aside>

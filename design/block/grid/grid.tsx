@@ -11,6 +11,8 @@ import { toast } from "sonner"
 
 import "./grid.css"
 
+import Trail from "@/trail/trail"
+
 interface Symbol {
   name: string
   symbol: string
@@ -35,40 +37,6 @@ interface Data {
   categories: {
     category: Category[]
   }
-}
-
-function Prev() {
-  const navigation = useRouter()
-  const pathName = usePathname()
-
-  if (pathName === "/") {
-    return null
-  }
-
-  const goBack = () => {
-    navigation.back()
-  }
-
-  return <button onClick={goBack}>‹</button>
-}
-
-function Home() {
-  return <Link href="/">◦</Link>
-}
-
-function Next() {
-  const pathName = usePathname()
-
-  if (pathName === "/") {
-    return null
-  }
-
-  const goNext = () => {
-    if (typeof window !== "undefined") {
-      window.history.forward()
-    }
-  }
-  return <button onClick={goNext}>›</button>
 }
 
 export default function Grid() {
@@ -228,24 +196,7 @@ export default function Grid() {
 
   return (
     <div className="grid">
-      <div className="trail">
-        <div className="left">
-          <div className="navigation">
-            <Prev />
-            <Home />
-            <Next />
-          </div>
-        </div>
-        <div className="right">
-          <input
-            type="range"
-            min="0"
-            max="4"
-            step="1"
-            onChange={handleRangeChange}
-          />
-        </div>
-      </div>
+      {/* <Trail /> */}
       <div className="symbols" style={{ fontSize: `${fontSize}px` }}>
         {symbols}
       </div>

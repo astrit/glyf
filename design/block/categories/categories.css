@@ -30,6 +30,7 @@
     top: var(--slant-size-24);
     gap: var(--slant-size-08);
     z-index: 2;
+    backdrop-filter: blur(20px);
 
     nav {
       display: flex;
