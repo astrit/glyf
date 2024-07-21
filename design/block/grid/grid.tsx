@@ -198,7 +198,7 @@ export default function Grid() {
           </div>
         </div>
         <div className="right">
-          <input type="range" />
+          <input type="range" min="0" max="4" step="1" list="markers" />
         </div>
       </div>
       <div className="symbols">{symbols}</div>
