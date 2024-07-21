@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useContext, useEffect, useMemo } from "react"
+import React, { useContext, useEffect, useMemo, useState } from "react"
 import { Links } from "@/affiliates/affiliates"
 import Link from "@/link/link"
 import { toUnicode, toURL } from "$/func/func"
@@ -185,6 +185,13 @@ export default function Grid() {
     [memoizedCategories]
   )
 
+  const [fontSize, setFontSize] = useState(24)
+
+  const handleRangeChange = (event: { target: { value: string } }) => {
+    const newSize = 24 + (parseInt(event.target.value) - 2) * 10
+    setFontSize(Math.max(newSize, 10))
+  }
+
   return (
     <div className="grid">
       <div className="trail">
@@ -198,10 +205,18 @@ export default function Grid() {
           </div>
         </div>
         <div className="right">
-          <input type="range" min="0" max="4" step="1" list="markers" />
+          <input
+            type="range"
+            min="0"
+            max="4"
+            step="1"
+            onChange={handleRangeChange}
+          />
         </div>
       </div>
-      <div className="symbols">{symbols}</div>
+      <div className="symbols" style={{ fontSize: `${fontSize}px` }}>
+        {symbols}
+      </div>
     </div>
   )
 }
