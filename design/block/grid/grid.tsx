@@ -1,15 +1,15 @@
 "use client"
 
 import React, { useContext, useEffect, useMemo, useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import { Links } from "@/affiliates/affiliates"
+import Icon from "@/icon/icon"
 import Link from "@/link/link"
 import { toUnicode, toURL } from "$/func/func"
 import { Controller } from "$/provider/provider"
 import { toast } from "sonner"
 
 import "./grid.css"
-
-import Icon from "@/icon/icon"
 
 interface Symbol {
   name: string
@@ -35,6 +35,40 @@ interface Data {
   categories: {
     category: Category[]
   }
+}
+
+function Prev() {
+  const navigation = useRouter()
+  const pathName = usePathname()
+
+  if (pathName === "/") {
+    return null
+  }
+
+  const goBack = () => {
+    navigation.back()
+  }
+
+  return <button onClick={goBack}>‹</button>
+}
+
+function Home() {
+  return <Link href="/">◦</Link>
+}
+
+function Next() {
+  const pathName = usePathname()
+
+  if (pathName === "/") {
+    return null
+  }
+
+  const goNext = () => {
+    if (typeof window !== "undefined") {
+      window.history.forward()
+    }
+  }
+  return <button onClick={goNext}>›</button>
 }
 
 export default function Grid() {
@@ -197,11 +231,9 @@ export default function Grid() {
       <div className="trail">
         <div className="left">
           <div className="navigation">
-            {/* <button>← ‹</button> */}
-            <button>‹</button>
-            <button>◦</button>
-            {/* <button>·</button> */}
-            <button>›</button>
+            <Prev />
+            <Home />
+            <Next />
           </div>
         </div>
         <div className="right">

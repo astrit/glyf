@@ -189,7 +189,8 @@
       border-radius: var(--slant-size-08);
       border: 1px solid hsl(192, 12%, 92%);
 
-      button {
+      button,
+      a {
         display: flex;
         padding: var(--slant-size-08) var(--slant-size-14);
         align-items: center;
