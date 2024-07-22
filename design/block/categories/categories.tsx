@@ -90,7 +90,6 @@ export default function Categories() {
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-
         <nav>
           {filteredCategories.map((category) => (
             <button

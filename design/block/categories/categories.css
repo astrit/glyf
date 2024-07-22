@@ -3,22 +3,12 @@
   flex-direction: column;
   gap: var(--slant-size-12);
 
-  /* .form {
-    background-color: #f1f3f4;
-    border-radius: var(--slant-size-10);
-    padding: var(--slant-size-02);
-    border: 1px solid hsl(192, 12%, 92%);
-  } */
-
   .list {
     display: flex;
     flex-direction: column;
     position: sticky;
     top: var(--slant-size-24);
-    /* gap: var(--slant-size-02); */
-    gap: 0;
     z-index: 2;
-    backdrop-filter: blur(20px);
 
     nav {
       display: flex;
@@ -34,7 +24,6 @@
       padding: var(--slant-size-06) var(--slant-size-16);
       font-size: var(--slant-size-11);
       border-top: 0;
-      /* box-shadow: 0 0 0 2px #fff; */
       z-index: 2;
 
       button {
@@ -47,7 +36,6 @@
         scroll-snap-align: start;
         outline: none;
         /* Animation on scroll */
-
         animation: ListScroll, ListScrollOut;
         animation-fill-mode: both;
         animation-timing-function: ease-in-out;

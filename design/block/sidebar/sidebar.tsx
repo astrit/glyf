@@ -64,7 +64,7 @@ export default function Sidebar({
   return (
     <>
       {/* <section className="sidebar"> */}
-      <header>
+      <div className="preview">
         <div className="tabber">
           <button className="active">Unicode</button>
           <button>SVG</button>
@@ -117,7 +117,7 @@ export default function Sidebar({
             </div>
           </div>
         </div>
-      </header>
+      </div>
       <footer>
         <Affiliates />
         <Ads />

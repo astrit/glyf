@@ -1,7 +1,7 @@
 .hero {
   display: flex;
   padding-inline: var(--slant-size-48);
-  gap: var(--slant-size-48);
+  gap: var(--slant-size-60);
   flex-direction: column;
   font-family: var(--slant-font-manrope);
   margin-top: 10vh;
@@ -24,7 +24,7 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    margin-top: var(--slant-size-48);
+    /* margin-top: var(--slant-size-48); */
 
     .slant {
       font-family: var(--slant-font-manrope);
@@ -81,6 +81,11 @@
           width: auto;
           height: 1.2lh;
           stroke: none;
+        }
+
+        &.figma {
+          outline: 1px solid hsla(0, 0%, 100%, 0.1);
+          outline-offset: 4px;
         }
       }
     }

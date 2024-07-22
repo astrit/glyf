@@ -44,9 +44,12 @@
         img {
           display: flex;
           max-width: 100%;
+          width: 100%;
           height: auto;
           object-fit: cover;
           object-position: center;
+          margin: 0;
+          padding: 0;
         }
       }
       .carbon-text {

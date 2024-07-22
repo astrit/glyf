@@ -1,8 +1,12 @@
+"use client"
+
+import { usePathname, useRouter } from "next/navigation"
 import Link from "@/link/link"
 
 import "./hero.css"
 
 export default function Hero() {
+  const pathName = usePathname()
   return (
     <section className="hero">
       <h1>
@@ -10,7 +14,6 @@ export default function Hero() {
         <br />
         Free Glyphs
       </h1>
-
       <div className="links">
         <div className="left">
           <div className="gg">
@@ -37,6 +40,7 @@ export default function Hero() {
           <Link
             href="https://www.figma.com/community/file/1284635132283811437/gylf.app-%E2%80%94-6000%2B-Variable-Glyphs"
             target="_blank"
+            className="figma"
           >
             <svg viewBox="0 0 17 24">
               <g>
@@ -74,20 +78,20 @@ export default function Hero() {
             Github
             <span>9.7k</span>
           </Link>
-          {/* 
-          <Button
-          // to="https://www.figma.com/community/file/834587122842084475/css.gg"
-          to="https://www.figma.com/community/file/1284635132283811437/gylf.app-%E2%80%94-6000%2B-Variable-Glyphs"
-          title="Figma"
-          count="$4.00"
-          svg="figma"
-        />
-
-        {/* <Button
-          to="https://www.youtube.com/c/astrit?sub_confirmation=1"
-          title="@astrit"
-          svg="youtube"
-        /> */}
+          <Link
+            href="https://www.youtube.com/c/astrit?sub_confirmation=1"
+            target="_blank"
+          >
+            <svg viewBox="0 -77 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M501 56c-5-22-23-39-45-45C416 0 256 0 256 0S96 0 56 11c-22 5-40 23-45 45C0 96 0 179 0 179s0 84 11 123c5 22 23 40 45 46 40 10 200 10 200 10s160 0 200-10c22-6 40-23 45-45 11-40 11-123 11-123s0-84-11-124zm0 0"
+                fill="red"
+              ></path>
+              <path d="M205 256l133-77-133-77zm0 0" fill="#fff"></path>
+            </svg>
+            @astrit
+            <span>3k</span>
+          </Link>
         </div>
       </div>
     </section>

@@ -2,6 +2,14 @@
   min-height: 100vh;
   gap: var(--slant-size-40);
 
+  .preview {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    gap: var(--slant-size-08);
+    top: var(--slant-size-24);
+  }
+
   .tabber {
     display: flex;
     padding: var(--slant-size-02);
@@ -179,14 +187,6 @@
         text-align: center;
       }
     }
-  }
-
-  header {
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    gap: var(--slant-size-08);
-    top: var(--slant-size-24);
   }
 
   footer {
