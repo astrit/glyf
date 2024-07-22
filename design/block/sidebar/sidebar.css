@@ -1,5 +1,5 @@
 .sidebar {
-  min-height: 100vh;
+  min-height: 600px;
   gap: var(--slant-size-40);
 
   .preview {
@@ -113,12 +113,12 @@
   .content {
     display: flex;
     flex-direction: column;
+    gap: var(--slant-size-06);
   }
 
   details {
-    border-radius: var(--slant-size-08) var(--slant-size-08) 0 0;
+    border-radius: var(--slant-size-08);
     border: 1px solid hsl(192, 12%, 92%);
-    border-bottom: 0;
     width: 100%;
     overflow: hidden;
 
@@ -158,20 +158,31 @@
     display: flex;
     align-items: stretch;
     width: 100%;
+    background-color: #f0e7ff;
+    padding: var(--slant-size-04);
+    border-radius: var(--slant-size-08);
+    font-size: var(--slant-size-12);
 
     .export-copy {
       background-color: #6a30df;
+      border: 1px solid hsl(261, 50%, 45%);
       color: #f0e7ff;
-      border-radius: 0 0 0 8px;
-      padding: 12px 20px;
+      border-radius: var(--slant-size-06);
+      padding: var(--slant-size-12) var(--slant-size-16);
       cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 1ch;
+
+      &:hover {
+        background-color: #7b3bea;
+      }
     }
 
     .download {
-      background-color: #f0e7ff;
       color: #6a30df;
-      border-radius: 0 0 8px 0;
-      padding: 8px 12px;
+      padding: 8px 18px;
       cursor: pointer;
       flex: 1;
       display: flex;

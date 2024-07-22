@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: stretch;
   font-size: 12px;
-  gap: var(--slant-size-02);
+  /* gap: var(--slant-size-02); */
   padding: var(--slant-size-02);
   border-radius: var(--slant-size-10);
   border: 1px solid hsl(192, 12%, 92%);
@@ -15,10 +15,11 @@
     justify-content: center;
     padding: var(--slant-size-02);
     background-color: #fff;
-    border-radius: var(--slant-size-08);
+    border-radius: var(--slant-size-08) 0 0 var(--slant-size-08);
     border: 1px solid hsl(192, 12%, 92%);
     flex: 1;
     height: 100%;
+    border-right: 0;
 
     button:not(.progress),
     a {
@@ -33,7 +34,7 @@
       border-radius: var(--slant-size-06);
 
       &:hover {
-        background-color: #f1f3f4;
+        background-color: #dee0e1;
       }
 
       &.disabled {
@@ -71,7 +72,7 @@
       min-height: 100%;
       padding-inline: 20px;
       background-color: #fff;
-      border-radius: var(--slant-size-08);
+      border-radius: 0 var(--slant-size-08) var(--slant-size-08) 0;
       cursor: drag;
       box-shadow: inset 0 0 0 1px hsl(192, 12%, 92%);
     }

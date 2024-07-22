@@ -61,6 +61,36 @@ export default function Sidebar({
     }
   }, [glyph])
 
+  const copyToClipboard = () => {
+    const inputElement = document.querySelector(
+      ".code input"
+    ) as HTMLInputElement
+    if (inputElement) {
+      const textToCopy = inputElement.value
+      navigator.clipboard
+        .writeText(textToCopy)
+        .then(() => {
+          toast(`${textToCopy} copied!`)
+        })
+        .catch((err) => {
+          console.error("Error copying text: ", err)
+        })
+    }
+  }
+
+  const copySymbolToClipboard = () => {
+    if (glyph && glyph.symbol) {
+      navigator.clipboard
+        .writeText(glyph.symbol)
+        .then(() => {
+          toast(`${glyph.symbol} copied!`)
+        })
+        .catch((err) => {
+          console.error("Error copying symbol: ", err)
+        })
+    }
+  }
+
   return (
     <>
       {/* <section className="sidebar"> */}
@@ -78,7 +108,7 @@ export default function Sidebar({
               value={glyph ? toUnicode(glyph.symbol) : " "}
               readOnly
             />
-            <button>❏</button>
+            <button onClick={copyToClipboard}>❏</button>
           </div>
         </figure>
         <div className="content">
@@ -99,20 +129,22 @@ export default function Sidebar({
               <p>
                 <strong>Category:</strong> {category}
               </p>
-              <p>
+              {/* <p>
                 <strong>CSS Marker:</strong>
                 <br />
                 <code>
                   {`::marker{ content: "${glyph ? toUnicode(glyph.symbol) : " "}"}`}
                 </code>
               </p>
-              <p>favicon</p>
+              <p>favicon</p> */}
             </div>
           </details>
           <div className="export">
-            <button className="export-copy">:: Copy</button>
+            <button className="export-copy" onClick={copySymbolToClipboard}>
+              <span>❏</span> Copy
+            </button>
             <div className="download">
-              Downloads
+              Download
               <button className="export-download">↓</button>
             </div>
           </div>
