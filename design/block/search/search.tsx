@@ -27,13 +27,22 @@ interface DataContext {
 }
 
 export default function Search() {
-  const { data, setSelectedCategory, setSearchQuery } = useContext(
+  const { data, setSelectedCategory, searchQuery, setSearchQuery } = useContext(
     Controller
   ) as unknown as {
     data: { categories: { category: Category[] } }
     setSelectedCategory: (category: string | null) => void
+    searchQuery: string
     setSearchQuery: (query: string) => void
   }
+  // const { data, setSelectedCategory, searchQuery, setSearchQuery } = useContext(
+  //   Controller
+  // ) as unknown as {
+  //   data: { categories: { category: Category[] } }
+  //   setSelectedCategory: (category: string | null) => void
+  //   searchQuery: string
+  //   setSearchQuery: (query: string) => void
+  // }
   // const { setSearchQuery } = useController()
 
   const inputRef = useRef<HTMLInputElement>(null)

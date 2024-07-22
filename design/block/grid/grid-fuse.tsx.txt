@@ -39,9 +39,15 @@ interface Data {
 }
 
 const fuseOptions = {
-  keys: ["name", "symbols.name"],
-  includeScore: true,
-  threshold: 0.4,
+  keys: [
+    {
+      name: "symbols.name",
+      getFn: (item: Category) =>
+        item.symbols.map((symbol) => symbol.name.replace(/\s+/g, "")), // Remove spaces from symbol names
+    },
+  ],
+  // includeScore: false,
+  // threshold: 0,
 }
 
 export default function Grid() {
@@ -80,17 +86,36 @@ export default function Grid() {
     return () => window.removeEventListener("keydown", handleKeyPress)
   }, [data, selectedCategory, setSelectedCategory])
 
+  // Search results
+  const searchResults = useMemo(() => {
+    if (searchQuery.trim()) {
+      // Preprocess searchQuery to remove spaces
+      const processedSearchQuery = searchQuery.replace(/\s+/g, "")
+      // Perform search with the processed search query
+      return fuse.search(processedSearchQuery).map((result) => result.item)
+    }
+    // Return null when not searching to use original categories
+    return null
+  }, [data, searchQuery, fuse])
+
+  // Memoized categories
   const memoizedCategories = useMemo(() => {
     if (!data) {
       return []
     }
+    // Use search results if available
+    const categories = searchResults || data.categories.category
     return selectedCategory
-      ? data.categories.category.filter(
+      ? categories.filter(
           (cat: { slug: string }) => cat.slug === selectedCategory
         )
-      : data.categories.category
-  }, [data, selectedCategory])
+      : categories
+  }, [data, selectedCategory, searchResults])
 
+  // Copy to Clipboard
+  // Copy to Clipboard
+  // Copy to Clipboard
+  // Copy to Clipboard
   function copyToClipboardSymbol(symbol: string) {
     navigator.clipboard.writeText(symbol).then(
       () => {

@@ -17,6 +17,7 @@ type Types = {
   selectedCategory: string | null
   setSelectedCategory: (category: string | null) => void
   setSearchQuery: (query: string) => void
+  searchQuery: any
 }
 
 export const Controller = createContext<Types>({
@@ -25,6 +26,7 @@ export const Controller = createContext<Types>({
   selectedCategory: null,
   setSelectedCategory: () => {},
   setSearchQuery: () => {},
+  searchQuery: () => {},
 })
 
 export function Provider({ children, ...props }: ThemeProviderProps) {
@@ -41,6 +43,7 @@ export function Provider({ children, ...props }: ThemeProviderProps) {
     selectedCategory,
     setSelectedCategory,
     setSearchQuery,
+    searchQuery,
   }
 
   return (
