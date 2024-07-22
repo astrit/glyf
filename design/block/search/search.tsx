@@ -1,7 +1,8 @@
 "use client"
 
+import React, { useContext } from "react"
 import Reklama from "@/ads/one"
-import Progress from "@/progress/progress"
+import { Controller } from "$/provider/provider"
 
 import "./search.css"
 
@@ -26,6 +27,17 @@ interface DataContext {
 }
 
 export default function Search() {
+  const { data, setSelectedCategory } = useContext(Controller) as unknown as {
+    data: { categories: { category: Category[] } }
+    setSelectedCategory: (category: string | null) => void
+  }
+
+  const handleCategoryChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setSelectedCategory(event.target.value)
+  }
+
   return (
     <section className="search">
       <input
@@ -44,8 +56,13 @@ export default function Search() {
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
         </label>
-        <select name="" id="">
-          <option value="">All categories</option>
+        <select onChange={handleCategoryChange}>
+          {/* <option value="">All categories</option> */}
+          {data.categories.category.map((category) => (
+            <option key={category.slug} value={category.slug}>
+              {category.title}
+            </option>
+          ))}
         </select>
       </div>
       <div className="right">
