@@ -16,12 +16,12 @@ export const Links = [
   },
   {
     brand: "studio",
-    href: "#",
+    href: "https://screenstudio.lemonsqueezy.com?aff=GpRy0",
     description: "Beautiful Screen Recordings in Minutes.",
   },
   {
     brand: "central",
-    href: "#",
+    href: "https://iconists.co/central?aff=GpRy0",
     description: "Central icon system",
   },
 ]

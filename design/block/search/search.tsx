@@ -27,15 +27,23 @@ interface DataContext {
 }
 
 export default function Search() {
-  const { data, setSelectedCategory } = useContext(Controller) as unknown as {
+  const { data, setSelectedCategory, setSearchQuery } = useContext(
+    Controller
+  ) as unknown as {
     data: { categories: { category: Category[] } }
     setSelectedCategory: (category: string | null) => void
+    setSearchQuery: (query: string) => void
   }
+  // const { setSearchQuery } = useController()
 
   const handleCategoryChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setSelectedCategory(event.target.value)
+  }
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value)
   }
 
   return (
@@ -48,6 +56,7 @@ export default function Search() {
         spellCheck="false"
         pattern="[A-Za-z0-9\-]+"
         maxLength={32}
+        onChange={handleSearchChange}
       />
       <div className="left">
         <label>
@@ -57,7 +66,6 @@ export default function Search() {
           </svg>
         </label>
         <select onChange={handleCategoryChange}>
-          {/* <option value="">All categories</option> */}
           {data.categories.category.map((category) => (
             <option key={category.slug} value={category.slug}>
               {category.title}
@@ -72,7 +80,6 @@ export default function Search() {
           <div className="slash">/</div>
         </div>
       </div>
-      {/* <Progress /> */}
     </section>
   )
 }

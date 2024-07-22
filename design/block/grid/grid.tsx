@@ -1,17 +1,15 @@
 "use client"
 
-import React, { useContext, useEffect, useMemo, useState } from "react"
-import { usePathname, useRouter } from "next/navigation"
+import React, { useContext, useEffect, useMemo } from "react"
 import { Links } from "@/affiliates/affiliates"
 import Icon from "@/icon/icon"
 import Link from "@/link/link"
 import { toUnicode, toURL } from "$/func/func"
 import { Controller } from "$/provider/provider"
+import Fuse from "fuse.js"
 import { toast } from "sonner"
 
 import "./grid.css"
-
-import Trail from "@/trail/trail"
 
 interface Symbol {
   name: string
@@ -37,6 +35,12 @@ interface Data {
   categories: {
     category: Category[]
   }
+}
+
+const fuseOptions = {
+  keys: ["name", "symbols.name"], // Adjust based on your data structure
+  includeScore: true, // Optional: include the search score
+  threshold: 0.4, // Optional: adjust the fuzziness of the search
 }
 
 export default function Grid() {
@@ -112,6 +116,8 @@ export default function Grid() {
       copyToClipboardSymbol(symbol.symbol)
     }
   }
+
+  const fuse = new Fuse(data?.categories.category || [], fuseOptions)
 
   const symbols = useMemo(
     () =>

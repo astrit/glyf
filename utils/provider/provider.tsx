@@ -16,6 +16,7 @@ type Types = {
   data: Data | null
   selectedCategory: string | null
   setSelectedCategory: (category: string | null) => void
+  setSearchQuery: (query: string) => void
 }
 
 export const Controller = createContext<Types>({
@@ -23,6 +24,7 @@ export const Controller = createContext<Types>({
   data: null,
   selectedCategory: null,
   setSelectedCategory: () => {},
+  setSearchQuery: () => {},
 })
 
 export function Provider({ children, ...props }: ThemeProviderProps) {
@@ -31,12 +33,14 @@ export function Provider({ children, ...props }: ThemeProviderProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(
     "featured"
   )
+  const [searchQuery, setSearchQuery] = useState("")
 
   const value = {
     loading,
     data,
     selectedCategory,
     setSelectedCategory,
+    setSearchQuery,
   }
 
   return (
