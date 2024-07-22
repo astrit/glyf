@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import Reklama from "@/ads/one"
 import { Controller } from "$/provider/provider"
 
@@ -36,6 +36,30 @@ export default function Search() {
   }
   // const { setSearchQuery } = useController()
 
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === "/" || (event.key === "k" && event.metaKey)) {
+        event.preventDefault() // Prevent the default action to avoid typing '/' in the input
+        inputRef.current?.focus()
+      } else if (event.key === "Escape") {
+        event.preventDefault() // Prevent the default action for consistency
+        if (inputRef.current) {
+          inputRef.current.value = "" // Clear the input field
+          setSearchQuery("") // Clear the search query state
+          inputRef.current.blur() // Remove focus from the input field
+        }
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyPress)
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress)
+    }
+  }, [setSearchQuery]) // Include setSearchQuery in the dependency array if it's not stable
+
   const handleCategoryChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -49,6 +73,7 @@ export default function Search() {
   return (
     <section className="search">
       <input
+        ref={inputRef}
         placeholder="e.g arrow →"
         autoComplete="off"
         autoCorrect="off"

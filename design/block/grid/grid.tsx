@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useContext, useEffect, useMemo } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import { Links } from "@/affiliates/affiliates"
 import Icon from "@/icon/icon"
 import Link from "@/link/link"
@@ -44,6 +45,8 @@ const fuseOptions = {
 }
 
 export default function Grid() {
+  const pathName = usePathname()
+
   const { loading, data, selectedCategory, setSelectedCategory } =
     useContext(Controller)
 
@@ -144,7 +147,10 @@ export default function Grid() {
               <Link
                 href={`/${toURL(symbol.name)}`}
                 key={`${categoryIndex}-${symbolIndex}-${symbol.symbol}`} // Ensuring key uniqueness
-                className="symbol"
+                className={
+                  `symbol ` +
+                  (pathName === `/${toURL(symbol.name)}` ? "active" : "")
+                }
                 data-symbol={symbol.symbol}
                 onClick={(e: Event) => handleClick(e, symbol)}
                 onMouseEnter={(e: {
