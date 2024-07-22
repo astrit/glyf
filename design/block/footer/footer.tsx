@@ -36,9 +36,6 @@ export default function Footer() {
     <footer className="main-footer">
       <Left>
         <Toggle />
-        <Link href="https://slant.so" target="_blank" className="slant">
-          S L Λ \ T
-        </Link>
       </Left>
       <Right />
     </footer>

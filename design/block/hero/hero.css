@@ -13,17 +13,9 @@
 
   ul {
     display: flex;
-    gap: 1ch;
-    font-size: 12px;
+    align-items: center;
+    gap: 2ch;
     font-family: var(--slant-font-ibm-plex);
-
-    li {
-      border-radius: 200px;
-      padding: 6px 14px;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background-color: rgba(255, 255, 255, 0.08);
-    }
   }
 
   .links {
@@ -34,19 +26,31 @@
     align-items: center;
     margin-top: var(--slant-size-48);
 
+    .slant {
+      font-family: var(--slant-font-manrope);
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 4ch;
+    }
+
+    small {
+      height: 1px;
+      width: 20ch;
+      border-radius: 10px;
+      background: currentColor;
+      opacity: 0.2;
+    }
+
     .gg {
       display: flex;
-      font-size: 16px;
-      font-weight: 600;
       gap: 2ch;
       align-items: center;
 
-      small {
-        height: 2px;
-        width: 6ch;
-        border-radius: 10px;
-        background: currentColor;
-        opacity: 0.4;
+      div {
+        opacity: 0.6;
       }
     }
 

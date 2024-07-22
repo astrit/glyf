@@ -10,20 +10,28 @@ export default function Hero() {
         <br />
         Free Glyphs
       </h1>
-      <ul>
-        <li>String</li>
-        <li>Figma Variable</li>
-        <li>SVG</li>
-        <li>CSS Pattern</li>
-      </ul>
 
       <div className="links">
-        <div className="gg">
-          <span>©</span>
+        <div className="left">
+          <div className="gg">
+            <span>©</span>
+            <div>~</div>
+            <Link href="https://css.gg" target="_blank">
+              CSS＊GG
+            </Link>
+            <div>✗</div>
+            <Link href="https://slant.so" target="_blank" className="slant">
+              S L Λ \ T
+            </Link>
+          </div>
           <small></small>
-          <Link href="https://css.gg" target="_blank">
-            CSS.GG ↗
-          </Link>
+          <ul>
+            <li>String</li>
+            <span>·</span>
+            <li>Figma Variable</li>
+            <span>·</span>
+            <li>SVG</li>
+          </ul>
         </div>
         <div className="sources">
           <Link

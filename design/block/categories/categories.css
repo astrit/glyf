@@ -1,34 +1,22 @@
 .categories {
   display: flex;
   flex-direction: column;
-  gap: var(--slant-size-24);
+  gap: var(--slant-size-12);
 
-  .form {
+  /* .form {
     background-color: #f1f3f4;
     border-radius: var(--slant-size-10);
     padding: var(--slant-size-02);
     border: 1px solid hsl(192, 12%, 92%);
-
-    input {
-      display: flex;
-      color: hsla(226, 37%, 11%, 0.8);
-      padding: var(--slant-size-10) var(--slant-size-14);
-      background-color: hsl(180, 8%, 100%);
-      box-sizing: border-box;
-      border-radius: var(--slant-size-08);
-      border: 1px solid hsl(192, 12%, 90%);
-      outline: none;
-      width: 100%;
-      height: 36px;
-    }
-  }
+  } */
 
   .list {
     display: flex;
     flex-direction: column;
     position: sticky;
     top: var(--slant-size-24);
-    gap: var(--slant-size-08);
+    /* gap: var(--slant-size-02); */
+    gap: 0;
     z-index: 2;
     backdrop-filter: blur(20px);
 
@@ -37,15 +25,16 @@
       flex-direction: column;
       background: #fff linear-gradient(to bottom, #f1f3f4, transparent);
       border: 1px solid hsl(192, 12%, 92%);
-      border-radius: var(--slant-size-10);
+      border-radius: 0 0 var(--slant-size-10) var(--slant-size-10);
       overflow-y: auto;
       max-height: 600px;
       min-height: 600px;
       scrollbar-width: none;
       position: relative;
-      padding: var(--slant-size-08) var(--slant-size-16);
+      padding: var(--slant-size-06) var(--slant-size-16);
       font-size: var(--slant-size-11);
-      box-shadow: 0 0 0 2px #fff;
+      border-top: 0;
+      /* box-shadow: 0 0 0 2px #fff; */
       z-index: 2;
 
       button {
@@ -73,7 +62,7 @@
           position: sticky;
           top: 0px;
           z-index: 1;
-          transform: translateY(-2px);
+          transform: translateY(-1px);
         }
 
         &.active {
@@ -137,6 +126,19 @@
           }
         }
       }
+    }
+
+    input {
+      display: flex;
+      color: hsla(226, 37%, 11%, 0.8);
+      padding: var(--slant-size-10) var(--slant-size-14);
+      background-color: hsl(180, 8%, 100%);
+      box-sizing: border-box;
+      border-radius: var(--slant-size-10) var(--slant-size-10) 0 0;
+      border: 1px solid hsl(192, 12%, 90%);
+      outline: none;
+      width: 100%;
+      height: 36px;
     }
   }
 }

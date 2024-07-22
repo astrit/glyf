@@ -73,7 +73,7 @@ export default function RootLayout({
                 <Grid />
                 <aside className="sidebar">{children}</aside>
               </Main>
-              <Footer />
+              {/* <Footer /> */}
             </Fonts>
           </Provider>
         </Suspense>

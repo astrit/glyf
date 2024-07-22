@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: stretch;
   font-size: 12px;
-
+  gap: var(--slant-size-02);
   padding: var(--slant-size-02);
   border-radius: var(--slant-size-10);
   border: 1px solid hsl(192, 12%, 92%);
@@ -18,9 +18,11 @@
     border-radius: var(--slant-size-08);
     border: 1px solid hsl(192, 12%, 92%);
     flex: 1;
+    height: 100%;
 
-    button,
+    button:not(.progress),
     a {
+      flex: 1;
       display: flex;
       padding: var(--slant-size-08) var(--slant-size-10);
       align-items: center;
@@ -37,6 +39,18 @@
       &.disabled {
         opacity: 0.2;
         pointer-events: none;
+      }
+    }
+
+    button.progress {
+      svg {
+        height: 20px;
+        width: 20px;
+
+        circle,
+        polyline {
+          stroke-width: 1px;
+        }
       }
     }
   }
@@ -59,6 +73,7 @@
       background-color: #fff;
       border-radius: var(--slant-size-08);
       cursor: drag;
+      box-shadow: inset 0 0 0 1px hsl(192, 12%, 92%);
     }
 
     input[type="range"]:focus {
@@ -78,7 +93,7 @@
       );
       transition: all 464ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
       background-repeat: repeat-x;
-      background-size: 20px 6px;
+      background-size: 20px 4px;
       background-position: left center;
     }
 

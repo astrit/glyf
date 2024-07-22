@@ -81,16 +81,16 @@ export default function Categories() {
 
   return (
     <aside className="categories">
+      <Trail />
       <section className="list">
-        <div className="form">
-          <input
-            type="text"
-            placeholder="○ Search categories"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="○ Search categories"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+
         <nav>
           {filteredCategories.map((category) => (
             <button
@@ -110,7 +110,6 @@ export default function Categories() {
             </button>
           ))}
         </nav>
-        <Trail />
       </section>
       <Shortcuts />
     </aside>

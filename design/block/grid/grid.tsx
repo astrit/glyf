@@ -187,19 +187,9 @@ export default function Grid() {
     [memoizedCategories]
   )
 
-  const [fontSize, setFontSize] = useState(24)
-
-  const handleRangeChange = (event: { target: { value: string } }) => {
-    const newSize = 24 + (parseInt(event.target.value) - 2) * 10
-    setFontSize(Math.max(newSize, 10))
-  }
-
   return (
     <div className="grid">
-      {/* <Trail /> */}
-      <div className="symbols" style={{ fontSize: `${fontSize}px` }}>
-        {symbols}
-      </div>
+      <div className="symbols">{symbols}</div>
     </div>
   )
 }
