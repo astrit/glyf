@@ -47,6 +47,8 @@ export default function Grid() {
   const { loading, data, selectedCategory, setSelectedCategory } =
     useContext(Controller)
 
+  const fuse = new Fuse(data?.categories.category || [], fuseOptions)
+
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (
@@ -116,8 +118,6 @@ export default function Grid() {
       copyToClipboardSymbol(symbol.symbol)
     }
   }
-
-  const fuse = new Fuse(data?.categories.category || [], fuseOptions)
 
   const symbols = useMemo(
     () =>
