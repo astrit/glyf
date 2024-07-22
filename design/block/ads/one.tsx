@@ -31,7 +31,7 @@ export default function Reklama() {
 
   const ad = adData.ads.length > 0 ? adData.ads[0] : null
 
-  console.log(ad)
+  // console.log(ad)
 
   return (
     <>

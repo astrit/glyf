@@ -8,6 +8,7 @@ import Header from "@/header/header"
 import Hero from "@/hero/hero"
 import Preloader from "@/preloader/preloader"
 import Search from "@/search/search"
+import { GoogleAnalytics } from "@next/third-parties/google"
 import { Analytics } from "@vercel/analytics/react"
 import Main from "&/main/main"
 import Fonts from "$/fonts/fonts"
@@ -78,6 +79,7 @@ export default function RootLayout({
           </Provider>
         </Suspense>
         <Analytics />
+        <GoogleAnalytics gaId="G-0VG2JESCZ8" />
       </body>
     </html>
   )
