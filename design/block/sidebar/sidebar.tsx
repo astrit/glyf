@@ -96,7 +96,7 @@ export default function Sidebar({
       {/* <section className="sidebar"> */}
       <div className="preview">
         <div className="tabber">
-          <button className="active">Unicode</button>
+          <button className="active">Glyph</button>
           <button>SVG</button>
           <button>Pattern</button>
         </div>
@@ -114,29 +114,34 @@ export default function Sidebar({
         <div className="content">
           <details>
             <summary>
-              <p>{name}</p>
+              <p title={category}>{name}</p>
               <span>+</span>
             </summary>
             <div className="info">
-              <p>
-                <strong>Unicode:</strong>
-                {glyph ? toUnicode(glyph.symbol) : " "}
-              </p>
-              <p>
-                <strong>HTML Entity:</strong>{" "}
-                {glyph ? generateHtmlEntity(glyph.symbol) : ""}
-              </p>
-              <p>
-                <strong>Category:</strong> {category}
-              </p>
-              {/* <p>
-                <strong>CSS Marker:</strong>
-                <br />
-                <code>
-                  {`::marker{ content: "${glyph ? toUnicode(glyph.symbol) : " "}"}`}
-                </code>
-              </p>
-              <p>favicon</p> */}
+              <fieldset>
+                <legend>Unicode</legend>
+                <input
+                  type="text"
+                  value={glyph ? toUnicode(glyph.symbol) : " "}
+                  readOnly
+                />
+              </fieldset>
+              <fieldset>
+                <legend>HTML Entity</legend>
+                <input
+                  type="text"
+                  value={glyph ? generateHtmlEntity(glyph.symbol) : ""}
+                  readOnly
+                />
+              </fieldset>
+              <fieldset>
+                <legend>Marker</legend>
+                <input
+                  type="text"
+                  value={`::marker{ content: "${glyph ? toUnicode(glyph.symbol) : " "}"}`}
+                  readOnly
+                />
+              </fieldset>
             </div>
           </details>
           <div className="export">

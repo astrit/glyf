@@ -1,11 +1,9 @@
 "use client"
 
 import React, { useContext, useEffect, useState } from "react"
-import Link from "@/link/link"
 import Shortcuts from "@/shortcuts/shortcuts"
 import Trail from "@/trail/trail"
 import { Controller } from "$/provider/provider"
-import Fuse from "fuse.js"
 
 import "./categories.css"
 
