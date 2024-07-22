@@ -1,7 +1,29 @@
+"use client"
+
 import Reklama from "@/ads/one"
 import Progress from "@/progress/progress"
 
 import "./search.css"
+
+interface Symbol {
+  name: string
+  symbol: string
+  unicode?: string
+  html_entity?: string
+}
+
+interface Category {
+  slug: string
+  title: string
+  description: string
+  symbols: Symbol[]
+}
+
+interface DataContext {
+  categories: {
+    category: Category[]
+  }
+}
 
 export default function Search() {
   return (
