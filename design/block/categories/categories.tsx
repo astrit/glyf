@@ -28,12 +28,14 @@ interface DataContext {
 }
 
 export default function Categories() {
-  const { data, selectedCategory, setSelectedCategory } = useContext(
+  const { data, selectedCategory, setSelectedCategory, UI, setUI } = useContext(
     Controller
   ) as unknown as {
     data: DataContext
     selectedCategory: string | null
     setSelectedCategory: (category: string | null) => void
+    UI: boolean
+    setUI: (value: boolean) => void
   }
 
   const [searchTerm, setSearchTerm] = useState("")
@@ -75,6 +77,21 @@ export default function Categories() {
       setSearchTerm("") // Clear the input value
     }
   }
+
+  useEffect(() => {
+    const toggleUI = (event: KeyboardEvent) => {
+      if (event.key === "\\" && event.metaKey) {
+        setUI(!UI)
+      }
+    }
+
+    window.addEventListener("keydown", toggleUI)
+
+    return () => {
+      window.removeEventListener("keydown", toggleUI)
+    }
+  }, [UI, setUI])
+  if (UI) return null
 
   return (
     <aside className="categories">

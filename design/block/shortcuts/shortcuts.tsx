@@ -62,6 +62,13 @@ export default function Shortcuts() {
             <kbd>⎋</kbd>
           </span>
         </li>
+        <li>
+          Hide UI
+          <span>
+            <kbd>⌘</kbd>
+            <kbd>\</kbd>
+          </span>
+        </li>
       </ul>
     </section>
   )

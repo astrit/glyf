@@ -2,12 +2,12 @@
 
 import { useContext, useEffect, useMemo, useState } from "react"
 import Ads from "@/ads/ads"
+import Affiliates from "@/affiliates/affiliates"
 import { toUnicode } from "$/func/func"
+import { Controller } from "$/provider/provider"
 import { toast } from "sonner"
 
 import "./sidebar.css"
-
-import Affiliates from "@/affiliates/affiliates"
 
 interface Symbol {
   name?: string
@@ -34,6 +34,11 @@ export default function Sidebar({
     () => (typeof symbol === "string" ? { symbol: symbol } : symbol),
     [symbol]
   )
+
+  const { UI, setUI } = useContext(Controller) as unknown as {
+    UI: boolean
+    setUI: (value: boolean) => void
+  }
 
   useEffect(() => {
     const handleCopy = (event: {
@@ -91,9 +96,23 @@ export default function Sidebar({
     }
   }
 
+  useEffect(() => {
+    const toggleUI = (event: KeyboardEvent) => {
+      if (event.key === "\\" && event.metaKey) {
+        setUI(!UI)
+      }
+    }
+
+    window.addEventListener("keydown", toggleUI)
+
+    return () => {
+      window.removeEventListener("keydown", toggleUI)
+    }
+  }, [UI, setUI])
+  if (UI) return null
+
   return (
-    <>
-      {/* <section className="sidebar"> */}
+    <aside className="sidebar">
       <div className="preview">
         <div className="tabber">
           <button className="active">Glyph</button>
@@ -159,6 +178,6 @@ export default function Sidebar({
         <Affiliates />
         <Ads />
       </footer>
-    </>
+    </aside>
   )
 }

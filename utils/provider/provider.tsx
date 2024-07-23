@@ -18,6 +18,8 @@ type Types = {
   setSelectedCategory: (category: string | null) => void
   setSearchQuery: (query: string) => void
   searchQuery: any
+  UI: boolean
+  setUI: (value: boolean) => void
 }
 
 export const Controller = createContext<Types>({
@@ -27,6 +29,8 @@ export const Controller = createContext<Types>({
   setSelectedCategory: () => {},
   setSearchQuery: () => {},
   searchQuery: () => {},
+  UI: false,
+  setUI: () => {},
 })
 
 export function Provider({ children, ...props }: ThemeProviderProps) {
@@ -36,6 +40,7 @@ export function Provider({ children, ...props }: ThemeProviderProps) {
     "featured"
   )
   const [searchQuery, setSearchQuery] = useState("")
+  const [UI, setUI] = useState(false)
 
   const value = {
     loading,
@@ -44,6 +49,8 @@ export function Provider({ children, ...props }: ThemeProviderProps) {
     setSelectedCategory,
     setSearchQuery,
     searchQuery,
+    UI,
+    setUI,
   }
 
   return (
