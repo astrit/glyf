@@ -207,7 +207,7 @@ export default function Grid() {
         </h2>
         <div className="options">
           <button>◧</button>
-          <button>·</button>
+          <span>·</span>
           <button>⊟</button>
           <button>⊞</button>
         </div>
