@@ -83,7 +83,7 @@ export default function Grid() {
         event.preventDefault()
         const categories = data?.categories.category
         const currentIndex = categories.findIndex(
-          (cat: { slug: string | null }) => cat.slug === selectedCategory
+          (cat: Category) => cat.slug === selectedCategory
         )
         let newIndex
         if (event.key === "ArrowUp") {
@@ -106,97 +106,113 @@ export default function Grid() {
     }
     return selectedCategory
       ? data.categories.category.filter(
-          (cat: { slug: string }) => cat.slug === selectedCategory
+          (cat: Category) => cat.slug === selectedCategory
         )
       : data.categories.category
   }, [data, selectedCategory])
 
-  const symbols = useMemo(
-    () =>
-      memoizedCategories.map(
-        (category: { symbols: any[] }, categoryIndex: any) => {
-          let randomPositions = [
-            Math.floor(Math.random() * (category.symbols.length + 1)),
-          ]
-          if (category.symbols.length > 40) {
-            let secondRandomPosition
-            do {
-              secondRandomPosition = Math.floor(
-                Math.random() * (category.symbols.length + 1)
-              )
-            } while (randomPositions.includes(secondRandomPosition))
-            randomPositions.push(secondRandomPosition)
-          }
+  const allSymbols = useMemo(() => {
+    return memoizedCategories.flatMap((category: Category) => category.symbols)
+  }, [memoizedCategories])
 
-          // Map symbols to Link components
-          const symbolLinks = category.symbols.map(
-            (symbol: Symbol, symbolIndex: any) => (
-              <Link
-                href={`/${toURL(symbol.name)}`}
-                key={`${categoryIndex}-${symbolIndex}-${symbol.symbol}`}
-                className="symbol"
-                data-symbol={symbol.symbol}
-                onClick={(e: Event) => handleClick(e, symbol)}
-                onMouseEnter={(e: {
-                  currentTarget: {
-                    setAttribute: (arg0: string, arg1: any) => any
-                  }
-                }) => e.currentTarget.setAttribute("title", symbol.name)}
-                onMouseLeave={(e: {
-                  currentTarget: { removeAttribute: (arg0: string) => any }
-                }) => e.currentTarget.removeAttribute("title")}
-              />
-            )
-          )
-          randomPositions.forEach((position) => {
-            let randomLinkIndex
-            const selectedIndices = new Set()
+  const fuse = useMemo(() => {
+    return new Fuse(allSymbols, {
+      keys: ["name", "symbol"],
+      threshold: 0.3,
+    })
+  }, [allSymbols])
 
-            do {
-              randomLinkIndex = Math.floor(Math.random() * Links.length)
-            } while (selectedIndices.has(randomLinkIndex))
+  const filteredSymbols = useMemo(() => {
+    if (searchQuery.length === 0) {
+      return allSymbols
+    }
+    return fuse.search(searchQuery).map((result) => result.item)
+  }, [searchQuery, fuse, allSymbols])
 
-            selectedIndices.add(randomLinkIndex)
-            const selectedLink = Links[randomLinkIndex]
-
-            const affiliateLink = (
-              <Link
-                href={selectedLink.href}
-                key={`affiliate-${categoryIndex}-${position}`}
-                className={`symbol affiliate ` + selectedLink.brand}
-                target="_blank"
-              >
-                <Icon name={selectedLink.brand} />
-                <footer>
-                  <span>{selectedLink.brand}</span>
-                  <div>{selectedLink.description}</div>
-                </footer>
-              </Link>
-            )
-
-            symbolLinks.splice(position, 0, affiliateLink)
-          })
-
-          return symbolLinks
+  const symbolLinks = useMemo(() => {
+    return filteredSymbols.map((symbol: Symbol, index: number) => (
+      <Link
+        href={`/${toURL(symbol.name)}`}
+        key={`${index}-${symbol.symbol}`}
+        className="symbol"
+        data-symbol={symbol.symbol}
+        onClick={(e: Event) => handleClick(e, symbol)}
+        onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) =>
+          e.currentTarget.setAttribute("title", symbol.name)
         }
-      ),
-    [memoizedCategories]
-  )
+        onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) =>
+          e.currentTarget.removeAttribute("title")
+        }
+      />
+    ))
+  }, [filteredSymbols])
+
+  const affiliateLinks = useMemo(() => {
+    if (searchQuery.length > 0) return []
+    const numberOfAffiliates = filteredSymbols.length > 40 ? 2 : 1
+    const affiliatePositions = Array.from({ length: numberOfAffiliates }, () =>
+      Math.floor(Math.random() * (filteredSymbols.length + 1))
+    )
+
+    const usedLinkIndexes = new Set<number>()
+
+    return affiliatePositions.map((position, index) => {
+      let selectedLinkIndex: number
+      do {
+        selectedLinkIndex = Math.floor(Math.random() * Links.length)
+      } while (usedLinkIndexes.has(selectedLinkIndex))
+
+      usedLinkIndexes.add(selectedLinkIndex)
+      const selectedLink = Links[selectedLinkIndex]
+
+      return (
+        <Link
+          href={selectedLink.href}
+          key={`affiliate-${index}`}
+          className={`symbol affiliate ${selectedLink.brand}`}
+          target="_blank"
+        >
+          <Icon name={selectedLink.brand} />
+          <footer>
+            <span>{selectedLink.brand}</span>
+            <div>{selectedLink.description}</div>
+          </footer>
+        </Link>
+      )
+    })
+  }, [filteredSymbols])
+
+  const combinedLinks = useMemo(() => {
+    if (searchQuery.length > 0) {
+      return symbolLinks // Only return symbol links when searching
+    }
+    const combined = [...symbolLinks]
+    affiliateLinks.forEach((link, index) => {
+      combined.splice(
+        Math.floor(Math.random() * (combined.length + 1)),
+        0,
+        link
+      )
+    })
+    return combined
+  }, [symbolLinks, affiliateLinks])
 
   return (
     <div className="grid">
       <header>
         <h2>
-          {selectedCategory} {searchQuery}
+          {searchQuery.length > 0
+            ? `${filteredSymbols.length} result${filteredSymbols.length !== 1 ? "s" : ""} for "${searchQuery}"`
+            : selectedCategory}
         </h2>
         <div className="options">
           <button>◧</button>
-          <button>◫</button>
+          <button>·</button>
           <button>⊟</button>
           <button>⊞</button>
         </div>
       </header>
-      <div className="glyf">{symbols}</div>
+      <div className="glyf">{combinedLinks}</div>
     </div>
   )
 }
