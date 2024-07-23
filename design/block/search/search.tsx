@@ -51,7 +51,12 @@ export default function Search() {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.key === "/" || (event.key === "k" && event.metaKey)) {
         event.preventDefault() // Prevent the default action to avoid typing '/' in the input
-        inputRef.current?.focus()
+        // inputRef.current?.focus()
+        if (document.activeElement === inputRef.current) {
+          inputRef.current?.blur() // Unfocus the input field if it's already focused
+        } else {
+          inputRef.current?.focus() // Focus the input field if it's not focused
+        }
       } else if (event.key === "Escape") {
         event.preventDefault() // Prevent the default action for consistency
         if (inputRef.current) {
@@ -77,6 +82,13 @@ export default function Search() {
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value)
+  }
+
+  const handleReset = () => {
+    if (inputRef.current) {
+      inputRef.current.value = "" // Clear the input field
+      setSearchQuery("") // Clear the search query state
+    }
   }
 
   return (
@@ -110,7 +122,9 @@ export default function Search() {
       <div className="right">
         <Reklama />
         <div className="cts">
-          <button type="reset">✗</button>
+          <button type="reset" onClick={handleReset}>
+            ✗
+          </button>
           <div className="slash">/</div>
         </div>
       </div>
