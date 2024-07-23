@@ -52,6 +52,14 @@
       div {
         opacity: 0.6;
       }
+
+      a {
+        line-height: 1;
+        padding: 1ex 2ch;
+        background-color: hsl(260 73% 54% / 0.8);
+        border: 1px solid hsl(260, 73%, 57%);
+        border-radius: 60px;
+      }
     }
 
     .sources {

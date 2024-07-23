@@ -85,13 +85,18 @@
         margin-block: auto;
         box-sizing: border-box;
         inset: 0 var(--slant-size-08) 0 auto;
-        background-color: #f0e7ff;
+        background-color: #f1f3f4;
+        border: 1px solid #d1d5d6;
+        color: #000;
+        /* background-color: #f0e7ff;
         border: 1px solid hsl(262, 100%, 89%);
-        color: #6a30df;
+        color: #6a30df; */
         max-height: max-content;
         padding: var(--slant-size-06) var(--slant-size-08);
-        border-radius: var(--slant-size-06);
-        font-size: 14px;
+        border-radius: var(--slant-size-04);
+        font-size: 8px;
+        line-height: 1;
+        font-weight: 500;
         cursor: pointer;
       }
     }
@@ -184,20 +189,33 @@
     width: 100%;
     background-color: #f0e7ff;
     padding: var(--slant-size-04);
-    border-radius: var(--slant-size-08);
+    border-radius: var(--slant-size-12);
     font-size: var(--slant-size-12);
 
     .export-copy {
       background-color: #6a30df;
-      border: 1px solid hsl(261, 50%, 45%);
-      color: #f0e7ff;
-      border-radius: var(--slant-size-06);
-      padding: var(--slant-size-12) var(--slant-size-16);
+      /* border: 2px solid hsl(261, 50%, 80%); */
+      color: #fff;
+      /* color: #f0e7ff; */
+      border-radius: var(--slant-size-08);
+      padding: var(--slant-size-08) var(--slant-size-16);
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
       align-items: center;
-      gap: 1ch;
+      gap: 0.5ch;
+      font-weight: 400;
+      font-size: 10px;
+
+      span {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        text-transform: initial;
+      }
 
       &:hover {
         background-color: #7b3bea;

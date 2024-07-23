@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useContext, useEffect, useMemo } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import { Links } from "@/affiliates/affiliates"
 import Icon from "@/icon/icon"
 import Link from "@/link/link"
@@ -37,42 +38,8 @@ interface Data {
   }
 }
 
-function copyToClipboardSymbol(symbol: string) {
-  navigator.clipboard.writeText(symbol).then(
-    () => {
-      toast(`${symbol} — Symbol copied!`)
-    },
-    (err) => {
-      console.error("Could not copy symbol: ", err)
-    }
-  )
-}
-
-function copyToClipboardUnicode(symbol: string) {
-  const unicodeStr = symbol ? toUnicode(symbol) : " "
-  navigator.clipboard.writeText(unicodeStr).then(
-    () => {
-      toast(`${unicodeStr} — Unicode copied!`)
-    },
-    (err) => {
-      console.error("Could not copy unicode: ", err)
-    }
-  )
-}
-
-function handleClick(e: Event, symbol: Symbol) {
-  if (e.altKey) {
-    e.preventDefault()
-    copyToClipboardUnicode(symbol.symbol)
-  } else if (e.shiftKey) {
-    e.preventDefault()
-    copyToClipboardSymbol(symbol.symbol)
-  }
-}
-
 export default function Grid() {
-  const { data, selectedCategory, setSelectedCategory, searchQuery } =
-    useContext(Controller)
+  const { data, selectedCategory, setSelectedCategory } = useContext(Controller)
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -111,14 +78,49 @@ export default function Grid() {
       : data.categories.category
   }, [data, selectedCategory])
 
+  function copyToClipboardSymbol(symbol: string) {
+    navigator.clipboard.writeText(symbol).then(
+      () => {
+        toast(`${symbol} — Symbol copied!`)
+      },
+      (err) => {
+        console.error("Could not copy symbol: ", err)
+      }
+    )
+  }
+
+  function copyToClipboardUnicode(symbol: string) {
+    const unicodeStr = symbol ? toUnicode(symbol) : " "
+    navigator.clipboard.writeText(unicodeStr).then(
+      () => {
+        toast(`${unicodeStr} — Unicode copied!`)
+      },
+      (err) => {
+        console.error("Could not copy unicode: ", err)
+      }
+    )
+  }
+
+  function handleClick(e: Event, symbol: Symbol) {
+    if (e.altKey) {
+      e.preventDefault()
+      copyToClipboardUnicode(symbol.symbol)
+    } else if (e.shiftKey) {
+      e.preventDefault()
+      copyToClipboardSymbol(symbol.symbol)
+    }
+  }
+
   const symbols = useMemo(
     () =>
       memoizedCategories.map(
         (category: { symbols: any[] }, categoryIndex: any) => {
+          // Generate random positions within the current category's symbols array
           let randomPositions = [
             Math.floor(Math.random() * (category.symbols.length + 1)),
           ]
           if (category.symbols.length > 40) {
+            // Ensure a second unique position for categories with more than 40 symbols
             let secondRandomPosition
             do {
               secondRandomPosition = Math.floor(
@@ -133,8 +135,12 @@ export default function Grid() {
             (symbol: Symbol, symbolIndex: any) => (
               <Link
                 href={`/${toURL(symbol.name)}`}
-                key={`${categoryIndex}-${symbolIndex}-${symbol.symbol}`}
+                key={`${categoryIndex}-${symbolIndex}-${symbol.symbol}`} // Ensuring key uniqueness
                 className="symbol"
+                // className={
+                //   `symbol ` +
+                //   (pathName === `/${toURL(symbol.name)}` ? "active" : "")
+                // }
                 data-symbol={symbol.symbol}
                 onClick={(e: Event) => handleClick(e, symbol)}
                 onMouseEnter={(e: {
@@ -150,13 +156,13 @@ export default function Grid() {
           )
           randomPositions.forEach((position) => {
             let randomLinkIndex
-            const selectedIndices = new Set()
+            const selectedIndices = new Set() // Initialize a set to track selected link indices
 
             do {
               randomLinkIndex = Math.floor(Math.random() * Links.length)
-            } while (selectedIndices.has(randomLinkIndex))
+            } while (selectedIndices.has(randomLinkIndex)) // Ensure the link hasn't been selected already
 
-            selectedIndices.add(randomLinkIndex)
+            selectedIndices.add(randomLinkIndex) // Add the selected index to the set
             const selectedLink = Links[randomLinkIndex]
 
             const affiliateLink = (
@@ -180,23 +186,8 @@ export default function Grid() {
           return symbolLinks
         }
       ),
-    [memoizedCategories]
+    [memoizedCategories, handleClick]
   )
 
-  return (
-    <div className="grid">
-      <header>
-        <h2>
-          {selectedCategory} {searchQuery}
-        </h2>
-        <div className="options">
-          <button>◧</button>
-          <button>◫</button>
-          <button>⊟</button>
-          <button>⊞</button>
-        </div>
-      </header>
-      <div className="glyf">{symbols}</div>
-    </div>
-  )
+  return <div className="glyf">{symbols}</div>
 }

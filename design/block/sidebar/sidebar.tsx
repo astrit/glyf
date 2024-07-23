@@ -112,7 +112,8 @@ export default function Sidebar({
   if (UI) return null
 
   return (
-    <aside className="sidebar">
+    <>
+      {/* <aside className="sidebar"> */}
       <div className="preview">
         <div className="tabber">
           <button className="active">Glyph</button>
@@ -127,14 +128,14 @@ export default function Sidebar({
               value={glyph ? toUnicode(glyph.symbol) : " "}
               readOnly
             />
-            <button onClick={copyToClipboard}>❏</button>
+            <button onClick={copyToClipboard}>COPY</button>
           </div>
         </figure>
         <div className="content">
           <details>
             <summary>
               <p title={category}>{name}</p>
-              <span>+</span>
+              {/* <span>+</span> */}
             </summary>
             <div className="info">
               <fieldset>
@@ -178,6 +179,7 @@ export default function Sidebar({
         <Affiliates />
         <Ads />
       </footer>
-    </aside>
+      {/* </aside> */}
+    </>
   )
 }
