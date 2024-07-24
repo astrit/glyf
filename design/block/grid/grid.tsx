@@ -91,8 +91,6 @@ export default function Grid() {
 
   const adData = useAds()
 
-  console.log("adData from ", adData)
-
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (
