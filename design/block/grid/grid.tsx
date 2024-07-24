@@ -210,7 +210,7 @@ export default function Grid() {
           <>
             {ad.company && (
               <Link
-                href={"#"}
+                href={ad.statlink || "#"}
                 key={`ad-${index}`}
                 rel="sponsored noopener noreferrer"
                 className={`symbol affiliate`}
