@@ -1,6 +1,8 @@
 "use client"
 
 import React, { useContext, useEffect, useMemo } from "react"
+import Image from "next/image"
+import { useAds } from "@/ads/one"
 import { Links } from "@/affiliates/affiliates"
 import Icon from "@/icon/icon"
 import Link from "@/link/link"
@@ -35,6 +37,19 @@ interface Data {
   categories: {
     category: Category[]
   }
+}
+
+interface Ad {
+  statlink?: string
+  image?: string
+  company?: string
+  description?: string
+  callToAction?: string
+  companyTagline?: string
+}
+
+interface AdData {
+  ads: Ad[]
 }
 
 function copyToClipboardSymbol(symbol: string) {
@@ -73,6 +88,10 @@ function handleClick(e: Event, symbol: Symbol) {
 export default function Grid() {
   const { data, selectedCategory, setSelectedCategory, searchQuery } =
     useContext(Controller)
+
+  const adData = useAds()
+
+  console.log("adData from ", adData)
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -170,6 +189,7 @@ export default function Grid() {
           href={selectedLink.href}
           key={`affiliate-${index}`}
           className={`symbol affiliate ${selectedLink.brand}`}
+          rel="sponsored noopener noreferrer"
           target="_blank"
         >
           <Icon name={selectedLink.brand} />
@@ -181,6 +201,41 @@ export default function Grid() {
       )
     })
   }, [filteredSymbols])
+
+  const adLinks = useMemo(() => {
+    if (searchQuery.length > 0 && adData.ads.length == 0) return []
+    // console.log("adData from adLinks", adData)
+    return (
+      adData.ads
+        // .filter((ad) => ad.company && ad.company.trim() !== "")
+        .map((ad, index) => (
+          <>
+            {ad.company && (
+              <Link
+                href={"#"}
+                key={`ad-${index}`}
+                rel="sponsored noopener noreferrer"
+                className={`symbol affiliate`}
+                target="_blank"
+              >
+                {ad.image && (
+                  <Image
+                    width="24"
+                    height="24"
+                    src={ad.image}
+                    alt={ad.company || ""}
+                  />
+                )}
+                <footer>
+                  <span>{ad.company}</span>
+                  <div>{ad.companyTagline}</div>
+                </footer>
+              </Link>
+            )}
+          </>
+        ))
+    )
+  }, [adData, searchQuery])
 
   const combinedLinks = useMemo(() => {
     if (searchQuery.length > 0) {
@@ -194,8 +249,15 @@ export default function Grid() {
         link
       )
     })
+    adLinks.forEach((link, index) => {
+      combined.splice(
+        Math.floor(Math.random() * (combined.length + 1)),
+        0,
+        link
+      )
+    })
     return combined
-  }, [symbolLinks, affiliateLinks])
+  }, [symbolLinks, affiliateLinks, adLinks])
 
   return (
     <div className="grid">

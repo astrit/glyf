@@ -17,6 +17,7 @@ type LinkProps = {
   onMouseLeave?: any
   download?: boolean
   title?: string
+  rel?: string
 }
 
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(

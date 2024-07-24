@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
 
-// Define a type for the ad
 interface Ad {
   statlink?: string
   image?: string
@@ -18,8 +17,7 @@ interface AdData {
   ads: Ad[]
 }
 
-export default function Reklama() {
-  // Use the AdData type for the state
+export function useAds() {
   const [adData, setAdData] = useState<AdData>({ ads: [] })
 
   useEffect(() => {
@@ -29,9 +27,15 @@ export default function Reklama() {
       .catch((error) => console.error("Fetching ads failed:", error)) // Handle potential errors
   }, [])
 
+  return adData
+}
+
+export default function Reklama() {
+  const adData = useAds()
+
   const ad = adData.ads.length > 0 ? adData.ads[0] : null
 
-  // console.log(ad)
+  // console.log(adData)
 
   return (
     <>
